@@ -10,9 +10,7 @@ describe("workspace-project App", () => {
 
   it("should display welcome message", () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual(
-      "Welcome to blk-design-system-angular!"
-    );
+    expect(page.getTitleText()).toEqual("Welcome to black-dashboard-angular!");
   });
 
   afterEach(async () => {
