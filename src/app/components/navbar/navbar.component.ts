@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   mobile_menu_visible: any = 0;
   private toggleButton: any;
   private sidebarVisible: boolean;
+  public sidebarColor: string = "red";
 
   public isCollapsed = true;
 
@@ -192,5 +193,31 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
+  }
+
+  changeSidebarColor(color){
+    var sidebar = document.getElementsByClassName('sidebar')[0];
+    var mainPanel = document.getElementsByClassName('main-panel')[0];
+
+    this.sidebarColor = color;
+
+    if(sidebar != undefined){
+        sidebar.setAttribute('data',color);
+    }
+    if(mainPanel != undefined){
+        mainPanel.setAttribute('data',color);
+    }
+  }
+
+  changeDashboardColor(color, color2){
+    this.changeSidebarColor(color2)
+    var body = document.getElementsByTagName('body')[0];
+
+    if (body && color === 'white-content') {
+        body.classList.add(color);
+    }
+    else if(body.classList.contains('white-content')) {
+      body.classList.remove('white-content');
+    }
   }
 }
