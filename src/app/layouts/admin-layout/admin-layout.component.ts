@@ -24,6 +24,7 @@ export class AdminLayoutComponent implements OnInit {
   }
   changeDashboardColor(color){
     var body = document.getElementsByTagName('body')[0];
+
     if (body && color === 'white-content') {
         body.classList.add(color);
     }
