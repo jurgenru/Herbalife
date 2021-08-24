@@ -3,53 +3,56 @@ import { Component, OnInit } from "@angular/core";
 declare interface RouteInfo {
   path: string;
   title: string;
-  rtlTitle: string;
   icon: string;
   class: string;
+  children: any;
 }
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Dashboard",
-    rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
-    class: ""
+    class: "",
+    children: []
   },
   {
     path: "/icons",
     title: "Icons",
-    rtlTitle: "الرموز",
     icon: "icon-atom",
-    class: ""
+    class: "",
+    children: []
   },
   {
     path: "/notifications",
     title: "Notifications",
-    rtlTitle: "إخطارات",
     icon: "icon-bell-55",
-    class: ""
+    class: "",
+    children: []
   },
 
   {
-    path: "/user",
-    title: "User Profile",
-    rtlTitle: "ملف تعريفي للمستخدم",
-    icon: "icon-single-02",
-    class: ""
+    path: "",
+    title: "Usuario",
+    icon: "icon-minimal-down",
+    class: "",
+    children: [
+      { path: "/user/create", title: "crear usuario", icon: "icon-single-02", },
+      { path: "/user/view", title: "Lista de usuarios", icon: "icon-single-02", }
+    ]
   },
   {
     path: "/tables",
     title: "Table List",
-    rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
-    class: ""
+    class: "",
+    children: []
   },
   {
     path: "/typography",
     title: "Typography",
-    rtlTitle: "طباعة",
     icon: "icon-align-center",
-    class: ""
+    class: "",
+    children: []
   }
 ];
 
@@ -61,7 +64,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
