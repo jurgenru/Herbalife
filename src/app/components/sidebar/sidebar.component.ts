@@ -3,56 +3,67 @@ import { Component, OnInit } from "@angular/core";
 declare interface RouteInfo {
   path: string;
   title: string;
+  rtlTitle: string;
   icon: string;
   class: string;
-  children: any;
 }
 export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Dashboard",
+    rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
-    class: "",
-    children: []
+    class: ""
   },
   {
     path: "/icons",
     title: "Icons",
+    rtlTitle: "الرموز",
     icon: "icon-atom",
-    class: "",
-    children: []
+    class: ""
+  },
+  {
+    path: "/maps",
+    title: "Maps",
+    rtlTitle: "خرائط",
+    icon: "icon-pin",
+    class: ""
   },
   {
     path: "/notifications",
     title: "Notifications",
+    rtlTitle: "إخطارات",
     icon: "icon-bell-55",
-    class: "",
-    children: []
+    class: ""
   },
 
   {
-    path: "",
-    title: "Usuario",
-    icon: "icon-minimal-down",
-    class: "",
-    children: [
-      { path: "/user/create", title: "crear usuario", icon: "icon-single-02", },
-      { path: "/user/view", title: "Lista de usuarios", icon: "icon-single-02", }
-    ]
+    path: "/user",
+    title: "User Profile",
+    rtlTitle: "ملف تعريفي للمستخدم",
+    icon: "icon-single-02",
+    class: ""
   },
   {
     path: "/tables",
     title: "Table List",
+    rtlTitle: "قائمة الجدول",
     icon: "icon-puzzle-10",
-    class: "",
-    children: []
+    class: ""
   },
   {
     path: "/typography",
     title: "Typography",
+    rtlTitle: "طباعة",
     icon: "icon-align-center",
-    class: "",
-    children: []
+    class: ""
+  },
+  {
+    path: "/rtl",
+    title: "RTL Support",
+    rtlTitle: "ار تي ال",
+    icon: "icon-world",
+    class: ""
   }
 ];
 
