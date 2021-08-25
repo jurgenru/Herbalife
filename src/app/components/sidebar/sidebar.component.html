@@ -10,7 +10,18 @@
 </div>
 <div class="sidebar-wrapper">
   <ul class="nav">
-    <li
+    <li routerLinkActive="active">
+      <a routerLink="/store/create" class="nav-link">
+          <span class="sidebar-normal">Store</span>
+      </a>
+   </li>
+   <li routerLinkActive="active">
+    <a routerLink="/store/list" class="nav-link">
+        <span class="sidebar-normal">Store list</span>
+    </a>
+ </li>
+ 
+    <!-- <li
       routerLinkActive="active"
       *ngFor="let menuItem of menuItems"
       class="{{ menuItem.class }} nav-item"
@@ -19,6 +30,6 @@
         <i class="tim-icons  {{ menuItem.icon }}"></i>
         <p>{{ menuItem.title }}</p>
       </a>
-    </li>
+    </li> -->
   </ul>
 </div>

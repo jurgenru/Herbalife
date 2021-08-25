@@ -13,6 +13,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
+import { StoreModule } from "./store/store.module";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { HomeComponent } from "./pages/home/home.component";
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    StoreModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
