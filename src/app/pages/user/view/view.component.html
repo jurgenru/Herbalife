@@ -1,16 +1,98 @@
 <div class=" content">
-    <div class="row">
+    <div class=" row">
         <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class=" title">Vista de Usuarios</h5>
+            <button [routerLink]="['/user/edit', 23]" class="btn btn-info pull-right clickable">
+                <i class="fas fa-pencil-alt"></i> Editar
+            </button>
+        </div>
+        <div class=" col-md-8">
+            <div class=" card">
+                <div class=" card-header">
+                    <h5 class=" title">Vista de Usuario</h5>
+                </div>
+                <div class=" card-body">
+                    <form>
+                        <div class=" row">
+                            <div class="mb-2 col-md-12 pr-md-1">
+                                <label class="text-info"> Nombre de distribuidor: </label>
+                                <p> Mike Andrew</p>
+                            </div>
+
+                            <div class="mb-2 col-md-12 pr-md-1">
+                                <label class="text-info"> Dirección: </label>
+                                <p>
+                                    Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09
+                                </p>
+                            </div>
+                            <div class="mb-2 col-md-4 pr-md-1">
+                                <div class=" form-group">
+                                    <label class="text-info"> País: </label>
+                                    <p> nombre País</p>
+                                </div>
+                            </div>
+                            <div class="mb-2 col-md-4 px-md-1">
+                                <div class=" form-group">
+                                    <label class="text-info"> Ciudad: </label>
+                                    <p>nombre ciudad</p>
+                                </div>
+                            </div>
+                            <div class="mb-2 col-md-4 px-md-1">
+                                <div class=" form-group">
+                                    <label class="text-info"> Código postal: </label>
+                                    <p>Zsmd10</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class=" form-group">
+                                    <label class="text-info"> Redes Sociales: </label>
+                                    <div class=" button-container">
+                                        <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                                            <i class=" fab fa-facebook"> </i>
+                                        </button>
+                                        <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                                            <i class=" fab fa-twitter"> </i>
+                                        </button>
+                                        <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                                            <i class=" fab fa-google-plus"> </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <br />
-        <div class="col-md-12">
-            <div class="row">
+        <div class=" col-md-4">
+            <div class=" card card-user">
+                <div class=" card-body">
+                    <p class=" card-text"></p>
+                    <div class=" author">
+                        <div class=" block block-one"></div>
+                        <div class=" block block-two"></div>
+                        <div class=" block block-three"></div>
+                        <div class=" block block-four"></div>
+                        <a href="javascript:void(0)">
+                            <img alt="..." class=" avatar" src="assets/img/emilyz.jpg" />
 
+                            <h5 class="text-info title">Mike Andrew</h5>
+                        </a>
+                        <p class=" text-danger description">Nivel de Herbalife</p>
+                    </div>
+                </div>
+                <div class=" card-footer">
+                    <div class=" button-container">
+                        <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                            <i class=" fab fa-facebook"> </i>
+                        </button>
+                        <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                            <i class=" fab fa-twitter"> </i>
+                        </button>
+                        <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                            <i class=" fab fa-google-plus"> </i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
