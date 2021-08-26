@@ -44,7 +44,6 @@ export class CreateComponent implements OnInit {
     return this.productForm.get('product') as FormArray;
   }
   submit(){
-    console.log(this.product.value);
   }
 
 }

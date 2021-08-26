@@ -3,14 +3,9 @@
         <div class=" col-md-12">
             <div class="card card-user">
                 <div class=" card-body">
-                    <div class="author">
-                        <img alt="Icon" class="avatar" src="assets/img/emilyz.jpg" />
-                    </div>
-                    <div style="text-align: center">
-                        <h3>Servicios</h3>
-                        <span>
-                            Puedes añadir solo hasta 12 categorias
-                        </span>
+                        <div style="text-align: center">
+                        <h2>Tienda</h2>
+                        <h5>Puedes añadir solo hasta 12 categorias</h5>                      
                     </div>
                     <br>
                     <br>
@@ -54,6 +49,12 @@
                     </form>
                     <br>
                     <hr>
+                    <div style="text-align: center">
+                        <h4>Productos de la tienda</h4>
+                        <span>
+                            Puedes añadir hasta 12 productos por tienda
+                        </span>
+                    </div>
                     <br>
                     <form [formGroup]="productForm">
                         <div formArrayName="product">
@@ -122,6 +123,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
+                                    <label> Precio extra del producto </label>
+                                    <input class=" form-control" placeholder="Precio extra del producto" type="text"
+                                        value="">
                                     <textarea class=" form-control" cols="80" placeholder="Datos extra del producto"
                                         rows="20" value=""></textarea>
                                 </div>
@@ -143,10 +147,9 @@
                       </form>
                 </div>
                 <div class="card-footer">
-                    <div class=" button-container">
+                    <div class=" button-container pull-right">
                         <button (click)="submit()"
-                            class="btn btn-info btn-round"
-                            href="javascript:void(0)">
+                            class="btn btn-info">
                             Guardar
                         </button>
                     </div>
