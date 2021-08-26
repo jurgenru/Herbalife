@@ -31,4 +31,4 @@ import { StoreModule } from "./store/store.module";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
