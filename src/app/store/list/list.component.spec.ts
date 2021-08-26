@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StoreListComponent } from './store-list.component';
+import { StoreListComponent } from './list.component';
 
 describe('StoreListComponent', () => {
   let component: StoreListComponent;
