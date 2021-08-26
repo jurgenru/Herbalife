@@ -16,11 +16,14 @@ export const AdminLayoutRoutes: Routes = [
   // { path: "user", component: UserComponent },
   { path: "tables", component: TablesComponent },
   { path: "typography", component: TypographyComponent },
+  { path: "store/create", component: CreateComponent},
+  { path: "store/list", component: StoreListComponent},
   {
     path: '',
     children: [{
       path: 'user',
       loadChildren: '../../pages/user/user.module#UserModule'
     }]
-  }
+  },
+
 ];
