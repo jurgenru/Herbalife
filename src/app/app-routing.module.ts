@@ -5,13 +5,14 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { SaleComponent } from './pages/sale/sale.component';
 
 const routes: Routes = [
   {
     path: "",
     redirectTo: "dashboard",
     pathMatch: "full"
-  },{
+  }, {
     path: 'home', component: HomeComponent,
   },
   {
@@ -41,4 +42,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
