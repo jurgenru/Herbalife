@@ -29,11 +29,19 @@ export const AdminLayoutRoutes: Routes = [
       path: 'store',
       loadChildren: '../../pages/store/store.module#StoreModule'
     }]
-  },  {
+  },
+  {
     path: '',
     children: [{
       path: 'service',
       loadChildren: '../../pages/service/service.module#ServiceModule'
+    }]
+  },
+  {
+    path: '',
+    children: [{
+      path: 'trainer',
+      loadChildren: '../../pages/trainer/trainer.module#TrainerModule'
     }]
   },
 
