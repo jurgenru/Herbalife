@@ -1,0 +1,100 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class="card card-user">
+                <div class=" card-body">
+                    <div style="text-align: center">
+                        <h2>BLOG</h2>
+                        <h5>Puedes añadir hasta 12 categorias</h5>
+                    </div>
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <form>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-5">
+                                <label> Nombre del Blog </label>
+                                <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
+                                    value="">
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <div class="font-icon-detail">
+                                <i class="tim-icons icon-upload"> </i>
+                                Agregar icono a la categoria (opcional)
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <div class="font-icon-detail">
+                                <i class="tim-icons icon-upload"></i>
+                                Agregar imagen o video para la portada
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div style="text-align: center">
+                        <h4>Articulos</h4>
+                    </div>
+                    <form [formGroup]="blogForm">
+                        <div formArrayName="article">
+                            <div *ngFor="let FormInputs of article.controls; let i = index;">
+                                <br>
+                                <div class="row pl-1 pl-md-3">
+                                    <p>Articulo {{i+1}}</p>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col-12 col-md-5">
+                                        <label> Titulo </label>
+                                        <input class=" form-control" placeholder="Coloca el titulo del articulo"
+                                            type="text">
+                                    </div>
+                                    <div class="col-12 col-md-8">
+                                        <div class="font-icon-detail">
+                                            Imagen o video del tema del blog
+                                            <i class="tim-icons icon-upload"> </i>
+                                        </div>
+                                        <br>
+                                        <hr>
+                                        <br>
+                                        <label> Descripcion del producto </label>
+                                        <textarea class="form-control"
+                                            placeholder="Coloca la descripcion del producto" rows="4"
+                                            value="Category description"></textarea>
+                                    </div>
+                                </div>
+                                <hr>
+                                <button (click)="removeProduct(i)"
+                                    class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                    <i class="tim-icons icon-simple-delete"></i>
+                                </button>
+                            </div>
+                            <div class=" button-container">
+                                <button (click)="addProductForm()"
+                                    class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                                    href="javascript:void(0)">
+                                    <i class="tim-icons icon-simple-add"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class=" button-container pull-right">
+                        <button
+                            class="btn btn-info">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

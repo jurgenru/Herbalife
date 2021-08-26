@@ -36,5 +36,12 @@ export const AdminLayoutRoutes: Routes = [
       loadChildren: '../../pages/service/service.module#ServiceModule'
     }]
   },
+  {
+    path: '',
+    children: [{
+      path: 'blog',
+      loadChildren: '../../pages/blog/blog.module#BlogModule'
+    }]
+  },
 
 ];
