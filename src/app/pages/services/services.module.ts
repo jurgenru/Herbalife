@@ -5,6 +5,7 @@ import { ServicesRoutingModule } from './services-routing.module';
 import { ServicesComponent } from './create/services.component';
 import { ServiceListComponent } from './service-list/service-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ServicesRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ]
 })
 export class ServicesModule { }

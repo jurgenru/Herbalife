@@ -4,90 +4,98 @@
       <div class="card card-user">
         <div class="card-body">
           <div class="author">
-            <img class="avatar" src="assets/img/emilyz.jpg" />
-          </div>
-          <div class="card-header">
-            <div style="text-align: center">
-              <h3>Servicios</h3>
-              <h4 *ngIf="services > 12" style="color: red">
-                Puedes añadir solo hasta 12 servicios
-              </h4>
+            <div class="card-header text-center">
+              <h2 class="card-title">Servicios</h2>
+              <p class="card-text">Puedes añadir solo hasta 12 servicios</p>
             </div>
           </div>
+          <br />
           <hr color="purple" width="90%" />
-          <h3>Servicio #</h3>
-          <form
-            [formGroup]="serviceForm"
-            (ngSubmit)="onSubmit()"
-            style="text-align: center"
-          >
+          <br />
+          <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
             <!--escoger el servicio-->
-            <p>
-              Modo de servicio:
-              <select (change)="changeService($event)">
-                <!--falta el formCOntrolName-->
-                <option value="">Elige un servicio</option>
-                <option *ngFor="let type of Types" [ngValue]="type">
-                  {{ type }}
-                </option>
-              </select>
-            </p>
-            <div *ngIf="isSubmitted && serviceType.errors?.required">
-              <h5 style="color: red">Por favor ingrese un servicio</h5>
-            </div>
-            <!--escoger el servicio-->
-            <!--icono-->
-            <div class="row justify-content-center">
-              <div
-                class="
-                  font-icon-list
-                  col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6
-                "
-              >
-                <div class="font-icon-detail">
-                  <i class="tim-icons icon-upload"> </i>
+            <div class="row">
+              <div class="col text-center">
+                <div class="btn-group dropdown" ngbDropdown>
+                  <p style="font-size: medium">Escoja el Tipo de Servicio:</p>
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="btn btn-secondary dropdown-toggle dropdown-toggle"
+                    data-toggle="dropdown"
+                    ngbDropdownToggle
+                    id="dropdownMenuLink"
+                    type="button"
+                  >
+                    Servicios
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    ngbDropdownMenu
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <a
+                      class="dropdown-item"
+                      *ngFor="let type of Types"
+                      [ngValue]="type"
+                      ngbDropdownItem
+                    >
+                      {{ type }}
+                    </a>
+                  </div>
                 </div>
-                Agregar icono a la categoria (opcional)
               </div>
             </div>
-            <button class="btn btn-info">Copiar url</button>
+            <!--escoger el servicio-->
             <!--icono-->
-            <!--portada-->
-            <div style="text-align: center">
-              <div class="font-icon-list">
+            <div class="row">
+              <div class="font-icon-list col-12 col-md-3">
+                <div class="font-icon-detail">
+                  <b>Agregar icono a la categoria (opcional)</b>
+                  <br />
+                  <i class="tim-icons icon-upload"> </i>
+                </div>
+              </div>
+              <div class="font-icon-list col-12 col-md-9">
                 <div class="font-icon-detail">
                   <b>Agregar imagen o video para la portada del servicio </b>
                   <br />
                   <i class="tim-icons icon-upload"> </i>
                 </div>
               </div>
-              <button class="btn btn-info">Copiar url</button>
             </div>
+            <!--icono-->
             <!--portada-->
+            <!--portada-->
+            <br />
+            <hr color="purple" width="90%" />
+            <br />
             <!--descripcion-->
             <div class="row">
-              <div
-                class="
-                  font-icon-list
-                  col-lg-3 col-md-4 col-sm-5 col-xs-7 col-xs-7
-                "
-              >
+              <div class="font-icon-list col-12 col-md-3">
                 <div class="font-icon-detail">
                   <b>Agregar imagen para la descripcion del servicio </b>
                   <br />
                   <i class="tim-icons icon-upload"> </i>
                 </div>
-                <button class="btn btn-info">Copiar url</button>
               </div>
 
-              <div class="col-md-9">
+              <div class="col-md-9 text-left">
                 <div class="form-group">
                   <label> Nombre del servicio </label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Añade un nombre al servicio"
+                  />
                 </div>
                 <div class="form-group">
                   <label> Título de la descripcion </label>
-                  <input class="form-control" type="text" />
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Añade un título al servicio"
+                  />
                 </div>
                 <div class="form-group">
                   <label> Descripcion del servicio </label>
@@ -102,56 +110,82 @@
             </div>
             <!--descripcion-->
             <!--tipo de servicio-->
-            <div style="text-align: center">
+            <div class="text-center">
               <p><b>Escoja el tipo de servicio</b></p>
-              <br>
+              <br />
               <div class="row">
-                <div class="col-md-4 pr-md-1">
-                  <p>
-                    <input type="checkbox" />
-                    Normal
-                  </p>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox1"
+                        value="option1"
+                      />
+                      Normal
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
                 </div>
-                <div class="col-md-4 px-md-1">
-                  <p>
-                    <input type="checkbox" />
-                    Encuesta de emprendedores
-                  </p>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox2"
+                        value="option2"
+                      />
+                      Encuesta de emprendedores
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
                 </div>
-                <div class="col-md-4 pl-md-1">
-                  <p>
-                    <input type="checkbox" />
-                    Otro servicio
-                  </p>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="inlineCheckbox3"
+                        value="option3"
+                      />
+                      Otro servicio
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
             <!--tipo de servicio-->
             <!--agradecimientos-->
-            <br>
-            <div class="row">
-              <div class=" col-md-12">
-                <div class=" form-group">
+            <br />
+            <div class="row text-left">
+              <div class="col-md-12">
+                <div class="form-group">
                   <label> Titulo de agrecidimiento </label>
                   <input
-                    class=" form-control"
+                    class="form-control"
                     type="text"
+                    placeholder="Añade el título de agradecimiento"
                   />
                 </div>
-                <div class=" form-group">
+                <div class="form-group">
                   <label> Descripcion del agrecidimiento </label>
                   <textarea
-                    class=" form-control"
+                    class="form-control"
                     type="text"
+                    placeholder="Añade un agradecimiento. Maximo 150 caracteres"
+                    maxlength="150"
                   ></textarea>
                 </div>
               </div>
             </div>
             <!--agradecimientos-->
-            <hr color="purple" width="90%" />
-            <button type="submit" class="btn btn-danger btn-lg btn-block">
-              Guardar
-            </button>
+            <div class="text-right">
+              <button type="submit" class="btn btn-info">Guardar</button>
+            </div>
           </form>
         </div>
       </div>
