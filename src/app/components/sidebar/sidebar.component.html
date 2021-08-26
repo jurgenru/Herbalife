@@ -1,24 +1,60 @@
-<div class="logo">
-  <a href="https://www.creative-tim.com?ref=bda-sidebar-logo" class="simple-text logo-mini">
-    <div class="logo-img">
-      <img src="./assets/img/angular2-logo-white.png" />
-    </div>
-  </a>
-  <a href="https://www.creative-tim.com?ref=bda-sidebar-logo" class="simple-text logo-normal">
-    Creative Tim
-  </a>
-</div>
 <div class="sidebar-wrapper">
   <ul class="nav">
-    <li
-      routerLinkActive="active"
-      *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item"
-    >
-      <a [routerLink]="[menuItem.path]">
-        <i class="tim-icons  {{ menuItem.icon }}"></i>
-        <p>{{ menuItem.title }}</p>
-      </a>
-    </li>
+    <li routerLinkActive="active"
+    class="nav-item">
+    <a routerLink="">
+      <i class="tim-icons icon-bag-16"></i>
+      <p>tienda</p>
+    </a>
+  </li>
+  <li routerLinkActive="active"
+  class="nav-item">
+  <a routerLink="">
+    <i class="tim-icons icon-components"></i>
+    <p>servicios</p>
+  </a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-user-run"></i>
+  <p>entrenadores</p>
+</a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-chat-33"></i>
+  <p>blog</p>
+</a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-wallet-43"></i>
+  <p>promociones</p>
+</a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-tie-bow"></i>
+  <p>testimonios</p>
+</a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-chart-bar-32"></i>
+  <p>ventas</p>
+</a>
+</li>
+<li routerLinkActive="active"
+class="nav-item">
+<a routerLink="">
+  <i class="tim-icons icon-headphones"></i>
+  <p>videollamadas</p>
+</a>
+</li>
   </ul>
 </div>
