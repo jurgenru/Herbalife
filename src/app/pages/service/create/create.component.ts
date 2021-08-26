@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html'
+  selector: 'app-service-create',
+  templateUrl: './create.component.html'
 })
-export class ServicesComponent implements OnInit {
+export class CreateComponent implements OnInit {
   isSubmitted = false;
   services: number;
 

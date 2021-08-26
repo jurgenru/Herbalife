@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CreateComponent } from "./create/create.component";
-import { StoreListComponent } from "./list/list.component";
+import { ListComponent } from "./list/list.component";
 import { StoreComponent } from "./store.component";
 
 export const routes: Routes = [
@@ -14,7 +14,7 @@ export const routes: Routes = [
         },
         {
             path: 'list',
-            component: StoreListComponent
+            component: ListComponent
         }]
     }];
 
@@ -22,9 +22,9 @@ export const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class BooksRoutingModule { }
+export class StoreRoutingModule { }
 export const routedComponents = [
     StoreComponent,
     CreateComponent,
-    StoreListComponent
+    ListComponent
 ]

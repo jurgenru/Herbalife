@@ -3,15 +3,13 @@ import { RouterModule } from "@angular/router";
 import { StoreComponent } from './store.component';
 import { CreateComponent } from './create/create.component';
 import { routedComponents } from './store.routing';
-import { StoreListComponent } from './list/list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
-    StoreComponent,
-    CreateComponent,
-    StoreListComponent
+    ...routedComponents
   ],
   imports: [
     RouterModule,
@@ -21,10 +19,7 @@ import { CommonModule } from '@angular/common';
 
   ],
   exports: [
-    StoreComponent,
-    CreateComponent,
-    StoreListComponent
-
+    ...routedComponents
 ]
 })
 export class StoreModule { }
