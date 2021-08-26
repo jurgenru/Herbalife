@@ -1,0 +1,160 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="author">
+            <img class="avatar" src="assets/img/emilyz.jpg" />
+          </div>
+          <div class="card-header">
+            <div style="text-align: center">
+              <h3>Servicios</h3>
+              <h4 *ngIf="services > 12" style="color: red">
+                Puedes añadir solo hasta 12 servicios
+              </h4>
+            </div>
+          </div>
+          <hr color="purple" width="90%" />
+          <h3>Servicio #</h3>
+          <form
+            [formGroup]="serviceForm"
+            (ngSubmit)="onSubmit()"
+            style="text-align: center"
+          >
+            <!--escoger el servicio-->
+            <p>
+              Modo de servicio:
+              <select (change)="changeService($event)">
+                <!--falta el formCOntrolName-->
+                <option value="">Elige un servicio</option>
+                <option *ngFor="let type of Types" [ngValue]="type">
+                  {{ type }}
+                </option>
+              </select>
+            </p>
+            <div *ngIf="isSubmitted && serviceType.errors?.required">
+              <h5 style="color: red">Por favor ingrese un servicio</h5>
+            </div>
+            <!--escoger el servicio-->
+            <!--icono-->
+            <div class="row justify-content-center">
+              <div
+                class="
+                  font-icon-list
+                  col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6
+                "
+              >
+                <div class="font-icon-detail">
+                  <i class="tim-icons icon-upload"> </i>
+                </div>
+                Agregar icono a la categoria (opcional)
+              </div>
+            </div>
+            <button class="btn btn-info">Copiar url</button>
+            <!--icono-->
+            <!--portada-->
+            <div style="text-align: center">
+              <div class="font-icon-list">
+                <div class="font-icon-detail">
+                  <b>Agregar imagen o video para la portada del servicio </b>
+                  <br />
+                  <i class="tim-icons icon-upload"> </i>
+                </div>
+              </div>
+              <button class="btn btn-info">Copiar url</button>
+            </div>
+            <!--portada-->
+            <!--descripcion-->
+            <div class="row">
+              <div
+                class="
+                  font-icon-list
+                  col-lg-3 col-md-4 col-sm-5 col-xs-7 col-xs-7
+                "
+              >
+                <div class="font-icon-detail">
+                  <b>Agregar imagen para la descripcion del servicio </b>
+                  <br />
+                  <i class="tim-icons icon-upload"> </i>
+                </div>
+                <button class="btn btn-info">Copiar url</button>
+              </div>
+
+              <div class="col-md-9">
+                <div class="form-group">
+                  <label> Nombre del servicio </label>
+                  <input class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                  <label> Título de la descripcion </label>
+                  <input class="form-control" type="text" />
+                </div>
+                <div class="form-group">
+                  <label> Descripcion del servicio </label>
+                  <textarea
+                    class="form-control"
+                    placeholder="Añade una breve descripcion"
+                    type="text"
+                    maxlength="150"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <!--descripcion-->
+            <!--tipo de servicio-->
+            <div style="text-align: center">
+              <p><b>Escoja el tipo de servicio</b></p>
+              <br>
+              <div class="row">
+                <div class="col-md-4 pr-md-1">
+                  <p>
+                    <input type="checkbox" />
+                    Normal
+                  </p>
+                </div>
+                <div class="col-md-4 px-md-1">
+                  <p>
+                    <input type="checkbox" />
+                    Encuesta de emprendedores
+                  </p>
+                </div>
+                <div class="col-md-4 pl-md-1">
+                  <p>
+                    <input type="checkbox" />
+                    Otro servicio
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!--tipo de servicio-->
+            <!--agradecimientos-->
+            <br>
+            <div class="row">
+              <div class=" col-md-12">
+                <div class=" form-group">
+                  <label> Titulo de agrecidimiento </label>
+                  <input
+                    class=" form-control"
+                    type="text"
+                  />
+                </div>
+                <div class=" form-group">
+                  <label> Descripcion del agrecidimiento </label>
+                  <textarea
+                    class=" form-control"
+                    type="text"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <!--agradecimientos-->
+            <hr color="purple" width="90%" />
+            <button type="submit" class="btn btn-danger btn-lg btn-block">
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
