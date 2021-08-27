@@ -44,5 +44,11 @@ export const AdminLayoutRoutes: Routes = [
       loadChildren: '../../pages/trainer/trainer.module#TrainerModule'
     }]
   },
-
+  {
+    path: '',
+    children: [{
+      path: 'content',
+      loadChildren: '../../pages/content/content.module#ContentModule'
+    }]
+  },
 ];
