@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { routedComponents } from '../user/user.routing';
+import { routedComponents } from '../service/service.routing';
 import { ServiceRoutingModule } from './service.routing';
 
 
