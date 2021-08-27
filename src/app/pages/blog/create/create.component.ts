@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.addArticleForm();
   }
 
   createForm() {
@@ -21,7 +22,7 @@ export class CreateComponent implements OnInit {
       article: this.formBuilder.array([])
     });
   }
-  addProductForm() {
+  addArticleForm() {
     const FormInputs = this.formBuilder.group({
       title: new FormControl(''),
       themeDevelop: new FormControl(''),
@@ -29,7 +30,7 @@ export class CreateComponent implements OnInit {
   
     this.article.push(FormInputs);
   }
-  removeProduct(index: number) {
+  removeArticle(index: number) {
     this.article.removeAt(index);
   }
   get article(): FormArray {

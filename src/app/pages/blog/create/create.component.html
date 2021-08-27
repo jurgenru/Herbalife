@@ -56,28 +56,33 @@
                                         <input class=" form-control" placeholder="Coloca el titulo del articulo"
                                             type="text">
                                     </div>
-                                    <div class="col-12 col-md-8">
+                                </div>
+                                <br>
+                                <hr>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12 col-md-5">
                                         <div class="font-icon-detail">
                                             Imagen o video del tema del blog
                                             <i class="tim-icons icon-upload"> </i>
                                         </div>
-                                        <br>
-                                        <hr>
-                                        <br>
-                                        <label> Descripcion del producto </label>
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <label> Contenido del articulo </label>
                                         <textarea class="form-control"
-                                            placeholder="Coloca la descripcion del producto" rows="4"
-                                            value="Category description"></textarea>
+                                            placeholder="Coloca el contenido del articulo" rows="6"
+                                            value=""></textarea>
                                     </div>
                                 </div>
+                                <br>
                                 <hr>
-                                <button (click)="removeProduct(i)"
+                                <button (click)="removeArticle(i)"
                                     class="btn btn-danger btn-fab btn-icon btn-round float-left">
                                     <i class="tim-icons icon-simple-delete"></i>
                                 </button>
                             </div>
                             <div class=" button-container">
-                                <button (click)="addProductForm()"
+                                <button (click)="addArticleForm()"
                                     class="btn btn-primary btn-fab btn-icon btn-round float-right"
                                     href="javascript:void(0)">
                                     <i class="tim-icons icon-simple-add"></i>
