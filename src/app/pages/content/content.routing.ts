@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContentComponent } from './content.component';
 import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [{
@@ -16,10 +15,6 @@ const routes: Routes = [{
       {
         path: 'list',
         component: ListComponent
-      },
-      {
-        path: 'edit',
-        component: EditComponent
       }
   ]
 }];
@@ -32,6 +27,5 @@ export class ContentRoutingModule { }
 export const routedComponents = [
   ContentComponent,
   CreateComponent,
-  EditComponent,
   ListComponent
 ];
