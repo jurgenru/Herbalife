@@ -4,7 +4,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
   productForm: FormGroup;
@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
   }
   addProductForm() {
     const FormInputs = this.formBuilder.group({
-     // image: new FormControl(''),
+      // image: new FormControl(''),
       name: new FormControl(''),
       price: new FormControl(''),
       quantity: new FormControl(''),
@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
       // category3: new FormControl(''),
       // category4: new FormControl(''),
     });
-  
+
     this.product.push(FormInputs);
   }
   removeProduct(index: number) {
@@ -43,7 +43,7 @@ export class CreateComponent implements OnInit {
   get product(): FormArray {
     return this.productForm.get('product') as FormArray;
   }
-  submit(){
+  submit() {
   }
 
 }
