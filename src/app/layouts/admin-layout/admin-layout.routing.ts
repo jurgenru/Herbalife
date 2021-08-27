@@ -29,7 +29,8 @@ export const AdminLayoutRoutes: Routes = [
       path: 'store',
       loadChildren: '../../pages/store/store.module#StoreModule'
     }]
-  },  {
+  },
+  {
     path: '',
     children: [{
       path: 'service',
@@ -39,8 +40,8 @@ export const AdminLayoutRoutes: Routes = [
   {
     path: '',
     children: [{
-      path: 'blog',
-      loadChildren: '../../pages/blog/blog.module#BlogModule'
+      path: 'trainer',
+      loadChildren: '../../pages/trainer/trainer.module#TrainerModule'
     }]
   },
 

@@ -13,6 +13,7 @@ import { ListComponent } from './list/list.component';
   ],
   imports: [
     RouterModule,
+    StoreRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
@@ -21,6 +22,6 @@ import { ListComponent } from './list/list.component';
   ],
   exports: [
     ...routedComponents
-]
+  ]
 })
 export class StoreModule { }
