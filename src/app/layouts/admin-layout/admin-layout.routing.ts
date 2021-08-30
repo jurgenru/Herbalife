@@ -65,4 +65,11 @@ export const AdminLayoutRoutes: Routes = [
       loadChildren: '../../pages/testimony/testimony.module#TestimonyModule'
     }]
   },
+  {
+    path: '',
+    children: [{
+      path: 'modal',
+      loadChildren: '../../pages/modal/modal.module#ModalModule'
+    }]
+  },
 ];
