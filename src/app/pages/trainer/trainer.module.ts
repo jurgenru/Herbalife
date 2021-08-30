@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { routedComponents, TrainerRoutingModule } from './trainer.routing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -8,7 +10,10 @@ import { routedComponents, TrainerRoutingModule } from './trainer.routing';
   declarations: [...routedComponents],
   imports: [
     CommonModule,
-    TrainerRoutingModule
+    TrainerRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
   ],
   exports: [
     ...routedComponents
