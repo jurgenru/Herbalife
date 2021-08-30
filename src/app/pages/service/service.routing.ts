@@ -6,6 +6,7 @@ import { ServiceComponent } from './service.component';
 
 const routes: Routes = [{
   path: '',
+  component: ServiceComponent,
     children: [
       {
         path: 'create',

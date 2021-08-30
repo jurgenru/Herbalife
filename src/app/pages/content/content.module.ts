@@ -4,11 +4,10 @@ import { ContentRoutingModule } from './content.routing';
 import { routedComponents } from '../content/content.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
-  declarations: [...routedComponents, EditComponent],
+  declarations: [...routedComponents],
   imports: [
     CommonModule,
     ContentRoutingModule,
