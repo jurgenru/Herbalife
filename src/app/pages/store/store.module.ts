@@ -16,7 +16,8 @@ import { ListComponent } from './list/list.component';
     StoreRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    StoreRoutingModule
 
   ],
   exports: [
