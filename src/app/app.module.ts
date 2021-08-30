@@ -13,6 +13,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { HomeComponent } from "./pages/home/home.component";
     HttpClientModule,
     ComponentsModule,
     NgbModule,
+    ImageCropperModule,
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot()

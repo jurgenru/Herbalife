@@ -11,7 +11,6 @@ import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-
 @NgModule({
   imports: [
     CommonModule,
