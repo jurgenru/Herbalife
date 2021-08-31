@@ -15,13 +15,39 @@
                                     style="padding-left: 33px;" />
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="text-center form-group">
-                                <input class=" form-control" type="date" value="Creative Code Inc." />
-                                <label>Filtrado por fecha</label>
+                        <div class="col-md-6">
+                            <div class="text-center form-inline form-group">
+                                <div class="form-group hidden">
+                                    <input name="datepicker" class="form-control" ngbDatepicker hidden
+                                        #datepicker="ngbDatepicker" [autoClose]="'outside'"
+                                        (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
+                                        outsideDays="hidden" [startDate]="fromDate!">
+                                    <ng-template #t let-date let-focused="focused">
+                                        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                                            [class.faded]="isHovered(date) || isInside(date)"
+                                            (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                                            {{ date.day }}
+                                        </span>
+                                    </ng-template>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd"
+                                            name="dpFromDate" [value]="formatter.format(fromDate)"
+                                            (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                        <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
+                                            [value]="formatter.format(toDate)"
+                                            (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                        <button class="btn btn-info btn-icon pull-right" (click)="datepicker.toggle()"
+                                            type="button">📅</button>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- <br />
+                            <pre>From date model: {{ fromDate | json }}</pre>
+                            <pre>To date model: {{ toDate | json }}</pre> -->
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <button class="btn btn-danger pull-right"><i class="fas fa-file-pdf"></i> Descargar
                                 PDF</button>
                         </div>
