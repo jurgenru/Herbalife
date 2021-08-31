@@ -16,12 +16,12 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <!-- <div class="text-center form-inline form-group">
+                            <div class="text-center form-inline form-group">
                                 <div class="form-group hidden">
-                                    <input name="datepicker" class="form-control" ngbDatepicker hidden
+                                    <!-- <input name="datepicker" class="form-control" ngbDatepicker hidden
                                         #datepicker="ngbDatepicker" [autoClose]="'outside'"
                                         (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
-                                        outsideDays="hidden" [startDate]="fromDate!">
+                                        outsideDays="hidden" [startDate]="fromDate!"> -->
                                     <ng-template #t let-date let-focused="focused">
                                         <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
                                             [class.faded]="isHovered(date) || isInside(date)"
@@ -42,7 +42,7 @@
                                             type="button">📅</button>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- <br />
                             <pre>From date model: {{ fromDate | json }}</pre>
                             <pre>To date model: {{ toDate | json }}</pre> -->
