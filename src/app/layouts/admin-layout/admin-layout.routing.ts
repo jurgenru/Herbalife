@@ -66,5 +66,5 @@ export const AdminLayoutRoutes: Routes = [
       path: 'testimony',
       loadChildren: '../../pages/testimony/testimony.module#TestimonyModule'
     }]
-  },
+  }
 ];
