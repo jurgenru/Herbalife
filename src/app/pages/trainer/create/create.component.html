@@ -26,15 +26,33 @@
                         <br>
                         <div class="row">
                             <div class="col-12 col-md-3">
-                                <div class="font-icon-detail">
-                                    <i class="tim-icons icon-upload"> </i>
-                                    Agregar icono a la categoria (opcional)
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/anime6.png" alt="trainerIcon" class="mx-auto d-block"
+                                        *ngIf="!iconImage; else noIconImage">
+                                    <ng-template #noIconImage>
+                                        <img [src]="iconImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showIcon()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar icono a la categoria (opcional)
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-9">
-                                <div class="font-icon-detail">
-                                    <i class="tim-icons icon-upload"></i>
-                                    Agregar imagen o video para la portada
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/anime6.png" alt="trainerPortrait" class="mx-auto d-block"
+                                        *ngIf="!portraitImage; else noPortraitImage">
+                                    <ng-template #noPortraitImage>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen para la portada
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,9 +133,18 @@
                                 placeholder="Describa de que trata la clase"></textarea>
                             </div>
                             <div class="col-12 col-md-3">
-                                <div class="font-icon-detail">
-                                    <i class="tim-icons icon-upload"> </i>
-                                    Agregar icono a la categoria (opcional)
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg" class="mx-auto d-block"
+                                        *ngIf="!courseImage; else noCourseImage">
+                                    <ng-template #noCourseImage>
+                                        <img [src]="courseImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showCourse()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen de la clase
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

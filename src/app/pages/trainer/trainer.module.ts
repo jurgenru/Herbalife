@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { routedComponents, TrainerRoutingModule } from './trainer.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { SimpleModalModule } from 'ngx-simple-modal';
 
 
 
@@ -14,6 +16,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    ImageCropperModule,
+    SimpleModalModule
   ],
   exports: [
     ...routedComponents
