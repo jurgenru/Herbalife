@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 
 @Component({
   selector: 'app-create',
@@ -8,7 +10,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
   productForm: FormGroup;
+  iconImage:any;
+  portraitImage:any;
+  productImage:any;
+
   constructor(
+    private simpleModalService: SimpleModalService,
     private formBuilder: FormBuilder
   ) { }
 
@@ -28,7 +35,7 @@ export class CreateComponent implements OnInit {
       price: new FormControl(''),
       quantity: new FormControl(''),
       description: new FormControl(''),
-
+      
       //category1: new FormControl(''),
       // category2: new FormControl(''),
       // category3: new FormControl(''),
@@ -44,6 +51,21 @@ export class CreateComponent implements OnInit {
     return this.productForm.get('product') as FormArray;
   }
   submit() {
+  }
+  showIcon() {
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.iconImage = data;
+    });
+  }
+  showPortrait() {
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.portraitImage = data;
+    });
+  }
+  showBlog(){
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.productImage = data;
+    });
   }
 
 }
