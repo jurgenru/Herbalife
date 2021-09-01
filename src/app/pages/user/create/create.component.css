@@ -24,11 +24,11 @@
     width: 100%;
     opacity: 0;
     transition: .5s ease;
-    background-color: #FAF9F8;
+    background-color: #008CBA;
   }
   
   .container-image:hover .overlay {
-    opacity: 0.6;
+    opacity: 1;
   }
   
   .text {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { ToastrService } from 'ngx-toastr';
-
+import { SimpleModalService } from 'ngx-simple-modal';
+import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 
 @Component({
   selector: 'app-create',
@@ -10,29 +9,17 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CreateComponent implements OnInit {
 
-  imageChangedEvent: any = '';
-    croppedImage: any = '';
+  imageProfile: any;
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private SimpleModalService: SimpleModalService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
-}
-imageCropped(event: ImageCroppedEvent) {
-    this.croppedImage = event.base64;
-    console.log(this.croppedImage);
-}
-imageLoaded() {
-    // show cropper
-}
-cropperReady() {
-    // cropper ready
-}
-loadImageFailed() {
-    // show message
-}
+  showAlert() {
+    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.imageProfile = data;
+    });
+  }
 
 }

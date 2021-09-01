@@ -1,0 +1,22 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <span class="text-center">Carga y dimensiona la imagen</span>
+  </div>
+  <div class="modal-body">
+    <input type="file" (change)="fileChangeEvent($event)" />
+    <br>
+    <p class="text-center">Delimitar la imagen</p>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="16 / 9"
+      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+    <hr>
+    <p class="text-center">Vista Previa</p>
+    <div class="text-center">
+      <img [src]="croppedImage" />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger pull-left" (click)="close()">Cancelar</button>
+    <button type="button" class="btn btn-info pull-right" (click)="imageSave()">Guardar</button>
+  </div>
+</div>

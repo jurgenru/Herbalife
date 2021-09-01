@@ -11,35 +11,19 @@
                         </div>
                         <div class="col-2">
                             <div class="container-image">
-                                <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block">
+                                <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                                    *ngIf="!imageProfile; else noImage">
+                                <ng-template #noImage>
+                                    <img [src]="imageProfile" alt="">
+                                </ng-template>
                                 <div class="overlay">
-                                    <div class="text" (click)="showNotification('top', 'center')">cargar imagen</div>
+                                    <p class="text text-light" (click)="showAlert()">cargar imagen</p>
                                 </div>
                             </div>
                             <p class="text-center">imagen de perfil</p>
                         </div>
                         <div class="col-5"></div>
                     </div>
-                    <!-- <div class="row"> -->
-                        <!-- <div class="container-image text-center"> -->
-                            <!-- <div class="overlay">
-                              <div class="text">Hello World</div>
-                            </div> -->
-                          <!-- </div> -->
-                          
-                        <input type="file" (change)="fileChangeEvent($event)" />
-                        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true"
-                            [aspectRatio]="16 / 9" format="png" (imageCropped)="imageCropped($event)"
-                            (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
-                            (loadImageFailed)="loadImageFailed()"></image-cropper>
-                        <img [src]="croppedImage" />
-                        <!-- <img alt="..." width="200px" height="200px" class="ml-auto mr-auto"
-                            style="border-radius: 100px;" src="assets/img/emilyz.jpg" />
-                        <button class="btn btn-fill m-2 btn-danger">Imagen de Perfil</button>
-                        <div class="col-12 text-center m-2">
-                            <p class="ml-5 ">Imagen de Perfil</p>
-                        </div> -->
-                    <!-- </div> -->
                     <form>
                         <div class=" row">
                             <div class="col-md-6">
