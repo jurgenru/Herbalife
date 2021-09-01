@@ -8,6 +8,7 @@ import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 // import { CreateComponent } from "src/app/store/create/create.component";
 // import { StoreListComponent } from "src/app/store/list/list.component";
+import { SaleComponent } from "../../pages/sale/sale.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -16,6 +17,7 @@ export const AdminLayoutRoutes: Routes = [
   // { path: "user", component: UserComponent },
   { path: "tables", component: TablesComponent },
   { path: "typography", component: TypographyComponent },
+  { path: "sale", component: SaleComponent },
   {
     path: '',
     children: [{
@@ -64,5 +66,5 @@ export const AdminLayoutRoutes: Routes = [
       path: 'testimony',
       loadChildren: '../../pages/testimony/testimony.module#TestimonyModule'
     }]
-  },
+  }
 ];

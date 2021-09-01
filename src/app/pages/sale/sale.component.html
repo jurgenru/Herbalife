@@ -1,0 +1,140 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center title">Reporte de Ventas</h2>
+                </div>
+                <hr />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right input-social col-md-6 form-group">
+                                <i class="fas fa-search"></i>
+                                <input class=" form-control" type="text" placeholder="Buscar"
+                                    style="padding-left: 33px;" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center form-inline form-group">
+                                <div class="form-group hidden">
+                                    <input name="datepicker" class="form-control" ngbDatepicker hidden
+                                        #datepicker="ngbDatepicker" [autoClose]="'outside'"
+                                        (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
+                                        outsideDays="hidden" [startDate]="fromDate!">
+                                    <ng-template #t let-date let-focused="focused">
+                                        <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+                                            [class.faded]="isHovered(date) || isInside(date)"
+                                            (mouseenter)="hoveredDate = date" (mouseleave)="hoveredDate = null">
+                                            {{ date.day }}
+                                        </span>
+                                    </ng-template>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd"
+                                            name="dpFromDate" [value]="formatter.format(fromDate)"
+                                            (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                        <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
+                                            [value]="formatter.format(toDate)"
+                                            (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                        <button class="btn btn-info btn-icon pull-right" (click)="datepicker.toggle()"
+                                            type="button">📅</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <br />
+                            <pre>From date model: {{ fromDate | json }}</pre>
+                            <pre>To date model: {{ toDate | json }}</pre> -->
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-danger pull-right"><i class="fas fa-file-pdf"></i> Descargar
+                                PDF</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive" style="overflow-y: hidden;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Fecha</th>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Celular</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Distribuidor</th>
+                                    <th>Cantidad de Pedido</th>
+                                    <th>Costo compra</th>
+                                    <th>Costo Venta</th>
+                                    <th>Ganancia</th>
+                                    <th>Punto de Volúmen</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">26/08/2021</td>
+                                    <td>574883</td>
+                                    <td>Andrew</td>
+                                    <td>Mike</td>
+                                    <td>7373737</td>
+                                    <td>correo@correo.com</td>
+                                    <td>distribuidor</td>
+                                    <td class="text-right">2</td>
+                                    <td class="text-right">33</td>
+                                    <td class="text-right">30</td>
+                                    <td class="text-right">3</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-icon">
+                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">26/08/2021</td>
+                                    <td>574883</td>
+                                    <td>Andrew</td>
+                                    <td>Mike</td>
+                                    <td>7373737</td>
+                                    <td>correo@correo.com</td>
+                                    <td>distribuidor</td>
+                                    <td class="text-right">2</td>
+                                    <td class="text-right">33</td>
+                                    <td class="text-right">30</td>
+                                    <td class="text-right">3</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-icon">
+                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                            Ver
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">26/08/2021</td>
+                                    <td>574883</td>
+                                    <td>Andrew</td>
+                                    <td>Mike</td>
+                                    <td>7373737</td>
+                                    <td>correo@correo.com</td>
+                                    <td>distribuidor</td>
+                                    <td class="text-right">2</td>
+                                    <td class="text-right">33</td>
+                                    <td class="text-right">30</td>
+                                    <td class="text-right">3</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" class="btn btn-info btn-icon">
+                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                            Ver
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
