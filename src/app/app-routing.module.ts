@@ -13,9 +13,9 @@ const routes: Routes = [
     path: "",
     redirectTo: "dashboard",
     pathMatch: "full"
-  },{
+  }, {
     path: 'home', component: HomeComponent
-  },{
+  }, {
     path: 'register', component: RegisterComponent
   },
   {
@@ -48,4 +48,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

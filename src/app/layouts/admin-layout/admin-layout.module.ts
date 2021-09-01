@@ -10,6 +10,7 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { AdminLayoutComponent } from "./admin-layout.component";
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     IconsComponent,
     TypographyComponent,
     NotificationsComponent,
-  ]
+  ],
+  bootstrap: [AdminLayoutComponent]
 })
 export class AdminLayoutModule { }
