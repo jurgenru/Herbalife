@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
+
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
-  constructor() { }
+  imageContent: any;
+  constructor(private SimpleModalService: SimpleModalService) { }
 
   ngOnInit(): void {
   }
 
+  showAlert() {
+    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.imageContent = data;
+    });
+  }
 }

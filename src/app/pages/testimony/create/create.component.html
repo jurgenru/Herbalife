@@ -17,11 +17,23 @@
                 <div class="col-md-6 text-left">
                   <div class="col-md-12">
                     <h1 class="display-4">Testimonio 1</h1>
-                    <div class="font-icon-detail">
-                      <b>Agregar una imagen </b>
-                      <br />
-                      <i class="tim-icons icon-upload"> </i>
+                    <div class="container-image">
+                      <img
+                        src="../../../../assets/img/anime3.png"
+                        alt="Avatar"
+                        class="mx-auto d-block"
+                        *ngIf="!imageContent; else noImage"
+                      />
+                      <ng-template #noImage>
+                        <img [src]="imageContent" alt="" />
+                      </ng-template>
+                      <div class="overlay">
+                        <p class="text text-light" (click)="showAlert()">
+                          Agregar la imagen o video para la portada de la categoría
+                        </p>
+                      </div>
                     </div>
+                    <p class="text-center">Icono o Video de la cuarta portada</p>
                   </div>
                 </div>
                 <br>
