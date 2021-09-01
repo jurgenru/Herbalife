@@ -1,5 +1,60 @@
 <div class="content">
     <div class="row">
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <span class="modal-title">DATOS DEL PROSPECTO</span>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        Nombre
+                    </div>
+                    <div class="col-md-6">
+                        Apellido
+                    </div>
+                    <div class="col-md-12">
+                        Celular
+                    </div>
+                    <div class="col-md-12">
+                        Correo Electrónico
+                    </div>
+                    <div class="col-md-12">
+                        Producto Comprado
+                    </div>
+                    <div class="col-md-12 date-list">
+                        <p>Fecha</p>
+                        <p>Fecha</p>
+                        <p>Fecha</p>
+                    </div>
+                    <div class="col-md-12">
+                        <span> Dirección </span>
+                        <div class=" button-container">
+                            <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                                <i class=" fab fa-facebook"> </i>
+                            </button>
+                            <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                                <i class=" fab fa-twitter"> </i>
+                            </button>
+                            <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                                <i class=" fab fa-google-plus"> </i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block">
+                        <span>Check del producto recibido</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info pull-center" (click)="c('Save click')">Enviar
+                    Programa de
+                    Nutricón</button>
+            </div>
+        </ng-template>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -15,13 +70,13 @@
                                     style="padding-left: 33px;" />
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <div class="text-center form-inline form-group">
                                 <div class="form-group hidden">
-                                    <!-- <input name="datepicker" class="form-control" ngbDatepicker hidden
+                                    <input name="datepicker" class="form-control" ngbDatepicker hidden
                                         #datepicker="ngbDatepicker" [autoClose]="'outside'"
                                         (dateSelect)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
-                                        outsideDays="hidden" [startDate]="fromDate!"> -->
+                                        outsideDays="hidden" [startDate]="fromDate!">
                                     <ng-template #t let-date let-focused="focused">
                                         <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
                                             [class.faded]="isHovered(date) || isInside(date)"
@@ -34,27 +89,30 @@
                                     <div class="form-group">
                                         <input #dpFromDate class="form-control" placeholder="yyyy-mm-dd"
                                             name="dpFromDate" [value]="formatter.format(fromDate)"
+                                            (click)="datepicker.toggle()"
                                             (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
                                         <input #dpToDate class="form-control" placeholder="yyyy-mm-dd" name="dpToDate"
-                                            [value]="formatter.format(toDate)"
+                                            [value]="formatter.format(toDate)" (click)="datepicker.toggle()"
                                             (input)="toDate = validateInput(toDate, dpToDate.value)">
-                                        <button class="btn btn-info btn-icon pull-right" (click)="datepicker.toggle()"
-                                            type="button">📅</button>
+                                        <!-- <button class="btn btn-info animation-on-hover pull-right btn-sm"
+                                            (click)="datepicker.toggle()" type="button"><i
+                                                class="fas fa-calendar-alt"></i></button> -->
                                     </div>
                                 </div>
                             </div>
-                            <!-- <br />
-                            <pre>From date model: {{ fromDate | json }}</pre>
-                            <pre>To date model: {{ toDate | json }}</pre> -->
+                            <br />
+                            <pre>Fecha 1: {{ date1 | json }}</pre>
+                            <pre>Fecha 2: {{ date2 | json }}</pre>
                         </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-danger pull-right"><i class="fas fa-file-pdf"></i> Descargar
+                        <div class="col-md-5">
+                            <button class="btn btn-danger animation-on-hover pull-right btn-sm"><i
+                                    class="fas fa-file-pdf"></i> Descargar
                                 PDF</button>
                         </div>
                     </div>
                     <div class="table-responsive" style="overflow-y: hidden;">
-                        <table class="table">
-                            <thead>
+                        <table class="table table-bordered table-striped">
+                            <thead class="text-primary">
                                 <tr>
                                     <th class="text-center">Fecha</th>
                                     <th>Código</th>
@@ -67,64 +125,63 @@
                                     <th>Costo compra</th>
                                     <th>Costo Venta</th>
                                     <th>Ganancia</th>
-                                    <th>Punto de Volúmen</th>
                                     <th class="text-right"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td class="text-center">26/08/2021</td>
-                                    <td>574883</td>
-                                    <td>Andrew</td>
-                                    <td>Mike</td>
-                                    <td>7373737</td>
-                                    <td>correo@correo.com</td>
-                                    <td>distribuidor</td>
+                                    <td class="text-right">574883</td>
+                                    <td class="text-center">Andrew</td>
+                                    <td class="text-center">Mike</td>
+                                    <td class="text-right">7373737</td>
+                                    <td class="text-center">correo@correo.com</td>
+                                    <td class="text-center">distribuidor</td>
                                     <td class="text-right">2</td>
                                     <td class="text-right">33</td>
                                     <td class="text-right">30</td>
                                     <td class="text-right">3</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" class="btn btn-info btn-icon">
-                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                        <button type="button" rel="tooltip" (click)="open(content)"
+                                            class="btn btn-success btn-link btn-sm btn-icon">
                                             Ver
                                         </button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">26/08/2021</td>
-                                    <td>574883</td>
-                                    <td>Andrew</td>
-                                    <td>Mike</td>
-                                    <td>7373737</td>
-                                    <td>correo@correo.com</td>
-                                    <td>distribuidor</td>
+                                    <td class="text-right">574883</td>
+                                    <td class="text-center">Andrew</td>
+                                    <td class="text-center">Mike</td>
+                                    <td class="text-right">7373737</td>
+                                    <td class="text-center">correo@correo.com</td>
+                                    <td class="text-center">distribuidor</td>
                                     <td class="text-right">2</td>
                                     <td class="text-right">33</td>
                                     <td class="text-right">30</td>
                                     <td class="text-right">3</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" class="btn btn-info btn-icon">
-                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                        <button type="button" rel="tooltip" (click)="open(content)"
+                                            class="btn btn-success btn-link btn-sm btn-icon">
                                             Ver
                                         </button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="text-center">26/08/2021</td>
-                                    <td>574883</td>
-                                    <td>Andrew</td>
-                                    <td>Mike</td>
-                                    <td>7373737</td>
-                                    <td>correo@correo.com</td>
-                                    <td>distribuidor</td>
+                                    <td class="text-right">574883</td>
+                                    <td class="text-center">Andrew</td>
+                                    <td class="text-center">Mike</td>
+                                    <td class="text-right">7373737</td>
+                                    <td class="text-center">correo@correo.com</td>
+                                    <td class="text-center">distribuidor</td>
                                     <td class="text-right">2</td>
                                     <td class="text-right">33</td>
                                     <td class="text-right">30</td>
                                     <td class="text-right">3</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" class="btn btn-info btn-icon">
-                                            <!-- <i class="tim-icons icon-single-02"></i> -->
+                                        <button type="button" rel="tooltip"
+                                            class="btn btn-success btn-link btn-sm btn-icon" (click)="open(content)">
                                             Ver
                                         </button>
 
@@ -136,5 +193,7 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 </div>
