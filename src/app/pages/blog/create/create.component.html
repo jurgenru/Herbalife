@@ -25,15 +25,33 @@
                     <br>
                     <div class="row">
                         <div class="col-12 col-md-3">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"> </i>
-                                Agregar icono a la categoria (opcional)
+                            <div class="container-image">
+                                <img id="prueba" src="../../../../assets/img/anime3.png" alt="IconBlog" class="mx-auto d-block"
+                                    *ngIf="!iconImage; else noImageIcon">
+                                <ng-template #noImageIcon>
+                                    <img [src]="iconImage" alt="">
+                                </ng-template>
+                                <div class="overlay" (click)="showIcon()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Agregar icono a la categoria (opcional)
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-9">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"></i>
-                                Agregar imagen o video para la portada
+                            <div class="container-image">
+                                <img src="../../../../assets/img/bg5.jpg" alt="PortraitImage" class="mx-auto d-block"
+                                    *ngIf="!portraitImage; else noImagePortrait">
+                                <ng-template #noImagePortrait>
+                                    <img [src]="portraitImage" alt="">
+                                </ng-template>
+                                <div class="overlay" (click)="showPortrait()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Agregar imagen o video a la portada
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,9 +80,18 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-12 col-md-5">
-                                        <div class="font-icon-detail">
-                                            Imagen o video del tema del blog
-                                            <i class="tim-icons icon-upload"> </i>
+                                        <div class="container-image">
+                                            <img src="../../../../assets/img/img_3115.jpg" alt="BlogImage" class="mx-auto d-block"
+                                                *ngIf="!blogImage; else noImageBlog">
+                                            <ng-template #noImageBlog>
+                                                <img [src]="blogImage" alt="">
+                                            </ng-template>
+                                            <div class="overlay" (click)="showBlog()">
+                                                <div class="text text-light">
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    Agregar imagen o video al blog
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-7">

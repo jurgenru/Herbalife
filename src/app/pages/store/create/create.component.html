@@ -13,15 +13,33 @@
                     <br>
                     <div class="row">
                         <div class="col-12 col-md-3">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"> </i>
-                                Agregar icono a la categoria (opcional)
+                            <div class="container-image">
+                                <img  src="../../../../assets/img/emilyz.jpg" alt="IconStore" class="mx-auto d-block"
+                                    *ngIf="!iconImage; else noImageIcon">
+                                <ng-template #noImageIcon>
+                                    <img [src]="iconImage" alt="">
+                                </ng-template>
+                                <div class="overlay" (click)="showIcon()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Agregar icono a la categoria (opcional)
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-9">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"></i>
-                                Agregar imagen o video para la portada
+                            <div class="container-image">
+                                <img  src="../../../../assets/img/emilyz.jpg" alt="PortraitStore" class="mx-auto d-block"
+                                    *ngIf="!portraitImage; else noPortraitImage">
+                                <ng-template #noPortraitImage>
+                                    <img [src]="portraitImage" alt="">
+                                </ng-template>
+                                <div class="overlay" (click)="showPortrait()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Agregar imagen o link de video al portada
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,9 +82,18 @@
                             </div>
                             <div class="row justify-content-center">
                                 <div class="col-12 col-md-3">
-                                    <div class="font-icon-detail">
-                                        Agregar imagen del producto
-                                        <i class="tim-icons icon-upload"> </i>
+                                    <div class="container-image">
+                                        <img  src="../../../../assets/img/emilyz.jpg" alt="ProductImage" class="mx-auto d-block"
+                                            *ngIf="!productImage; else noProductImage">
+                                        <ng-template #noProductImage>
+                                            <img [src]="productImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showPortrait()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar imagen del producto
+                                            </div>
+                                        </div>
                                     </div>
                                     <label> Nombre del producto </label>
                                     <input class=" form-control" placeholder="Nombre del producto" type="text"
