@@ -1,3 +1,6 @@
 textarea{
     border: solid 1px #32325d;
 }
+#trainerTextArea{
+    min-height: 4cm;
+}
