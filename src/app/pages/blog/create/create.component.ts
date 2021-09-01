@@ -26,6 +26,7 @@ export class CreateComponent implements OnInit {
 
   createForm() {
     this.blogForm = this.formBuilder.group({
+      blogTitle: "",
       article: this.formBuilder.array([])
     });
   }
@@ -43,6 +44,9 @@ export class CreateComponent implements OnInit {
   get article(): FormArray {
     return this.blogForm.get('article') as FormArray;
   }
+  get blogTitle(){
+    return this.blogForm.get("blogTitle");
+  }
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
@@ -57,5 +61,8 @@ export class CreateComponent implements OnInit {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.blogImage = data;
     });
+  }
+  submit(){
+    console.log(this.blogForm.value)
   }
 }
