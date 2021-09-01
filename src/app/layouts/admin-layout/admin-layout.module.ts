@@ -12,7 +12,6 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AdminLayoutComponent } from "./admin-layout.component";
 
-
 @NgModule({
   imports: [
     CommonModule,

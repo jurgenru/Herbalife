@@ -75,6 +75,8 @@
     "chart.js": "2.9.4",
     "core-js": "3.8.1",
     "jquery": "^3.6.0",
+    "ngx-image-cropper": "^4.0.1",
+    "ngx-simple-modal": "^1.4.17",
     "ngx-toastr": "13.2.0",
     "popper.js": "^1.16.1",
     "rxjs": "6.6.3",
