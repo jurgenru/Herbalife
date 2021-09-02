@@ -6,6 +6,8 @@ import { routedComponents, StoreRoutingModule } from './store.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list/list.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { SimpleModalModule } from 'ngx-simple-modal';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ListComponent } from './list/list.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    StoreRoutingModule
+    StoreRoutingModule,
+    SimpleModalModule,
+    ImageCropperModule
 
   ],
   exports: [

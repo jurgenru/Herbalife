@@ -11,90 +11,110 @@
                     <br>
                     <hr>
                     <br>
-                    <form>
+                    <form [formGroup]="blogForm">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-5">
                                 <label> Nombre del Blog </label>
                                 <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
-                                    value="">
+                                    value="" formControlName="blogTitle">
                             </div>
                         </div>
                         <br>
-                    </form>
-                    <hr>
-                    <br>
-                    <div class="row">
-                        <div class="col-12 col-md-3">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"> </i>
-                                Agregar icono a la categoria (opcional)
+                        <hr color="purple" />
+                        <br>
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="container-image">
+                                    <img id="prueba" src="../../../../assets/img/anime3.png" alt="IconBlog"
+                                        class="mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
+                                    <ng-template #noImageIcon>
+                                        <img [src]="iconImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showIcon()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar icono a la categoria (opcional)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9 text-center">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/bg5.jpg" alt="PortraitImage"
+                                        class="mx-auto d-block" *ngIf="!portraitImage; else noImagePortrait">
+                                    <ng-template #noImagePortrait>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen o video a la portada
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-9">
-                            <div class="font-icon-detail">
-                                <i class="tim-icons icon-upload"></i>
-                                Agregar imagen o video para la portada
-                            </div>
+                        <br>
+                        <hr color="purple"/>
+                        <br>
+                        <div style="text-align: center">
+                            <h4>Articulos</h4>
                         </div>
-                    </div>
-                    <br>
-                    <hr>
-                    <br>
-                    <div style="text-align: center">
-                        <h4>Articulos</h4>
-                    </div>
-                    <form [formGroup]="blogForm">
                         <div formArrayName="article">
                             <div *ngFor="let FormInputs of article.controls; let i = index;">
                                 <br>
-                                <div class="row pl-1 pl-md-3">
-                                    <p>Articulo {{i+1}}</p>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-12 col-md-5">
-                                        <label> Titulo </label>
-                                        <input class=" form-control" placeholder="Coloca el titulo del articulo"
-                                            type="text">
+                                <div [formGroupName]="i">
+                                    <div class="row pl-1 pl-md-3">
+                                        <p>Articulo {{i+1}}</p>
                                     </div>
-                                </div>
-                                <br>
-                                <hr>
-                                <br>
-                                <div class="row">
-                                    <div class="col-12 col-md-5">
-                                        <div class="font-icon-detail">
-                                            Imagen o video del tema del blog
-                                            <i class="tim-icons icon-upload"> </i>
+                                    <div class="row">
+                                        <div class="col-12 col-md-5">
+                                            <div class="container-image">
+                                                <img src="../../../../assets/img/img_3115.jpg" alt="BlogImage"
+                                                    class="mx-auto d-block" *ngIf="!blogImage; else noImageBlog">
+                                                <ng-template #noImageBlog>
+                                                    <img [src]="blogImage" alt="">
+                                                </ng-template>
+                                                <div class="overlay" (click)="showBlog()">
+                                                    <div class="text text-light">
+                                                        <i class="tim-icons icon-upload"> </i>
+                                                        Agregar imagen o video al blog
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-7">
+                                            <label> Titulo </label>
+                                            <input class=" form-control" [attr.id]="'Title' + i"
+                                                placeholder="Coloca el titulo del articulo" formControlName="title"
+                                                type="text">
+                                            <label> Contenido del articulo </label>
+                                            <textarea class="form-control" [attr.id]="'Description' + i"
+                                                placeholder="Coloca el contenido del articulo" rows="6"
+                                                formControlName="themeDevelop" value=""></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-7">
-                                        <label> Contenido del articulo </label>
-                                        <textarea class="form-control"
-                                            placeholder="Coloca el contenido del articulo" rows="6"
-                                            value=""></textarea>
-                                    </div>
+                                    <br>
+                                    <hr color="purple" />
+                                    <button (click)="removeArticle(i)"
+                                        class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                        <i class="tim-icons icon-simple-delete"></i>
+                                    </button>
                                 </div>
-                                <br>
-                                <hr>
-                                <button (click)="removeArticle(i)"
-                                    class="btn btn-danger btn-fab btn-icon btn-round float-left">
-                                    <i class="tim-icons icon-simple-delete"></i>
-                                </button>
-                            </div>
-                            <div class=" button-container">
-                                <button (click)="addArticleForm()"
-                                    class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                                    href="javascript:void(0)">
-                                    <i class="tim-icons icon-simple-add"></i>
-                                </button>
                             </div>
                         </div>
                     </form>
+                    <div class=" button-container">
+                        <button (click)="addArticleForm()"
+                            class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                            href="javascript:void(0)">
+                            <i class="tim-icons icon-simple-add"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button
-                            class="btn btn-info">
+                        <button class="btn btn-info" (click)="submit()">
                             Guardar
                         </button>
                     </div>
