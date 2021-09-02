@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <br>
-                        <hr>
+                        <hr color="purple" />
                         <br>
                         <div class="row">
                             <div class="col-12 col-md-3">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <br>
-                        <hr>
+                        <hr color="purple"/>
                         <br>
                         <div style="text-align: center">
                             <h4>Articulos</h4>
@@ -67,17 +67,6 @@
                                     <div class="row pl-1 pl-md-3">
                                         <p>Articulo {{i+1}}</p>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-12 col-md-5">
-                                            <label> Titulo </label>
-                                            <input class=" form-control" [attr.id]="'Title' + i"
-                                                placeholder="Coloca el titulo del articulo" formControlName="title"
-                                                type="text">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <hr>
-                                    <br>
                                     <div class="row">
                                         <div class="col-12 col-md-5">
                                             <div class="container-image">
@@ -95,6 +84,10 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-7">
+                                            <label> Titulo </label>
+                                            <input class=" form-control" [attr.id]="'Title' + i"
+                                                placeholder="Coloca el titulo del articulo" formControlName="title"
+                                                type="text">
                                             <label> Contenido del articulo </label>
                                             <textarea class="form-control" [attr.id]="'Description' + i"
                                                 placeholder="Coloca el contenido del articulo" rows="6"
@@ -102,7 +95,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <hr>
+                                    <hr color="purple" />
                                     <button (click)="removeArticle(i)"
                                         class="btn btn-danger btn-fab btn-icon btn-round float-left">
                                         <i class="tim-icons icon-simple-delete"></i>

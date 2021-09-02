@@ -88,13 +88,14 @@
                                         <ng-template #noProductImage>
                                             <img [src]="productImage" alt="">
                                         </ng-template>
-                                        <div class="overlay" (click)="showPortrait()">
+                                        <div class="overlay" (click)="showProduct()">
                                             <div class="text text-light">
                                                 <i class="tim-icons icon-upload"> </i>
                                                 Agregar imagen del producto
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <label> Nombre del producto </label>
                                     <input class=" form-control" placeholder="Nombre del producto" type="text"
                                         >

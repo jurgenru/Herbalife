@@ -62,7 +62,7 @@ export class CreateComponent implements OnInit {
       this.portraitImage = data;
     });
   }
-  showBlog(){
+  showProduct(){
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.productImage = data;
     });
