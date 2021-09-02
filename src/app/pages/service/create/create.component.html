@@ -49,19 +49,43 @@
             <!--escoger el servicio-->
             <!--icono-->
             <div class="row">
-              <div class="font-icon-list col-12 col-md-3">
-                <div class="font-icon-detail">
-                  <b>Agregar icono a la categoria (opcional)</b>
-                  <br />
-                  <i class="tim-icons icon-upload"> </i>
+              <div class="col-12 col-md-3">
+                <div class="container-image">
+                  <img
+                    src="../../../../assets/img/anime3.png"
+                    alt="Avatar"
+                    class="mx-auto d-block"
+                    *ngIf="!imageIcon; else noImage"
+                  />
+                  <ng-template #noImage>
+                    <img [src]="imageIcon" alt="" />
+                  </ng-template>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="showAlert()">
+                      Agrege un icono (opcional)
+                    </p>
+                  </div>
                 </div>
+                <p class="text-center">Icono de la categoría</p>
               </div>
-              <div class="font-icon-list col-12 col-md-9">
-                <div class="font-icon-detail">
-                  <b>Agregar imagen o video para la portada del servicio </b>
-                  <br />
-                  <i class="tim-icons icon-upload"> </i>
+              <div class="col-12 col-md-9">
+                <div class="container-image">
+                  <img
+                    src="../../../../assets/img/anime3.png"
+                    alt="Avatar"
+                    class="mx-auto d-block"
+                    *ngIf="!imageCover; else noImage1"
+                  />
+                  <ng-template #noImage1>
+                    <img [src]="imageCover" alt="" />
+                  </ng-template>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="showCover()">
+                      Agregar una imagen o video para la portada
+                    </p>
+                  </div>
                 </div>
+                <p class="text-center">Imagen o Video de la Portada</p>
               </div>
             </div>
             <!--icono-->
@@ -72,12 +96,24 @@
             <br />
             <!--descripcion-->
             <div class="row">
-              <div class="font-icon-list col-12 col-md-3">
-                <div class="font-icon-detail">
-                  <b>Agregar imagen para la descripcion del servicio </b>
-                  <br />
-                  <i class="tim-icons icon-upload"> </i>
+              <div class="col-12 col-md-3">
+                <div class="container-image">
+                  <img
+                    src="../../../../assets/img/anime3.png"
+                    alt="Avatar"
+                    class="mx-auto d-block"
+                    *ngIf="!imageDescription; else noImage2"
+                  />
+                  <ng-template #noImage2>
+                    <img [src]="imageDescription" alt="" />
+                  </ng-template>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="showDescription()">
+                      Agregar una imagen para la descripcion
+                    </p>
+                  </div>
                 </div>
+                <p class="text-center">Imagen para la descripcion del servicio</p>
               </div>
 
               <div class="col-md-9 text-left">
