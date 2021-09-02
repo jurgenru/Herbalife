@@ -1,19 +1,33 @@
-import { Component } from '@angular/core';
-import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit } from '@angular/core';
+import {
+  NgbCalendar, NgbDate, NgbDateParserFormatter,
+  NgbModal, NgbDateStruct
+} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-sale',
   templateUrl: './sale.component.html',
   styleUrls: ['./sale.component.css']
 })
-export class SaleComponent {
+export class SaleComponent implements OnInit {
 
   hoveredDate: NgbDate | null = null;
+  readonly DELIMITER = '-';
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  date1: any;
+  date2: any;
+
+  closeResult = '';
+
+  constructor(
+    private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter,
+    private modalService: NgbModal
+  ) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -24,14 +38,20 @@ export class SaleComponent {
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
+      this.date1 = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
     } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
       this.toDate = date;
+      this.date2 = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
     } else {
       this.toDate = null;
       this.fromDate = date;
+      this.date1 = date.year + this.DELIMITER + date.month + this.DELIMITER + date.day;
     }
-    // console.log('from', this.fromDate, 'to', this.toDate);
   }
+
+  // toModel(date: NgbDate | null): string | null {
+  //   return date ? date.year + this.DELIMITER + date.month + this.DELIMITER + date.day : null;
+  // }
 
   isHovered(date: NgbDate) {
     return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
@@ -48,6 +68,10 @@ export class SaleComponent {
   validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
+  }
+
+  open(content) {
+    this.modalService.open(content, { size: 'sm' });
   }
 
 }
