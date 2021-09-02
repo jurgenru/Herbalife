@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { routedComponents } from '../service/service.routing';
 import { ServiceRoutingModule } from './service.routing';
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { ServiceRoutingModule } from './service.routing';
     ServiceRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    SimpleModalModule,
+    ImageCropperModule
   ],
   exports: [
     ...routedComponents

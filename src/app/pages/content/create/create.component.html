@@ -7,53 +7,102 @@
             <div class="card-header text-center">
               <h2 class="card-title"><b>CONTENIDO</b></h2>
               <p class="card-text">
-                Puedes añadir hasta 4 promociones que se podrá ver en la pagina <br>
+                Puedes añadir hasta 4 promociones que se podrá ver en la pagina
+                <br />
                 principal, y aparecerán como anuncios en las demás páginas.
               </p>
             </div>
           </div>
           <hr color="purple" width="90%" />
-          <br>
+          <br />
           <form>
             <div class="form-group">
               <div class="row">
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 1</h1>
-                  <div class="font-icon-detail">
-                    <b>Agregar la imagen o video para la portada de la categoría </b>
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
+                  <div class="container-image">
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!imageContent; else noImage"
+                    />
+                    <ng-template #noImage>
+                      <img [src]="imageContent" alt="" />
+                    </ng-template>
+                    <div class="overlay">
+                      <p class="text text-light" (click)="showAlert()">
+                        Agregar la imagen o video para la portada de la categoría
+                      </p>
+                    </div>
                   </div>
+                  <p class="text-center">Icono o Video de la primer portada</p>
                 </div>
                 <hr color="purple" width="90%" />
-                <br>
+                <br />
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 2</h1>
-                  <div class="font-icon-detail">
-                    <b>Agregar la imagen o video para la portada de la categoría</b>
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
+                  <div class="container-image">
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!imageContent2; else noImage2"
+                    />
+                    <ng-template #noImage2>
+                      <img [src]="imageContent2" alt="" />
+                    </ng-template>
+                    <div class="overlay">
+                      <p class="text text-light" (click)="showAlert2()">
+                        Agregar la imagen o video para la portada de la categoría
+                      </p>
+                    </div>
                   </div>
+                  <p class="text-center">Icono o Video de la segunda portada</p>
                 </div>
                 <hr color="purple" width="90%" />
-                <br>
+                <br />
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 3</h1>
-                  <div class="font-icon-detail">
-                    <b>Agregar la imagen o video para la portada de la categoría</b>
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
+                  <div class="container-image">
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!imageContent3; else noImage3"
+                    />
+                    <ng-template #noImage3>
+                      <img [src]="imageContent3" alt="" />
+                    </ng-template>
+                    <div class="overlay">
+                      <p class="text text-light" (click)="showAlert3()">
+                        Agregar la imagen o video para la portada de la categoría
+                      </p>
+                    </div>
                   </div>
+                  <p class="text-center">Icono o Video de la tercer portada</p>
                 </div>
                 <hr color="purple" width="90%" />
-                <br>
+                <br />
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 4</h1>
-                  <div class="font-icon-detail">
-                    <b>Agregar la imagen o video para la portada de la categoría</b>
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
+                  <div class="container-image">
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!imageContent4; else noImage4"
+                    />
+                    <ng-template #noImage4>
+                      <img [src]="imageContent4" alt="" />
+                    </ng-template>
+                    <div class="overlay">
+                      <p class="text text-light" (click)="showAlert4()">
+                        Agregar la imagen o video para la portada de la categoría
+                      </p>
+                    </div>
                   </div>
+                  <p class="text-center">Icono o Video de la cuarta portada</p>
                 </div>
               </div>
               <div class="text-right">
