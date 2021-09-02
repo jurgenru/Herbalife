@@ -541,3 +541,11 @@ Created using IcoMoon - icomoon.io
 .icon-components::before {
   content: "\ea65";
 }
+
+.input-icon i{
+  position: absolute;
+  margin: 13px;
+}
+.input-icon input{
+  padding-left: 33px !important;
+}
