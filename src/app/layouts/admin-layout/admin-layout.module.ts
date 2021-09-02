@@ -10,8 +10,8 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { TablesComponent } from "../../pages/tables/tables.component";
 import { TypographyComponent } from "../../pages/typography/typography.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { AdminLayoutComponent } from "./admin-layout.component";
-
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { SaleComponent } from '../../pages/sale/sale.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,6 +19,7 @@ import { AdminLayoutComponent } from "./admin-layout.component";
     FormsModule,
     HttpClientModule,
     NgbModule,
+    SimpleModalModule,
   ],
   declarations: [
     DashboardComponent,
@@ -26,7 +27,7 @@ import { AdminLayoutComponent } from "./admin-layout.component";
     IconsComponent,
     TypographyComponent,
     NotificationsComponent,
-  ],
-  bootstrap: [AdminLayoutComponent]
+    SaleComponent
+  ]
 })
 export class AdminLayoutModule { }
