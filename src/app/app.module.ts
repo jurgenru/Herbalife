@@ -14,6 +14,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { StoreService } from "./services/store.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,9 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
-  providers: [],
+  providers: [
+    StoreService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
