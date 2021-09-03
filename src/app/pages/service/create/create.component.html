@@ -12,7 +12,7 @@
           <br />
           <hr color="purple" width="90%" />
           <br />
-          <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="form" (ngSubmit)="post()">
             <!--escoger el servicio-->
             <div class="row">
               <div class="col text-center">
@@ -58,7 +58,7 @@
                     *ngIf="!imageIcon; else noImage"
                   />
                   <ng-template #noImage>
-                    <img [src]="imageIcon" alt="" />
+                    <img [src]="imageIcon" alt=""/>
                   </ng-template>
                   <div class="overlay">
                     <p class="text text-light" (click)="showAlert()">
@@ -123,7 +123,14 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade un nombre al servicio"
+                    formControlName = "name"
+                    required
                   />
+                </div>
+                <div *ngIf="nameField.errors && nameField.dirty">
+                  <p *ngIf="nameField.hasError('required')">
+                    Este espacio es requerido
+                  </p>
                 </div>
                 <div class="form-group">
                   <label> Título de la descripcion </label>
@@ -131,7 +138,14 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade un título al servicio"
+                    formControlName = "title"
+                    required
                   />
+                  <div *ngIf="titleField.errors && titleField.dirty">
+                    <p *ngIf="titleField.hasError('required')">
+                      Este espacio es requerido
+                    </p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label> Descripcion del servicio </label>
@@ -140,7 +154,14 @@
                     placeholder="Añade una breve descripcion"
                     type="text"
                     maxlength="150"
+                    formControlName = "description"
+                    required
                   ></textarea>
+                  <div *ngIf="desField.errors && desField.dirty">
+                    <p *ngIf="desField.hasError('required')">
+                      Este espacio es requerido
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,6 +179,7 @@
                         type="checkbox"
                         id="inlineCheckbox1"
                         value="option1"
+                        formControlName = "title"
                       />
                       Normal
                       <span class="form-check-sign"></span>
@@ -205,7 +227,14 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade el título de agradecimiento"
+                    formControlName = "gratDesc"
+                    required
                   />
+                  <div *ngIf="gratdField.errors && gratdField.dirty">
+                    <p *ngIf="gratdField.hasError('required')">
+                      Este espacio es requerido
+                    </p>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label> Descripcion del agrecidimiento </label>
@@ -214,13 +243,20 @@
                     type="text"
                     placeholder="Añade un agradecimiento. Maximo 150 caracteres"
                     maxlength="150"
+                    formControlName = "gratTitle"
+                    required
                   ></textarea>
+                  <div *ngIf="grattField.errors && grattField.dirty">
+                    <p *ngIf="grattField.hasError('required')">
+                      Este espacio es requerido
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
             <!--agradecimientos-->
             <div class="text-right">
-              <button type="submit" class="btn btn-info">Guardar</button>
+              <button type="submit" class="btn btn-info" [disabled]="form.invalid">Guardar</button>
             </div>
           </form>
         </div>

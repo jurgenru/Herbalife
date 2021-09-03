@@ -11,7 +11,7 @@
           </div>
           <hr color="purple" width="90%" />
           <br />
-          <form>
+          <form [formGroup]="form" (ngSubmit)="post()">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-6 text-left">
@@ -45,7 +45,14 @@
                         class="form-control"
                         type="text"
                         placeholder="Añade un nombre al testimonio"
+                        required
+                        formControlName = "name"
                       />
+                      <div *ngIf="nameField.errors && nameField.dirty">
+                        <p *ngIf="nameField.hasError('required')">
+                          Este espacio es requerido
+                        </p>
+                      </div>
                     </div>
                     <div class="form-group">
                       <label> Comentario </label>
@@ -54,14 +61,21 @@
                         placeholder="Añade un comentario del testimonio"
                         type="text"
                         maxlength="150"
+                        required
+                        formControlName = "comentary"
                       ></textarea>
+                      <div *ngIf="comentField.errors && comentField.dirty">
+                        <p *ngIf="comentField.hasError('required')">
+                          Este espacio es requerido
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-info">Guardar</button>
+              <button type="submit" class="btn btn-info" [disabled]="form.invalid">Guardar</button>
             </div>
           </form>
         </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
 
@@ -9,7 +9,6 @@ import { ImageCropperComponent } from "src/app/components/image-cropper/image-cr
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  isSubmitted = false;
   services: number;
 
   imageIcon: any;
@@ -17,35 +16,23 @@ export class CreateComponent implements OnInit {
   imageDescription: any;
 
   Types: any = ["Gimnasio", "Comida", "Otros"];
+  form: FormGroup
+  service: any = {};
   constructor(
-    public fb: FormBuilder,
-    private SimpleModalService: SimpleModalService
-  ) {}
-
-  serviceForm = this.fb.group({
-    serviceType: ["", [Validators.required]],
-  });
-
-  changeService(e) {
-    console.log(e.value);
-    this.serviceType.setValue(e.target.value, {
-      onlySelf: true,
-    });
-  }
-
-  get serviceType() {
-    return this.serviceForm.get("serviceType");
-  }
+    private SimpleModalService: SimpleModalService,
+    private formBuilder: FormBuilder
+  ) {this.buildForm();}
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    this.isSubmitted = true;
-    if (!this.serviceForm.valid) {
-      return false;
-    } else {
-      console.log(this.serviceForm.value);
-    }
+  private buildForm(){
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      gratDesc: ['', Validators.required],
+      gratTitle: ['', Validators.required]
+    })
   }
 
   showAlert() {
@@ -70,5 +57,30 @@ export class CreateComponent implements OnInit {
         this.imageDescription = data;
       }
     );
+  }
+
+  get nameField() {
+    return this.form.get('name');
+  }
+
+  get titleField() {
+    return this.form.get('title');
+  }
+  get desField() {
+    return this.form.get('description');
+  }
+  get gratdField() {
+    return this.form.get('gratDesc');
+  }
+  get grattField() {
+    return this.form.get('gratTitle');
+  }
+
+  post() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    } else {
+      console.log("Por favor llene todos los espacios")
+    }
   }
 }
