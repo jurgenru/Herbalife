@@ -43,8 +43,6 @@ export class CreateComponent implements OnInit {
   post() {
     if (this.form.valid) {
       console.log(this.form.value);
-    } else {
-      console.log("Por favor llene todos los espacios")
     }
   }
 }
