@@ -2,6 +2,7 @@
     <div class=" row">
         <div class=" col-md-12">
             <div class="card card-user">
+                <form (ngSubmit)="post()">
                 <div class=" card-body">
                     <div style="text-align: center">
                         <h2>ENTRENADORES</h2>
@@ -64,22 +65,23 @@
                                     <label> Nombre del entrenador</label>
                                     <input class=" form-control" placeholder="Coloca el nombre del entrenador"
                                         type="text" value="" formControlName="names">
-                                    <small *ngIf="trainer.get('names').invalid && trainer.get('names').touched"> *Espacio Obligatorio</small>
+                                    <small *ngIf="names.invalid && (names.touched||names.dirty)"> *Espacio Obligatorio</small>
                                 </div>
                                 <div class="form-group">
                                     <label> Presentación </label>
                                     <textarea class="form-control" id="trainerTextArea"
                                         placeholder="Coloca el contenido del articulo"
                                         formControlName="description"></textarea>
-                                    <small *ngIf="trainer.get('description').invalid && trainer.get('description').touched"> *Espacio Obligatorio</small>
+                                    <small *ngIf="description.invalid && (description.touched||description.dirty)"> *Espacio Obligatorio</small>
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-5" formGroupName = "socialMedia">
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="tim-icons icon-email-85"></i>
                                         <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                        formControlName="socialMedia" style="padding-left: 33px;">
+                                        formControlName="email" style="padding-left: 33px;">
+                                        <small *ngIf="email.invalid && (email.touched||email.dirty)"> *Debe ser una direccion de correo electronico</small>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
@@ -87,42 +89,42 @@
                                         <i class="fab fa-whatsapp">
                                         </i>
                                         <input class="form-control" placeholder="WhatsApp" type="url"
-                                        formControlName="socialMedia" style="padding-left: 33px;">
+                                        formControlName="whatsapp" style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-telegram-plane"> </i>
                                         <input class="form-control" placeholder="Telegram" type="url"
-                                            style="padding-left: 33px;">
+                                            style="padding-left: 33px;" formControlName="telegram">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-facebook"> </i>
                                         <input class="form-control" placeholder="Facebook" type="url"
-                                            style="padding-left: 33px;">
+                                            style="padding-left: 33px;"formControlName="facebook">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-instagram"> </i>
                                         <input class="form-control" placeholder="Instagram" type="url"
-                                            style="padding-left: 33px;">
+                                            style="padding-left: 33px;" formControlName="instagram">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-youtube"> </i>
                                         <input class="form-control" placeholder="Youtube" type="url"
-                                            style="padding-left: 33px;">
+                                            style="padding-left: 33px;" formControlName="youtube">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-tiktok"></i>
                                         <input class="form-control" placeholder="TikTok" type="url"
-                                            style="padding-left: 33px;">
+                                            style="padding-left: 33px;" formControlName="tiktok">
                                     </div>
                                 </div>
                             </div>
@@ -140,14 +142,14 @@
                                 <label> Nombre de la clase </label>
                                 <input class=" form-control" placeholder="Coloca el nombre de la clase" type="text"
                                     value=""  formControlName="name">
-                                    <small *ngIf="lection.get('name').invalid && lection.get('name').touched"> *Espacio Obligatorio</small>
+                                    <small *ngIf="name.invalid && name.touched"> *Espacio Obligatorio</small>
                                     <br>
                                     <label> Modo de la clase </label>
                                     <select  class="form-control"  formControlName="mode">
                                         <option>Presencial</option>
                                         <option>Online</option>
                                     </select>
-                                    <small *ngIf="lection.get('mode').invalid && lection.get('mode').touched"> *Espacio Obligatorio</small>
+                                    <small *ngIf="mode.invalid && mode.touched"> *Espacio Obligatorio</small>
                                 <br>
                                 <label> Descripción de la clase </label>
                                 <textarea class="form-control" placeholder="Describa de que trata la clase"
@@ -175,23 +177,24 @@
                                 <label> Titulo de Agradecimiento </label>
                                 <input class="form-control" placeholder="Coloca el titulo de agradecimiento" type="text"
                                     value=""  formControlName="titleGratitude">
-                                <small *ngIf="lection.get('titleGratitude').invalid && lection.get('titleGratitude').touched"> *Espacio Obligatorio</small>
+                                <small *ngIf="titleGratitude.invalid && titleGratitude.touched"> *Espacio Obligatorio</small>
                                 <br>
                                 <label> Mensaje de agradecimiento </label>
                                 <textarea class="form-control" placeholder="Deja un mensaje de agradecimiento"
                                 formControlName="descriptionGratitude"></textarea>
-                                <small *ngIf="lection.get('descriptionGratitude').invalid && lection.get('descriptionGratitude').touched"> *Espacio Obligatorio</small>
+                                <small *ngIf="descriptionGratitude.invalid && descriptionGratitude.touched"> *Espacio Obligatorio</small>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button class="btn btn-info" [disabled]="trainer.invalid || lection.invalid"  (click)="post()">
+                        <button  type ="submit" class="btn btn-info" [disabled]="trainer.invalid || lection.invalid">
                             Guardar
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
