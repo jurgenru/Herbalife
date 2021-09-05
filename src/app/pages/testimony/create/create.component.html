@@ -7,11 +7,12 @@
             <div class="card-header text-center">
               <h2 class="card-title"><b>Testimonions</b></h2>
               <p class="card-text">Puedes añadir hasta 12 testimonios</p>
+              <button (click)="postStatement()">enviar</button>
             </div>
           </div>
           <hr color="purple" width="90%" />
           <br />
-          <form [formGroup]="form" (ngSubmit)="post()">
+          <form [formGroup]="statementForm" (ngSubmit)="post()">
             <div class="form-group">
               <div class="row">
                 <div class="col-md-6 text-left">
@@ -48,7 +49,7 @@
                         required
                         formControlName = "name"
                       />
-                      <div *ngIf="nameField.errors && nameField.dirty">
+                      <div *ngIf="nameField.errors && (nameField.dirty || nameField.touched)">
                         <p *ngIf="nameField.hasError('required')">
                           Este espacio es requerido
                         </p>
@@ -62,10 +63,10 @@
                         type="text"
                         maxlength="150"
                         required
-                        formControlName = "comentary"
+                        formControlName = "description"
                       ></textarea>
-                      <div *ngIf="comentField.errors && comentField.dirty">
-                        <p *ngIf="comentField.hasError('required')">
+                      <div *ngIf="descriptionField.errors && (descriptionField.dirty || descriptionField.touched)">
+                        <p *ngIf="descriptionField.hasError('required')">
                           Este espacio es requerido
                         </p>
                       </div>
@@ -75,7 +76,7 @@
               </div>
             </div>
             <div class="text-right">
-              <button type="submit" class="btn btn-info" [disabled]="form.invalid">Guardar</button>
+              <button type="submit" class="btn btn-info" [disabled]="statementForm.invalid">Guardar</button>
             </div>
           </form>
         </div>
