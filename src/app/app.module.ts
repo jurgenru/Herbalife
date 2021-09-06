@@ -15,6 +15,7 @@ import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { StoreService } from "./services/store.service";
     ImageCropperModule,
     RouterModule,
     AppRoutingModule,
+    NgxUiLoaderModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],

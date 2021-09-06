@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupName, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { LectionService } from 'src/app/services/lection.service';
 import { TrainerService } from 'src/app/services/trainer.service';
@@ -24,7 +25,8 @@ export class CreateComponent implements OnInit {
     private trainerService: TrainerService,
     private lectionService: LectionService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private spinner: NgxUiLoaderService,
   ) { }
 
   ngOnInit(): void {
@@ -32,23 +34,26 @@ export class CreateComponent implements OnInit {
     this.createLectionForm();
   }
   post(){
+    const start = new Date();
+    this.spinner.start();
     this.trainer.value.image = this.iconImage;
     this.trainer.value.imageFront = this.portraitImage;
     this.lection.value.image = this.courseImage;
 
-    console.log(this.trainer.value);
-    console.log(this.lection.value);
-    //this.router.navigate(['/trainer/list'])
-    // this.trainerService.post(this.trainer.value).subscribe((data :any ) => {      
-      
-    //   console.log(data);
-    //   this.lection.value.trainerId = data.id;
-    //   this.lectionService.post(this.lection.value).subscribe(lectionData =>{  
-    //   });
-    //   //lectionService
-    //   //redirrecionar a la lista al terminar  
-    //   //averiguar Spinner    
-    // });
+    this.trainerService.post(this.trainer.value).subscribe((data :any ) => {      
+       this.lection.value.trainerId = data.id;
+       console.log(data);
+       console.log(this.lection.value);
+       this.lectionService.post(this.lection.value).subscribe(lectionData =>{  
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          console.log(lectionData);
+          this.spinner.stop();
+        }, elapsed);
+       });
+      this.router.navigate(['/trainer/list'])
+    });
   }
   
   createTrainerForm(){
