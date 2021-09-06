@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
+import { ServiceService } from "src/app/services/service.service";
 
 @Component({
   selector: "app-service-create",
@@ -19,7 +20,8 @@ export class CreateComponent implements OnInit {
   service: any = {};
   constructor(
     private SimpleModalService: SimpleModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private serviceService: ServiceService
   ) {}
 
   ngOnInit(): void {}
@@ -77,7 +79,7 @@ export class CreateComponent implements OnInit {
     if (this.serviceForm.valid) {
       const service = this.serviceForm.value;
       console.log(service);
-      // this.statementService.post(service).subscribe((newService) => {
+      // this.serviceService.post(service).subscribe((newService) => {
       //   console.log(newService);
       // });
     }

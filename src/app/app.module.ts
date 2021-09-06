@@ -16,6 +16,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
 import { StatementService } from "./services/statement.service";
+import { ServiceService } from "./services/service.service";
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { StatementService } from "./services/statement.service";
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
   providers: [
     StoreService,
-    StatementService
+    StatementService,
+    ServiceService
   ],
   bootstrap: [AppComponent]
 })
