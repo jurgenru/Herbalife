@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.user.value).subscribe((data: any) => {
       localStorage.setItem('herTok', data.token);
-      this.router.navigate(['/user/view']);
+      this.router.navigate(['/dashboard']);
     }, error => {
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> El correo electronico y/o contraseña con incorrectas , intente nuevamente', '5000', 'danger', 'top', 'center');
     });
@@ -42,12 +42,12 @@ export class LoginComponent implements OnInit {
     return this.user.get('password');
   }
 
-  notification(content, time, icon, from, align) {
+  notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
       timeOut: time,
       closeButton: true,
       enableHtml: true,
-      toastClass: `alert alert-${icon} alert-with-icon`,
+      toastClass: `alert alert-${type} alert-with-icon`,
       positionClass: 'toast-' + from + '-' +  align
     });
   }
