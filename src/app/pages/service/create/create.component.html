@@ -12,7 +12,7 @@
           <br />
           <hr color="purple" width="90%" />
           <br />
-          <form [formGroup]="form" (ngSubmit)="post()">
+          <form [formGroup]="serviceForm" (ngSubmit)="post()">
             <!--escoger el servicio-->
             <div class="row">
               <div class="col text-center">
@@ -256,7 +256,7 @@
             </div>
             <!--agradecimientos-->
             <div class="text-right">
-              <button type="submit" class="btn btn-info" [disabled]="form.invalid">Guardar</button>
+              <button type="submit" class="btn btn-info" [disabled]="serviceForm.invalid">Guardar</button>
             </div>
           </form>
         </div>
