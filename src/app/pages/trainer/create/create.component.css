@@ -8,6 +8,12 @@ textarea{
     position: relative;
     /* width: 50%; */
   }
+  .form-control.ng-touched.ng-invalid{
+    border: 1px solid red;
+  }
+  small{
+    color: red;
+  }
   
   .image {
     display: block;
