@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-navbar",
@@ -12,6 +13,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
+  user: any = {};
   private toggleButton: any;
   private sidebarVisible: boolean;
   public sidebarColor: string = "red";
@@ -24,11 +26,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private userService: UserService
   ) {
     this.location = location;
     this.sidebarVisible = false;
   }
+
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
    var navbar = document.getElementsByClassName('navbar')[0];
@@ -158,19 +162,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  getTitle() {
-    var titlee = this.location.prepareExternalUrl(this.location.path());
-    if (titlee.charAt(0) === "#") {
-      titlee = titlee.slice(1);
-    }
-
-    for (var item = 0; item < this.listTitles.length; item++) {
-      if (this.listTitles[item].path === titlee) {
-        return this.listTitles[item].title;
-      }
-    }
-    return "Dashboard";
-  }
 
   open(content) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
@@ -218,4 +209,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       body.classList.remove('white-content');
     }
   }
+
+  logOut() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
+
 }
