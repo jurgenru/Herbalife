@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormGroupName, Validators } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 
@@ -12,11 +13,26 @@ export class CreateComponent implements OnInit {
   portraitImage: any;
   courseImage: any;
 
+  trainerForm: FormGroup;
+  lectionForm: FormGroup;
+
   constructor(
     private simpleModalService: SimpleModalService
   ) { }
 
   ngOnInit(): void {
+    this.createForm();
+  }
+  post(){
+    console.log(this.trainerForm.value);
+  }
+  
+  createForm(){
+    this.trainerForm = new FormGroup({
+      names: new FormControl('',Validators.required),
+      description: new FormControl('',Validators.required),
+      socialMedia: new FormControl('')
+    });
   }
 
   showIcon() {

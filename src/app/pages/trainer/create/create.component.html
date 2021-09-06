@@ -11,9 +11,9 @@
                     <br>
                     <hr>
                     <br>
-                    <form>
+                    <form [formGroup]="trainerForm">
                         <div class="row justify-content-center">
-                            <div class="form-group col-md-3" >
+                            <div class="form-group col-md-3">
                                 <select id="modoServicio" class="form-control">
                                     <option selected>Modo de Servicio</option>
                                     <option>Presencial</option>
@@ -27,8 +27,8 @@
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/anime6.png" alt="trainerIcon" class="mx-auto d-block"
-                                        *ngIf="!iconImage; else noIconImage">
+                                    <img src="../../../../assets/img/anime6.png" alt="trainerIcon"
+                                        class="mx-auto d-block" *ngIf="!iconImage; else noIconImage">
                                     <ng-template #noIconImage>
                                         <img [src]="iconImage" alt="">
                                     </ng-template>
@@ -42,8 +42,8 @@
                             </div>
                             <div class="col-12 col-md-9 text-center">
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/anime6.png" alt="trainerPortrait" class="mx-auto d-block"
-                                        *ngIf="!portraitImage; else noPortraitImage">
+                                    <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
+                                        class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
                                     <ng-template #noPortraitImage>
                                         <img [src]="portraitImage" alt="">
                                     </ng-template>
@@ -64,19 +64,26 @@
                         </div>
                         <div class="row justify-content-around">
                             <div class="col-12 col-md-5">
-                                <label> Nombre del entrenador </label>
-                                <input class=" form-control" placeholder="Coloca el nombre del entrenador" type="text"
-                                    value="">
-                                <label> Presentación </label>
-                                <textarea class="form-control" id="trainerTextArea"
-                                placeholder="Coloca el contenido del articulo"></textarea>
+                                <div class="form-group">
+                                    <label> Nombre del entrenador</label>
+                                    <input class=" form-control" placeholder="Coloca el nombre del entrenador"
+                                        type="text" value="" formControlName="names">
+                                    <small *ngIf="trainerForm.get('names').invalid && trainerForm.get('names').touched"> *Espacio Obligatorio</small>
+                                </div>
+                                <div class="form-group">
+                                    <label> Presentación </label>
+                                    <textarea class="form-control" id="trainerTextArea"
+                                        placeholder="Coloca el contenido del articulo"
+                                        formControlName="description"></textarea>
+                                    <small *ngIf="trainerForm.get('description').invalid && trainerForm.get('description').touched"> *Espacio Obligatorio</small>
+                                </div>
                             </div>
                             <div class="col-md-5">
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="tim-icons icon-email-85"></i>
                                         <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                        style="padding-left: 33px;">
+                                        formControlName="socialMedia" style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
@@ -84,42 +91,42 @@
                                         <i class="fab fa-whatsapp">
                                         </i>
                                         <input class="form-control" placeholder="WhatsApp" type="url"
-                                        style="padding-left: 33px;">
+                                        formControlName="socialMedia" style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-telegram-plane"> </i>
                                         <input class="form-control" placeholder="Telegram" type="url"
-                                        style="padding-left: 33px;">
+                                            style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-facebook"> </i>
                                         <input class="form-control" placeholder="Facebook" type="url"
-                                        style="padding-left: 33px;">
+                                            style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-instagram"> </i>
                                         <input class="form-control" placeholder="Instagram" type="url"
-                                        style="padding-left: 33px;">
+                                            style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-youtube"> </i>
                                         <input class="form-control" placeholder="Youtube" type="url"
-                                        style="padding-left: 33px;">
+                                            style="padding-left: 33px;">
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-icon form-group">
                                         <i class="fab fa-tiktok"></i>
                                         <input class="form-control" placeholder="TikTok" type="url"
-                                        style="padding-left: 33px;">
+                                            style="padding-left: 33px;">
                                     </div>
                                 </div>
                             </div>
@@ -136,13 +143,12 @@
                                 <input class=" form-control" placeholder="Coloca el nombre de la clase" type="text"
                                     value="">
                                 <label> Descripción de la clase </label>
-                                <textarea class="form-control"
-                                placeholder="Describa de que trata la clase"></textarea>
+                                <textarea class="form-control" placeholder="Describa de que trata la clase"></textarea>
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg" class="mx-auto d-block"
-                                        *ngIf="!courseImage; else noCourseImage">
+                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg"
+                                        class="mx-auto d-block" *ngIf="!courseImage; else noCourseImage">
                                     <ng-template #noCourseImage>
                                         <img [src]="courseImage" alt="">
                                     </ng-template>
@@ -159,17 +165,17 @@
                             <div class="col-12 col-md-8">
                                 <label> Titulo de Agradecimiento </label>
                                 <input class="form-control" placeholder="Coloca el titulo de agradecimiento" type="text"
-                                    value="" >
+                                    value="">
                                 <label> Mensaje de agradecimiento </label>
                                 <textarea class="form-control"
-                                placeholder="Deja un mensaje de agradecimiento"></textarea>
+                                    placeholder="Deja un mensaje de agradecimiento"></textarea>
                             </div>
                         </div>
-                    </form> 
+                    </form>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button class="btn btn-info">
+                        <button class="btn btn-info" [disabled]="trainerForm.invalid" (click)="post()">
                             Guardar
                         </button>
                     </div>
