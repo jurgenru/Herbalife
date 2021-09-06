@@ -12,40 +12,16 @@
           <br />
           <hr color="purple" width="90%" />
           <br />
-          <form [formGroup]="serviceForm" (ngSubmit)="post()">
+          <form [formGroup]="service" (ngSubmit)="post()">
             <!--escoger el servicio-->
             <div class="row">
-              <div class="col text-center">
-                <div class="btn-group dropdown" ngbDropdown>
-                  <p style="font-size: medium">Escoja el Tipo de Servicio:</p>
-                  <button
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    class="btn btn-secondary dropdown-toggle dropdown-toggle"
-                    data-toggle="dropdown"
-                    ngbDropdownToggle
-                    id="dropdownMenuLink"
-                    type="button"
-                  >
-                    Servicios
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    ngbDropdownMenu
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <a
-                      class="dropdown-item"
-                      *ngFor="let type of Types"
-                      [ngValue]="type"
-                      ngbDropdownItem
-                    >
-                      {{ type }}
-                    </a>
-                  </div>
-                </div>
+              <div class="col-sm-6 mx-auto">
+                <select class="form-control text-center" formControlName="mode">
+                  <option *ngFor="let type of Types">{{ type }}</option>
+                </select>
               </div>
             </div>
+            <br />
             <!--escoger el servicio-->
             <!--icono-->
             <div class="row">
@@ -58,7 +34,7 @@
                     *ngIf="!imageIcon; else noImage"
                   />
                   <ng-template #noImage>
-                    <img [src]="imageIcon" alt=""/>
+                    <img [src]="imageIcon" alt="" />
                   </ng-template>
                   <div class="overlay">
                     <p class="text text-light" (click)="showAlert()">
@@ -113,7 +89,9 @@
                     </p>
                   </div>
                 </div>
-                <p class="text-center">Imagen para la descripcion del servicio</p>
+                <p class="text-center">
+                  Imagen para la descripcion del servicio
+                </p>
               </div>
 
               <div class="col-md-9 text-left">
@@ -123,7 +101,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade un nombre al servicio"
-                    formControlName = "name"
+                    formControlName="name"
                     required
                   />
                 </div>
@@ -138,7 +116,7 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade un título al servicio"
-                    formControlName = "title"
+                    formControlName="title"
                     required
                   />
                   <div *ngIf="titleField.errors && titleField.dirty">
@@ -154,7 +132,7 @@
                     placeholder="Añade una breve descripcion"
                     type="text"
                     maxlength="150"
-                    formControlName = "description"
+                    formControlName="description"
                     required
                   ></textarea>
                   <div *ngIf="desField.errors && desField.dirty">
@@ -171,7 +149,7 @@
               <p><b>Escoja el tipo de servicio</b></p>
               <br />
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4" *ngFor="let st of serviceType">
                   <div class="form-check form-check-inline">
                     <label class="form-check-label">
                       <input
@@ -179,40 +157,20 @@
                         type="checkbox"
                         id="inlineCheckbox1"
                         value="option1"
-                        formControlName = "title"
+                        formControlName="type"
+                        required
                       />
-                      Normal
+                      {{ st }}
                       <span class="form-check-sign"></span>
                     </label>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox2"
-                        value="option2"
-                      />
-                      Encuesta de emprendedores
-                      <span class="form-check-sign"></span>
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="inlineCheckbox3"
-                        value="option3"
-                      />
-                      Otro servicio
-                      <span class="form-check-sign"></span>
-                    </label>
-                  </div>
+              </div>
+              <div class="text-center">
+                <div *ngIf="typeField.errors && typeField.dirty">
+                  <p *ngIf="typeField.hasError('required')">
+                    Este espacio es requerido
+                  </p>
                 </div>
               </div>
             </div>
@@ -227,11 +185,11 @@
                     class="form-control"
                     type="text"
                     placeholder="Añade el título de agradecimiento"
-                    formControlName = "gratDesc"
+                    formControlName="titleGratitude"
                     required
                   />
-                  <div *ngIf="gratdField.errors && gratdField.dirty">
-                    <p *ngIf="gratdField.hasError('required')">
+                  <div *ngIf="grattField.errors && grattField.dirty">
+                    <p *ngIf="grattField.hasError('required')">
                       Este espacio es requerido
                     </p>
                   </div>
@@ -243,11 +201,11 @@
                     type="text"
                     placeholder="Añade un agradecimiento. Maximo 150 caracteres"
                     maxlength="150"
-                    formControlName = "gratTitle"
+                    formControlName="descriptionGratitude"
                     required
                   ></textarea>
-                  <div *ngIf="grattField.errors && grattField.dirty">
-                    <p *ngIf="grattField.hasError('required')">
+                  <div *ngIf="gratdField.errors && gratdField.dirty">
+                    <p *ngIf="gratdField.hasError('required')">
                       Este espacio es requerido
                     </p>
                   </div>
@@ -256,7 +214,13 @@
             </div>
             <!--agradecimientos-->
             <div class="text-right">
-              <button type="submit" class="btn btn-info" [disabled]="serviceForm.invalid">Guardar</button>
+              <button
+                type="submit"
+                class="btn btn-info"
+                [disabled]="service.invalid"
+              >
+                Guardar
+              </button>
             </div>
           </form>
         </div>
@@ -264,3 +228,4 @@
     </div>
   </div>
 </div>
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
