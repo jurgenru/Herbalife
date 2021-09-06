@@ -5,8 +5,8 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { RegisterComponent } from "./pages/auth/register/register.component";
-import { LoginComponent } from "./pages/auth/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
+import { LoginComponent } from "./components/login/login.component";
 
 const routes: Routes = [
   {
@@ -17,11 +17,9 @@ const routes: Routes = [
     path: 'home', component: HomeComponent
   }, {
     path: 'register', component: RegisterComponent
-  },
-  {
+  }, {
     path: 'login', component: LoginComponent
-  },
-  {
+  }, {
     path: "",
     component: AdminLayoutComponent,
     children: [
@@ -34,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "dashboard"
+    redirectTo: "home"
   }
 ];
 

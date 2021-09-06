@@ -16,6 +16,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
 import { InterceptorService } from "./interceptors/interceptors.service";
+import { UserService } from "./services/user.service";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { InterceptorService } from "./interceptors/interceptors.service";
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
   providers: [
     StoreService,
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
