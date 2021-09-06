@@ -19,6 +19,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
 import { ServiceService } from "./services/service.service";
+import { StatementService } from "./services/statement.service";
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ServiceService } from "./services/service.service";
     StoreService,
     UserService,
     ServiceService,
+    StatementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
