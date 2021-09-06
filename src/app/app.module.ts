@@ -15,6 +15,7 @@ import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
 
@@ -29,6 +30,7 @@ import { UserService } from "./services/user.service";
     ImageCropperModule,
     RouterModule,
     AppRoutingModule,
+    NgxUiLoaderModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],

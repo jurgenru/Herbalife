@@ -78,6 +78,7 @@
     "ngx-image-cropper": "^4.0.1",
     "ngx-simple-modal": "^1.4.17",
     "ngx-toastr": "13.2.0",
+    "ngx-ui-loader": "^11.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "6.6.3",
     "tslib": "2.0.3",
