@@ -25,7 +25,9 @@ export class CreateComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
-  ) { }
+  ) { 
+    this.me();
+  }
 
   ngOnInit(
   ) {
@@ -93,6 +95,18 @@ export class CreateComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageProfile = data;
     });
+  }
+
+  me() {
+    this.userService.me().subscribe((user: any) => {
+      this.managerService.getByUserId(user.id).subscribe(man => {
+        if (man) {
+          this.router.navigate(['user/view']);
+        }
+      });
+    }, error => {
+      this.router.navigate(['/']);
+    })
   }
 
   notification(content, time, type, from, align) {
