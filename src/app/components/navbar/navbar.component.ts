@@ -3,6 +3,7 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from "src/app/services/user.service";
+import { ManagerService } from "src/app/services/manager.service";
 
 @Component({
   selector: "app-navbar",
@@ -21,13 +22,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public isCollapsed = true;
 
   closeResult: string;
+  image: any;
 
   constructor(
     location: Location,
     private element: ElementRef,
     private router: Router,
     private modalService: NgbModal,
-    private userService: UserService
+    private userService: UserService,
+    private managerService: ManagerService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -56,6 +59,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+    // this.me();
   }
 
   collapse() {
@@ -213,6 +217,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logOut() {
     localStorage.clear();
     this.router.navigate(['/']);
+  }
+
+
+  me() {
+    this.userService.me().subscribe((data: any) => {
+      this.managerService.getByUserId(data.id).subscribe((man: any) => {
+        man.forEach(element => {
+          this.image = element.image;
+        });
+      });
+    });
   }
 
 }

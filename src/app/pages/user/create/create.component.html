@@ -1,113 +1,120 @@
-<div class=" content">
-    <div class=" row">
-        <div class=" col-12">
-            <div class=" card">
-                <div class=" card-header">
-                    <h2 class=" text-center title">Crear Usuario</h2>
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center title">Crear Perfil</h2>
                 </div>
-                <div class=" card-body">
-                    <div class="row">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-2">
-                            <div class="container-image">
-                                <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                                    *ngIf="!imageProfile; else noImage">
-                                <ng-template #noImage>
-                                    <img [src]="imageProfile" alt="">
-                                </ng-template>
-                                <div class="overlay">
-                                    <p class="text text-light" (click)="showAlert()">cargar imagen</p>
-                                </div>
+                <form [formGroup]="user" (ngSubmit)="post()">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
                             </div>
-                            <p class="text-center">imagen de perfil</p>
+                            <div class="col-2">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                                        *ngIf="!imageProfile; else noImage">
+                                    <ng-template #noImage>
+                                        <img [src]="imageProfile" alt="">
+                                    </ng-template>
+                                    <div class="overlay">
+                                        <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">imagen de perfil</p>
+                            </div>
+                            <div class="col-5"></div>
                         </div>
-                        <div class="col-5"></div>
-                    </div>
-                    <form>
-                        <div class=" row">
+                        <div class="row">
                             <div class="col-md-6">
+                                <div class="col-md-12 md-1">
+                                    <div class="form-group">
+                                        <label>Nombres</label>
+                                        <input class="form-control" placeholder="Nombres" type="text"
+                                            formControlName="names" />
+                                    </div>
+                                    <div *ngIf="names.invalid && (names.dirty || names.touched)">
+                                        <span *ngIf="names.errors.required" class="text-danger">El nombre es <strong>requerido</strong></span>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
-                                        <label> Nombre del distribuidor </label>
-                                        <input class="form-control" placeholder="Nombre del distribuidor" type="text" />
+                                        <label>Apellidos</label>
+                                        <input class="form-control" placeholder="Apellidos" type="text" formControlName="lastName" />
+                                    </div>
+                                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                                        <span *ngIf="lastName.errors.required" class="text-danger">El apellido es <strong>requerido</strong></span>
+                                        <br>
+                                        <br>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
                                         <label> Identificador (ID herbalife) </label>
-                                        <input class="form-control" placeholder="ID herbalife" type="text" />
+                                        <input class="form-control" placeholder="ID herbalife" type="text" formControlName="idHerbalife" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
-                                        <label> Usuario </label>
-                                        <input class="form-control" placeholder="Nombre de usuario" type="text" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label> Contraseña </label>
-                                        <input class="form-control" placeholder="Contraseña" type="password" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label> Nivel de Herbalife </label>
-                                        <input class="form-control" placeholder="Nivel de Herbalife" type="text" />
+                                        <label>Nivel de Herbalife </label>
+                                        <input class="form-control" placeholder="Nivel de Herbalife" type="text" formControlName="levelHerbalife"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 mt-4">
+                                <div formGroupName="socialMedia">
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
                                         <i class="tim-icons icon-email-85">
                                         </i>
                                         <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                            style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" formControlName="gmail"/>
                                     </div>
                                 </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-whatsapp">
-                                        </i>
-                                        <input class="form-control" placeholder="WhatsApp" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-whatsapp">
+                                            </i>
+                                            <input class="form-control" placeholder="WhatsApp" type="url"
+                                                style="padding-left: 33px;" formControlName="whatsapp" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-telegram-plane"> </i>
-                                        <input class="form-control" placeholder="Telegram" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-telegram-plane"> </i>
+                                            <input class="form-control" placeholder="Telegram" type="url"
+                                                style="padding-left: 33px;"  formControlName="telegram"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-facebook"> </i>
-                                        <input class="form-control" placeholder="Facebook" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-facebook"> </i>
+                                            <input class="form-control" placeholder="Facebook" type="url"
+                                                style="padding-left: 33px;" formControlName="facebook"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-instagram"> </i>
-                                        <input class="form-control" placeholder="Instagram" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-instagram"> </i>
+                                            <input class="form-control" placeholder="Instagram" type="url"
+                                                style="padding-left: 33px;" formControlName="instagram"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-youtube"> </i>
-                                        <input class="form-control" placeholder="Youtube" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-youtube"> </i>
+                                            <input class="form-control" placeholder="Youtube" type="url"
+                                                style="padding-left: 33px;" formControlName="youtube"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-tiktok"></i>
-                                        <input class="form-control" placeholder="TikTok" type="url"
-                                            style="padding-left: 33px;" />
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-social form-group">
+                                            <i class="fab fa-tiktok"></i>
+                                            <input class="form-control" placeholder="TikTok" type="url"
+                                                style="padding-left: 33px;" formControlName="tiktok"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +126,12 @@
                                         <label> Dirección *Calle, Nombre y Número de edificio, Número
                                             de puerta, Zona
                                         </label>
-                                        <input class="form-control" placeholder="Dirección" type="text" />
+                                        <input class="form-control" placeholder="Dirección" type="text" formControlName="address" />
+                                    </div>
+                                    <div *ngIf="address.invalid && (address.dirty || address.touched)">
+                                        <span *ngIf="address.errors.required" class="text-danger">La direccion es <strong>requerida</strong></span>
+                                        <br>
+                                        <br>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -127,31 +139,40 @@
                                         <div class=" col-md-6 md-1">
                                             <div class=" form-group">
                                                 <label> Pais </label>
-                                                <input class="form-control" placeholder="País" type="text" />
+                                                <input class="form-control" placeholder="País" type="text" formControlName="country"/>
+                                            </div>
+                                            <div *ngIf="country.invalid && (country.dirty || country.touched)">
+                                                <span *ngIf="country.errors.required" class="text-danger">El pais es <strong>requerido</strong></span>
+                                                <br>
+                                                <br>
                                             </div>
                                         </div>
                                         <div class=" col-md-6 md-1">
                                             <div class=" form-group">
                                                 <label> Ciudad </label>
-                                                <input class="form-control" placeholder="Ciudad" type="text" />
+                                                <input class="form-control" placeholder="Ciudad" type="text" formControlName="city" />
                                             </div>
                                         </div>
                                         <div class=" col-md-6 md-1">
                                             <div class=" form-group">
                                                 <label> Código Postal </label>
-                                                <input class="form-control" placeholder="ZIP Code" type="number" />
+                                                <input class="form-control" placeholder="ZIP Code" type="text" formControlName="postalCode" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-info pull-right" type="submit">Crear</button>
-                </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info pull-right" [disabled]="!user.valid">Crear</button>
+                    </div>
+                    <br>
+                    <br>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando perfil ..."></ngx-ui-loader>
