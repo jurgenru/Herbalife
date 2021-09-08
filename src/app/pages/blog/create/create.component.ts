@@ -7,6 +7,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { ArticleService } from 'src/app/services/article.service';
 import { BlogService } from 'src/app/services/blog.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -27,13 +28,14 @@ export class CreateComponent implements OnInit {
     private articleService: ArticleService,
     private router: Router,
     private spinner: NgxUiLoaderService,
-    private toastr: ToastrService
-
+    private toastr: ToastrService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.addArticle();
+    this.getUserId();
   }
 
   createForm() {
@@ -82,11 +84,16 @@ export class CreateComponent implements OnInit {
       ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
-  
+  getUserId(){
+    this.userService.me().subscribe((data: any) => {
+     this.blog.value.userId = data.id;
+     console.log(this.blog.value.userId);
+    });
+  }
   post(){
     const start = new Date();
     this.spinner.start();
-    this.blog.value.userId = "1";
+    //this.blog.value.userId = "1";
     this.blog.value.icon = this.iconImage;
     this.blog.value.image = this.portraitImage;
     
