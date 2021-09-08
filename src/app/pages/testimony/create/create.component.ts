@@ -62,7 +62,7 @@ export class CreateComponent implements OnInit {
         setTimeout(() => {
           this.spinner.stop();
           this.router.navigate(['testimony/list']);
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tesimonio satisfactoriamente', '5000', 'success', 'top', 'center');
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tesimonio exitosamente', '5000', 'success', 'top', 'center');
         }, elapsed);
       }, error => {
         this.spinner.stop();

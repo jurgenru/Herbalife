@@ -4,9 +4,9 @@ import { Router } from "@angular/router";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
-import { normalize } from "path";
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
 import { ServiceService } from "src/app/services/service.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-service-create",
@@ -14,9 +14,6 @@ import { ServiceService } from "src/app/services/service.service";
   styleUrls: ["./create.component.css"],
 })
 export class CreateComponent implements OnInit {
-  isChecked = false;
-  isChecked1 = false;
-  isChecked2 = false;
   services: number;
 
   imageIcon: any;
@@ -25,7 +22,7 @@ export class CreateComponent implements OnInit {
 
   Types: any = ["Gimnasio", "Comida", "Otros"];
   service: any = {};
-  serviceType: any = [];
+  serviceType: any = {};
   constructor(
     private SimpleModalService: SimpleModalService,
     private formBuilder: FormBuilder,
@@ -33,6 +30,7 @@ export class CreateComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private router: Router,
     private toastr: ToastrService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -42,7 +40,7 @@ export class CreateComponent implements OnInit {
   createServiceForm() {
     this.service = this.formBuilder.group({
       name: ["", Validators.required],
-      mode: [""],
+      mode: ["", Validators.required],
       description: ["", Validators.required],
       title: ["", Validators.required],
       titleGratitude: ["", Validators.required],
@@ -100,24 +98,22 @@ export class CreateComponent implements OnInit {
       this.serviceType.value.checkbox3
     );
 
-    this.serviceService.post(this.service.value).subscribe((data: any) => {
+    this.userService.me().subscribe((user:any) => {
+      this.service.value.userId = user.id;
       this.service.value.icon = this.imageIcon;
       this.service.value.video = this.imageCover;
       this.service.value.image = this.imageDescription;
-      this.service.value.userId = JSON.stringify(data.id);
-      console.log(data);
-      console.log(this.service.value);
-      this.serviceService.post(this.service.value).subscribe((serviceData) => {
+      this.serviceService.post(this.service.value).subscribe(data => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-        setTimeout(() => {
+        setTimeout(()=>{
           this.spinner.stop();
-          this.router.navigate(["/service/list"]);
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo existosamente su servicio', '5000', 'success', 'top', 'center');
+          this.router.navigate(['service/list']);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su servicio exitosamente', '5000', 'success', 'top', 'center');
         }, elapsed);
       }, error => {
         this.spinner.stop();
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
       });
     });
   }
@@ -132,31 +128,32 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  get nameField() {
-    return this.service.get("name");
+  get name(){
+    return this.service.get('name');
   }
-  get titleField() {
-    return this.service.get("title");
+
+  get mode(){
+    return this.service.get('mode');
   }
-  get desField() {
-    return this.service.get("description");
+  get description(){
+    return this.service.get('description');
   }
-  get gratdField() {
-    return this.service.get("descriptionGratitude");
+  get title(){
+    return this.service.get('title');
   }
-  get grattField() {
-    return this.service.get("titleGratitude");
+  get titleGratitude(){
+    return this.service.get('titleGratitude');
   }
-  get typeField() {
-    return this.service.get("type");
+  get descriptionGratitude(){
+    return this.service.get('descriptionGratitude');
   }
-  get typeField1() {
-    return this.serviceType.get("checkbox1");
+  get type(){
+    return this.serviceType.get('checkbox1');
   }
-  get typeField2() {
-    return this.serviceType.get("checkbox2");
+  get type1(){
+    return this.serviceType.get('checkbox2');
   }
-  get typeField3() {
-    return this.serviceType.get("checkbox3");
+  get type2(){
+    return this.serviceType.get('checkbox3');
   }
 }

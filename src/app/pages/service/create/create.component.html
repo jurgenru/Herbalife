@@ -20,6 +20,13 @@
                   <option selected>Modo de Servicio</option>
                   <option *ngFor="let type of Types">{{ type }}</option>
                 </select>
+                <div *ngIf="mode.invalid && (mode.dirty || mode.touched)" class="text-center">
+                  <span *ngIf="mode.errors.required" class="text-danger">
+                    Un modo de servicio <strong>requerido</strong>
+                  </span>
+                  <br />
+                  <br />
+                </div>
               </div>
             </div>
             <br />
@@ -105,13 +112,13 @@
                     formControlName="name"
                     required
                   />
-                </div>
-                <div *ngIf="nameField.errors && nameField.dirty">
-                  <p *ngIf="nameField.hasError('required')" class="text-danger">
-                    Este espacio es <strong>requerido</strong>
-                  </p>
-                  <br />
-                  <br />
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <span *ngIf="name.errors.required" class="text-danger">
+                      Un nombre es <strong>requerido</strong>
+                    </span>
+                    <br />
+                    <br />
+                  </div>
                 </div>
                 <div class="form-group">
                   <label> Título de la descripcion </label>
@@ -122,19 +129,16 @@
                     formControlName="title"
                     required
                   />
-                  <div *ngIf="titleField.errors && titleField.dirty">
-                    <p
-                      *ngIf="titleField.hasError('required')"
-                      class="text-danger"
-                    >
-                      Este espacio es <strong>requerido</strong>
-                    </p>
+                  <div *ngIf="title.invalid && (title.dirty || title.touched)">
+                    <span *ngIf="title.errors.required" class="text-danger">
+                      Un título es <strong>requerido</strong>
+                    </span>
                     <br />
                     <br />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label> Descripcion del servicio </label>
+                  <label> Descripción del servicio </label>
                   <textarea
                     class="form-control"
                     placeholder="Añade una breve descripcion"
@@ -143,13 +147,10 @@
                     formControlName="description"
                     required
                   ></textarea>
-                  <div *ngIf="desField.errors && desField.dirty">
-                    <p
-                      *ngIf="desField.hasError('required')"
-                      class="text-danger"
-                    >
-                      Este espacio es <strong>requerido</strong>
-                    </p>
+                  <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <span *ngIf="description.errors.required" class="text-danger">
+                      Una descripcion es <strong>requerida</strong>
+                    </span>
                     <br />
                     <br />
                   </div>
@@ -172,7 +173,6 @@
                           formControlName="checkbox1"
                           name="Normal"
                           required
-                          [(ngModel)]="isChecked"
                         />
                         Normal
                         <span class="form-check-sign"></span>
@@ -187,7 +187,6 @@
                           type="checkbox"
                           formControlName="checkbox2"
                           required
-                          [(ngModel)]="isChecked1"
                         />
                         Encuesta de emprendedores
                         <span class="form-check-sign"></span>
@@ -202,24 +201,16 @@
                           type="checkbox"
                           formControlName="checkbox3"
                           required
-                          [(ngModel)]="isChecked2"
                         />
                         Otros
                         <span class="form-check-sign"></span>
                       </label>
                     </div>
                   </div>
-                  <div
-                    *ngIf="
-                      isChecked != true &&
-                      isChecked1 != true &&
-                      isChecked2 != true
-                    "
-                    class="text-center"
-                  >
-                    <p class="text-danger" style="text-align: center">
-                      Este espacio es <strong>requerido</strong>
-                    </p>
+                  <div *ngIf="type.invalid && type1.invalid && type2.invalid" class="col-sm-6 mx-auto">
+                    <span *ngIf="type.errors.required" class="text-danger">
+                      Un tipo de servicio es <strong>requerido</strong>
+                    </span>
                     <br />
                     <br />
                   </div>
@@ -232,7 +223,7 @@
             <div class="row text-left">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label> Titulo de agrecidimiento </label>
+                  <label> Título de agrecidimiento </label>
                   <input
                     class="form-control"
                     type="text"
@@ -240,13 +231,10 @@
                     formControlName="titleGratitude"
                     required
                   />
-                  <div *ngIf="grattField.errors && grattField.dirty">
-                    <p
-                      *ngIf="grattField.hasError('required')"
-                      class="text-danger"
-                    >
-                      Este espacio es <strong>requerido</strong>
-                    </p>
+                  <div *ngIf="titleGratitude.invalid && (titleGratitude.dirty || titleGratitude.touched)">
+                    <span *ngIf="titleGratitude.errors.required" class="text-danger">
+                      Un título de agradecimiento es <strong>requerido</strong>
+                    </span>
                     <br />
                     <br />
                   </div>
@@ -261,13 +249,10 @@
                     formControlName="descriptionGratitude"
                     required
                   ></textarea>
-                  <div *ngIf="gratdField.errors && gratdField.dirty">
-                    <p
-                      *ngIf="gratdField.hasError('required')"
-                      class="text-danger"
-                    >
-                      Este espacio es <strong>requerido</strong>
-                    </p>
+                  <div *ngIf="descriptionGratitude.invalid && (descriptionGratitude.dirty || descriptionGratitude.touched)">
+                    <span *ngIf="descriptionGratitude.errors.required" class="text-danger">
+                      Un título de agradecimiento es <strong>requerido</strong>
+                    </span>
                     <br />
                     <br />
                   </div>
@@ -292,7 +277,7 @@
 </div>
 <ngx-ui-loader
   fgsColor="gray"
-  fgsType="double-bounce"
+  fgsType="three-strings"
   overlayColor="rgba(58,55,54)"
-  text="Cargando..."
+  text="Creando su servicio..."
 ></ngx-ui-loader>
