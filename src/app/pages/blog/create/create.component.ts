@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
   iconImage: any;
   portraitImage: any;
   articleImage: any = [];
-  
+
   constructor(
     private simpleModalService: SimpleModalService,
     private formBuilder: FormBuilder,
@@ -35,13 +35,12 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.addArticle();
-    this.getUserId();
   }
 
   createForm() {
-    this.blog= this.formBuilder.group({
-      name: ['',Validators.required],
-      icon:[''],
+    this.blog = this.formBuilder.group({
+      name: ['', Validators.required],
+      icon: [''],
       image: [''],
       video: [''],
       userId: [''],
@@ -53,20 +52,20 @@ export class CreateComponent implements OnInit {
   }
   addArticle() {
     const FormInputs = this.formBuilder.group({
-      title: ['',Validators.required],
-      description:['',Validators.required],
-      image:[''],
-      blogId:[],
-      ranting:['']
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      image: [''],
+      blogId: [],
+      ranting: ['']
     });
-  
+
     this.article.push(FormInputs);
   }
 
   removeArticle(index: number) {
     this.article.removeAt(index);
   }
-  
+
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
@@ -77,42 +76,45 @@ export class CreateComponent implements OnInit {
       this.portraitImage = data;
     });
   }
-  showBlog(index: any){
+  showBlog(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       //this.asign(index,data);
       this.articleImage[index] = data;
       ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
-  getUserId(){
-    this.userService.me().subscribe((data: any) => {
-     this.blog.value.userId = data.id;
-     console.log(this.blog.value.userId);
-    });
-  }
-  post(){
+
+  post() {
     const start = new Date();
     this.spinner.start();
-    //this.blog.value.userId = "1";
-    this.blog.value.icon = this.iconImage;
-    this.blog.value.image = this.portraitImage;
-    
-    this.blogService.post(this.blog.value).subscribe((data: any) =>{
-      console.log(data);
-      this.article.controls.forEach((element) => {
-        element.value.blogId = data.id;
-        this.articleService.post(element.value).subscribe((articleData:any)=>{
-          console.log(articleData);
-        });
-      });
-      const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
+    this.userService.me().subscribe((user: any) => {
+      this.blog.value.userId = user.id;
+      this.blog.value.icon = this.iconImage;
+      this.blog.value.image = this.portraitImage;
+
+      this.blogService.post(this.blog.value).subscribe((data: any) => {
+        console.log(data);
+        this.article.controls.forEach((element) => {
+          element.value.blogId = data.id;
+          this.articleService.post(element.value).subscribe((articleData: any) => {
+            console.log(articleData);
+          }, error => {
             this.spinner.stop();
-           // this.router.navigate(['/blog/list'])
-            this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado el blog', '5000', 'success', 'top', 'center');
-            
-          }, elapsed);
+            this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el articulo, intente nuevamente', '5000', 'danger', 'top', 'center');
+          });
+        });
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.spinner.stop();
+          this.router.navigate(['/blog/list'])
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado el blog exitosamente', '5000', 'success', 'top', 'center');
+
+        }, elapsed);
+      }, error => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el blog, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
     });
   }
 
@@ -122,13 +124,13 @@ export class CreateComponent implements OnInit {
       closeButton: true,
       enableHtml: true,
       toastClass: `alert alert-${type} alert-with-icon`,
-      positionClass: 'toast-' + from + '-' +  align
+      positionClass: 'toast-' + from + '-' + align
     });
   }
   get article(): FormArray {
     return this.articleForm.get('article') as FormArray;
   }
-  get name(){
+  get name() {
     return this.blog.get("name");
   }
 }

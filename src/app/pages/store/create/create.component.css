@@ -2,6 +2,10 @@
 .container-image{
     position: relative;
 }
+.form-control.ng-touched.ng-invalid{
+  /* border: 1px solid #fd5d93; */
+  margin-bottom: 0%;
+}
 .image {
     display: block;
     width: 100%;
