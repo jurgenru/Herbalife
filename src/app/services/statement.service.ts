@@ -10,4 +10,7 @@ export class StatementService {
     post(body) {
       return this.http.post(`${environment.apiUrl}statements`, body).pipe();
     }
+    get(filter) {
+      return this.http.get(`${environment.apiUrl}statements?filter=${filter}`).pipe();
+  }
 }

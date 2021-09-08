@@ -1,29 +1,33 @@
 <div class="content">
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
+      <button [disabled]="lists.length > 35" class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Simple Table</h4>
+          <div class="row">
+            <div class="col-8">
+              <h3 class="card-title">Lista de Testimonios</h3>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive ps">
             <table class="table table-bordered table-striped">
               <thead class="text-primary">
                 <tr>
-                  <th>Name</th>
-                  <th>Job Position</th>
-                  <th class="text-center">Since</th>
-                  <th class="text-center">Salary</th>
-                  <th class="text-right">Actions</th>
+                  <th>Id</th>
+                  <th>Titulo</th>
+                  <th class="text-center">Descripcion</th>
+                  <th class="text-center">Fecha de creacion</th>
+                  <th class="text-right">Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Andrew Mike</td>
-                  <td>Develop</td>
-                  <td class=" text-center">2013</td>
-                  <td class=" text-center">€ 99,225</td>
+                <tr *ngFor="let list of lists">
+                  <td>{{list.id}}</td>
+                  <td>{{list.name}}</td>
+                  <td class=" text-center">{{list.description}}</td>
+                  <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
                   <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
                       ngbTooltip="ver" container="body"><i class="tim-icons icon-paper"></i></button>
