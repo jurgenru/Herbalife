@@ -18,8 +18,8 @@ import { StoreService } from "./services/store.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
-import { ServiceService } from "./services/service.service";
-import { StatementService } from "./services/statement.service";
+import { ManagerService } from "./services/manager.service";
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   imports: [
@@ -33,14 +33,14 @@ import { StatementService } from "./services/statement.service";
     RouterModule,
     AppRoutingModule,
     NgxUiLoaderModule,
+    NgxPaginationModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
   providers: [
     StoreService,
     UserService,
-    ServiceService,
-    StatementService,
+    ManagerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

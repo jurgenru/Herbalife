@@ -42,13 +42,10 @@ export class CreateComponent implements OnInit {
 
     this.trainerService.post(this.trainer.value).subscribe((data :any ) => {      
        this.lection.value.trainerId = data.id;
-       console.log(data);
-       console.log(this.lection.value);
        this.lectionService.post(this.lection.value).subscribe(lectionData =>{  
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
-          console.log(lectionData);
           this.spinner.stop();
         }, elapsed);
        });

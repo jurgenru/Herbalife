@@ -15,11 +15,11 @@ export const routes: Routes = [
                 component: ViewComponent
             },
             {
-                path: 'create',
+                path: 'admin',
                 component: CreateComponent
             },
             {
-                path: 'edit/:id',
+                path: 'edit',
                 component: EditComponent
             }
         ],
