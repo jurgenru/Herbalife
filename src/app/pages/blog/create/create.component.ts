@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 
@@ -9,44 +9,54 @@ import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cr
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
-  blogForm: FormGroup;
+  articleForm: any = {};
+  blog: any = {};
   iconImage: any;
   portraitImage: any;
-  blogImage: any;
-
+  articleImage: any = [];
+  articleImage1: any;
+  articleImage2: any;
+  
   constructor(
     private simpleModalService: SimpleModalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+
   ) { }
 
   ngOnInit(): void {
     this.createForm();
-    this.addArticleForm();
+    this.addArticle();
   }
 
   createForm() {
-    this.blogForm = this.formBuilder.group({
-      blogTitle: "",
+    this.blog= this.formBuilder.group({
+      name: ['',Validators.required],
+      icon:[''],
+      image: [''],
+      video: [''],
+      userId: [''],
+    });
+
+    this.articleForm = this.formBuilder.group({
       article: this.formBuilder.array([])
     });
   }
-  addArticleForm() {
+  addArticle() {
     const FormInputs = this.formBuilder.group({
-      title: new FormControl(''),
-      themeDevelop: new FormControl(''),
+      title: ['',Validators.required],
+      description:['',Validators.required],
+      image:[''],
+      blogId:[],
+      ranting:['']
     });
   
     this.article.push(FormInputs);
   }
+
   removeArticle(index: number) {
     this.article.removeAt(index);
   }
-  get article(): FormArray {
-    return this.blogForm.get('article') as FormArray;
-  }
-  get blogTitle(){
-    return this.blogForm.get("blogTitle");
-  }
+  
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
@@ -57,12 +67,24 @@ export class CreateComponent implements OnInit {
       this.portraitImage = data;
     });
   }
-  showBlog(){
+  showBlog(index: any){
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.blogImage = data;
+      //this.asign(index,data);
+      this.articleImage[index] = data;
+      ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
-  submit(){
-    console.log(this.blogForm.value)
+  
+  post(){
+    this.blog.value.icon = this.iconImage;
+    this.blog.value.image = this.portraitImage;
+    console.log(this.blog.value);
+    console.log(this.articleForm.value);
+  }
+  get article(): FormArray {
+    return this.articleForm.get('article') as FormArray;
+  }
+  get name(){
+    return this.blog.get("name");
   }
 }

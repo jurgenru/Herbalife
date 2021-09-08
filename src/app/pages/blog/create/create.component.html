@@ -9,18 +9,19 @@
                     </div>
                     <br>
                     <br>
-                    <hr>
+                    <hr color="purple" />
                     <br>
-                    <form [formGroup]="blogForm">
+                    <form [formGroup]="blog">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-5">
                                 <label> Nombre del Blog </label>
                                 <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
-                                    value="" formControlName="blogTitle">
+                                    value="" formControlName="name">
+                                <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio
+                                    Obligatorio<br></small>
                             </div>
                         </div>
                         <br>
-                        <hr color="purple" />
                         <br>
                         <div class="row">
                             <div class="col-12 col-md-3">
@@ -40,7 +41,7 @@
                             </div>
                             <div class="col-12 col-md-9 text-center">
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/bg5.jpg" alt="PortraitImage"
+                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="PortraitImage"
                                         class="mx-auto d-block" *ngIf="!portraitImage; else noImagePortrait">
                                     <ng-template #noImagePortrait>
                                         <img [src]="portraitImage" alt="">
@@ -55,8 +56,10 @@
                             </div>
                         </div>
                         <br>
-                        <hr color="purple"/>
+                        <hr color="purple" />
                         <br>
+                    </form>
+                    <form [formGroup]="articleForm">
                         <div style="text-align: center">
                             <h4>Articulos</h4>
                         </div>
@@ -70,12 +73,13 @@
                                     <div class="row">
                                         <div class="col-12 col-md-5">
                                             <div class="container-image">
-                                                <img src="../../../../assets/img/img_3115.jpg" alt="BlogImage"
-                                                    class="mx-auto d-block" *ngIf="!blogImage; else noImageBlog">
-                                                <ng-template #noImageBlog>
-                                                    <img [src]="blogImage" alt="">
+                                                <img src="../../../../assets/img/img_3115.jpg" alt="articleImage"
+                                                    class="mx-auto d-block"
+                                                    *ngIf="!articleImage[i]; else noArticleImage">
+                                                <ng-template #noArticleImage>
+                                                    <img [src]="articleImage[i]" alt="">
                                                 </ng-template>
-                                                <div class="overlay" (click)="showBlog()">
+                                                <div class="overlay" (click)="showBlog(i)">
                                                     <div class="text text-light">
                                                         <i class="tim-icons icon-upload"> </i>
                                                         Agregar imagen o video al blog
@@ -91,7 +95,7 @@
                                             <label> Contenido del articulo </label>
                                             <textarea class="form-control" [attr.id]="'Description' + i"
                                                 placeholder="Coloca el contenido del articulo" rows="6"
-                                                formControlName="themeDevelop" value=""></textarea>
+                                                formControlName="description" value=""></textarea>
                                         </div>
                                     </div>
                                     <br>
@@ -103,18 +107,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class=" button-container">
+                            <button (click)="addArticle()"
+                                class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                                href="javascript:void(0)">
+                                <i class="tim-icons icon-simple-add"></i>
+                            </button>
+                        </div>
                     </form>
-                    <div class=" button-container">
-                        <button (click)="addArticleForm()"
-                            class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                            href="javascript:void(0)">
-                            <i class="tim-icons icon-simple-add"></i>
-                        </button>
-                    </div>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button class="btn btn-info" (click)="submit()">
+                        <button class="btn btn-info" (click)="post()">
                             Guardar
                         </button>
                     </div>

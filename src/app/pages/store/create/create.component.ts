@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +13,8 @@ import { StoreService } from 'src/app/services/store.service';
 export class CreateComponent implements OnInit {
 
   store: any = {};
-  productForm: FormGroup;
+  productForm: any = {};
+
   iconImage:any;
   portraitImage:any;
   productImage:any;
@@ -21,6 +23,7 @@ export class CreateComponent implements OnInit {
     private simpleModalService: SimpleModalService,
     private formBuilder: FormBuilder,
     private storeService: StoreService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -28,22 +31,28 @@ export class CreateComponent implements OnInit {
     this.addProductForm();
   }
   createForm() {
+    this.store = this.formBuilder.group({
+      userId:[''],
+      title:[''],
+      description:[''],
+      image:[''],
+      icon:[''],
+    });
+
     this.productForm = this.formBuilder.group({
       product: this.formBuilder.array([])
     });
   }
   addProductForm() {
     const FormInputs = this.formBuilder.group({
-      // image: new FormControl(''),
-      name: new FormControl(''),
-      price: new FormControl(''),
-      quantity: new FormControl(''),
-      description: new FormControl(''),
-      
-      //category1: new FormControl(''),
-      // category2: new FormControl(''),
-      // category3: new FormControl(''),
-      // category4: new FormControl(''),
+      name: [''],
+      description: [''],
+      image: [''],
+      price: [''],
+      userId: [''],
+      additionalFeatures:[''],
+      additionalPrice:[''],
+      amount: ['']
     });
 
     this.product.push(FormInputs);
@@ -51,11 +60,11 @@ export class CreateComponent implements OnInit {
   removeProduct(index: number) {
     this.product.removeAt(index);
   }
+
   get product(): FormArray {
     return this.productForm.get('product') as FormArray;
   }
-  submit() {
-  }
+
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
@@ -71,14 +80,19 @@ export class CreateComponent implements OnInit {
       this.productImage = data;
     });
   }
-
+  
   post () {
+  //   const filter = `{"fields": {"id": true}`;
+  //   this.userService.me().subscribe((data: any) => {
+  //     this.userService.getById(data.id,filter).subscribe((user: any) => {{
+  //         this.store.userId = data.id;
+  //     }});
+  // });
     const start = new Date();
-    this.store.userId = "string",
-    this.store.title = "string",
-    this.store.description = "string",
-    this.store.image= "string",
-    this.store.icon = "string"
+    this.store.userId = "1",
+    this.store.image= this.portraitImage;
+    this.store.icon = this.iconImage;
+
     this.storeService.post(this.store).subscribe(data => {
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;

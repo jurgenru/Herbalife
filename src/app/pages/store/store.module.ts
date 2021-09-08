@@ -19,7 +19,6 @@ import { SimpleModalModule } from 'ngx-simple-modal';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    StoreRoutingModule,
     SimpleModalModule,
     ImageCropperModule
 

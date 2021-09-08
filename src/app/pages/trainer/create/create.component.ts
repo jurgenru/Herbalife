@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupName, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
+import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { LectionService } from 'src/app/services/lection.service';
@@ -19,6 +20,7 @@ export class CreateComponent implements OnInit {
 
   trainer: any = {};
   lection: any = {};
+  social: any = {};
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -27,6 +29,7 @@ export class CreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private spinner: NgxUiLoaderService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -38,21 +41,27 @@ export class CreateComponent implements OnInit {
     this.spinner.start();
     this.trainer.value.image = this.iconImage;
     this.trainer.value.imageFront = this.portraitImage;
+    this.trainer.value.socialMedia = JSON.stringify(this.social.value);
     this.lection.value.image = this.courseImage;
-
+   
     this.trainerService.post(this.trainer.value).subscribe((data :any ) => {      
        this.lection.value.trainerId = data.id;
        console.log(data);
-       console.log(this.lection.value);
-       this.lectionService.post(this.lection.value).subscribe(lectionData =>{  
+       this.lectionService.post(this.lection.value).subscribe((lectionData:any) =>{  
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
           console.log(lectionData);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado la clase', '5000', 'success', 'top', 'center');
           this.spinner.stop();
         }, elapsed);
-       });
+       },error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear la clase', '5000', 'danger', 'top', 'center');
+      });
+
       this.router.navigate(['/trainer/list'])
+    },error => {
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al añadir al entrenador', '5000', 'danger', 'top', 'center');
     });
   }
   
@@ -62,24 +71,18 @@ export class CreateComponent implements OnInit {
       description: ['',Validators.required],
       image: [''],
       imageFront: [''],
-      socialMedia: this.formBuilder.group({
-        email:['',Validators.email],
-        whatsapp:[''],
-        telegram:[''],
-        facebook:[''],
-        instagram:[''],
-        youtube: [''],
-        tiktok: ['']
-
-      }),
+      socialMedia: [''],
     });
-    // this.trainer = new FormGroup({
-    //   names: new FormControl('',Validators.required),
-    //   description: new FormControl('',Validators.required),
-    //   image: new FormControl(''),
-    //   imageFront: new FormControl(''),
-    //   socialMedia: new FormControl('')
-    // });
+
+    this.social = this.formBuilder.group({
+      email:['',Validators.email],
+      whatsapp:[''],
+      telegram:[''],
+      facebook:[''],
+      instagram:[''],
+      youtube: [''],
+      tiktok: ['']
+    });
   }
   get names(){
     return this.trainer.get('names');
@@ -88,7 +91,7 @@ export class CreateComponent implements OnInit {
     return this.trainer.get('description');
   }
   get email(){
-    return this.trainer.get('socialMedia').get('email');
+    return this.social.get('email');
   }
   get name(){
     return this.lection.get('name');
@@ -105,7 +108,7 @@ export class CreateComponent implements OnInit {
 
   createLectionForm(){
     this.lection= this.formBuilder.group({
-      trainerId: [],
+      trainerId: [null],
       name: ['',Validators.required],
       description:['',Validators.required],
       mode: ['',Validators.required],
@@ -128,6 +131,16 @@ export class CreateComponent implements OnInit {
   showCourse() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.courseImage = data;
+    });
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, '', {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: 'toast-' + from + '-' +  align
     });
   }
 }
