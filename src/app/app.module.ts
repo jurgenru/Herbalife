@@ -20,6 +20,8 @@ import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
 import { ManagerService } from "./services/manager.service";
 import { NgxPaginationModule } from "ngx-pagination";
+import { ServiceService } from "./services/service.service";
+import { StatementService } from "./services/statement.service";
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { NgxPaginationModule } from "ngx-pagination";
     StoreService,
     UserService,
     ManagerService,
+    ServiceService,
+    StatementService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
