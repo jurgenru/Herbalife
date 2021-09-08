@@ -46,13 +46,10 @@ export class CreateComponent implements OnInit {
    
     this.trainerService.post(this.trainer.value).subscribe((data :any ) => {      
        this.lection.value.trainerId = data.id;
-       console.log(data);
-       this.lectionService.post(this.lection.value).subscribe((lectionData:any) =>{  
+       this.lectionService.post(this.lection.value).subscribe(lectionData =>{  
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
-          console.log(lectionData);
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado la clase', '5000', 'success', 'top', 'center');
           this.spinner.stop();
         }, elapsed);
        },error => {

@@ -1,65 +1,62 @@
-<div class=" content">
-    <div class=" row">
-        <div class=" col-12">
-            <div class=" card">
-                <div class=" card-header">
-                    <h2 class="text-center title">Editar Usuario</h2>
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center title">Editar Perfil</h2>
                 </div>
-                <div class=" card-body">
-                    <div class="row">
-                        <div class="col-5">
-                        </div>
-                        <div class="col-2">
-                            <div class="container-image">
-                                <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                                    *ngIf="!imageProfile; else noImage">
-                                <ng-template #noImage>
-                                    <img [src]="imageProfile" alt="">
-                                </ng-template>
-                                <div class="overlay">
-                                    <p class="text text-light" (click)="showAlert()">cargar imagen</p>
-                                </div>
+                <form #form="ngForm" (ngSubmit)="edit()">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-5">
                             </div>
-                            <p class="text-center">imagen de perfil</p>
+                            <div class="col-2">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                                        *ngIf="!userData.image; else noImage">
+                                    <ng-template #noImage>
+                                        <img [src]="userData.image" alt="">
+                                    </ng-template>
+                                    <div class="overlay">
+                                        <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">imagen de perfil</p>
+                            </div>
+                            <div class="col-5"></div>
                         </div>
-                        <div class="col-5"></div>
-                    </div>
-                    <form>
-                        <div class=" row">
+                        <div class="row">
                             <div class="col-md-6">
+                                <div class="col-md-12 md-1">
+                                    <div class="form-group">
+                                        <label>Nombres</label>
+                                        <input class="form-control" placeholder="Nombres" type="text"
+                                            [(ngModel)]="manager.names" [ngModelOptions]="{standalone: true}"
+                                            [value]="userData.names" />
+                                    </div>
+                                </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
-                                        <label> Nombre del distribuidor </label>
-                                        <input class="form-control" placeholder="Nombre del distribuidor" type="text"
-                                            value="Mike" />
+                                        <label>Apellidos</label>
+                                        <input class="form-control" placeholder="Apellidos" type="text"
+                                            [(ngModel)]="manager.lastName" [ngModelOptions]="{standalone: true}"
+                                            [value]="userData.lastName" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
                                         <label> Identificador (ID herbalife) </label>
                                         <input class="form-control" placeholder="ID herbalife" type="text"
-                                            value="Andrew" />
+                                            [(ngModel)]="manager.idHerbalife" [ngModelOptions]="{standalone: true}"
+                                            [value]="userData.idHerbalife" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class=" form-group">
-                                        <label> Usuario </label>
-                                        <input class="form-control" placeholder="Nombre de usuario" type="text"
-                                            value="Mike" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label>Cambiar Contraseña </label>
-                                        <input class="form-control" placeholder="Contraseña" type="password"
-                                            value="Andrew" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label> Nivel de Herbalife </label>
+                                        <label>Nivel de Herbalife </label>
                                         <input class="form-control" placeholder="Nivel de Herbalife" type="text"
-                                            value="Andrew" />
+                                            [(ngModel)]="manager.levelHerbalife" [ngModelOptions]="{standalone: true}"
+                                            [value]="userData.levelHerbalife" />
                                     </div>
                                 </div>
                             </div>
@@ -69,7 +66,7 @@
                                         <i class="tim-icons icon-email-85">
                                         </i>
                                         <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                            value="correo@correo.com" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [(ngModel)]="socialMedia.gmail" [ngModelOptions]="{standalone: true}" [value]="gmail" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
@@ -77,42 +74,42 @@
                                         <i class="fab fa-whatsapp">
                                         </i>
                                         <input class="form-control" placeholder="WhatsApp" type="url"
-                                            value="https://whatsapp" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [(ngModel)]="socialMedia.whatsapp" [ngModelOptions]="{standalone: true}" [value]="whatsapp" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
                                         <i class="fab fa-telegram-plane"> </i>
                                         <input class="form-control" placeholder="Telegram" type="url"
-                                            value="https://telegram" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [value]="telegram" [(ngModel)]="socialMedia.telegram" [ngModelOptions]="{standalone: true}" />
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
-                                        <i class=" fab fa-facebook"> </i>
+                                        <i class="fab fa-facebook"> </i>
                                         <input class="form-control" placeholder="Facebook" type="url"
-                                            value="https://facebook" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [value]="facebook" [(ngModel)]="socialMedia.facebook" [ngModelOptions]="{standalone: true}"/>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
                                         <i class="fab fa-instagram"> </i>
                                         <input class="form-control" placeholder="Instagram" type="url"
-                                            value="https://instagram" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [value]="instagram" [(ngModel)]="socialMedia.instagram" [ngModelOptions]="{standalone: true}"/>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
                                         <i class="fab fa-youtube"> </i>
                                         <input class="form-control" placeholder="Youtube" type="url"
-                                            value="https://youtube" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [value]="youtube"  [(ngModel)]="socialMedia.youtube" [ngModelOptions]="{standalone: true}"/>
                                     </div>
                                 </div>
                                 <div class=" col-md-12 md-1">
                                     <div class="input-social form-group">
                                         <i class="fab fa-tiktok"></i>
                                         <input class="form-control" placeholder="TikTok" type="url"
-                                            value="https://tiktok" style="padding-left: 33px;" />
+                                            style="padding-left: 33px;" [value]="tiktok"  [(ngModel)]="socialMedia.tiktok" [ngModelOptions]="{standalone: true}"/>
                                     </div>
                                 </div>
                             </div>
@@ -122,44 +119,54 @@
                                 <div class=" col-md-12">
                                     <div class=" form-group">
                                         <label> Dirección *Calle, Nombre y Número de edificio, Número
-                                            border-color-info </label>
+                                            de puerta, Zona
+                                        </label>
                                         <input class="form-control" placeholder="Dirección" type="text"
-                                            value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" />
+                                            [(ngModel)]="manager.address" [ngModelOptions]="{standalone: true}"
+                                            [value]="userData.address" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class=" col-md-6 md-1">
-                                            <div class=" form-group">
+                                        <div class="col-md-6 md-1">
+                                            <div class="form-group">
                                                 <label> Pais </label>
                                                 <input class="form-control" placeholder="País" type="text"
-                                                    value="Mike" />
+                                                    [(ngModel)]="manager.country" [ngModelOptions]="{standalone: true}"
+                                                    [value]="userData.country" />
                                             </div>
                                         </div>
-                                        <div class=" col-md-6 md-1">
-                                            <div class=" form-group">
-                                                <label> Ciudad </label>
+                                        <div class="col-md-6 md-1">
+                                            <div class="form-group">
+                                                <label>Ciudad </label>
                                                 <input class="form-control" placeholder="Ciudad" type="text"
-                                                    value="Andrew" />
+                                                    [(ngModel)]="manager.city" [ngModelOptions]="{standalone: true}"
+                                                    [value]="userData.city" />
                                             </div>
                                         </div>
                                         <div class=" col-md-6 md-1">
                                             <div class=" form-group">
                                                 <label> Código Postal </label>
-                                                <input class="form-control" placeholder="ZIP Code" type="number" />
+                                                <input class="form-control" placeholder="ZIP Code" type="text"
+                                                    [(ngModel)]="manager.postalCode"
+                                                    [ngModelOptions]="{standalone: true}"
+                                                    [value]="userData.postalCode" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <!-- btn-simple -->
-                    <button class="btn btn-info pull-right" type="submit">Guardar</button>
-                </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-warning pull-right">Editar</button>
+                    </div>
+                    <br>
+                    <br>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" [text]="content"></ngx-ui-loader>

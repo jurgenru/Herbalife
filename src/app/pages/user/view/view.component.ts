@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ManagerService } from 'src/app/services/manager.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-view',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  socialMedia: any = {}
 
-  ngOnInit(): void {
+  constructor(
+    private userService: UserService,
+    private managerService: ManagerService
+  ) { }
+
+  ngOnInit() {
+    this.me();
+  }
+
+  me() {
+    this.userService.me().subscribe((me: any) => {
+      this.managerService.getByUserId(me.id).subscribe((man: any) => {
+        man.forEach(element => {
+          this.user = element;
+          if (this.user.socialMedia) {
+            this.socialMedia = JSON.parse(this.user.socialMedia);
+          }
+        });
+      });
+    });
   }
 
 }
