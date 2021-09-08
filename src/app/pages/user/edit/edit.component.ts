@@ -74,6 +74,7 @@ export class EditComponent implements OnInit {
   imageCropper() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageProfile = data;
+      this.manager.image = this.imageProfile;
     });
   }
 

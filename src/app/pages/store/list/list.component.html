@@ -3,9 +3,17 @@
     <div class="col-12">
       <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/store/create" type="button">Nueva
         Tienda</button>
+      <br><br>
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Lista de Tiendas</h4>
+          <div class="row">
+            <div class="col-8">
+              <h3 class="card-title">Lista de Tiendas</h3>
+            </div>
+            <div class="col-4">
+              <input class="form-control" placeholder="Buscar tienda ..." type="text" name="filterPost" [(ngModel)]="filterPost" />
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive ps">
@@ -13,30 +21,34 @@
               <thead class="text-primary">
                 <tr>
                   <th>Id</th>
-                  <th>Nombre</th>
+                  <th>Titulo</th>
                   <th class="text-center">Descripcion</th>
                   <th class="text-center">Fecha de creacion</th>
                   <th class="text-right">Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Andrew Mike</td>
-                  <td>Develop</td>
-                  <td class=" text-center">2013</td>
-                  <td class=" text-center">€ 99,225</td>
+                <tr *ngFor="let list of lists | filterStore: filterPost | paginate: {itemsPerPage: 100, currentPage: pageActual}">
+                  <td>{{list.id}}</td>
+                  <td>{{list.title}}</td>
+                  <td class=" text-center">{{list.description}}</td>
+                  <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
                   <td class=" text-right">
-                    <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top" ngbTooltip="ver" container="body"><i
-                        class="tim-icons icon-paper"></i></button>
-                    <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar" container="body"><i
-                        class=" tim-icons icon-pencil"></i></button>
-                    <button class="btn btn-danger btn-link btn-sm" type="button" placement="top" ngbTooltip="eliminar" container="body"><i
-                        class=" tim-icons icon-trash-simple"></i></button>
+                    <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
+                      ngbTooltip="ver" container="body"><i class="tim-icons icon-paper"></i></button>
+                    <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar"
+                      container="body"><i class=" tim-icons icon-pencil"></i></button>
+                    <button class="btn btn-danger btn-link btn-sm" type="button" placement="top" ngbTooltip="eliminar"
+                      container="body"><i class=" tim-icons icon-trash-simple"></i></button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </div>
+        <div class="row justify-content-center h-100">
+          <pagination-controls (pageChange)="pageActual = $event" previousLabel=" " nextLabel=" " maxSize="12">
+          </pagination-controls>
         </div>
       </div>
     </div>
