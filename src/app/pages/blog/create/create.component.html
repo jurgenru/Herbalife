@@ -2,6 +2,7 @@
     <div class=" row">
         <div class=" col-md-12">
             <div class="card card-user">
+                <form (ngSubmit)="post()">
                 <div class=" card-body">
                     <div style="text-align: center">
                         <h2>BLOG</h2>
@@ -17,8 +18,7 @@
                                 <label> Nombre del Blog </label>
                                 <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
                                     value="" formControlName="name">
-                                <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio
-                                    Obligatorio<br></small>
+                                <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio <strong>requerido</strong></small>
                             </div>
                         </div>
                         <br>
@@ -92,10 +92,18 @@
                                             <input class=" form-control" [attr.id]="'Title' + i"
                                                 placeholder="Coloca el titulo del articulo" formControlName="title"
                                                 type="text">
+                                            <div *ngIf="article.controls[i].get('title').invalid && 
+                                            article.controls[i].get('title').touched">
+                                            <small  class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                            <br>
+                                            <br>
+                                            </div>
                                             <label> Contenido del articulo </label>
                                             <textarea class="form-control" [attr.id]="'Description' + i"
                                                 placeholder="Coloca el contenido del articulo" rows="6"
                                                 formControlName="description" value=""></textarea>
+                                                <small *ngIf="article.controls[i].get('description').invalid && 
+                                                article.controls[i].get('description').touched" class="text-danger"> *Espacio <strong>requerido</strong></small>
                                         </div>
                                     </div>
                                     <br>
@@ -118,11 +126,12 @@
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button class="btn btn-info" (click)="post()">
+                        <button type ="submit" class="btn btn-info"  [disabled]="blog.invalid || article.invalid">
                             Guardar
                         </button>
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>

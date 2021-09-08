@@ -87,4 +87,10 @@ export class CreateComponent implements OnInit {
   get name(){
     return this.blog.get("name");
   }
+  get title(){
+    return this.article.get('title');
+  }
+  get description(){
+    return this.article.get('description');
+  }
 }
