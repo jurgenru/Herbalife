@@ -28,10 +28,9 @@
                         <img [src]="imageContent" alt="" />
                       </ng-template>
                       <div class="overlay">
-                        <p class="text text-light" (click)="showAlert()">
-                          Agregar una imagen
-                        </p>
-                      </div>
+                        <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
+                    </div>
+
                     </div>
                     <p class="text-center">Imagen para el testimonio</p>
                   </div>
@@ -87,4 +86,4 @@
     </div>
   </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
