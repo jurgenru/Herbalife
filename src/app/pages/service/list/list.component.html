@@ -1,28 +1,36 @@
 <div class="content">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-12">
+      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/trainer/create" type="button">Agregar entrenador</button>
       <div class="card">
         <div class="card-header">
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="text-center">#</th>
-                <th>Nombre</th>
-                <th>Título</th>
-                <th>Tipo</th>
-                <th class="text-right">Título de agradecimiento</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center">1</td>
-                <td>Andrew Mike</td>
-                <td>Develop</td>
-                <td>Normal</td>
-                <td class="text-right">Me Sirvio</td>
-              </tr>
-            </tbody>
-          </table>
+          <h4 class="card-title">Simple Table</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive ps">
+            <table class="table table-bordered table-striped">
+              <thead class="text-primary">
+                <tr>
+                  <th>Name</th>
+                  <th>Job Position</th>
+                  <th class="text-center">Since</th>
+                  <th class="text-center">Salary</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Andrew Mike</td>
+                  <td>Develop</td>
+                  <td class=" text-center">2013</td>
+                  <td class=" text-center">€ 99,225</td>
+                  <td class=" text-right"><button class=" btn btn-success btn-link btn-sm btn-icon" type="button"><i
+                        class="tim-icons icon-refresh-01"></i></button><button class="btn btn-danger btn-link btn-sm"
+                      type="button"><i class=" tim-icons icon-simple-remove"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

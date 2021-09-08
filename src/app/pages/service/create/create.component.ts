@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { SimpleModalService } from "ngx-simple-modal";
+import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { normalize } from "path";
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
@@ -30,7 +31,8 @@ export class CreateComponent implements OnInit {
     private formBuilder: FormBuilder,
     private serviceService: ServiceService,
     private spinner: NgxUiLoaderService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -39,13 +41,9 @@ export class CreateComponent implements OnInit {
 
   createServiceForm() {
     this.service = this.formBuilder.group({
-      userId: ["string"],
       name: ["", Validators.required],
       mode: [""],
-      icon: ["string"],
       description: ["", Validators.required],
-      image: ["string"],
-      video: ["string"],
       title: ["", Validators.required],
       titleGratitude: ["", Validators.required],
       descriptionGratitude: ["", Validators.required],
@@ -59,17 +57,17 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  showMessage(i:any, y:any,z:any){
-    if(this.serviceType.value.checkbox1==true){
-      this.service.value.type= "normal";
-    }else if (this.serviceType.value.checkbox2==true){
-      this.service.value.type= "encuesta de emprendedores";
-    }else{
-      this.service.value.type= "otros";
+  showMessage(i: any, y: any, z: any) {
+    if (this.serviceType.value.checkbox1 == true) {
+      this.service.value.type = "normal";
+    } else if (this.serviceType.value.checkbox2 == true) {
+      this.service.value.type = "encuesta de emprendedores";
+    } else {
+      this.service.value.type = "otros";
     }
   }
 
-  showAlert() {
+  imageCropper() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
         this.imageIcon = data;
@@ -77,7 +75,7 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  showCover() {
+  imageCropper1() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
         this.imageCover = data;
@@ -85,7 +83,7 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  showDescription() {
+  imageCropper2() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
         this.imageDescription = data;
@@ -94,29 +92,44 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
-    this.showMessage(this.serviceType.value.checkbox1,this.serviceType.value.checkbox2,this.serviceType.value.checkbox3)
-    const value = this.service.value;
-    console.log(value);
-    //   const start = new Date();
-    //   this.spinner.start();
-    //   this.service.value.icon = this.imageIcon,
-    //   this.service.value.video = this.imageCover,
-    //   this.service.value.image = this.imageDescription
+    const start = new Date();
+    this.spinner.start();
+    this.showMessage(
+      this.serviceType.value.checkbox1,
+      this.serviceType.value.checkbox2,
+      this.serviceType.value.checkbox3
+    );
 
-    //   this.serviceService.post(this.service.value).subscribe((data :any ) => {
-    //     this.service.value.userId = data.id;
-    //     console.log(data);
-    //     console.log(this.service.value);
-    //     this.serviceService.post(this.service.value).subscribe(serviceData =>{
-    //      const end = new Date();
-    //      const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-    //      setTimeout(() => {
-    //        console.log(serviceData);
-    //        this.spinner.stop();
-    //      }, elapsed);
-    //     });
-    //    this.router.navigate(['/service/list'])
-    //  });
+    this.serviceService.post(this.service.value).subscribe((data: any) => {
+      this.service.value.icon = this.imageIcon;
+      this.service.value.video = this.imageCover;
+      this.service.value.image = this.imageDescription;
+      this.service.value.userId = JSON.stringify(data.id);
+      console.log(data);
+      console.log(this.service.value);
+      this.serviceService.post(this.service.value).subscribe((serviceData) => {
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.spinner.stop();
+          this.router.navigate(["/service/list"]);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo existosamente su servicio', '5000', 'success', 'top', 'center');
+        }, elapsed);
+      }, error => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
+    });
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, "", {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: "toast-" + from + "-" + align,
+    });
   }
 
   get nameField() {
@@ -146,5 +159,4 @@ export class CreateComponent implements OnInit {
   get typeField3() {
     return this.serviceType.get("checkbox3");
   }
-
 }

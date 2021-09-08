@@ -1,7 +1,7 @@
 <div class="content">
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/trainer/create" type="button">Agregar entrenador</button>
+      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
       <div class="card">
         <div class="card-header">
           <h4 class="card-title">Simple Table</h4>
@@ -24,9 +24,14 @@
                   <td>Develop</td>
                   <td class=" text-center">2013</td>
                   <td class=" text-center">€ 99,225</td>
-                  <td class=" text-right"><button class=" btn btn-success btn-link btn-sm btn-icon" type="button"><i
-                        class="tim-icons icon-refresh-01"></i></button><button class="btn btn-danger btn-link btn-sm"
-                      type="button"><i class=" tim-icons icon-simple-remove"></i></button></td>
+                  <td class=" text-right">
+                    <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
+                      ngbTooltip="ver" container="body"><i class="tim-icons icon-paper"></i></button>
+                    <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar"
+                      container="body"><i class=" tim-icons icon-pencil"></i></button>
+                    <button class="btn btn-danger btn-link btn-sm" type="button" placement="top" ngbTooltip="eliminar"
+                      container="body"><i class=" tim-icons icon-trash-simple"></i></button>
+                  </td>
                 </tr>
               </tbody>
             </table>

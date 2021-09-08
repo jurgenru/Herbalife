@@ -48,8 +48,8 @@
                         formControlName = "name"
                       />
                       <div *ngIf="nameField.errors && (nameField.dirty || nameField.touched)">
-                        <p *ngIf="nameField.hasError('required')">
-                          Este espacio es requerido
+                        <p *ngIf="nameField.hasError('required')" class="text-danger">
+                          Este espacio es <strong>requerido</strong>
                         </p>
                         <br>
                         <br>
@@ -66,8 +66,8 @@
                         formControlName = "description"
                       ></textarea>
                       <div *ngIf="descriptionField.errors && (descriptionField.dirty || descriptionField.touched)">
-                        <p *ngIf="descriptionField.hasError('required')">
-                          Este espacio es requerido
+                        <p *ngIf="descriptionField.hasError('required')" class="text-danger">
+                          Este espacio es <strong>requerido</strong>
                         </p>
                         <br>
                         <br>
@@ -86,4 +86,4 @@
     </div>
   </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Enviando su testimonio..."></ngx-ui-loader>

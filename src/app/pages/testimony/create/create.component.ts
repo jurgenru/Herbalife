@@ -6,6 +6,7 @@ import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
 import { StatementService } from "src/app/services/statement.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-create",
@@ -20,12 +21,13 @@ export class CreateComponent implements OnInit {
     private statementService: StatementService,
     private spinner: NgxUiLoaderService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {}
 
-    statement = this.formBuilder.group({
+  statement = this.formBuilder.group({
     name: ["", Validators.required],
     description: ["", Validators.required],
   });
@@ -50,39 +52,22 @@ export class CreateComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
 
-    this.statementService.post(this.statement.value).subscribe((data: any) => {
+    this.userService.me().subscribe((user: any) => {
+      this.statement.value.userId = user.id;
       this.statement.value.image = this.imageContent;
-      this.statement.value.userId = JSON.stringify(data.id);
-      console.log(data);
-      console.log(this.statement.value);
-      this.statementService.post(this.statement.value).subscribe(
-        (statementData) => {
-          const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
-            console.log(statementData);
-            this.spinner.stop();
-            this.router.navigate(["/testimony/list"]);
-            this.notification(
-              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha completado sus datos exitosamente',
-              "5000",
-              "success",
-              "top",
-              "center"
-            );
-          }, elapsed);
-        },
-        (error) => {
+
+      this.statementService.post(this.statement.value).subscribe(data => {
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
           this.spinner.stop();
-          this.notification(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al completar sus datos, intente nuevamente',
-            "5000",
-            "danger",
-            "top",
-            "center"
-          );
-        }
-      );
+          this.router.navigate(['testimony/list']);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tesimonio satisfactoriamente', '5000', 'success', 'top', 'center');
+        }, elapsed);
+      }, error => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el testimonio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
     });
   }
 
