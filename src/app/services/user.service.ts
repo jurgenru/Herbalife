@@ -19,12 +19,11 @@ export class UserService {
         return this.http.get(`${environment.apiUrl}/users/${id}?filter=${filter}`).pipe();
     }
 
-    getBlogById(id) {
-        return this.http.get(`${environment.apiUrl}/users/${id}/blogs`).pipe();
+    getBlogById(id, filter) {
+        return this.http.get(`${environment.apiUrl}/users/${id}/blogs?filter=${filter}`).pipe();
     }
 
-    getStoreByUserId(id, filter) {
-        return this.http.get(`${environment.apiUrl}/users/${id}/stores?filter=${filter}`).pipe();
-
+    getStoreById(id, filter) {
+        return this.http.get(`${environment.apiUrl}/users/${id}/statements?filter=${filter}`).pipe();
     }
 }

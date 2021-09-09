@@ -13,18 +13,15 @@ const routes: Routes = [
     children: [{
       path: 'create',
       component: CreateComponent
-    },
-    {
-      path: 'list',
-      component: ListComponent
-    },
-    {
-      path: 'view',
+    }, {
+      path: 'view/:id',
       component: ViewComponent
-    },
-    {
+    }, {
       path: 'edit/:id',
       component: EditComponent
+    }, {
+      path: 'list',
+      component: ListComponent
     }]
   }];
 
@@ -37,5 +34,6 @@ export const routedComponents = [
   BlogComponent,
   CreateComponent,
   EditComponent,
-  ViewComponent
+  ViewComponent,
+  ListComponent
 ];
