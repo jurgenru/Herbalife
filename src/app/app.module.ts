@@ -15,6 +15,7 @@ import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
+import { BlogService } from "./services/blog.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
@@ -39,6 +40,7 @@ import { NgxPaginationModule } from "ngx-pagination";
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
   providers: [
     StoreService,
+    BlogService,
     UserService,
     ManagerService,
     {
