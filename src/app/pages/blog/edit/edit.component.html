@@ -57,35 +57,61 @@
                             <br>
                             <hr color="purple" />
                             <br>
-                            <div class="row">
-                                <div class="col-12">
-                                    <h4>Artículos</h4>
-                                    <div class="table-responsive ps">
-                                        <table class="table table-striped">
-                                            <thead class="text-primary">
-                                                <tr>
-                                                    <td>Título</td>
-                                                    <td>Descripcion</td>
-                                                    <td>Imagen</td>
-                                                    <td>Fecha de creacion</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let article of articles">
-                                                    <td>{{article.title}}</td>
-                                                    <td>{{article.description}}</td>
-                                                    <td><img class="img-product" [src]="article.image" alt=""></td>
-                                                    <td>{{article.created | date: 'yyyy-MM-dd'}}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        </form>
+                        <form>
+                            <div style="text-align: center">
+                                <h4>Artículos</h4>
+                            </div>
+                            <div>
+                                <br />
+                                <div class="row" *ngFor="let article of articles">
+                                    <div class="col-12 col-md-5">
+                                        <div class="container-image">
+                                            <img [src]="article.image" alt="articleImage" class="mx-auto d-block"
+                                                *ngIf="!articleImage; else noArticleImage">
+                                            <ng-template #noArticleImage>
+                                                <img [src]="articleImage" alt="">
+                                            </ng-template>
+                                            <div class="overlay" (click)="showBlog(i)">
+                                                <div class="text text-light">
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    Editar imagen o video al artículo
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <label> Titulo </label>
+                                        <input class=" form-control" placeholder="Coloca el titulo del artículo"
+                                            type="text" [value]="article.title" ]>
+                                        <div>
+                                            <br>
+                                            <br>
+                                        </div>
+                                        <label> Contenido del articulo </label>
+                                        <textarea class="form-control" placeholder="Coloca el contenido del articulo"
+                                            rows="6" [value]="article.description"></textarea>
+
                                     </div>
                                 </div>
+
                             </div>
+
                         </form>
                     </div>
+                    <br>
+                    <br>
+                    <div class="card-footer">
+                        <div class=" button-container pull-right">
+                            <button type="submit" class="btn btn-info">
+                                Editar
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Editando blog">
-    </ngx-ui-loader>
+</div>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Editando blog">
+</ngx-ui-loader>
