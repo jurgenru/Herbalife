@@ -5,99 +5,91 @@
                 <form #form="ngForm" (ngSubmit)="edit()">
                     <div class=" card-body">
                         <div style="text-align: center">
-                            <h2>BLOG</h2>
-                            <h5>Puedes añadir hasta 12 artículos</h5>
+                            <h2>Editar Blog</h2>
+                        </div>
+                        <br>
+                        <hr />
+                        <br>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-5">
+                                <label> Nombre del Blog </label>
+                                <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
+                                    [value]="blog.name">
+                            </div>
                         </div>
                         <br>
                         <br>
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="container-image">
+                                    <img id="prueba" [src]="blog.icon" alt="IconBlog" class="mx-auto d-block"
+                                        *ngIf="!iconImage; else noImageIcon">
+                                    <ng-template #noImageIcon>
+                                        <img [src]="iconImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showIcon()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Editar icono para tu blog (opcional)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9 text-center">
+                                <div class="container-image">
+                                    <img [src]="blog.image" alt="PortraitImage" class="mx-auto d-block"
+                                        *ngIf="!portraitImage; else noImagePortrait">
+                                    <ng-template #noImagePortrait>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Editar imagen o video a la portada
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
                         <hr color="purple" />
                         <br>
-                        <form [formGroup]="blog">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-5">
-                                    <label> Nombre del Blog </label>
-                                    <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
-                                        [value]="blog.name">
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="row">
-                                <div class="col-12 col-md-3">
-                                    <div class="container-image">
-                                        <img id="prueba" [src]="blog.icon" alt="IconBlog" class="mx-auto d-block"
-                                            *ngIf="!iconImage; else noImageIcon">
-                                        <ng-template #noImageIcon>
-                                            <img [src]="iconImage" alt="">
-                                        </ng-template>
-                                        <div class="overlay" (click)="showIcon()">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Editar icono para tu blog (opcional)
-                                            </div>
-                                        </div>
+                        <div style="text-align: center">
+                            <h4>Artículos</h4>
+                        </div>
+                        <div class="row">
+                            <div *ngFor="let article of articles; let i = index;">
+                                <div class="col-12">
+                                    <br />
+                                    <div class="row pl-1 pl-md-3">
+                                        <p>Artículo {{i+1}}</p>
                                     </div>
-                                </div>
-                                <div class="col-12 col-md-9 text-center">
-                                    <div class="container-image">
-                                        <img [src]="blog.image" alt="PortraitImage" class="mx-auto d-block"
-                                            *ngIf="!portraitImage; else noImagePortrait">
-                                        <ng-template #noImagePortrait>
-                                            <img [src]="portraitImage" alt="">
-                                        </ng-template>
-                                        <div class="overlay" (click)="showPortrait()">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Editar imagen o video a la portada
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <hr color="purple" />
-                            <br>
-                        </form>
-                        <form>
-                            <div style="text-align: center">
-                                <h4>Artículos</h4>
-                            </div>
-                            <div>
-                                <br />
-                                <div class="row" *ngFor="let article of articles">
                                     <div class="col-12 col-md-5">
-                                        <div class="container-image">
-                                            <img [src]="article.image" alt="articleImage" class="mx-auto d-block"
-                                                *ngIf="!articleImage; else noArticleImage">
-                                            <ng-template #noArticleImage>
-                                                <img [src]="articleImage" alt="">
-                                            </ng-template>
-                                            <div class="overlay" (click)="showBlog(i)">
-                                                <div class="text text-light">
-                                                    <i class="tim-icons icon-upload"> </i>
-                                                    Editar imagen o video al artículo
-                                                </div>
+                                        <img [src]="article.image" alt="articleImage" class="mx-auto d-block"
+                                            *ngIf="!articleImage[i]; else noArticleImage">
+                                        <ng-template #noArticleImage>
+                                            <img [src]="articleImage[i]" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showBlog(i)">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Editar imagen o video al artículo
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-7">
                                         <label> Titulo </label>
                                         <input class=" form-control" placeholder="Coloca el titulo del artículo"
-                                            type="text" [value]="article.title" ]>
+                                            type="text" [value]="article.title">
                                         <div>
-                                            <br>
-                                            <br>
                                         </div>
                                         <label> Contenido del articulo </label>
                                         <textarea class="form-control" placeholder="Coloca el contenido del articulo"
                                             rows="6" [value]="article.description"></textarea>
-
                                     </div>
                                 </div>
-
                             </div>
-
-                        </form>
+                        </div>
                     </div>
                     <br>
                     <br>
