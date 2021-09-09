@@ -7,7 +7,6 @@
                         <div style="text-align: center">
                             <h2>Editar Blog</h2>
                         </div>
-                        <br>
                         <hr />
                         <br>
                         <div class="row justify-content-center">
@@ -20,12 +19,13 @@
                         <br>
                         <br>
                         <div class="row">
-                            <div class="col-12 col-md-3">
-                                <div class="container-image">
-                                    <img id="prueba" [src]="blog.icon" alt="IconBlog" class="mx-auto d-block"
-                                        *ngIf="!iconImage; else noImageIcon">
+                            <div class="col-12 col-md-5">
+                                <div class="container-image p-2">
+                                    <img id="prueba" [src]="blog.icon" alt="IconBlog" width="100%" height="100%"
+                                        class="d-block img-responsive" *ngIf="!iconImage; else noImageIcon">
                                     <ng-template #noImageIcon>
-                                        <img [src]="iconImage" alt="">
+                                        <img [src]="iconImage" alt="" width="100%" height="100%"
+                                            class="d-block img-responsive">
                                     </ng-template>
                                     <div class="overlay" (click)="showIcon()">
                                         <div class="text text-light">
@@ -35,12 +35,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-9 text-center">
-                                <div class="container-image">
-                                    <img [src]="blog.image" alt="PortraitImage" class="mx-auto d-block"
-                                        *ngIf="!portraitImage; else noImagePortrait">
+                            <div class="col-12 col-md-7 text-center">
+                                <div class="container-image p-2">
+                                    <img [src]="blog.image" alt="PortraitImage" width="100%" height="100%"
+                                        class="d-block img-responsive" *ngIf="!portraitImage; else noImagePortrait">
                                     <ng-template #noImagePortrait>
-                                        <img [src]="portraitImage" alt="">
+                                        <img [src]="portraitImage" alt="" width="100%" height="100%"
+                                            class="d-block img-responsive">
                                     </ng-template>
                                     <div class="overlay" (click)="showPortrait()">
                                         <div class="text text-light">
@@ -52,23 +53,35 @@
                             </div>
                         </div>
                         <br>
-                        <hr color="purple" />
+                        <hr />
                         <br>
                         <div style="text-align: center">
                             <h4>Artículos</h4>
                         </div>
-                        <div class="row">
-                            <div *ngFor="let article of articles; let i = index;">
-                                <div class="col-12">
-                                    <br />
-                                    <div class="row pl-1 pl-md-3">
-                                        <p>Artículo {{i+1}}</p>
+                        <div *ngFor="let article of articles; let i = index;">
+                            <div class="col-12">
+                                <div class="row pl-1 pl-md-3">
+                                    <p>Artículo {{i+1}}</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-7">
+                                        <label> Titulo </label>
+                                        <input class=" form-control" placeholder="Coloca el titulo del artículo"
+                                            type="text" [value]="article.title">
+                                        <div>
+                                        </div>
+                                        <label> Contenido del articulo </label>
+                                        <textarea class="form-control rounded pl-2 pr-2"
+                                            placeholder="Coloca el contenido del articulo" rows="6"
+                                            [value]="article.description"></textarea>
                                     </div>
-                                    <div class="col-12 col-md-5">
-                                        <img [src]="article.image" alt="articleImage" class="mx-auto d-block"
+                                    <div class="col-12 col-md-5 mt-4 mb-4">
+                                        <img [src]="article.image" alt="articleImage" width="100%" height="100%"
+                                            class="d-block img-responsive"
                                             *ngIf="!articleImage[i]; else noArticleImage">
                                         <ng-template #noArticleImage>
-                                            <img [src]="articleImage[i]" alt="">
+                                            <img [src]="articleImage[i]" alt="" width="100%" height="100%"
+                                                class="d-block img-responsive">
                                         </ng-template>
                                         <div class="overlay" (click)="showBlog(i)">
                                             <div class="text text-light">
@@ -77,22 +90,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-7">
-                                        <label> Titulo </label>
-                                        <input class=" form-control" placeholder="Coloca el titulo del artículo"
-                                            type="text" [value]="article.title">
-                                        <div>
-                                        </div>
-                                        <label> Contenido del articulo </label>
-                                        <textarea class="form-control" placeholder="Coloca el contenido del articulo"
-                                            rows="6" [value]="article.description"></textarea>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <br>
-                    <br>
                     <div class="card-footer">
                         <div class=" button-container pull-right">
                             <button type="submit" class="btn btn-info">
