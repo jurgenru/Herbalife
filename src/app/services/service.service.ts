@@ -13,8 +13,11 @@ export class ServiceService {
     get(filter) {
       return this.http.get(`${environment.apiUrl}services?filter=${filter}`).pipe();
     }
-    getServiceById(id) {
+    getById(id) {
       return this.http.get(`${environment.apiUrl}services/${id}`).pipe();
+    }
+    getServiceById(id){
+      return this.http.get(`${environment.apiUrl}users/${id}/services`).pipe();
     }
     delete(id){
       return this.http.delete(`${environment.apiUrl}services/${id}`).pipe();
