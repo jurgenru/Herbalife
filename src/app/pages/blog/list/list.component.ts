@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from 'src/app/services/blog.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -10,10 +11,11 @@ export class ListComponent implements OnInit {
 
   filterPost = '';
   pageActual = 1;
-  lists: any = [];
+  lists: any;
 
   constructor(
     private blogService: BlogService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -21,10 +23,11 @@ export class ListComponent implements OnInit {
   }
 
   get() {
-    const filter = `{"order":["id DESC"]}`;
-    this.blogService.get(filter).subscribe(data => {
-      this.lists = data;
-      console.log(this.lists);
+    this.userService.me().subscribe((data: any) => {
+      this.userService.getBlogById(data.id).subscribe(blo => {
+        console.log(blo);
+        this.lists = blo;
+      });
     });
   }
 

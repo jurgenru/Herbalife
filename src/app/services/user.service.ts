@@ -18,4 +18,8 @@ export class UserService {
     getById(id, filter) {
         return this.http.get(`${environment.apiUrl}/users/${id}?filter=${filter}`).pipe();
     }
+
+    getBlogById(id) {
+        return this.http.get(`${environment.apiUrl}/users/${id}/blogs`).pipe();
+    }
 }
