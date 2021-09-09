@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ReactiveFormsModule,
     FormsModule,
     SimpleModalModule,
-    ImageCropperModule
+    ImageCropperModule,
+    NgxUiLoaderModule
 
   ],
   exports: [
