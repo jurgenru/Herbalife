@@ -3,55 +3,59 @@
         <div class=" col-md-12">
             <div class="card card-user">
                 <div class=" card-body">
-                        <div style="text-align: center">
+                    <div style="text-align: center">
                         <h2>Tienda</h2>
-                        <button (click)="post()">enviar</button>
-                        <h5>Puedes añadir solo hasta 12 categorias</h5>                      
+                        <h5>Puedes añadir solo hasta 12 categorias</h5>
                     </div>
                     <br>
                     <br>
                     <hr>
                     <br>
-                    <div class="row">
-                        <div class="col-12 col-md-3">
-                            <div class="container-image">
-                                <img  src="../../../../assets/img/emilyz.jpg" alt="IconStore" class="mx-auto d-block"
-                                    *ngIf="!iconImage; else noImageIcon">
-                                <ng-template #noImageIcon>
-                                    <img [src]="iconImage" alt="">
-                                </ng-template>
-                                <div class="overlay" (click)="showIcon()">
-                                    <div class="text text-light">
-                                        <i class="tim-icons icon-upload"> </i>
-                                        Agregar icono a la categoria (opcional)
+                    <form [formGroup]="store">
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/emilyz.jpg" alt="IconStore" class="mx-auto d-block"
+                                        *ngIf="!iconImage; else noImageIcon">
+                                    <ng-template #noImageIcon>
+                                        <img [src]="iconImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showIcon()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar icono a la categoria (opcional)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9 text-center">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/emilyz.jpg" alt="PortraitStore"
+                                        class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
+                                    <ng-template #noPortraitImage>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen o link de video al portada
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-9 text-center">
-                            <div class="container-image">
-                                <img  src="../../../../assets/img/emilyz.jpg" alt="PortraitStore" class="mx-auto d-block"
-                                    *ngIf="!portraitImage; else noPortraitImage">
-                                <ng-template #noPortraitImage>
-                                    <img [src]="portraitImage" alt="">
-                                </ng-template>
-                                <div class="overlay" (click)="showPortrait()">
-                                    <div class="text text-light">
-                                        <i class="tim-icons icon-upload"> </i>
-                                        Agregar imagen o link de video al portada
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <br>
-                    <br>
-                    <form>
+                        <br>
+                        <br>
                         <div class="row">
                             <div class="col-12 col-md-5">
                                 <label> Nombre de la categoria </label>
-                                <input class=" form-control" placeholder="Nombre de la categoria" type="text" value="">
+                                <input class=" form-control" placeholder="Nombre de la categoria" type="text" value=""
+                                    formControlName="title">
+                                <div *ngIf="title.invalid && title.touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -60,8 +64,13 @@
                                 <div class=" form-group">
                                     <label> Descripcion de la categoria </label>
                                     <textarea class=" form-control" cols="80"
-                                        placeholder="Coloca la descripcion de tu tienda" rows="4"
-                                        value="Category description"></textarea>
+                                        placeholder="Coloca la descripcion de tu tienda" rows="4" value=""
+                                        formControlName="description"></textarea>
+                                    <div *ngIf="description.invalid && description.touched">
+                                        <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                        <br>
+                                        <br>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -77,108 +86,137 @@
                     <br>
                     <form [formGroup]="productForm">
                         <div formArrayName="product">
-                          <div *ngFor="let FormInputs of product.controls; let i = index;">
-                              <div class="row pl-1 pl-md-3">
-                                    <p>Producto {{i+1}}</p>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-3">
-                                    <div class="container-image">
-                                        <img  src="../../../../assets/img/emilyz.jpg" alt="ProductImage" class="mx-auto d-block"
-                                            *ngIf="!productImage; else noProductImage">
-                                        <ng-template #noProductImage>
-                                            <img [src]="productImage" alt="">
-                                        </ng-template>
-                                        <div class="overlay" (click)="showProduct()">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Agregar imagen del producto
+                            <div *ngFor="let FormInputs of product.controls; let i = index;">
+                                <br>
+                                <div [formGroupName]="i">
+                                    <div class="row pl-1 pl-md-3">
+                                        <p>Producto {{i+1}}</p>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 col-md-3">
+                                            <div class="container-image">
+                                                <img src="../../../../assets/img/emilyz.jpg" alt="ProductImage"
+                                                    class="mx-auto d-block"
+                                                    *ngIf="!productImage[i]; else noProductImage">
+                                                <ng-template #noProductImage>
+                                                    <img [src]="productImage[i]" alt="">
+                                                </ng-template>
+                                                <div class="overlay" (click)="showProduct(i)">
+                                                    <div class="text text-light">
+                                                        <i class="tim-icons icon-upload"> </i>
+                                                        Agregar imagen del producto
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <label> Nombre del producto </label>
+                                            <input class=" form-control" [attr.id]="'name' + i"
+                                                placeholder="Nombre del producto" type="text" formControlName="name"
+                                                value="">
+                                            <div *ngIf="product.controls[i].get('name').invalid && 
+                                                product.controls[i].get('name').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                                <br>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label> Precio del producto </label>
+                                            <input class=" form-control" placeholder="Precio del producto" type="text"
+                                                value="" formControlName="price">
+                                            <div *ngIf="product.controls[i].get('price').invalid && 
+                                                product.controls[i].get('price').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <label> Cantidad de productos disponible </label>
+                                            <input class=" form-control" placeholder="Cantidad de productos disponible"
+                                                type="text" value="" formControlName="amount">
+                                            <div *ngIf="product.controls[i].get('amount').invalid && 
+                                                product.controls[i].get('amount').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <label> Descripcion del producto </label>
+                                            <textarea class=" form-control" cols="80"
+                                                placeholder="Coloca la descripcion del producto" rows="4"
+                                                value="Category description" formControlName="description"></textarea>
+                                            <div *ngIf="product.controls[i].get('description').invalid && 
+                                                product.controls[i].get('description').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                                <br>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
-                                    <label> Nombre del producto </label>
-                                    <input class=" form-control" placeholder="Nombre del producto" type="text"
-                                        >
                                     <br>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <label> Precio del producto </label>
-                                    <input class=" form-control" placeholder="Precio del producto" type="text"
-                                        value="">
-                                    <br>
-                                    <label> Cantidad de productos disponible </label>
-                                    <input class=" form-control" placeholder="Cantidad de productos disponible"
-                                        type="number" value="">
-                                    <br>
-                                    <label> Descripcion del producto </label>
-                                    <textarea class=" form-control" cols="80"
-                                        placeholder="Coloca la descripcion del producto" rows="4"
-                                        value="Category description"></textarea>
+                                    <div class="text-center">
+                                        <h5> Puedes añadir hasta 4 categorias del producto con sus respectivas
+                                            caracteristicas</h5>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-3 pl-md-4">
+                                            <select id="sabor" class="form-control">
+                                                <option selected>Sabor</option>
+                                                <option>Frutilla</option>
+                                                <option>Chocolate</option>
+                                                <option>Vainilla</option>
+                                                <option>agregar</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <select id="peso" class="form-control">
+                                                <option selected>Peso</option>
+                                                <option>Peso1</option>
+                                                <option>Peso2</option>
+                                                <option>Peso3</option>
+                                                <option>Peso4</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <select id="tipo" class="form-control">
+                                                <option selected>Tipo</option>
+                                                <option>tipo1</option>
+                                                <option>tipo2</option>
+                                                <option>tipo3</option>
+                                                <option>tipo4</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label> Precio extra del producto </label>
+                                            <input class=" form-control" placeholder="Precio extra del producto"
+                                                type="text" value="" formControlName="additionalPrice">
+                                            <textarea class=" form-control" cols="80"
+                                                placeholder="Datos extra del producto" rows="20" value=""
+                                                formControlName="additionalFeatures"></textarea>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <button (click)="removeProduct(i)"
+                                        class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                        <i class="tim-icons icon-simple-delete"></i>
+                                    </button>
                                 </div>
                             </div>
-                            <br>
-                            <br>
-                            <div class="text-center">
-                                <h5> Puedes añadir hasta 4 categorias del producto con sus respectivas
-                                    caracteristicas</h5>
+                            <div class=" button-container">
+                                <button (click)="addProductForm()"
+                                    class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                                    href="javascript:void(0)">
+                                    <i class="tim-icons icon-simple-add"></i>
+                                </button>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-3 pl-md-4" >
-                                    <select id="sabor" class="form-control">
-                                        <option selected>Sabor</option>
-                                        <option>Sabor1</option>
-                                        <option>Sabor2</option>
-                                        <option>Sabor3</option>
-                                        <option>Sabor4</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3" >
-                                    <select id="peso" class="form-control">
-                                        <option selected>Peso</option>
-                                        <option>Peso1</option>
-                                        <option>Peso2</option>
-                                        <option>Peso3</option>
-                                        <option>Peso4</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <select id="tipo" class="form-control">
-                                        <option selected>Tipo</option>
-                                        <option>tipo1</option>
-                                        <option>tipo2</option>
-                                        <option>tipo3</option>
-                                        <option>tipo4</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label> Precio extra del producto </label>
-                                    <input class=" form-control" placeholder="Precio extra del producto" type="text"
-                                        value="">
-                                    <textarea class=" form-control" cols="80" placeholder="Datos extra del producto"
-                                        rows="20" value=""></textarea>
-                                </div>
-                            </div>
-                            <hr>
-                            <button (click)="removeProduct(i)"
-                            class="btn btn-danger btn-fab btn-icon btn-round float-left">
-                            <i class="tim-icons icon-simple-delete"></i>
-                            </button>
-                          </div>
-                          <div class=" button-container">
-                            <button (click)="addProductForm()"
-                                class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                                href="javascript:void(0)">
-                                <i class="tim-icons icon-simple-add"></i>
-                            </button>
                         </div>
-                        </div>
-                      </form>
+                    </form>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button (click)="submit()"
-                            class="btn btn-info">
+                        <button (click)="post()" class="btn btn-info" [disabled]="store.invalid || product.invalid">
                             Guardar
                         </button>
                     </div>
@@ -187,3 +225,5 @@
         </div>
     </div>
 </div>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando tienda">
+</ngx-ui-loader>
