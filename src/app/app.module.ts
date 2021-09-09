@@ -22,6 +22,7 @@ import { ManagerService } from "./services/manager.service";
 import { NgxPaginationModule } from "ngx-pagination";
 import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
+import { FilterServicePipe } from './pipes/filter-service.pipe';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { StatementService } from "./services/statement.service";
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
+  declarations: [AppComponent, AdminLayoutComponent, HomeComponent, FilterServicePipe],
   providers: [
     StoreService,
     UserService,

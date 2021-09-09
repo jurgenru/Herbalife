@@ -7,10 +7,12 @@ import { ServiceRoutingModule } from './service.routing';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterServicePipe } from 'src/app/pipes/filter-service.pipe';
 
 
 @NgModule({
-  declarations: [...routedComponents],
+  declarations: [...routedComponents, FilterServicePipe],
   imports: [
     CommonModule,
     ServiceRoutingModule,
@@ -19,7 +21,8 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     NgbModule,
     SimpleModalModule,
     ImageCropperModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    NgxPaginationModule
   ],
   exports: [
     ...routedComponents

@@ -57,11 +57,11 @@ export class CreateComponent implements OnInit {
 
   showMessage(i: any, y: any, z: any) {
     if (this.serviceType.value.checkbox1 == true) {
-      this.service.value.type = "normal";
+      this.service.value.type = "Normal";
     } else if (this.serviceType.value.checkbox2 == true) {
-      this.service.value.type = "encuesta de emprendedores";
+      this.service.value.type = "Encuesta de Emprendedores";
     } else {
-      this.service.value.type = "otros";
+      this.service.value.type = "Otros";
     }
   }
 
