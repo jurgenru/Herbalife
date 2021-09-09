@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ToastrService } from "ngx-toastr";
 import { StatementService } from "src/app/services/statement.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-list",
@@ -14,6 +15,7 @@ export class ListComponent implements OnInit {
   pageActual = 1;
 
   constructor(
+    private userService: UserService,
     private statementService: StatementService,
     private modalService: NgbModal,
     private toastr: ToastrService
@@ -24,19 +26,22 @@ export class ListComponent implements OnInit {
   }
 
   get() {
-    const filter = `{"order":["id DESC"]}`;
-    this.statementService.get(filter).subscribe((data) => {
-      this.lists = data;
-      console.log(this.lists);
+    const filter = `{"fields": {"id": true, "name": true, "description": true, "created": true}, "order":["id DESC"]}`;
+    this.userService.me().subscribe((data: any) => {
+      this.userService.getStatementByUserId(data.id, filter).subscribe(statement => {
+        this.lists = statement;
+      });
     });
   }
 
   showDelete(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.statementService.deleteById(result).subscribe((statement) => {
-        this.lists = [];
-        this.get();
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha eliminado el testimonio exitosamente', '5000', 'success', 'top', 'center');
+      this.statementService.delete(result).subscribe((statement) => {
+        this.statementService.deleteStatementById(result).subscribe(prod => {
+          this.lists = [];
+          this.get();
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha eliminado la tienda exitosamente', '5000', 'success', 'top', 'center');
+        })
       });
     });
   }

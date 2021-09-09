@@ -21,6 +21,9 @@ export class UserService {
 
     getStoreByUserId(id, filter) {
         return this.http.get(`${environment.apiUrl}/users/${id}/stores?filter=${filter}`).pipe();
+    }
 
+    getStatementByUserId(id, filter) {
+      return this.http.get(`${environment.apiUrl}/users/${id}/statements?filter=${filter}`).pipe();
     }
 }

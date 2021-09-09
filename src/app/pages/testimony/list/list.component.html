@@ -1,7 +1,7 @@
 <div class="content">
   <div class="row">
     <div class="col-12">
-      <button [disabled]="lists.length > 4" class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
+      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
       <div class="card">
         <div class="card-header">
           <div class="row">
@@ -47,7 +47,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <p>¿ Esta seguro de eliminar la tienda ?</p>
+                      <p>¿ Esta seguro de eliminar el testimonio ?</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline-danger" (click)="modal.close(list.id)">Eliminar</button>

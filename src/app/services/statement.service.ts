@@ -10,8 +10,11 @@ export class StatementService {
   post(body) {
     return this.http.post(`${environment.apiUrl}statements`, body).pipe();
   }
-  deleteById(id){
+  delete(id){
     return this.http.delete(`${environment.apiUrl}statements/${id}`).pipe();
+  }
+  deleteStatementById(id) {
+    return this.http.delete(`${environment.apiUrl}users/${id}/statements`).pipe();
   }
   get(filter) {
     return this.http.get(`${environment.apiUrl}statements?filter=${filter}`).pipe();
