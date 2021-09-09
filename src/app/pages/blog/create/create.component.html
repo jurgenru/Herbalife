@@ -5,12 +5,11 @@
                 <div class=" card-body">
                     <div style="text-align: center">
                         <h2>BLOG</h2>
-                        <h5>Puedes añadir hasta 12 categorias</h5>
+                        <h5>Puedes añadir hasta 12 artículos</h5>
                     </div>
                     <br>
-                    <br>
                     <hr>
-                    <br>
+                    <br />
                     <form [formGroup]="blogForm">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-5">
@@ -19,9 +18,9 @@
                                     value="" formControlName="blogTitle">
                             </div>
                         </div>
-                        <br>
+                        <!-- <br>
                         <hr color="purple" />
-                        <br>
+                        <br> -->
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="container-image">
@@ -33,7 +32,7 @@
                                     <div class="overlay" (click)="showIcon()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
-                                            Agregar icono a la categoria (opcional)
+                                            Agregar icono para tu blog (opcional)
                                         </div>
                                     </div>
                                 </div>
@@ -55,17 +54,18 @@
                             </div>
                         </div>
                         <br>
-                        <hr color="purple"/>
+                        <hr />
                         <br>
                         <div style="text-align: center">
-                            <h4>Articulos</h4>
+                            <h4>Artículos</h4>
                         </div>
                         <div formArrayName="article">
                             <div *ngFor="let FormInputs of article.controls; let i = index;">
-                                <br>
                                 <div [formGroupName]="i">
+                                    <br />
+                                    <br />
                                     <div class="row pl-1 pl-md-3">
-                                        <p>Articulo {{i+1}}</p>
+                                        <p>Artículo {{i+1}}</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-5">
@@ -78,7 +78,7 @@
                                                 <div class="overlay" (click)="showBlog()">
                                                     <div class="text text-light">
                                                         <i class="tim-icons icon-upload"> </i>
-                                                        Agregar imagen o video al blog
+                                                        Agregar imagen o video al artículo
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,12 +86,12 @@
                                         <div class="col-12 col-md-7">
                                             <label> Titulo </label>
                                             <input class=" form-control" [attr.id]="'Title' + i"
-                                                placeholder="Coloca el titulo del articulo" formControlName="title"
+                                                placeholder="Coloca el titulo del artículo" formControlName="title"
                                                 type="text">
-                                            <label> Contenido del articulo </label>
-                                            <textarea class="form-control" [attr.id]="'Description' + i"
-                                                placeholder="Coloca el contenido del articulo" rows="6"
-                                                formControlName="themeDevelop" value=""></textarea>
+                                            <label> Contenido del artículo </label>
+                                            <textarea class="form-control rounded p-2" [attr.id]="'Description' + i"
+                                                placeholder="Coloca el contenido del artículo" rows="6"
+                                                formControlName="themeDevelop"></textarea>
                                         </div>
                                     </div>
                                     <br>
@@ -104,13 +104,10 @@
                             </div>
                         </div>
                     </form>
-                    <div class=" button-container">
-                        <button (click)="addArticleForm()"
-                            class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                            href="javascript:void(0)">
-                            <i class="tim-icons icon-simple-add"></i>
-                        </button>
-                    </div>
+                    <button (click)="addArticleForm()" [disabled]="btnAddArticle" style="cursor:pointer;"
+                        class="btn btn-primary btn-fab btn-icon btn-round float-right" href="javascript:void(0)">
+                        <i class="tim-icons icon-simple-add"></i>
+                    </button>
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">

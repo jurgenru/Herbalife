@@ -4,7 +4,7 @@ import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-blog-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
@@ -13,6 +13,8 @@ export class CreateComponent implements OnInit {
   iconImage: any;
   portraitImage: any;
   blogImage: any;
+  btnAddArticle: any;
+  countArticle: any;
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -31,20 +33,29 @@ export class CreateComponent implements OnInit {
     });
   }
   addArticleForm() {
-    const FormInputs = this.formBuilder.group({
-      title: new FormControl(''),
-      themeDevelop: new FormControl(''),
-    });
-  
-    this.article.push(FormInputs);
+    this.countArticle = this.blogForm.value.article.length;
+    if (this.countArticle > 11) {
+      this.btnAddArticle = true;
+    } else {
+      const FormInputs = this.formBuilder.group({
+        title: new FormControl(''),
+        themeDevelop: new FormControl(''),
+      });
+
+      this.article.push(FormInputs);
+    }
   }
   removeArticle(index: number) {
     this.article.removeAt(index);
+    this.countArticle = this.blogForm.value.article.length;
+    if (this.countArticle < 12) {
+      this.btnAddArticle = false;
+    }
   }
   get article(): FormArray {
     return this.blogForm.get('article') as FormArray;
   }
-  get blogTitle(){
+  get blogTitle() {
     return this.blogForm.get("blogTitle");
   }
   showIcon() {
@@ -57,12 +68,12 @@ export class CreateComponent implements OnInit {
       this.portraitImage = data;
     });
   }
-  showBlog(){
+  showBlog() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.blogImage = data;
     });
   }
-  submit(){
+  submit() {
     console.log(this.blogForm.value)
   }
 }

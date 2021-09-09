@@ -9,24 +9,24 @@ import { ViewComponent } from './view/view.component';
 const routes: Routes = [
   {
     path: '',
-        component: BlogComponent,
-        children: [{
-            path: 'create',
-            component: CreateComponent
-        },
-        {
-            path: 'list',
-            component: ListComponent
-        },
-        {
-            path: 'view',
-          component: ViewComponent
-      },
-      {
-        path: 'edit/:id',
-        component: EditComponent
+    component: BlogComponent,
+    children: [{
+      path: 'create',
+      component: CreateComponent
+    },
+    {
+      path: 'list',
+      component: ListComponent
+    },
+    {
+      path: 'view',
+      component: ViewComponent
+    },
+    {
+      path: 'edit/:id',
+      component: EditComponent
     }]
-}];
+  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
