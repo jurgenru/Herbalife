@@ -1,29 +1,35 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { RouterModule } from "@angular/router";
 import { BlogRoutingModule, routedComponents } from './blog.routing';
-import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SimpleModalModule } from 'ngx-simple-modal';
+import { CommonModule } from '@angular/common';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { SimpleModalModule } from 'ngx-simple-modal';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { FilterBlogPipe } from 'src/app/pipes/filter-blog.pipe';
 
 
 @NgModule({
-  declarations: [...routedComponents],
+  declarations: [
+    ...routedComponents,
+    FilterBlogPipe
+  ],
   imports: [
-    CommonModule,
     RouterModule,
     BlogRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    CommonModule,
     SimpleModalModule,
     ImageCropperModule,
-    NgxUiLoaderModule
-
+    NgbModule,
+    NgxPaginationModule,
+    NgxUiLoaderModule,
   ],
   exports: [
-    ...routedComponents
+    ...routedComponents,
   ]
 })
 export class BlogModule { }

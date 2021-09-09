@@ -10,7 +10,7 @@ import { BlogService } from 'src/app/services/blog.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-blog-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
@@ -20,6 +20,8 @@ export class CreateComponent implements OnInit {
   iconImage: any;
   portraitImage: any;
   articleImage: any = [];
+  countArticle: number = 0;
+  btnAddArticle: any;
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -51,6 +53,8 @@ export class CreateComponent implements OnInit {
     });
   }
   addArticle() {
+    this.countArticle++;
+    console.log(this.countArticle);
     const FormInputs = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -58,14 +62,20 @@ export class CreateComponent implements OnInit {
       blogId: [],
       ranting: ['']
     });
-
     this.article.push(FormInputs);
+    if (this.countArticle > 11) {
+      this.btnAddArticle = true;
+    }
   }
 
   removeArticle(index: number) {
+    this.countArticle--;
+    console.log('blog', this.countArticle);
     this.article.removeAt(index);
+    if (this.countArticle < 12) {
+      this.btnAddArticle = false;
+    }
   }
-
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
