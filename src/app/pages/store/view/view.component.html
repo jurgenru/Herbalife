@@ -1,0 +1,105 @@
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="title">Detalles de la Tienda</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-8">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title text-center">Titulo</h4>
+                                        <p class="text-center">{{store.title}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title text-center">Descripcion</h4>
+                                        <p class="text-center">{{store.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title text-center">Icono</h4>
+                                        <img [src]="store.icon" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title text-center">Banner</h4>
+                                        <img [src]="store.image" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-9">
+                            <div class="row">
+                                <div class="5">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title">Titulo</h4>
+                                        <p>daasadasd</p>
+                                    </div>
+                                </div>
+                                <div class="7">
+                                    <div class="mb-2 pr-md-1">
+                                        <h4 class="title">Descripcion</h4>
+                                        <p>dfsgdfgdfgdfg</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-3">
+                            <a class="pull-right">
+                                <i class="fas fa-pencil-alt"></i> Editar
+                            </a>
+                            <br />
+                            <br />
+                            <h5>Imagen del banner</h5>
+                            <img src="assets/img/anime3.png">
+                            <h5>Imagen del icono</h5>
+                            <img src="assets/img/anime3.png" alt="">
+                        </div> -->
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Productos</h4>
+                            <div class="table-responsive ps">
+                                <table class="table table-striped">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <td>Nombre</td>
+                                            <td>Descripcion</td>
+                                            <td>Cantidad</td>
+                                            <td>Precio</td>
+                                            <td>Imagen</td>
+                                            <td>Fecha de creacion</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let product of products">
+                                            <td>{{product.name}}</td>
+                                            <td>{{product.description}}</td>
+                                            <td>{{product.amount}} Unidades</td>
+                                            <td>{{product.price}} Bs</td>
+                                            <td><img [src]="product.image" alt=""></td>
+                                            <td>{{product.created | date: 'yyyy-MM-dd'}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

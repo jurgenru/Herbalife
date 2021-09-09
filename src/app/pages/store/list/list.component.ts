@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-store-list',
@@ -10,10 +12,17 @@ export class ListComponent implements OnInit {
 
   filterPost = '';
   pageActual = 1;
-  lists: any = [];
+  lists: any;
+  numero = {
+    id: 1
+  }
 
   constructor(
-    private storeService: StoreService
+    private userService: UserService,
+    private storeService: StoreService,
+    // private productService: ProductSeriv
+    
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -21,11 +30,22 @@ export class ListComponent implements OnInit {
   }
 
   get() {
-    const filter = `{"order":["id DESC"]}`;
-    this.storeService.get(filter).subscribe(data => {
-      this.lists = data;
-      console.log(this.lists);
+    const filter = `{"fields": {"id": true, "title": true, "description": true, "created": true}, "order":["id DESC"]}`;
+    this.userService.me().subscribe((data: any) => {
+      this.userService.getStoreByUserId(data.id, filter).subscribe(store => {
+        this.lists = store;
+      });
     });
   }
 
+  showDelete(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(result);
+      this.storeService.delete(result).subscribe(store => {
+
+      })
+    }, (reason) => {
+      console.log(reason);
+    });
+  }
 }
