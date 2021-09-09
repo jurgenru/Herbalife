@@ -14,7 +14,7 @@ export class ViewComponent implements OnInit {
     private statementService: StatementService
   ) {
     this.route.params.subscribe(val => {
-      this.statementService.getById(val.id).subscribe(data => {
+      this.statementService.getStatementById(val.id).subscribe(data => {
         this.statements=data
       });
     });
