@@ -8,14 +8,18 @@ import { StatementService } from "src/app/services/statement.service";
   styleUrls: ["./view.component.scss"],
 })
 export class ViewComponent implements OnInit {
-  statements: any ={};
+  statements: any = {};
+  description: any;
   constructor(
     private route: ActivatedRoute,
     private statementService: StatementService
   ) {
-    this.route.params.subscribe(val => {
-      this.statementService.getStatementById(val.id).subscribe(data => {
-        this.statements=data
+    this.route.params.subscribe((val) => {
+      this.statementService.getById(val.id).subscribe((data) => {
+        this.statements = data;
+      });
+      this.statementService.getStatementsById(val.id).subscribe((des) => {
+        this.description = des;
       });
     });
   }
