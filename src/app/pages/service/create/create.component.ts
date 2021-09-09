@@ -49,7 +49,7 @@ export class CreateComponent implements OnInit {
     });
 
     this.serviceType = this.formBuilder.group({
-      checkbox1: [true],
+      checkbox1: [false],
       checkbox2: [false],
       checkbox3: [false],
     });
@@ -90,6 +90,7 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    console.log(this.service.value);
     const start = new Date();
     this.spinner.start();
     this.showMessage(
@@ -98,23 +99,38 @@ export class CreateComponent implements OnInit {
       this.serviceType.value.checkbox3
     );
 
-    this.userService.me().subscribe((user:any) => {
+    this.userService.me().subscribe((user: any) => {
       this.service.value.userId = user.id;
       this.service.value.icon = this.imageIcon;
       this.service.value.video = this.imageCover;
       this.service.value.image = this.imageDescription;
-      this.serviceService.post(this.service.value).subscribe(data => {
-        const end = new Date();
-        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-        setTimeout(()=>{
+      this.serviceService.post(this.service.value).subscribe(
+        (data) => {
+          const end = new Date();
+          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+          setTimeout(() => {
+            this.spinner.stop();
+            this.router.navigate(["service/list"]);
+            this.notification(
+              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su servicio exitosamente',
+              "5000",
+              "success",
+              "top",
+              "center"
+            );
+          }, elapsed);
+        },
+        (error) => {
           this.spinner.stop();
-          this.router.navigate(['service/list']);
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su servicio exitosamente', '5000', 'success', 'top', 'center');
-        }, elapsed);
-      }, error => {
-        this.spinner.stop();
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      });
+          this.notification(
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su servicio, intente nuevamente',
+            "5000",
+            "danger",
+            "top",
+            "center"
+          );
+        }
+      );
     });
   }
 
@@ -128,32 +144,32 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  get name(){
-    return this.service.get('name');
+  get name() {
+    return this.service.get("name");
   }
 
-  get mode(){
-    return this.service.get('mode');
+  get mode() {
+    return this.service.get("mode");
   }
-  get description(){
-    return this.service.get('description');
+  get description() {
+    return this.service.get("description");
   }
-  get title(){
-    return this.service.get('title');
+  get title() {
+    return this.service.get("title");
   }
-  get titleGratitude(){
-    return this.service.get('titleGratitude');
+  get titleGratitude() {
+    return this.service.get("titleGratitude");
   }
-  get descriptionGratitude(){
-    return this.service.get('descriptionGratitude');
+  get descriptionGratitude() {
+    return this.service.get("descriptionGratitude");
   }
-  get type(){
-    return this.serviceType.get('checkbox1');
+  get type() {
+    return this.serviceType.get("checkbox1");
   }
-  get type1(){
-    return this.serviceType.get('checkbox2');
+  get type1() {
+    return this.serviceType.get("checkbox2");
   }
-  get type2(){
-    return this.serviceType.get('checkbox3');
+  get type2() {
+    return this.serviceType.get("checkbox3");
   }
 }

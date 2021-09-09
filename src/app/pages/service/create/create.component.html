@@ -50,6 +50,7 @@
                     </p>
                   </div>
                 </div>
+                <br>
                 <p class="text-center">Icono de la categoría</p>
               </div>
               <div class="col-12 col-md-9">
@@ -69,6 +70,7 @@
                     </p>
                   </div>
                 </div>
+                <br>
                 <p class="text-center">Imagen o Video de la Portada</p>
               </div>
             </div>
@@ -97,6 +99,7 @@
                     </p>
                   </div>
                 </div>
+                <br>
                 <p class="text-center">
                   Imagen para la descripcion del servicio
                 </p>
@@ -173,6 +176,7 @@
                           formControlName="checkbox1"
                           name="Normal"
                           required
+                          checked
                         />
                         Normal
                         <span class="form-check-sign"></span>
@@ -206,13 +210,6 @@
                         <span class="form-check-sign"></span>
                       </label>
                     </div>
-                  </div>
-                  <div *ngIf="type.invalid && type1.invalid && type2.invalid" class="col-sm-6 mx-auto">
-                    <span *ngIf="type.errors.required" class="text-danger">
-                      Un tipo de servicio es <strong>requerido</strong>
-                    </span>
-                    <br />
-                    <br />
                   </div>
                 </div>
               </div>
