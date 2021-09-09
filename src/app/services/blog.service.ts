@@ -16,4 +16,12 @@ export class BlogService {
   get(filter) {
     return this.http.get(`${environment.apiUrl}blogs?filter=${filter}`).pipe();
   }
+
+  delete(id){
+    return this.http.delete(`${environment.apiUrl}blogs/${id}`).pipe();
+}
+
+deleteArticleById(id) {
+  return this.http.delete(`${environment.apiUrl}blogs/${id}//blogs/{id}/articles`).pipe();
+}
 }
