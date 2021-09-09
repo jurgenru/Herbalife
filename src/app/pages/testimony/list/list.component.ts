@@ -40,7 +40,7 @@ export class ListComponent implements OnInit {
         this.statementService.deleteStatementById(result).subscribe(prod => {
           this.lists = [];
           this.get();
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha eliminado la tienda exitosamente', '5000', 'success', 'top', 'center');
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha eliminado el testimonio exitosamente', '5000', 'success', 'top', 'center');
         })
       });
     });

@@ -49,13 +49,13 @@ export class CreateComponent implements OnInit {
     });
 
     this.serviceType = this.formBuilder.group({
-      checkbox1: [false],
+      checkbox1: [true],
       checkbox2: [false],
       checkbox3: [false],
     });
   }
 
-  showMessage(i: any, y: any, z: any) {
+  showMessage(stCb1: any, stCb2: any, stCb3: any) {
     if (this.serviceType.value.checkbox1 == true) {
       this.service.value.type = "Normal";
     } else if (this.serviceType.value.checkbox2 == true) {

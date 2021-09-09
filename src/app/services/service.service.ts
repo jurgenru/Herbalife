@@ -16,7 +16,10 @@ export class ServiceService {
     getServiceById(id) {
       return this.http.get(`${environment.apiUrl}services/${id}`).pipe();
     }
-    deleteById(id){
+    delete(id){
       return this.http.delete(`${environment.apiUrl}services/${id}`).pipe();
+    }
+    deleteServiceById(id) {
+      return this.http.delete(`${environment.apiUrl}users/${id}/services`).pipe();
     }
 }
