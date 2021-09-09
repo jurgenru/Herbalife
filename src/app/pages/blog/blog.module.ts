@@ -8,6 +8,8 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterBlogPipe } from 'src/app/pipes/filter-blog.pipe';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FilterBlogPipe } from 'src/app/pipes/filter-blog.pipe';
     ImageCropperModule,
     NgbModule,
     NgxPaginationModule,
+    NgxUiLoaderModule
+
   ],
   exports: [
     ...routedComponents,

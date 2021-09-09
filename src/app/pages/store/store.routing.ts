@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
 import { StoreComponent } from "./store.component";
+import { ViewComponent } from "./view/view.component";
 
 export const routes: Routes = [
     {
@@ -15,6 +16,9 @@ export const routes: Routes = [
         {
             path: 'list',
             component: ListComponent
+        }, {
+            path: 'view/:id',
+            component: ViewComponent
         }]
     }];
 
@@ -26,5 +30,6 @@ export class StoreRoutingModule { }
 export const routedComponents = [
     StoreComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    ViewComponent
 ]

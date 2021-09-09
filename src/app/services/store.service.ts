@@ -14,4 +14,20 @@ export class StoreService {
     get(filter) {
         return this.http.get(`${environment.apiUrl}stores?filter=${filter}`).pipe();
     }
+
+    getProductsById(id) {
+        return this.http.get(`${environment.apiUrl}stores/${id}/products`).pipe();
+    }
+
+    getById(id) {
+        return this.http.get(`${environment.apiUrl}stores/${id}`).pipe();
+    }
+
+    delete(id){
+        return this.http.delete(`${environment.apiUrl}stores/${id}`).pipe();
+    }
+
+    deleteProductById(id) {
+        return this.http.delete(`${environment.apiUrl}stores/${id}/products`).pipe();
+    }
 }
