@@ -3,138 +3,144 @@
         <div class=" col-md-12">
             <div class="card card-user">
                 <form (ngSubmit)="post()">
-                <div class=" card-body">
-                    <div style="text-align: center">
-                        <h2>BLOG</h2>
-                        <h5>Puedes añadir hasta 12 categorias</h5>
-                    </div>
-                    <br>
-                    <br>
-                    <hr color="purple" />
-                    <br>
-                    <form [formGroup]="blog">
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-md-5">
-                                <label> Nombre del Blog </label>
-                                <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
-                                    value="" formControlName="name">
-                                <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio <strong>requerido</strong></small>
-                            </div>
+                    <div class=" card-body">
+                        <div style="text-align: center">
+                            <h2>BLOG</h2>
+                            <h5>Puedes añadir hasta 12 artículos</h5>
                         </div>
                         <br>
-                        <br>
-                        <div class="row">
-                            <div class="col-12 col-md-3">
-                                <div class="container-image">
-                                    <img id="prueba" src="../../../../assets/img/anime3.png" alt="IconBlog"
-                                        class="mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
-                                    <ng-template #noImageIcon>
-                                        <img [src]="iconImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showIcon()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar icono a la categoria (opcional)
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-9 text-center">
-                                <div class="container-image">
-                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="PortraitImage"
-                                        class="mx-auto d-block" *ngIf="!portraitImage; else noImagePortrait">
-                                    <ng-template #noImagePortrait>
-                                        <img [src]="portraitImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showPortrait()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar imagen o video a la portada
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <br>
                         <hr color="purple" />
                         <br>
-                    </form>
-                    <form [formGroup]="articleForm">
-                        <div style="text-align: center">
-                            <h4>Articulos</h4>
-                        </div>
-                        <div formArrayName="article">
-                            <div *ngFor="let FormInputs of article.controls; let i = index;">
-                                <br>
-                                <div [formGroupName]="i">
-                                    <div class="row pl-1 pl-md-3">
-                                        <p>Articulo {{i+1}}</p>
+                        <form [formGroup]="blog">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-5">
+                                    <label> Nombre del Blog </label>
+                                    <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
+                                        value="" formControlName="name">
+                                    <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio
+                                        <strong>requerido</strong></small>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="container-image">
+                                        <img id="prueba" src="../../../../assets/img/anime3.png" alt="IconBlog"
+                                            class="mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
+                                        <ng-template #noImageIcon>
+                                            <img [src]="iconImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showIcon()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar icono para tu blog (opcional)
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-12 col-md-5">
-                                            <div class="container-image">
-                                                <img src="../../../../assets/img/img_3115.jpg" alt="articleImage"
-                                                    class="mx-auto d-block"
-                                                    *ngIf="!articleImage[i]; else noArticleImage">
-                                                <ng-template #noArticleImage>
-                                                    <img [src]="articleImage[i]" alt="">
-                                                </ng-template>
-                                                <div class="overlay" (click)="showBlog(i)">
-                                                    <div class="text text-light">
-                                                        <i class="tim-icons icon-upload"> </i>
-                                                        Agregar imagen o video al blog
+                                </div>
+                                <div class="col-12 col-md-9 text-center">
+                                    <div class="container-image">
+                                        <img src="../../../../assets/img/angular2-logo-red.png" alt="PortraitImage"
+                                            class="mx-auto d-block" *ngIf="!portraitImage; else noImagePortrait">
+                                        <ng-template #noImagePortrait>
+                                            <img [src]="portraitImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showPortrait()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar imagen o video a la portada
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <hr color="purple" />
+                            <br>
+                        </form>
+                        <form [formGroup]="articleForm">
+                            <div style="text-align: center">
+                                <h4>Artículos</h4>
+                            </div>
+                            <div formArrayName="article">
+                                <div *ngFor="let FormInputs of article.controls; let i = index;">
+                                    <div [formGroupName]="i">
+                                        <br />
+                                        <br />
+                                        <div class="row pl-1 pl-md-3">
+                                            <p>Artículo {{i+1}}</p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-5">
+                                                <div class="container-image">
+                                                    <img src="../../../../assets/img/img_3115.jpg" alt="articleImage"
+                                                        class="mx-auto d-block"
+                                                        *ngIf="!articleImage[i]; else noArticleImage">
+                                                    <ng-template #noArticleImage>
+                                                        <img [src]="articleImage[i]" alt="">
+                                                    </ng-template>
+                                                    <div class="overlay" (click)="showBlog(i)">
+                                                        <div class="text text-light">
+                                                            <i class="tim-icons icon-upload"> </i>
+                                                            Agregar imagen o video al artículo
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12 col-md-7">
-                                            <label> Titulo </label>
-                                            <input class=" form-control" [attr.id]="'Title' + i"
-                                                placeholder="Coloca el titulo del articulo" formControlName="title"
-                                                type="text">
-                                            <div *ngIf="article.controls[i].get('title').invalid && 
+                                            <div class="col-12 col-md-7">
+                                                <label> Titulo </label>
+                                                <input class=" form-control" [attr.id]="'Title' + i"
+                                                    placeholder="Coloca el titulo del artículo" formControlName="title"
+                                                    type="text">
+                                                <div *ngIf="article.controls[i].get('title').invalid && 
                                             article.controls[i].get('title').touched">
-                                            <small  class="text-danger"> *Espacio <strong>requerido</strong></small>
-                                            <br>
-                                            <br>
-                                            </div>
-                                            <label> Contenido del articulo </label>
-                                            <textarea class="form-control" [attr.id]="'Description' + i"
-                                                placeholder="Coloca el contenido del articulo" rows="6"
-                                                formControlName="description" value=""></textarea>
+                                                    <small class="text-danger"> *Espacio
+                                                        <strong>requerido</strong></small>
+                                                    <br>
+                                                    <br>
+                                                </div>
+                                                <label> Contenido del articulo </label>
+                                                <textarea class="form-control" [attr.id]="'Description' + i"
+                                                    placeholder="Coloca el contenido del articulo" rows="6"
+                                                    formControlName="description" value=""></textarea>
                                                 <small *ngIf="article.controls[i].get('description').invalid && 
-                                                article.controls[i].get('description').touched" class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                article.controls[i].get('description').touched" class="text-danger">
+                                                    *Espacio <strong>requerido</strong></small>
+                                            </div>
                                         </div>
+                                        <br>
+                                        <hr color="purple" />
+                                        <button (click)="removeArticle(i)"
+                                            class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                            <i class="tim-icons icon-simple-delete"></i>
+                                        </button>
                                     </div>
-                                    <br>
-                                    <hr color="purple" />
-                                    <button (click)="removeArticle(i)"
-                                        class="btn btn-danger btn-fab btn-icon btn-round float-left">
-                                        <i class="tim-icons icon-simple-delete"></i>
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class=" button-container">
-                            <button (click)="addArticle()"
-                                class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                                href="javascript:void(0)">
-                                <i class="tim-icons icon-simple-add"></i>
+                            <div class=" button-container">
+                                <button (click)="addArticle()" [disabled]="btnAddArticle"
+                                    class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                                    href="javascript:void(0)">
+                                    <i class="tim-icons icon-simple-add"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="card-footer">
+                        <div class=" button-container pull-right">
+                            <button type="submit" class="btn btn-info" [disabled]="blog.invalid || article.invalid">
+                                Guardar
                             </button>
                         </div>
-                    </form>
-                </div>
-                <br>
-                <br>
-                <div class="card-footer">
-                    <div class=" button-container pull-right">
-                        <button type ="submit" class="btn btn-info"  [disabled]="blog.invalid || article.invalid">
-                            Guardar
-                        </button>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
     </div>
-</div><ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando blog"></ngx-ui-loader>
+</div>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando blog">
+</ngx-ui-loader>

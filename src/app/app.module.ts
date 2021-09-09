@@ -15,6 +15,7 @@ import { ComponentsModule } from "./components/components.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
+import { BlogService } from "./services/blog.service";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { InterceptorService } from "./interceptors/interceptors.service";
 import { UserService } from "./services/user.service";
@@ -42,6 +43,7 @@ import { FilterServicePipe } from './pipes/filter-service.pipe';
   declarations: [AppComponent, AdminLayoutComponent, HomeComponent, FilterServicePipe],
   providers: [
     StoreService,
+    BlogService,
     UserService,
     ManagerService,
     ServiceService,
