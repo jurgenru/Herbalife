@@ -10,4 +10,7 @@ export class ServiceService {
     post(body) {
       return this.http.post(`${environment.apiUrl}services`, body).pipe();
     }
+    get(filter) {
+      return this.http.get(`${environment.apiUrl}services?filter=${filter}`).pipe();
+    }
 }
