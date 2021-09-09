@@ -4,6 +4,7 @@ import { CreateComponent } from "./create/create.component";
 import { EditComponent } from "./edit/edit.component";
 import { ListComponent } from "./list/list.component";
 import { TestimonyComponent } from "./testimony.component";
+import { ViewComponent } from "./view/view.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
         path: "list",
         component: ListComponent,
       },
+      {
+        path: "view/:id",
+        component: ViewComponent,
+      },
     ],
   },
 ];
@@ -36,4 +41,5 @@ export const routedComponents = [
   CreateComponent,
   EditComponent,
   ListComponent,
+  ViewComponent,
 ];

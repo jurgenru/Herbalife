@@ -16,5 +16,8 @@ export class StatementService {
   get(filter) {
     return this.http.get(`${environment.apiUrl}statements?filter=${filter}`).pipe();
   }
+  getById(id) {
+    return this.http.get(`${environment.apiUrl}statements/${id}`).pipe();
+  }
 
 }
