@@ -22,7 +22,6 @@ export class ViewComponent implements OnInit {
         this.store = data;
       });
       this.storeService.getProductsById(val.id).subscribe(prod => {
-        console.log(prod);
         this.products = prod;
       });
     });

@@ -26,4 +26,8 @@ export class StoreService {
     delete(id){
         return this.http.delete(`${environment.apiUrl}stores/${id}`).pipe();
     }
+
+    deleteProductById(id) {
+        return this.http.delete(`${environment.apiUrl}stores/${id}/products`).pipe();
+    }
 }
