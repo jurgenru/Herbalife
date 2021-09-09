@@ -9,11 +9,11 @@
           <div class="row">
             <div class="col-8">
               <h3 class="card-title">Lista de Tiendas</h3>
-            </div>
-            <div class="col-4">
-              <input class="form-control" placeholder="Buscar tienda ..." type="text" name="filterPost" [(ngModel)]="filterPost" />
-            </div>
           </div>
+          <div class="col-4">
+            <input class="form-control" placeholder="Buscar tienda ..." type="text" name="filterPost" [(ngModel)]="filterPost" />
+          </div>
+        </div>
         </div>
         <div class="card-body">
           <div class="table-responsive ps">
@@ -32,15 +32,29 @@
                   <td>{{list.id}}</td>
                   <td>{{list.title}}</td>
                   <td class=" text-center">{{list.description}}</td>
-                  <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
+                  <td class=" text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
                   <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
-                      ngbTooltip="ver" container="body"><i class="tim-icons icon-paper"></i></button>
+                      ngbTooltip="ver" container="body" [routerLink]="['/store/view', list.id]"><i class="tim-icons icon-paper"></i></button>
                     <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar"
                       container="body"><i class=" tim-icons icon-pencil"></i></button>
-                    <button class="btn btn-danger btn-link btn-sm" type="button" placement="top" ngbTooltip="eliminar"
+                    <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
                       container="body"><i class=" tim-icons icon-trash-simple"></i></button>
                   </td>
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Eliminar la Tienda</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>¿ Esta seguro de eliminar la tienda ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-danger" (click)="modal.close(list.id)">Eliminar</button>
+                    </div>
+                  </ng-template>
                 </tr>
               </tbody>
             </table>

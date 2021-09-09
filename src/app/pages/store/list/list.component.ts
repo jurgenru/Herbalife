@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
+import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-store-list',
@@ -10,10 +14,13 @@ export class ListComponent implements OnInit {
 
   filterPost = '';
   pageActual = 1;
-  lists: any = [];
+  lists: any;
 
   constructor(
-    private storeService: StoreService
+    private userService: UserService,
+    private storeService: StoreService,
+    private toastr: ToastrService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -21,11 +28,33 @@ export class ListComponent implements OnInit {
   }
 
   get() {
-    const filter = `{"order":["id DESC"]}`;
-    this.storeService.get(filter).subscribe(data => {
-      this.lists = data;
-      console.log(this.lists);
+    const filter = `{"fields": {"id": true, "title": true, "description": true, "created": true}, "order":["id DESC"]}`;
+    this.userService.me().subscribe((data: any) => {
+      this.userService.getStoreByUserId(data.id, filter).subscribe(store => {
+        this.lists = store;
+      });
     });
   }
 
+  showDelete(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.storeService.delete(result).subscribe((store) => {
+        this.storeService.deleteProductById(result).subscribe(prod => {
+          this.lists = [];
+          this.get();
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha eliminado la tienda exitosamente', '5000', 'success', 'top', 'center');
+        });
+      });
+    });
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, '', {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: 'toast-' + from + '-' + align
+    });
+  }
 }
