@@ -26,8 +26,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     ImageCropperModule,
     NgbModule,
     NgxPaginationModule,
-    NgxUiLoaderModule
-
+    NgxUiLoaderModule,
   ],
   exports: [
     ...routedComponents,

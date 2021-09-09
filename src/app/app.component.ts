@@ -15,7 +15,7 @@ export class AppComponent {
     private router: Router,
     private toastr: ToastrService
   ) {
-    this.session();
+    // this.session();
   }
 
   session() {

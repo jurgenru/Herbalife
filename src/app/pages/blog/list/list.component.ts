@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
 
   filterPost = '';
   pageActual = 1;
-  lists: any;
+  lists: any = [];
 
   constructor(
     private blogService: BlogService,
