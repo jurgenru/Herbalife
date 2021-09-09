@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CreateComponent } from "./create/create.component";
+import { EditComponent } from "./edit/edit.component";
 import { ListComponent } from "./list/list.component";
 import { StoreComponent } from "./store.component";
 import { ViewComponent } from "./view/view.component";
@@ -19,7 +20,11 @@ export const routes: Routes = [
         }, {
             path: 'view/:id',
             component: ViewComponent
-        }]
+        },
+        {
+            path: 'edit/:id',
+            component: EditComponent
+        },]
     }];
 
 @NgModule({
