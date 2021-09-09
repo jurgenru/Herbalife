@@ -1,1 +1,43 @@
-<p>view works!</p>
+<div class="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Detalles de el Servicio</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-8">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Nombre</h4>
+                    <p class="text-center">{{ services.name }}</p>
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Descripcion</h4>
+                    <p class="text-center">{{ services.description }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Imagen</h4>
+                    <img [src]="services.icon" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
