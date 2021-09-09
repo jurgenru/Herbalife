@@ -50,11 +50,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <!-- <td>{{article.title}}</td>
+                                        <tr *ngFor="let article of articles">
+                                            <td>{{article.title}}</td>
                                             <td>{{article.description}}</td>
                                             <td><img class="img-product" [src]="article.image" alt=""></td>
-                                            <td>{{article.created | date: 'yyyy-MM-dd'}}</td> -->
+                                            <td>{{article.created | date: 'yyyy-MM-dd'}}</td>
                                         </tr>
                                     </tbody>
                                 </table>

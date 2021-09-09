@@ -1,1 +1,91 @@
-<p>edit works!</p>
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class="card card-user">
+                <form #form="ngForm" (ngSubmit)="edit()">
+                    <div class=" card-body">
+                        <div style="text-align: center">
+                            <h2>BLOG</h2>
+                            <h5>Puedes añadir hasta 12 artículos</h5>
+                        </div>
+                        <br>
+                        <br>
+                        <hr color="purple" />
+                        <br>
+                        <form [formGroup]="blog">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-5">
+                                    <label> Nombre del Blog </label>
+                                    <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
+                                        [value]="blog.name">
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="container-image">
+                                        <img id="prueba" [src]="blog.icon" alt="IconBlog" class="mx-auto d-block"
+                                            *ngIf="!iconImage; else noImageIcon">
+                                        <ng-template #noImageIcon>
+                                            <img [src]="iconImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showIcon()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Editar icono para tu blog (opcional)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-9 text-center">
+                                    <div class="container-image">
+                                        <img [src]="blog.image" alt="PortraitImage" class="mx-auto d-block"
+                                            *ngIf="!portraitImage; else noImagePortrait">
+                                        <ng-template #noImagePortrait>
+                                            <img [src]="portraitImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showPortrait()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Editar imagen o video a la portada
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <hr color="purple" />
+                            <br>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4>Artículos</h4>
+                                    <div class="table-responsive ps">
+                                        <table class="table table-striped">
+                                            <thead class="text-primary">
+                                                <tr>
+                                                    <td>Título</td>
+                                                    <td>Descripcion</td>
+                                                    <td>Imagen</td>
+                                                    <td>Fecha de creacion</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let article of articles">
+                                                    <td>{{article.title}}</td>
+                                                    <td>{{article.description}}</td>
+                                                    <td><img class="img-product" [src]="article.image" alt=""></td>
+                                                    <td>{{article.created | date: 'yyyy-MM-dd'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Editando blog">
+    </ngx-ui-loader>
