@@ -19,25 +19,25 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showAlert() {
+  imageCropper() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent = data;
     });
   }
 
-  showAlert2() {
+  imageCropper2() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent2 = data;
     });
   }
 
-  showAlert3() {
+  imageCropper3() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent3 = data;
     });
   }
 
-  showAlert4() {
+  imageCropper4() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent4 = data;
     });

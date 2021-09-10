@@ -1,14 +1,19 @@
+
+.container-image{
+    position: relative;
+}
 textarea{
-    border: solid 1px #32325d;
-    min-height: 4cm;
+    border: 1px solid #32325d;;
 }
 .form-control.ng-touched.ng-invalid{
   /* border: 1px solid #fd5d93; */
   margin-bottom: 0%;
 }
-.container-image{
-    position: relative;
-}
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
   
 .overlay {
     position: absolute;
