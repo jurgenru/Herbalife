@@ -1,0 +1,175 @@
+<div class=" content">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class="card card-user">
+                <div class=" card-body">
+                    <div style="text-align: center">
+                        <h2>Tienda: {{storeData.title}}</h2>
+                    </div>
+                    <br>
+                    <br>
+                    <hr color="red">
+                    <br>
+                    <form>
+                        <div class="row">
+                            <div class="col-12 col-md-3">
+                                <div class="container-image">
+                                    <img [src]="storeData.icon" alt="IconStore" class="mx-auto d-block"
+                                        *ngIf="!icon; else noIcon">
+                                    <ng-template #noIcon>
+                                        <img [src]="icon" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showIcon()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Cambiar icono a la categoria (opcional)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9 text-center">
+                                <div class="container-image">
+                                    <img [src]="storeData.image" alt="PortraitStore"
+                                        class="mx-auto d-block" *ngIf="!image; else noImage">
+                                    <ng-template #noImage>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Cambiar imagen o link de video al portada
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-12 col-md-5">
+                                <label> Nombre de la categoria </label>
+                                <input class=" form-control" placeholder="Nombre de la categoria" type="text" value=""
+                                [(ngModel)]="editedStore.title" [ngModelOptions]="{standalone: true}"
+                                [value]="storeData.title" >
+                                <!-- <div *ngIf="title.invalid && title.touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div> -->
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class=" form-group">
+                                    <label> Descripcion de la categoria </label>
+                                    <textarea class=" form-control" cols="80"
+                                        placeholder="Coloca la descripcion de tu tienda" rows="4"
+                                        [(ngModel)]="editedStore.description" [ngModelOptions]="{standalone: true}"
+                                        [value]="storeData.description"></textarea>
+                                    <!-- <div *ngIf="description.invalid && description.touched">
+                                        <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                        <br>
+                                        <br>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <hr color="red">
+                    <br>
+                    <div style="text-align: center">
+                        <h4>Productos de tu tienda</h4>
+                    </div>
+                    <br>
+                    <form *ngFor="let product of productData; let i = index;">
+                        <div class="row pl-1 pl-md-3">
+                            <p>Producto {{i+1}}</p>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-3">
+                                <div class="container-image">
+                                    <img [src]="product.image" alt="ProductImage"
+                                        class="mx-auto d-block"
+                                        *ngIf="!productImage[i]; else noProductImage">
+                                    <ng-template #noProductImage>
+                                        <img [src]="productImage[i]" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showProduct(i)">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen del producto
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <label> Nombre del producto </label>
+                                <input class=" form-control"
+                                    placeholder="Nombre del producto" type="text"
+                                    [value]="product.name">
+                                <!-- <div *ngIf="product.controls[i].get('name').invalid && 
+                                    product.controls[i].get('name').touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div> -->
+                                <br>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label> Precio del producto </label>
+                                <input class=" form-control" placeholder="Precio del producto" type="text"
+                                    [value]="product.price">
+
+                                <!-- <div *ngIf="product.controls[i].get('price').invalid && 
+                                    product.controls[i].get('price').touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div> -->
+                                <br>
+                                <label> Cantidad de productos disponible </label>
+                                <input class=" form-control" placeholder="Cantidad de productos disponible"
+                                    type="text" [value]="product.amount">
+                                <!-- <div *ngIf="product.controls[i].get('amount').invalid && 
+                                    product.controls[i].get('amount').touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div> -->
+                                <br>
+                                <label> Descripcion del producto </label>
+                                <textarea class=" form-control" cols="80"
+                                    placeholder="Coloca la descripcion del producto" rows="4"
+                                    [value]="product.description" formControlName="description"></textarea>
+                                <!-- <div *ngIf="product.controls[i].get('description').invalid && 
+                                    product.controls[i].get('description').touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div> -->
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </form>
+                    <hr color='red'>
+                    <div class=" button-container">
+                        <br>
+                        <button class="btn btn-primary btn-fab btn-icon btn-round float-right">
+                            <i class="tim-icons icon-simple-add"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class=" button-container pull-right">
+                        <button  class="btn btn-info">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
