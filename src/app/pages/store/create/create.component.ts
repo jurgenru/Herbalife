@@ -95,12 +95,10 @@ export class CreateComponent implements OnInit {
       this.store.value.icon = this.iconImage;
       this.store.value.userId = user.id;
       this.storeService.post(this.store.value).subscribe((data: any) => {
-        console.log(data);
         this.product.controls.forEach((element) => {
           element.value.userId = user.id;
           element.value.storeId = data.id;
           this.productService.post(element.value).subscribe((productData: any) => {
-            console.log(productData);
           }, error => {
             this.spinner.stop();
             this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el producto, intente nuevamente', '5000', 'danger', 'top', 'center');

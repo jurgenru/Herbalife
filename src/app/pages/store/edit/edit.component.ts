@@ -44,7 +44,6 @@ export class EditComponent implements OnInit {
       });
       this.storeService.getProductsById(val.id).subscribe(prod => {
         this.productData = prod;
-        console.log(prod);
       }, error =>{
         this.spinner.stop()
       });

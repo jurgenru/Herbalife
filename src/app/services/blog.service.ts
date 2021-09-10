@@ -32,4 +32,8 @@ export class BlogService {
   deleteArticleById(id) {
     return this.http.delete(`${environment.apiUrl}blogs/${id}/articles`).pipe();
   }
+
+  update(id, body) {
+    return this.http.patch(`${environment.apiUrl}blogs/${id}`, body).pipe();
+  }
 }
