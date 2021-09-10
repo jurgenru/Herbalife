@@ -3,7 +3,7 @@
     position: relative;
 }
 textarea{
-    border: 1px solid #32325d;;
+    border: 1px solid #32325d;
 }
 .form-control.ng-touched.ng-invalid{
   /* border: 1px solid #fd5d93; */
