@@ -12,10 +12,30 @@
                     <hr>
                     <br>
                     <form [formGroup]="store">
-                        <div class="row">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-7">
+                                <label> Nombre de la categoria </label>
+                                <input class=" form-control" placeholder="Nombre de la categoria" type="text" value=""
+                                    formControlName="title">
+                                <div *ngIf="title.invalid && title.touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div>
+                                <label> Descripcion de la categoria </label>
+                                <textarea class=" form-control" cols="80"
+                                    placeholder="Coloca la descripcion de tu tienda" rows="4" value=""
+                                    formControlName="description"></textarea>
+                                <div *ngIf="description.invalid && description.touched">
+                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
                             <div class="col-12 col-md-3">
+                                <h5 class="text-center">Icono</h5>
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/emilyz.jpg" alt="IconStore" class="mx-auto d-block"
+                                    <img src="../../../../assets/img/img_3115.jpg" alt="IconStore" class="mx-auto d-block"
                                         *ngIf="!iconImage; else noImageIcon">
                                     <ng-template #noImageIcon>
                                         <img [src]="iconImage" alt="">
@@ -23,12 +43,27 @@
                                     <div class="overlay" (click)="showIcon()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
-                                            Agregar icono a la categoria (opcional)
+                                            Agregar icono(opcional)
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <h5 class="text-center">Portada</h5>
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/img_3115.jpg" alt="PortraitStore"
+                                        class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
+                                    <ng-template #noPortraitImage>
+                                        <img [src]="portraitImage" alt="">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen o link de video
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-9 text-center">
+                            <!-- <div class="col-12 col-md-9 text-center">
                                 <div class="container-image">
                                     <img src="../../../../assets/img/emilyz.jpg" alt="PortraitStore"
                                         class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
@@ -42,11 +77,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <br>
                         <br>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12 col-md-5">
                                 <label> Nombre de la categoria </label>
                                 <input class=" form-control" placeholder="Nombre de la categoria" type="text" value=""
@@ -73,7 +108,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                     <br>
                     <hr>

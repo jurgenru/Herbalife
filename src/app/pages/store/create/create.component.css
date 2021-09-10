@@ -6,6 +6,9 @@
   /* border: 1px solid #fd5d93; */
   margin-bottom: 0%;
 }
+textarea{
+  border: 1px solid #32325d;
+}
 .image {
     display: block;
     width: 100%;
