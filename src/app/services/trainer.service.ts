@@ -6,9 +6,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TrainerService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   post(body) {
-      return this.http.post(`${environment.apiUrl}trainers`, body).pipe();
+    return this.http.post(`${environment.apiUrl}trainers`, body).pipe();
+  }
+
+  get(filter) {
+    return this.http.get(`${environment.apiUrl}trainers?filter=${filter}`).pipe();
+  }
+
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}trainers/${id}`).pipe();
   }
 }

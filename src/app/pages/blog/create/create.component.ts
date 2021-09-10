@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -52,9 +52,9 @@ export class CreateComponent implements OnInit {
       article: this.formBuilder.array([])
     });
   }
+
   addArticle() {
     this.countArticle++;
-    console.log(this.countArticle);
     const FormInputs = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -70,25 +70,26 @@ export class CreateComponent implements OnInit {
 
   removeArticle(index: number) {
     this.countArticle--;
-    console.log('blog', this.countArticle);
     this.article.removeAt(index);
     if (this.countArticle < 12) {
       this.btnAddArticle = false;
     }
   }
+
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.iconImage = data;
     });
   }
+
   showPortrait() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.portraitImage = data;
     });
   }
+
   showBlog(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      //this.asign(index,data);
       this.articleImage[index] = data;
       ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
@@ -101,13 +102,10 @@ export class CreateComponent implements OnInit {
       this.blog.value.userId = user.id;
       this.blog.value.icon = this.iconImage;
       this.blog.value.image = this.portraitImage;
-
       this.blogService.post(this.blog.value).subscribe((data: any) => {
-        console.log(data);
         this.article.controls.forEach((element) => {
           element.value.blogId = data.id;
           this.articleService.post(element.value).subscribe((articleData: any) => {
-            console.log(articleData);
           }, error => {
             this.spinner.stop();
             this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el articulo, intente nuevamente', '5000', 'danger', 'top', 'center');
@@ -119,7 +117,6 @@ export class CreateComponent implements OnInit {
           this.spinner.stop();
           this.router.navigate(['/blog/list'])
           this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado el blog exitosamente', '5000', 'success', 'top', 'center');
-
         }, elapsed);
       }, error => {
         this.spinner.stop();
@@ -137,9 +134,11 @@ export class CreateComponent implements OnInit {
       positionClass: 'toast-' + from + '-' + align
     });
   }
+
   get article(): FormArray {
     return this.articleForm.get('article') as FormArray;
   }
+
   get name() {
     return this.blog.get("name");
   }
