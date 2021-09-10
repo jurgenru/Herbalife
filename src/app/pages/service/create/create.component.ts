@@ -90,7 +90,6 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
-    console.log(this.service.value);
     const start = new Date();
     this.spinner.start();
     this.showMessage(

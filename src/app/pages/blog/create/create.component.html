@@ -10,28 +10,22 @@
                         </div>
                         <br>
                         <hr />
-                        <br>
                         <form [formGroup]="blog">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-5">
+                            <div class="row">
+                                <div class="col-12">
                                     <label> Nombre del Blog </label>
                                     <input class=" form-control" placeholder="Coloca el nombre del blog" type="text"
-                                        value="" formControlName="name">
+                                        formControlName="name">
                                     <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio
                                         <strong>requerido</strong></small>
                                 </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div class="row">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-5">
+                                    <h4 class="text-center">Icono del blog</h4>
                                     <div class="container-image p-2">
-                                        <img id="prueba" src="../../../../assets/img/anime3.png" alt="IconBlog"
-                                            width="100%" height="250" class="d-block img-responsive"
-                                            *ngIf="!iconImage; else noImageIcon">
+                                        <img src="../../../../assets/img/anime3.png" alt="IconBlog"
+                                            class="img-thumbnail mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
                                         <ng-template #noImageIcon>
-                                            <img [src]="iconImage" alt="" width="100%" height="250"
-                                                class="d-block img-responsive">
+                                            <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
                                         </ng-template>
                                         <div class="overlay" (click)="showIcon()">
                                             <div class="text text-light">
@@ -41,14 +35,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-8 text-center">
+                                <div class="col-12 col-md-7">
+                                    <h4 class="text-center">Banner del blog</h4>
                                     <div class="container-image p-2">
                                         <img src="../../../../assets/img/angular2-logo-red.png" alt="PortraitImage"
-                                            width="100%" height="250" class="d-block img-responsive"
+                                            class="img-thumbnail mx-auto d-block"
                                             *ngIf="!portraitImage; else noImagePortrait">
                                         <ng-template #noImagePortrait>
-                                            <img [src]="portraitImage" alt="" width="100%" height="250"
-                                                class="d-block img-responsive">
+                                            <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
                                         </ng-template>
                                         <div class="overlay" (click)="showPortrait()">
                                             <div class="text text-light">
