@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContentComponent } from './content.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
+import { ListComponent } from './list/list.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
       {
         path: 'edit',
         component: EditComponent
+      },
+      {
+        path: 'list',
+        component: ListComponent
       }
   ]
 }];
@@ -27,5 +32,6 @@ export class ContentRoutingModule { }
 export const routedComponents = [
   ContentComponent,
   CreateComponent,
-  EditComponent
+  EditComponent,
+  ListComponent
 ];
