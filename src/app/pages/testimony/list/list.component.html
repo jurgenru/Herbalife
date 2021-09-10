@@ -1,18 +1,15 @@
 <div class="content">
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/store/create" type="button">Nueva
-        Tienda</button>
-      <br><br>
+      <button class="btn btn-danger animation-on-hover pull-right btn-sm" routerLink="/testimony/create" type="button">Crear testimonio</button>
       <div class="card">
         <div class="card-header">
           <div class="row">
             <div class="col-8">
-              <h3 class="card-title">Lista de Tiendas</h3>
+              <h3 class="card-title">Lista de Testimonios</h3>
             </div>
             <div class="col-4">
-              <input class="form-control" placeholder="Buscar tienda ..." type="text" name="filterPost"
-                [(ngModel)]="filterPost" />
+              <input class="form-control" placeholder="Buscar testimonio ..." type="text" name="filterPost" [(ngModel)]="filterStatement" />
             </div>
           </div>
         </div>
@@ -29,19 +26,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  *ngFor="let list of lists | filterStore: filterPost | paginate: {itemsPerPage: 100, currentPage: pageActual}">
+                <tr *ngFor="let list of lists | filterStatement: filterStatement | paginate: {itemsPerPage: 100, currentPage: pageActual}">
                   <td>{{list.id}}</td>
-                  <td>{{list.title}}</td>
+                  <td>{{list.name}}</td>
                   <td class=" text-center">{{list.description}}</td>
-                  <td class=" text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
+                  <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
                   <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
-                      ngbTooltip="ver" container="body" [routerLink]="['/store/view', list.id]"><i
-                        class="tim-icons icon-paper"></i></button>
+                      ngbTooltip="ver" container="body" [routerLink]="['/testimony/view', list.id]"><i class="tim-icons icon-paper"></i></button>
                     <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar"
-                      container="body" [routerLink]="['/store/edit', list.id]"><i class=" tim-icons icon-pencil"></i></button>
-                    <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
+                      container="body"><i class=" tim-icons icon-pencil"></i></button>
+                      <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
                       container="body"><i class=" tim-icons icon-trash-simple"></i></button>
                   </td>
                   <ng-template #content let-modal>
@@ -52,11 +47,10 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <p>¿ Esta seguro de eliminar la tienda ?</p>
+                      <p>¿ Esta seguro de eliminar el testimonio ?</p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-danger"
-                        (click)="modal.close(list.id)">Eliminar</button>
+                      <button type="button" class="btn btn-outline-danger" (click)="modal.close(list.id)">Eliminar</button>
                     </div>
                   </ng-template>
                 </tr>
