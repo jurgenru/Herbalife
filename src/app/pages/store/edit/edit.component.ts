@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
   icon: any;
   image: any;
   productImage: any =[];
-  productData: any = {};
+  productData: any;
   editedStore: any ={};
 
   constructor(
@@ -44,6 +44,7 @@ export class EditComponent implements OnInit {
       });
       this.storeService.getProductsById(val.id).subscribe(prod => {
         this.productData = prod;
+        console.log(prod);
       }, error =>{
         this.spinner.stop()
       });
