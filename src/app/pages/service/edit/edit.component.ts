@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
   content = 'Cargando ...';
   dataService: any = {};
   service: any = {};
-  dataServices: any;
+  serviceData: any;
   iconImage: any;
   coverVideo: any;
   imageImage: any;
@@ -49,15 +49,14 @@ export class EditComponent implements OnInit {
         const end = new Date();
         const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
         setTimeout(() => {
-          this.dataServices = res;
+          this.serviceData = res;
           this.spinner.stop();
         }, elapsed);
       });
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() { }
 
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {

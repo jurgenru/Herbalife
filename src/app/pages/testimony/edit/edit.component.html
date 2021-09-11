@@ -15,7 +15,7 @@
               <div class="row">
                 <div class="col-md-6 text-left">
                   <div class="col-md-12">
-                    <div class="container-image">
+                    <div class="container-image p-2">
                       <div [ngSwitch]="updateImage">
                         <div *ngSwitchCase="true">
                           <img
@@ -25,7 +25,7 @@
                         </div>
                         <div *ngSwitchCase="false">
                           <img
-                            [src]="iconImage"
+                            [src]="imageStatement"
                             class="img-thumbnail mx-auto d-block"
                           />
                         </div>
