@@ -3,198 +3,207 @@
         <div class=" col-md-12">
             <div class="card card-user">
                 <form (ngSubmit)="post()">
-                <div class=" card-body">
-                    <div style="text-align: center">
-                        <h2>ENTRENADORES</h2>
-                        <h5>Puedes añadir hasta 12 entrenadores</h5>
-                    </div>
-                    <br>
-                    <br>
-                    <hr>
-                    <br>
-                    <form [formGroup]="trainer">
-                        <div class="row justify-content-center">
-                            <div class="form-group col-md-3">
-                                
-                            </div>
+                    <div class=" card-body">
+                        <div style="text-align: center">
+                            <h2>ENTRENADOR</h2>
+                            <h5>Puedes añadir hasta 12 entrenadores</h5>
                         </div>
+                        <br>
                         <br>
                         <hr>
                         <br>
-                        <div class="row">
-                            <div class="col-12 col-md-3">
-                                <div class="container-image">
-                                    <img src="../../../../assets/img/anime6.png" alt="trainerIcon"
-                                        class="mx-auto d-block" *ngIf="!iconImage; else noIconImage">
-                                    <ng-template #noIconImage>
-                                        <img [src]="iconImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showIcon()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar icono a la categoria (opcional)
+                        <form [formGroup]="trainer">
+                            <div class="row justify-content-center">
+                                <div class="form-group col-md-3">
+                                </div>
+                            </div>
+                            <br>
+                            <hr>
+                            <br>
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="container-image">
+                                        <img src="../../../../assets/img/anime6.png" alt="trainerIcon"
+                                            class="mx-auto d-block" *ngIf="!iconImage; else noIconImage">
+                                        <ng-template #noIconImage>
+                                            <img [src]="iconImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showIcon()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar icono a la categoria (opcional)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-9 text-center">
+                                    <div class="container-image">
+                                        <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
+                                            class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
+                                        <ng-template #noPortraitImage>
+                                            <img [src]="portraitImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showPortrait()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar imagen para la portada
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-9 text-center">
-                                <div class="container-image">
-                                    <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
-                                        class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
-                                    <ng-template #noPortraitImage>
-                                        <img [src]="portraitImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showPortrait()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar imagen para la portada
+                            <br>
+                            <hr>
+                            <br>
+                            <div class="text-center">
+                                <h5>Datos del entrenador</h5>
+                            </div>
+                            <div class="row justify-content-around">
+                                <div class="col-12 col-md-5">
+                                    <div class="form-group">
+                                        <label> Nombre del entrenador</label>
+                                        <input class="form-control" placeholder="Coloca el nombre del entrenador"
+                                            type="text" value="" formControlName="names">
+                                        <small *ngIf="names.invalid && (names.touched||names.dirty)"
+                                            class="text-danger"> *El nombre es <strong>requerido</strong><br></small>
+                                    </div>
+                                    <div class="input-icon form-group">
+                                        <label>Presentación</label>
+                                        <textarea class="form-control" id="trainerTextArea"
+                                            placeholder="Coloca el contenido del articulo"
+                                            formControlName="description"></textarea>
+                                        <small *ngIf="description.invalid && (description.touched||description.dirty)"
+                                            class="text-danger"> *La presentacion es <strong>Requerida</strong></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" [formGroup]="social">
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="tim-icons icon-email-85"></i>
+                                            <input class="form-control" placeholder="Correo Electrónico" type="url"
+                                                formControlName="email" style="padding-left: 33px;">
+                                            <small *ngIf="email.invalid && (email.touched||email.dirty)"
+                                                class="text-danger"> *Debe ser una direccion de correo
+                                                electronico</small>
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-whatsapp">
+                                            </i>
+                                            <input class="form-control" placeholder="WhatsApp" type="url"
+                                                formControlName="whatsapp" style="padding-left: 33px;">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-telegram-plane"> </i>
+                                            <input class="form-control" placeholder="Telegram" type="url"
+                                                style="padding-left: 33px;" formControlName="telegram">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-facebook"> </i>
+                                            <input class="form-control" placeholder="Facebook" type="url"
+                                                style="padding-left: 33px;" formControlName="facebook">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-instagram"> </i>
+                                            <input class="form-control" placeholder="Instagram" type="url"
+                                                style="padding-left: 33px;" formControlName="instagram">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-youtube"> </i>
+                                            <input class="form-control" placeholder="Youtube" type="url"
+                                                style="padding-left: 33px;" formControlName="youtube">
+                                        </div>
+                                    </div>
+                                    <div class=" col-md-12 md-1">
+                                        <div class="input-icon form-group">
+                                            <i class="fab fa-tiktok"></i>
+                                            <input class="form-control" placeholder="TikTok" type="url"
+                                                style="padding-left: 33px;" formControlName="tiktok">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                        <div class="text-center">
-                            <h5>Datos del entrenador</h5>
-                        </div>
-                        <div class="row justify-content-around">
-                            <div class="col-12 col-md-5">
-                                <div class="form-group">
-                                    <label> Nombre del entrenador</label>
-                                    <input class="form-control" placeholder="Coloca el nombre del entrenador"
-                                        type="text" value="" formControlName="names">
-                                    <small *ngIf="names.invalid && (names.touched||names.dirty)" class="text-danger"> *Espacio Obligatorio<br></small>
-                                </div>
-                                <div class="input-icon form-group">
-                                    <label> Presentación </label>
-                                    <textarea class="form-control" id="trainerTextArea"
-                                        placeholder="Coloca el contenido del articulo"
-                                        formControlName="description"></textarea>
-                                    <small *ngIf="description.invalid && (description.touched||description.dirty)" class="text-danger"> *Espacio Obligatorio</small>
-                                </div>
+                            <br>
+                            <hr>
+                            <br>
+                        </form>
+                        <form [formGroup]="lection">
+                            <div class="text-center">
+                                <h5>Clase del entrenador</h5>
                             </div>
-                            <div class="col-md-5" [formGroup]="social">
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="tim-icons icon-email-85"></i>
-                                        <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                        formControlName="email" style="padding-left: 33px;">
-                                        <small *ngIf="email.invalid && (email.touched||email.dirty)" class="text-danger"> *Debe ser una direccion de correo electronico</small>
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-whatsapp">
-                                        </i>
-                                        <input class="form-control" placeholder="WhatsApp" type="url"
-                                        formControlName="whatsapp" style="padding-left: 33px;">
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-telegram-plane"> </i>
-                                        <input class="form-control" placeholder="Telegram" type="url"
-                                            style="padding-left: 33px;" formControlName="telegram">
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-facebook"> </i>
-                                        <input class="form-control" placeholder="Facebook" type="url"
-                                            style="padding-left: 33px;"formControlName="facebook">
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-instagram"> </i>
-                                        <input class="form-control" placeholder="Instagram" type="url"
-                                            style="padding-left: 33px;" formControlName="instagram">
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-youtube"> </i>
-                                        <input class="form-control" placeholder="Youtube" type="url"
-                                            style="padding-left: 33px;" formControlName="youtube">
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-icon form-group">
-                                        <i class="fab fa-tiktok"></i>
-                                        <input class="form-control" placeholder="TikTok" type="url"
-                                            style="padding-left: 33px;" formControlName="tiktok">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                        <br>
-                    </form>
-                    <form  [formGroup]="lection">
-                        <div class="text-center">
-                            <h5>Clase del entrenador</h5>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-md-5">
-                                <label> Nombre de la clase </label>
-                                <input class=" form-control" placeholder="Coloca el nombre de la clase" type="text"
-                                    value=""  formControlName="name">
-                                    <small *ngIf="name.invalid && name.touched" class="text-danger"> *Espacio Obligatorio<br></small>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-5">
+                                    <label> Nombre de la clase </label>
+                                    <input class=" form-control" placeholder="Coloca el nombre de la clase" type="text"
+                                        value="" formControlName="name">
+                                    <small *ngIf="name.invalid && name.touched" class="text-danger"> *El nombre de la
+                                        clase es <strong>requerida</strong><br></small>
                                     <br>
                                     <label> Modo de la clase </label>
-                                    <select  class="form-control"  formControlName="mode">
+                                    <select class="form-control" formControlName="mode">
                                         <option>Presencial</option>
                                         <option>Online</option>
                                     </select>
-                                    <small *ngIf="mode.invalid && mode.touched" class="text-danger"> *Espacio Obligatorio<br></small>
-                                <br>
-                                <label> Descripción de la clase </label>
-                                <textarea class="form-control" placeholder="Describa de que trata la clase"
-                                formControlName="description"></textarea>
-                                <small *ngIf="lection.get('description').invalid && lection.get('description').touched" class="text-danger"> *Espacio Obligatorio <br></small>
-                                <br>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <div class="container-image">
-                                    <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg"
-                                        class="mx-auto d-block" *ngIf="!courseImage; else noCourseImage">
-                                    <ng-template #noCourseImage>
-                                        <img [src]="courseImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showCourse()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar imagen de la clase
+                                    <small *ngIf="mode.invalid && mode.touched" class="text-danger"> *El modo de la
+                                        clase es <strong>requerida</strong><br></small>
+                                    <br>
+                                    <label> Descripción de la clase </label>
+                                    <textarea class="form-control" placeholder="Describa de que trata la clase"
+                                        formControlName="description"></textarea>
+                                    <small
+                                        *ngIf="lection.get('description').invalid && lection.get('description').touched"
+                                        class="text-danger"> *La descripcion es <strong>requerida</strong><br></small>
+                                    <br>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="container-image">
+                                        <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg"
+                                            class="mx-auto d-block" *ngIf="!courseImage; else noCourseImage">
+                                        <ng-template #noCourseImage>
+                                            <img [src]="courseImage" alt="">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showCourse()">
+                                            <div class="text text-light">
+                                                <i class="tim-icons icon-upload"> </i>
+                                                Agregar imagen de la clase
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <div class="col-12 col-md-8">
-                                <label> Titulo de Agradecimiento </label>
-                                <input class="form-control" placeholder="Coloca el titulo de agradecimiento" type="text"
-                                    value=""  formControlName="titleGratitude">
-                                <small *ngIf="titleGratitude.invalid && titleGratitude.touched" class="text-danger"> *Espacio Obligatorio<br></small>
-                                <br>
-                                <label> Mensaje de agradecimiento </label>
-                                <textarea class="form-control" placeholder="Deja un mensaje de agradecimiento"
-                                formControlName="descriptionGratitude"></textarea>
-                                <small *ngIf="descriptionGratitude.invalid && descriptionGratitude.touched" class="text-danger"> *Espacio Obligatorio<br></small>
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-8">
+                                    <label> Titulo de Agradecimiento </label>
+                                    <input class="form-control" placeholder="Coloca el titulo de agradecimiento"
+                                        type="text" value="" formControlName="titleGratitude">
+                                    <small *ngIf="titleGratitude.invalid && titleGratitude.touched" class="text-danger">
+                                        *El titulo es <strong>requerido</strong><br></small>
+                                    <br>
+                                    <label> Mensaje de agradecimiento </label>
+                                    <textarea class="form-control" placeholder="Deja un mensaje de agradecimiento"
+                                        formControlName="descriptionGratitude"></textarea>
+                                    <small *ngIf="descriptionGratitude.invalid && descriptionGratitude.touched"
+                                        class="text-danger"> *El mensaje es <strong>requerido</strong><br></small>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer">
-                    <div class=" button-container pull-right">
-                        <button  type ="submit" class="btn btn-info" [disabled]="trainer.invalid || lection.invalid">
-                            Guardar
-                        </button>
+                        </form>
                     </div>
-                </div>
+                    <div class="card-footer">
+                        <div class=" button-container pull-right">
+                            <button type="submit" class="btn btn-info" [disabled]="trainer.invalid || lection.invalid">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

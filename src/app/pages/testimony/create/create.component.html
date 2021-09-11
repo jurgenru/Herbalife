@@ -18,19 +18,14 @@
                   <div class="col-md-12">
                     <h1 class="display-4">Testimonio 1</h1>
                     <div class="container-image">
-                      <img
-                        src="../../../../assets/img/anime3.png"
-                        alt="Avatar"
-                        class="mx-auto d-block"
-                        *ngIf="!imageContent; else noImage"
-                      />
+                      <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                        *ngIf="!imageContent; else noImage" />
                       <ng-template #noImage>
                         <img [src]="imageContent" alt="" />
                       </ng-template>
                       <div class="overlay">
                         <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
-                    </div>
-
+                      </div>
                     </div>
                     <p class="text-center">Imagen para el testimonio</p>
                   </div>
@@ -40,35 +35,24 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label> Nombre </label>
-                      <input
-                        class="form-control"
-                        type="text"
-                        placeholder="Añade un nombre al testimonio"
-                        required
-                        formControlName = "name"
-                      />
+                      <input class="form-control" type="text" placeholder="Añade un nombre al testimonio" required
+                        formControlName="name" />
                       <div *ngIf="nameField.errors && (nameField.dirty || nameField.touched)">
-                        <span *ngIf="nameField.hasError('required')" class="text-danger">
-                          Un nombre es <strong>requerido</strong>
-                        </span>
+                        <small *ngIf="nameField.hasError('required')" class="text-danger">
+                          El nombre es <strong>requerido</strong>
+                        </small>
                         <br>
                         <br>
                       </div>
                     </div>
                     <div class="form-group">
                       <label> Comentario </label>
-                      <textarea
-                        class="form-control"
-                        placeholder="Añade un comentario del testimonio"
-                        type="text"
-                        maxlength="150"
-                        required
-                        formControlName = "description"
-                      ></textarea>
+                      <textarea class="form-control" placeholder="Añade un comentario del testimonio" type="text"
+                        maxlength="150" required formControlName="description"></textarea>
                       <div *ngIf="descriptionField.errors && (descriptionField.dirty || descriptionField.touched)">
-                        <span *ngIf="descriptionField.hasError('required')" class="text-danger">
-                          Un comentario es <strong>requerido</strong>
-                        </span>
+                        <small *ngIf="descriptionField.hasError('required')" class="text-danger">
+                          El comentario es <strong>requerido</strong>
+                        </small>
                         <br>
                         <br>
                       </div>
@@ -86,4 +70,5 @@
     </div>
   </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando su testimonio..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Creando su testimonio...">
+</ngx-ui-loader>

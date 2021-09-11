@@ -38,4 +38,5 @@ export class UserService {
     getServicesById(id, filter) {
       return this.http.get(`${environment.apiUrl}/users/${id}/services?filter=${filter}`).pipe();
     }
+
 }

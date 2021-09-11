@@ -12,12 +12,16 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+
+  content: any;
   storeData: any = {};
+  updateIcon: number = 2;
+  updateImage: number = 2;
   icon: any;
   image: any;
-  productImage: any =[];
+  productImage: any = [];
   productData: any;
-  editedStore: any ={};
+  editedStore: any = {};
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -26,46 +30,58 @@ export class EditComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private route: ActivatedRoute
-  ) { 
+  ) {
     this.get();
   }
 
   ngOnInit(): void {
-   
+
   }
-  get(){
+  get() {
+    this.content = 'Cargando ...';
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
       this.storeService.getById(val.id).subscribe(data => {
-        this.storeData = data;
-      }, error =>{
+        this.storeService.getProductsById(val.id).subscribe(prod => {
+          const end = new Date();
+          const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+          setTimeout(() => {
+            if (this.storeData.icon !== 'undefined') {
+              this.updateIcon = 0;
+            }
+            if (this.storeData.image !== 'undefined') {
+              this.updateImage = 0;
+            }
+            this.storeData = data;
+            this.productData = prod;
+            this.spinner.stop();
+          }, elapsed);
+        }, error => {
+          this.spinner.stop()
+        });
+      }, error => {
         this.spinner.stop();
       });
-      this.storeService.getProductsById(val.id).subscribe(prod => {
-        this.productData = prod;
-      }, error =>{
-        this.spinner.stop()
-      });
-      const end = new Date();
-      const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
-      setTimeout(() => {
-        this.spinner.stop();
-      }, elapsed);
-    }, error=>{
+    }, error => {
       this.spinner.stop();
     });
   }
+
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.icon = data;
+      this.updateIcon = 1;
     });
   }
-  showPortrait() {
+
+  showImage() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.image = data;
+      this.updateImage = 1;
     });
   }
+
   showProduct(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.productImage[index] = data;

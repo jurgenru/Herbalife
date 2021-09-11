@@ -11,14 +11,36 @@
               <div class="row">
                 <div class="col-4">
                   <div class="mb-2 pr-md-1">
-                    <h4 class="title text-center">Nombre</h4>
-                    <p class="text-center">{{ services.name }}</p>
+                    <h4 class="title text-center">Titulo</h4>
+                    <p class="text-center">{{service.title}}</p>
                   </div>
                 </div>
                 <div class="col-8">
                   <div class="mb-2 pr-md-1">
                     <h4 class="title text-center">Descripcion</h4>
-                    <p class="text-center">{{ services.description }}</p>
+                    <p class="text-center">{{service.description}}</p>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <hr>
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Nombre</h4>
+                    <p class="text-center">{{service.name}}</p>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Modo</h4>
+                    <p class="text-center">{{service.mode}}</p>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Tipo</h4>
+                    <p class="text-center">{{service.type}}</p>
                   </div>
                 </div>
               </div>
@@ -27,15 +49,28 @@
               <div class="row">
                 <div class="col-4">
                   <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Icono</h4>
+                    <img [src]="service.icon" alt="">
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-2 pr-md-1">
                     <h4 class="title text-center">Imagen</h4>
-                    <img [src]="services.icon" alt="" />
+                    <img [src]="service.image" alt="">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Banner</h4>
+                    <img [src]="service.banner" alt="">
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <hr />
-          <br />
         </div>
       </div>
     </div>

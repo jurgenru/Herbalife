@@ -7,22 +7,21 @@ import { ServiceService } from "src/app/services/service.service";
   templateUrl: "./view.component.html",
   styleUrls: ["./view.component.scss"],
 })
+
 export class ViewComponent implements OnInit {
-  services: any = {};
-  description: any;
+
+  service: any = {};
+
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServiceService
   ) {
     this.route.params.subscribe((val) => {
-      this.serviceService.getById(val.id).subscribe((data) => {
-        this.services = data;
-      });
-      this.serviceService.getServiceById(val.id).subscribe((des) => {
-        this.description = des;
-      });
+      this.serviceService.getById(val.id).subscribe(data => {
+        this.service = data;
+      })
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 }

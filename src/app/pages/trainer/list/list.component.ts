@@ -20,16 +20,15 @@ export class ListComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.get();
   }
 
   get() {
-    const filter = `{"fields": {"id": true, "names": true}, "order":["id DESC"]}`;
+    const filter = `{"fields": {"id": true, "names": true, "description": true, "created": true}, "order":["id DESC"]}`;
     this.trainerService.get(filter).subscribe(trainer => {
       this.lists = trainer;
-      console.log(this.lists);
-    })
+    });
   }
 
   showDelete(content) {

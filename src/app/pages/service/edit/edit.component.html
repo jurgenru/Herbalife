@@ -1,1 +1,169 @@
-<p>edit works!</p>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="author">
+            <div class="card-header text-center">
+              <h2 class="card-title">Servicios</h2>
+              <p class="card-text">Puedes añadir solo hasta 12 servicios</p>
+            </div>
+          </div>
+          <br />
+          <hr color="purple" width="90%" />
+          <br />
+          <form>
+            <div class="row">
+              <div class="col-sm-6 mx-auto">
+                <!-- <select class="form-control text-center">
+                    <option *ngFor="let type of Types">{{ type }}</option>
+                  </select> -->
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <h4 class="text-center">Icono</h4>
+                <div class="container-image p-2">
+                  <div [ngSwitch]="updateIcon">
+                    <div *ngSwitchCase="0">
+                      <img [src]="serviceData.icon" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showIcon()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar icono
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-9">
+                <h4 class="text-center">Portada</h4>
+                <div class="container-image p-2">
+                  <div [ngSwitch]="updateIcon">
+                    <div *ngSwitchCase="0">
+                      <img [src]="serviceData.banner" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="portraitBanner" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/image.jpg" alt="" class="img-thumbnail mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showIcon()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar portada
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <hr color="purple" width="90%" />
+            <br />
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <h4 class="text-center">Imagen</h4>
+                <div class="container-image p-2">
+                  <div [ngSwitch]="updateImage">
+                    <div *ngSwitchCase="0">
+                      <img [src]="serviceData.image" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showPortrait()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar imagen
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9 text-left">
+                <div class="form-group">
+                  <label> Nombre del servicio </label>
+                  <input class="form-control" type="text" [value]="serviceData.name" />
+                </div>
+                <div class="form-group">
+                  <label> Título de la descripcion </label>
+                  <input class="form-control" type="text" [value]="serviceData.title" />
+                </div>
+                <div class="form-group">
+                  <label> Descripción del servicio </label>
+                  <textarea class="form-control" type="text" [value]="serviceData.description"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <p><b>Escoja el tipo de servicio</b></p>
+              <br />
+              <div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" />
+                        Normal
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" />
+                        Encuesta de emprendedores
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-check form-check-inline">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" />
+                        Autoevaluacion
+                        <span class="form-check-sign"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row text-left">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label> Título de agrecidimiento </label>
+                  <input class="form-control" type="text" [value]="serviceData.titleGratitude" />
+                </div>
+                <div class="form-group">
+                  <label>Descripcion del agrecidimiento</label>
+                  <textarea class="form-control" type="text" [value]="serviceData.descriptionGratitude"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-warning">Editar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader fgsColor="gray" fgsType="three-strings" overlayColor="rgba(58,55,54)" [text]="content">
+</ngx-ui-loader>

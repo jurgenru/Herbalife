@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
   }
 
   get() {
-    const filter = `{"fields": {"id": true, "title": true, "description": true, "created": true}, "order":["id DESC"]}`;
+    const filter = `{"fields": {"id": true, "title": true, "mode": true, "description": true, "created": true}, "order":["id DESC"]}`;
     this.userService.me().subscribe((data: any) => {
       this.userService.getServicesById(data.id, filter).subscribe(service => {
         this.lists = service;

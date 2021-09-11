@@ -15,41 +15,52 @@
                             <div class="col-12 col-md-7">
                                 <label> Nombre de la categoria </label>
                                 <input class=" form-control" placeholder="Nombre de la categoria" type="text" value=""
-                                [(ngModel)]="editedStore.title" [ngModelOptions]="{standalone: true}"
-                                [value]="storeData.title">
+                                    [(ngModel)]="editedStore.title" [ngModelOptions]="{standalone: true}"
+                                    [value]="storeData.title">
                                 <label> Descripcion de la categoria </label>
-                                    <textarea class=" form-control" cols="80"
-                                        placeholder="Coloca la descripcion de tu tienda" rows="4"
-                                        [(ngModel)]="editedStore.description" [ngModelOptions]="{standalone: true}"
-                                        [value]="storeData.description"></textarea>
+                                <textarea class=" form-control" cols="80"
+                                    placeholder="Coloca la descripcion de tu tienda" rows="4"
+                                    [(ngModel)]="editedStore.description" [ngModelOptions]="{standalone: true}"
+                                    [value]="storeData.description"></textarea>
                             </div>
                             <div class="col-12 col-md-3 ">
-                                <h5 class="text-center md-0"> Icono</h5>
+                                <h5 class="text-center md-0">Icono</h5>
                                 <div class="container-image">
-                                    <img [src]="storeData.icon" alt="IconStore" class="mx-auto d-block"
+                                    <div [ngSwitch]="updateIcon">
+                                        <div *ngSwitchCase="0">
+                                          <img [src]="storeData.icon" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="1">
+                                          <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="2">
+                                          <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                      </div>
+                                    <!-- <img [src]="storeData.icon" alt="IconStore" class="mx-auto d-block"
                                         *ngIf="!icon; else noIcon">
                                     <ng-template #noIcon>
                                         <img [src]="icon" alt="">
-                                    </ng-template>
+                                    </ng-template> -->
                                     <div class="overlay" (click)="showIcon()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
-                                            Cambiar icono 
+                                            Editar icono
                                         </div>
                                     </div>
                                 </div>
                                 <br>
                                 <h5 class="text-center md-0">Portada</h5>
                                 <div class="container-image">
-                                    <img [src]="storeData.image" alt="PortraitStore"
-                                        class="mx-auto d-block" *ngIf="!image; else noImage">
+                                    <img [src]="storeData.image" alt="PortraitStore" class="mx-auto d-block"
+                                        *ngIf="!image; else noImage">
                                     <ng-template #noImage>
                                         <img [src]="portraitImage" alt="">
                                     </ng-template>
                                     <div class="overlay" (click)="showPortrait()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
-                                            Cambiar imagen o link 
+                                            Cambiar imagen o link
                                         </div>
                                     </div>
                                 </div>
@@ -71,8 +82,7 @@
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-3">
                                 <div class="container-image">
-                                    <img [src]="product.image" alt="ProductImage"
-                                        class="mx-auto d-block"
+                                    <img [src]="product.image" alt="ProductImage" class="mx-auto d-block"
                                         *ngIf="!productImage[i]; else noProductImage">
                                     <ng-template #noProductImage>
                                         <img [src]="productImage[i]" alt="">
@@ -84,51 +94,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br>
-                                <label> Nombre del producto </label>
-                                <input class=" form-control"
-                                    placeholder="Nombre del producto" type="text"
-                                    [value]="product.name">
-                                <!-- <div *ngIf="product.controls[i].get('name').invalid && 
-                                    product.controls[i].get('name').touched">
-                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
-                                    <br>
-                                    <br>
-                                </div> -->
-                                <br>
                             </div>
                             <div class="col-12 col-md-6">
+                                <label> Nombre del producto </label>
+                                <input class=" form-control" placeholder="Nombre del producto" type="text"
+                                    [value]="product.name">
                                 <label> Precio del producto </label>
-                                <input class=" form-control" placeholder="Precio del producto" type="text"
-                                    [value]="product.price">
-
-                                <!-- <div *ngIf="product.controls[i].get('price').invalid && 
-                                    product.controls[i].get('price').touched">
-                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
-                                    <br>
-                                    <br>
-                                </div> -->
-                                <br>
+                                <input class=" form-control" type="text" [value]="product.price">
                                 <label> Cantidad de productos disponible </label>
-                                <input class=" form-control" placeholder="Cantidad de productos disponible"
-                                    type="text" [value]="product.amount">
-                                <!-- <div *ngIf="product.controls[i].get('amount').invalid && 
-                                    product.controls[i].get('amount').touched">
-                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
-                                    <br>
-                                    <br>
-                                </div> -->
-                                <br>
+                                <input class=" form-control" type="text" [value]="product.amount">
                                 <label> Descripcion del producto </label>
-                                <textarea class=" form-control" cols="80"
-                                    placeholder="Coloca la descripcion del producto" rows="4"
+                                <textarea class=" form-control" cols="80" rows="4"
                                     [value]="product.description"></textarea>
-                                <!-- <div *ngIf="product.controls[i].get('description').invalid && 
-                                    product.controls[i].get('description').touched">
-                                    <small class="text-danger"> *Espacio <strong>requerido</strong></small>
-                                    <br>
-                                    <br>
-                                </div> -->
                             </div>
                         </div>
                         <br>
@@ -144,7 +121,7 @@
                 </div>
                 <div class="card-footer">
                     <div class=" button-container pull-right">
-                        <button  class="btn btn-info">
+                        <button class="btn btn-info">
                             Editar
                         </button>
                     </div>
@@ -153,4 +130,4 @@
         </div>
     </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" [text]="content"></ngx-ui-loader>
