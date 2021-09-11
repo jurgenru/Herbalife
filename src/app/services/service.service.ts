@@ -25,4 +25,7 @@ export class ServiceService {
     deleteServiceById(id) {
       return this.http.delete(`${environment.apiUrl}users/${id}/services`).pipe();
     }
+    update(id, body) {
+      return this.http.patch(`${environment.apiUrl}services/${id}`, body).pipe();
+    }
 }

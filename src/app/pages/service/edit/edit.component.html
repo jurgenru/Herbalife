@@ -1,1 +1,214 @@
-<p>edit works!</p>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="author">
+            <div class="card-header text-center">
+              <h2 class="card-title">Editar Servicios</h2>
+            </div>
+          </div>
+          <br />
+          <hr color="purple" width="90%" />
+          <br />
+          <form #form="ngForm" (ngSubmit)="edit()">
+            <!--escoger el servicio-->
+            <!--icono-->
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <h4 class="text-center">Icono de la categoría</h4>
+                <br />
+                <div class="container-image">
+                  <div [ngSwitch]="updateIcon">
+                    <div *ngSwitchCase="true">
+                      <img
+                        [src]="dataService.icon"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchCase="false">
+                      <img
+                        [src]="iconImage"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchDefault>
+                      <img src="/../../../../assets/img/anime3.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showIcon()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar icono para tu categoría (opcional)
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </div>
+              <div class="col-12 col-md-9">
+                <h4 class="text-center">Portada de la categoría</h4>
+                <br />
+                <div class="container-image">
+                  <div [ngSwitch]="updateVideo">
+                    <div *ngSwitchCase="true">
+                      <img
+                        [src]="dataService.video"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchCase="false">
+                      <img
+                        [src]="coverVideo"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchDefault>
+                      <img src="/../../../../assets/img/anime3.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showPortrait()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar imagen o video a la portada
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--icono-->
+            <!--portada-->
+            <!--portada-->
+            <br />
+            <hr color="purple" width="90%" />
+            <br />
+            <!--descripcion-->
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <div class="container-image">
+                  <h4 class="text-center">Imagen de la descripción</h4>
+                  <br />
+                  <div [ngSwitch]="updateImage">
+                    <div *ngSwitchCase="true">
+                      <img
+                        [src]="dataService.image"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchCase="false">
+                      <img
+                        [src]="imageImage"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchDefault>
+                      <img src="/../../../../assets/img/anime3.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="overlay" (click)="showImage()">
+                    <div class="text text-light">
+                      <i class="tim-icons icon-upload"> </i>
+                      Editar imagen de la descripción
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-9 text-left">
+                <div class="form-group">
+                  <label> Nombre del servicio </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.name"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label> Título de la descripcion </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.title"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label> Descripción del servicio </label>
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.description"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.description"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label> Tipo de servicio </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.type"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.type"
+                  />
+                </div>
+                <div class="form-group">
+                  <label> Modo del Servicio </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.mode"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.mode"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!--descripcion-->
+            <!--agradecimientos-->
+            <br />
+            <div class="row text-left">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label> Título de agrecidimiento </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.titleGratitude"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.titleGratitude"
+                  />
+                </div>
+                <div class="form-group">
+                  <label> Descripcion del agrecidimiento </label>
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    [(ngModel)]="service.descriptionGratitude"
+                    [ngModelOptions]="{ standalone: true }"
+                    [value]="dataService.descriptionGratitude"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <!--agradecimientos-->
+            <div class="card-footer">
+              <div class="button-container pull-right">
+                <button type="submit" class="btn btn-warning">Editar</button>
+              </div>
+              <br /><br />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(58,55,54)"
+  [text]="content"
+></ngx-ui-loader>

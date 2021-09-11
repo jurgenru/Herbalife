@@ -20,7 +20,7 @@ export class CreateComponent implements OnInit {
   imageCover: any;
   imageDescription: any;
 
-  Types: any = ["Gimnasio", "Comida", "Otros"];
+  Types: any = ["Virtual", "Presencial"];
   service: any = {};
   serviceType: any = {};
   constructor(

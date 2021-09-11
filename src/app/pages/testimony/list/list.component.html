@@ -34,9 +34,10 @@
                   <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
                       ngbTooltip="ver" container="body" [routerLink]="['/testimony/view', list.id]"><i class="tim-icons icon-paper"></i></button>
-                    <button class="btn btn-warning btn-link btn-sm" type="button" placement="top" ngbTooltip="editar"
-                      container="body"><i class=" tim-icons icon-pencil"></i></button>
-                      <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
+                    <button class="btn btn-warning btn-link btn-sm" type="button" placement="top"
+                      ngbTooltip="editar" container="body"[routerLink]="[ '/testimony/edit', list.id ]"><i
+                      class=" tim-icons icon-pencil"></i></button>
+                    <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
                       container="body"><i class=" tim-icons icon-trash-simple"></i></button>
                   </td>
                   <ng-template #content let-modal>
