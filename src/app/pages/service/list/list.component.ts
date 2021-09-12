@@ -30,7 +30,7 @@ export class ListComponent implements OnInit {
       this.userService.getServicesById(data.id, filter).subscribe(service => {
         this.lists = service;
       });
-    })
+    });
   }
 
   showDelete(content) {

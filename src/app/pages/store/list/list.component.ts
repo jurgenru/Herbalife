@@ -32,7 +32,6 @@ export class ListComponent implements OnInit {
     this.userService.me().subscribe((data: any) => {
       this.userService.getStoreById(data.id, filter).subscribe(store => {
         this.lists = store;
-        console.log(store);
       });
     });
   }

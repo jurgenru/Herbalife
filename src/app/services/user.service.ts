@@ -39,4 +39,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}/users/${id}/services?filter=${filter}`).pipe();
     }
 
+    getTrainersById(id, filter) {
+      return this.http.get(`${environment.apiUrl}/users/${id}/trainers?filter=${filter}`).pipe();
+    }
+
 }

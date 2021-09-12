@@ -9,24 +9,14 @@
                             <h5>Puedes añadir hasta 12 entrenadores</h5>
                         </div>
                         <br>
-                        <br>
-                        <hr>
-                        <br>
                         <form [formGroup]="trainer">
-                            <div class="row justify-content-center">
-                                <div class="form-group col-md-3">
-                                </div>
-                            </div>
-                            <br>
-                            <hr>
-                            <br>
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/anime6.png" alt="trainerIcon"
-                                            class="mx-auto d-block" *ngIf="!iconImage; else noIconImage">
-                                        <ng-template #noIconImage>
-                                            <img [src]="iconImage" alt="">
+                                        <img src="../../../../assets/img/anime6.png" class="mx-auto d-block"
+                                            *ngIf="!icon; else noIcon">
+                                        <ng-template #noIcon>
+                                            <img [src]="icon" alt="">
                                         </ng-template>
                                         <div class="overlay" (click)="showIcon()">
                                             <div class="text text-light">
@@ -39,11 +29,11 @@
                                 <div class="col-12 col-md-9 text-center">
                                     <div class="container-image">
                                         <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
-                                            class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
-                                        <ng-template #noPortraitImage>
-                                            <img [src]="portraitImage" alt="">
+                                            class="mx-auto d-block" *ngIf="!banner; else noBanner">
+                                        <ng-template #noBanner>
+                                            <img [src]="banner" alt="">
                                         </ng-template>
-                                        <div class="overlay" (click)="showPortrait()">
+                                        <div class="overlay" (click)="showBanner()">
                                             <div class="text text-light">
                                                 <i class="tim-icons icon-upload"> </i>
                                                 Agregar imagen para la portada
@@ -151,7 +141,7 @@
                                     <label> Modo de la clase </label>
                                     <select class="form-control" formControlName="mode">
                                         <option>Presencial</option>
-                                        <option>Online</option>
+                                        <option>Virtual</option>
                                     </select>
                                     <small *ngIf="mode.invalid && mode.touched" class="text-danger"> *El modo de la
                                         clase es <strong>requerida</strong><br></small>
@@ -166,12 +156,12 @@
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/angular2-logo-red.png" alt="trainerCourseImg"
-                                            class="mx-auto d-block" *ngIf="!courseImage; else noCourseImage">
-                                        <ng-template #noCourseImage>
-                                            <img [src]="courseImage" alt="">
+                                        <img src="../../../../assets/img/angular2-logo-red.png"
+                                            class="mx-auto d-block" *ngIf="!image; else noImage">
+                                        <ng-template #noImage>
+                                            <img [src]="image" alt="">
                                         </ng-template>
-                                        <div class="overlay" (click)="showCourse()">
+                                        <div class="overlay" (click)="showImage()">
                                             <div class="text text-light">
                                                 <i class="tim-icons icon-upload"> </i>
                                                 Agregar imagen de la clase
@@ -209,4 +199,4 @@
         </div>
     </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Cargando..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Creando entrenador ..."></ngx-ui-loader>

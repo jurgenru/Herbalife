@@ -11,7 +11,7 @@ export class FilterTrainerPipe implements PipeTransform {
         const resultPosts = [];
 
         for (const post of value) {
-            if (post.names.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+            if (post.names.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.description.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.created.indexOf(arg) > -1) {
                 resultPosts.push(post);
             }
         };

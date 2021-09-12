@@ -19,4 +19,12 @@ export class TrainerService {
   delete(id) {
     return this.http.delete(`${environment.apiUrl}trainers/${id}`).pipe();
   }
+
+  getById(id) {
+    return this.http.get(`${environment.apiUrl}trainers/${id}`).pipe();
+  }
+
+  getLectionById(id) {
+    return this.http.get(`${environment.apiUrl}trainers/${id}/lection`).pipe();
+  }
 }
