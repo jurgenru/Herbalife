@@ -10,6 +10,9 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   post(body) {
-      return this.http.post(`${environment.apiUrl}products`, body).pipe();
+    return this.http.post(`${environment.apiUrl}products`, body).pipe();
+  }
+  update(id, body) {
+    return this.http.patch(`${environment.apiUrl}products/${id}`, body).pipe();
   }
 }

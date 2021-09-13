@@ -4,6 +4,7 @@ import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
+import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -17,11 +18,19 @@ export class EditComponent implements OnInit {
   storeData: any = {};
   updateIcon: number = 2;
   updateImage: number = 2;
+
   icon: any;
   image: any;
+
   productImage: any = [];
+  productName: any = [];
+  productPrice: any = [];
+  productAmount: any = [];
+  productDescription: any = [];
+
   productData: any;
   editedStore: any = {};
+  editedProduct: any = {};
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -29,7 +38,8 @@ export class EditComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductService,
   ) {
     this.get();
   }
@@ -88,4 +98,73 @@ export class EditComponent implements OnInit {
       //((this.productForm.get('product') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
+
+edit(){
+  this.content = 'Editando tienda...';
+  const start = new Date();
+  this.spinner.start();
+
+  if(this.icon){
+    this.editedStore.icon = this.icon;
+  }
+  if(this.image){
+    this.editedStore.image = this.image;
+  }
+  this.storeService.update(this.storeData.id, this.editedStore).subscribe( data =>{
+    const end = new Date();
+    const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+    setTimeout(() => {
+      this.spinner.stop();
+      this.router.navigate(['store/list']);
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el blog exitosamente', '5000', 'success', 'top', 'center');
+    }, elapsed);
+  }, error =>{
+    this.spinner.stop();
+    this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center')
+  });
+}
+
+editProduct(productId: any, index: any){
+  this.content = 'Editando producto...';
+  const start = new Date();
+  this.spinner.start();
+
+  if(this.productName[index]){
+    this.editedProduct.name = this.productName[index];
+  }
+  if(this.productPrice[index]){
+    this.editedProduct.price = this.productPrice[index];
+  }
+  if(this.productAmount[index]){
+    this.editedProduct.amount = this.productAmount[index];
+  }
+  if(this.productDescription[index]){
+    this.editedProduct.description = this.productDescription[index];
+  }
+  if(this.productImage[index]){
+    this.editedProduct.image = this.productImage[index];
+  }
+  
+  this.productService.update(productId,this.editedProduct).subscribe( data =>{
+    const end = new Date();
+      const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+      setTimeout(() => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el producto exitosamente', '5000', 'success', 'top', 'center');
+      }, elapsed);
+  },error => {
+    this.spinner.stop();
+    this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center');
+  });
+}
+
+notification(content, time, type, from, align) {
+  this.toastr.error(content, '', {
+    timeOut: time,
+    closeButton: true,
+    enableHtml: true,
+    toastClass: `alert alert-${type} alert-with-icon`,
+    positionClass: 'toast-' + from + '-' + align
+  });
+}
 }
