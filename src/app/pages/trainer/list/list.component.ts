@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from "ngx-toastr";
 import { TrainerService } from 'src/app/services/trainer.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-trainer-list',
@@ -16,20 +17,23 @@ export class ListComponent implements OnInit {
 
   constructor(
     private trainerService: TrainerService,
+    private userService: UserService,
     private toastr: ToastrService,
     private modalService: NgbModal
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.get();
   }
 
   get() {
-    const filter = `{"fields": {"id": true, "names": true}, "order":["id DESC"]}`;
-    this.trainerService.get(filter).subscribe(trainer => {
-      this.lists = trainer;
-      console.log(this.lists);
-    })
+    const filter = `{"fields": {"id": true, "names": true, "description": true, "created": true}, "order":["id DESC"]}`;
+    this.userService.me().subscribe((data: any) => {
+      this.userService.getTrainersById(data.id, filter).subscribe(trainer => {
+        console.log(trainer);
+        this.lists = trainer;
+      });
+    });
   }
 
   showDelete(content) {

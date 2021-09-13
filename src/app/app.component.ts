@@ -35,6 +35,8 @@ export class AppComponent {
           }
         }
       });
+    }, error => {
+      this.router.navigate(['/']);
     });
   }
 
