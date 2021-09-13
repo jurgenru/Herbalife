@@ -20,6 +20,10 @@ export class TrainerService {
     return this.http.delete(`${environment.apiUrl}trainers/${id}`).pipe();
   }
 
+  edit(id, body) {
+    return this.http.patch(`${environment.apiUrl}trainers/${id}`, body).pipe();
+  }
+
   getById(id) {
     return this.http.get(`${environment.apiUrl}trainers/${id}`).pipe();
   }

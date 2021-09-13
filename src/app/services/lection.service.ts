@@ -11,4 +11,9 @@ export class LectionService {
   post(body) {
       return this.http.post(`${environment.apiUrl}lections`, body).pipe();
   }
+
+  edit(id, body) {
+    return this.http.patch(`${environment.apiUrl}lections/${id}`, body).pipe();
+}
+  
 }

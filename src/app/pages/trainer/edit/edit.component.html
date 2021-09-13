@@ -2,13 +2,14 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
+                <div class="card-header text-center">
+                    <h3>Entrenador</h3>
+                </div>
+                <form #form="ngForm" (ngSubmit)="editTrainer()">
                 <div class="card-body">
-                    <div class="card-header text-center">
-                        <h3>Entrenador</h3>
-                    </div>
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <h4 class="text-center">Icono del entrenador</h4>
+                            <h4 class="text-center">Icono</h4>
                             <br>
                             <div class="container-image p-2">
                                 <div [ngSwitch]="updateIcon">
@@ -25,13 +26,13 @@
                                 <div class="overlay" (click)="showIcon()">
                                     <div class="text text-light">
                                         <i class="tim-icons icon-upload"> </i>
-                                        Editar icono para tu blog (opcional)
+                                        Editar icono
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-8">
-                            <h4 class="text-center">Banner del Entrenador</h4>
+                            <h4 class="text-center">Portada</h4>
                             <br>
                             <div class="container-image p-2">
                                 <div [ngSwitch]="updateBanner">
@@ -48,7 +49,7 @@
                                 <div class="overlay" (click)="showBanner()">
                                     <div class="text text-light">
                                         <i class="tim-icons icon-upload"> </i>
-                                        Editar icono para tu blog (opcional)
+                                        Editar portada
                                     </div>
                                 </div>
                             </div>
@@ -60,55 +61,55 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label> Nombre del entrenador</label>
-                                <input class="form-control" type="text" [value]="trainerData.names">
+                                <input class="form-control" type="text" [(ngModel)]="trainer.names" [ngModelOptions]="{standalone: true}" [value]="trainerData.names">
                             </div>
                             <div class="input-icon form-group">
                                 <label>Presentación</label>
-                                <textarea class="form-control" id="trainerTextArea" [value]="trainerData.description"></textarea>
+                                <textarea class="form-control" id="trainerTextArea" [(ngModel)]="trainer.description" [ngModelOptions]="{standalone: true}" [value]="trainerData.description"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="tim-icons icon-email-85"></i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.email">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.email" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.email">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-whatsapp">
                                     </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.whatsapp">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.whatsapp" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.whatsapp">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-telegram-plane"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.telegram">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.telegram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.telegram">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-facebook"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.facebook">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.facebook" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.facebook">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-instagram"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.instagram">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.instagram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.instagram">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-youtube"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.youtube">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.youtube" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.youtube">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-tiktok"></i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.tiktok">
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.tiktok" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.tiktok">
                                 </div>
                             </div>
                         </div>
@@ -121,8 +122,11 @@
                         </button>
                     </div>
                 </div>
+            </form>
+            <br><br>
             </div>
             <div class="card">
+                <form #form="ngForm" (ngSubmit)="editLection()">
                 <div class="card-body">
                     <div class="card-header text-left">
                         <h3 class="card-title ">Clase</h3>
@@ -131,16 +135,17 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8">
                             <label> Nombre de la clase </label>
-                            <input class="form-control" type="text" [value]="lectionData.name">
+                            <input class="form-control" type="text" [(ngModel)]="lection.name" [ngModelOptions]="{standalone: true}" [value]="lectionData.name">
                             <br>
                             <label> Modo de la clase </label>
-                            <select class="form-control">
+                            <select class="form-control" [ngModelOptions]="{standalone: true}"
+                            [(ngModel)]="lection.mode" [value]="lection.mode">
                                 <option>Presencial</option>
                                 <option>Virtual</option>
                             </select>
                             <br>
                             <label> Descripción de la clase </label>
-                            <textarea class="form-control" [value]="lectionData.description"></textarea>
+                            <textarea class="form-control" [(ngModel)]="lection.description" [ngModelOptions]="{standalone: true}" [value]="lectionData.description"></textarea>
                         </div>
                         <div class="col-12 col-md-4">
                             <h4 class="text-center">Imagen de la Clase</h4>
@@ -171,11 +176,11 @@
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8">
                             <label> Titulo de Agradecimiento </label>
-                            <input class="form-control" type="text" [value]="lectionData.titleGratitude">
+                            <input class="form-control" type="text"  [(ngModel)]="lection.titleGratitude" [ngModelOptions]="{standalone: true}" [value]="lectionData.titleGratitude">
                             <br>
                             <br>
                             <label> Mensaje de agradecimiento </label>
-                            <textarea class="form-control" [value]="lectionData.descriptionGratitude"></textarea>
+                            <textarea class="form-control"  [(ngModel)]="lection.descriptionGratitude" [ngModelOptions]="{standalone: true}" [value]="lectionData.descriptionGratitude"></textarea>
                         </div>
                     </div>
                 </div>
@@ -186,6 +191,7 @@
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
