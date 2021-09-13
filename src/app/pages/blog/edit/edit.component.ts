@@ -6,6 +6,7 @@ import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cr
 import { SimpleModalService } from 'ngx-simple-modal';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-blog-edit',
@@ -21,7 +22,11 @@ export class EditComponent implements OnInit {
   dataArticles: any;
   iconImage: any;
   portraitImage: any;
+
   articleImage: any = [];
+  articleTitle: any = [];
+  articleDescription: any = [];
+  title: any;
   articleForm: any = {};
   updateIcon: boolean;
   updateImage: boolean;
@@ -33,6 +38,7 @@ export class EditComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
+    private articleService: ArticleService
   ) {
     this.blogView();
   }
@@ -45,14 +51,15 @@ export class EditComponent implements OnInit {
         this.dataBlog = data;
         this.updateIcon = true;
         this.updateImage = true;
-      });
-      this.blogService.getArticleById(val.id).subscribe(res => {
-        const end = new Date();
-        const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
-        setTimeout(() => {
+        this.blogService.getArticleById(val.id).subscribe((res: any) => {
           this.dataArticles = res;
-          this.spinner.stop();
-        }, elapsed);
+          const end = new Date();
+          const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+          setTimeout(() => {
+            console.log(res);
+            this.spinner.stop();
+          }, elapsed);
+        });
       });
     });
   }
@@ -76,12 +83,11 @@ export class EditComponent implements OnInit {
   showBlog(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.articleImage[index] = data;
-      ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
 
   edit() {
-    this.content = 'Editando ...';
+    this.content = 'Editando...';
     const start = new Date();
     this.spinner.start();
     if (this.iconImage) {
@@ -106,9 +112,31 @@ export class EditComponent implements OnInit {
 
   }
 
-
-  editArticle() {
-    console.log(this.article);
+  editArticle(articleId: any, index: any) {
+    this.content = 'Editando artículo...';
+    const start = new Date();
+    if (this.articleTitle[index]) {
+      this.article.title = this.articleTitle[index];
+    }
+    if (this.articleImage[index]) {
+      this.article.image = this.articleImage[index];
+    }
+    if (this.articleDescription[index]) {
+      this.article.description = this.articleDescription[index];
+    }
+    this.spinner.start();
+    this.articleService.update(articleId, this.article).subscribe(data => {
+      const end = new Date();
+      const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+      setTimeout(() => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el artículo exitosamente', '5000', 'success', 'top', 'center');
+      }, elapsed);
+      console.log(data);
+    }, error => {
+      this.spinner.stop();
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center');
+    });
   }
 
   notification(content, time, type, from, align) {
