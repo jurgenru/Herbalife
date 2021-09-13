@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
 
   imageProfile: any;
+  icon: any;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -75,7 +76,6 @@ export class CreateComponent implements OnInit {
     this.spinner.start();
     this.userService.me().subscribe((user: any) => {
       this.user.value.userId = user.id;
-      this.user.value.image = this.imageProfile;
       this.managerService.post(this.user.value).subscribe(data => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -94,6 +94,14 @@ export class CreateComponent implements OnInit {
   imageCropper() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageProfile = data;
+      this.user.value.image = this.imageProfile;
+    });
+  }
+
+  showIcon() {
+    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.icon = data;
+      this.user.value.icon = this.icon;
     });
   }
 

@@ -8,14 +8,14 @@
                 <form [formGroup]="user" (ngSubmit)="post()">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-5">
-                            </div>
                             <div class="col-2">
+                            </div>
+                            <div class="col-4">
                                 <div class="container-image">
                                     <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
                                         *ngIf="!imageProfile; else noImage">
                                     <ng-template #noImage>
-                                        <img [src]="imageProfile" alt="">
+                                        <img [src]="imageProfile" class="mx-auto d-block">
                                     </ng-template>
                                     <div class="overlay">
                                         <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
@@ -23,7 +23,20 @@
                                 </div>
                                 <p class="text-center">imagen de perfil</p>
                             </div>
-                            <div class="col-5"></div>
+                            <div class="col-4">
+                                <div class="container-image">
+                                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                                        *ngIf="!imageProfile; else noIcon">
+                                    <ng-template #noIcon>
+                                        <img [src]="icon" class="mx-auto d-block">
+                                    </ng-template>
+                                    <div class="overlay">
+                                        <p class="text text-light" (click)="showIcon()">cargar icono</p>
+                                    </div>
+                                </div>
+                                <p class="text-center">icono de portada</p>
+                            </div>
+                            <div class="col-2"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">

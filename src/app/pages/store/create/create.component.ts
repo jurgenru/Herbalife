@@ -128,12 +128,15 @@ export class CreateComponent implements OnInit {
       positionClass: 'toast-' + from + '-' + align
     });
   }
+
   get product(): FormArray {
     return this.productForm.get('product') as FormArray;
   }
+
   get title() {
     return this.store.get("title");
   }
+
   get description() {
     return this.store.get("description");
   }
