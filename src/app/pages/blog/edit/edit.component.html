@@ -21,13 +21,13 @@
                                 <br>
                                 <div class="container-image p-2">
                                     <div [ngSwitch]="updateIcon">
-                                        <div *ngSwitchCase="true">
+                                        <div *ngSwitchCase="0">
                                             <img [src]="dataBlog.icon" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchCase="false">
-                                            <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
+                                        <div *ngSwitchCase="1">
+                                            <img [src]="icon" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchDefault>
+                                        <div *ngSwitchCase="2">
                                             <img src="/../../../../assets/img/anime3.png" alt="">
                                         </div>
                                     </div>
@@ -40,20 +40,20 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-7">
-                                <h4 class="text-center">Banner del blog</h4>
+                                <h4 class="text-center">Portada del blog</h4>
                                 <div class="container-image p-2">
-                                    <div [ngSwitch]="updateImage">
-                                        <div *ngSwitchCase="true">
-                                            <img [src]="dataBlog.image" class="img-thumbnail mx-auto d-block">
+                                    <div [ngSwitch]="updateBanner">
+                                        <div *ngSwitchCase="0">
+                                            <img [src]="dataBlog.banner" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchCase="false">
-                                            <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
+                                        <div *ngSwitchCase="1">
+                                            <img [src]="banner" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchDefault>
+                                        <div *ngSwitchCase="2">
                                             <img src="/../../../../assets/img/anime3.png" alt="">
                                         </div>
                                     </div>
-                                    <div class="overlay" (click)="showPortrait()">
+                                    <div class="overlay" (click)="showBanner()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
                                             Editar imagen o video a la portada

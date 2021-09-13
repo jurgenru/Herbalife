@@ -1,0 +1,194 @@
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header text-center">
+                        <h3>Entrenador</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h4 class="text-center">Icono del entrenador</h4>
+                            <br>
+                            <div class="container-image p-2">
+                                <div [ngSwitch]="updateIcon">
+                                    <div *ngSwitchCase="0">
+                                        <img [src]="trainerData.icon" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="1">
+                                        <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="2">
+                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="overlay" (click)="showIcon()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Editar icono para tu blog (opcional)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <h4 class="text-center">Banner del Entrenador</h4>
+                            <br>
+                            <div class="container-image p-2">
+                                <div [ngSwitch]="updateBanner">
+                                    <div *ngSwitchCase="0">
+                                        <img [src]="trainerData.banner" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="1">
+                                        <img [src]="banner" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="2">
+                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="overlay" (click)="showBanner()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Editar icono para tu blog (opcional)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label> Nombre del entrenador</label>
+                                <input class="form-control" type="text" [value]="trainerData.names">
+                            </div>
+                            <div class="input-icon form-group">
+                                <label>Presentación</label>
+                                <textarea class="form-control" id="trainerTextArea" [value]="trainerData.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="tim-icons icon-email-85"></i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.email">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-whatsapp">
+                                    </i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.whatsapp">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-telegram-plane"> </i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.telegram">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-facebook"> </i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.facebook">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-instagram"> </i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.instagram">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-youtube"> </i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.youtube">
+                                </div>
+                            </div>
+                            <div class=" col-md-12 md-1">
+                                <div class="input-icon form-group">
+                                    <i class="fab fa-tiktok"></i>
+                                    <input class="form-control" type="url" style="padding-left: 33px;" [value]="socialMedia.tiktok">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class=" button-container pull-right">
+                        <button type="submit" class="btn btn-warning">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header text-left">
+                        <h3 class="card-title ">Clase</h3>
+                    </div>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8">
+                            <label> Nombre de la clase </label>
+                            <input class="form-control" type="text" [value]="lectionData.name">
+                            <br>
+                            <label> Modo de la clase </label>
+                            <select class="form-control">
+                                <option>Presencial</option>
+                                <option>Virtual</option>
+                            </select>
+                            <br>
+                            <label> Descripción de la clase </label>
+                            <textarea class="form-control" [value]="lectionData.description"></textarea>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <h4 class="text-center">Imagen de la Clase</h4>
+                            <br>
+                            <div class="container-image p-2">
+                                <div [ngSwitch]="updateImage">
+                                    <div *ngSwitchCase="0">
+                                        <img [src]="lectionData.image" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="1">
+                                        <img [src]="image" class="img-thumbnail mx-auto d-block">
+                                    </div>
+                                    <div *ngSwitchCase="2">
+                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="overlay" (click)="showImage()">
+                                    <div class="text text-light">
+                                        <i class="tim-icons icon-upload"> </i>
+                                        Editar icono para tu blog (opcional)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8">
+                            <label> Titulo de Agradecimiento </label>
+                            <input class="form-control" type="text" [value]="lectionData.titleGratitude">
+                            <br>
+                            <br>
+                            <label> Mensaje de agradecimiento </label>
+                            <textarea class="form-control" [value]="lectionData.descriptionGratitude"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class=" button-container pull-right">
+                        <button type="submit" class="btn btn-warning">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" [text]="content"></ngx-ui-loader>

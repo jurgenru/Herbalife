@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import { TrainerComponent } from "./trainer.component";
 import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
+import { ViewComponent } from "./view/view.component";
+import { EditComponent } from "./edit/edit.component";
 
 export const routes: Routes = [
     {
@@ -16,6 +18,14 @@ export const routes: Routes = [
             {
                 path: 'create',
                 component: CreateComponent
+            }, {
+                path: 'view/:id',
+                component: ViewComponent
+
+            }, {
+                path: 'edit/:id',
+                component: EditComponent
+
             }
         ],
     }
@@ -30,5 +40,7 @@ export class TrainerRoutingModule { }
 export const routedComponents = [
     TrainerComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    ViewComponent,
+    EditComponent
 ];

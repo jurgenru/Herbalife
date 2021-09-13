@@ -18,7 +18,6 @@
             <table class="table table-bordered table-striped">
               <thead class="text-primary">
                 <tr>
-                  <th>Id</th>
                   <th>Titulo</th>
                   <th class="text-center">Descripcion</th>
                   <th class="text-center">Fecha de creacion</th>
@@ -27,9 +26,8 @@
               </thead>
               <tbody>
                 <tr *ngFor="let list of lists | filterStatement: filterStatement | paginate: {itemsPerPage: 100, currentPage: pageActual}">
-                  <td>{{list.id}}</td>
                   <td>{{list.name}}</td>
-                  <td class=" text-center">{{list.description}}</td>
+                  <td class=" text-center">{{list.description | slice:0:35}} ...</td>
                   <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
                   <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"

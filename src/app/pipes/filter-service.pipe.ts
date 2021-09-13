@@ -11,7 +11,7 @@ export class FilterServicePipe implements PipeTransform {
     const resultService = [];
 
     for(const post of value) {
-      if( post.name.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.description.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.created.indexOf(arg) > -1) {
+      if( post.title.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.description.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.created.indexOf(arg) > -1) {
         resultService.push(post);
       }
     };

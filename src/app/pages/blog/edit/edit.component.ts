@@ -28,8 +28,11 @@ export class EditComponent implements OnInit {
   articleDescription: any = [];
   title: any;
   articleForm: any = {};
-  updateIcon: boolean;
-  updateImage: boolean;
+
+  updateIcon: number = 2;
+  updateBanner: number = 2;
+  icon: any;
+  banner: any;
 
   constructor(
     private blogService: BlogService,
@@ -40,25 +43,33 @@ export class EditComponent implements OnInit {
     private router: Router,
     private articleService: ArticleService
   ) {
-    this.blogView();
+    this.get();
   }
 
-  blogView() {
+  get() {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      this.blogService.getById(val.id).subscribe(data => {
-        this.dataBlog = data;
-        this.updateIcon = true;
-        this.updateImage = true;
-        this.blogService.getArticleById(val.id).subscribe((res: any) => {
-          this.dataArticles = res;
+      this.blogService.getById(val.id).subscribe((data: any) => {
+        this.blogService.getArticleById(val.id).subscribe(res => {
           const end = new Date();
           const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
           setTimeout(() => {
-            console.log(res);
-            this.spinner.stop();
-          }, elapsed);
+            if (data.icon !== "") {
+              this.updateIcon = 0;
+            }
+            if (data.image !== "") {
+              this.updateBanner = 0;
+            }
+            this.dataBlog = data;
+            this.dataArticles = res;
+            const end = new Date();
+            const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+            setTimeout(() => {
+              console.log(res);
+              this.spinner.stop();
+            }, elapsed);
+          });
         });
       });
     });
@@ -68,15 +79,15 @@ export class EditComponent implements OnInit {
 
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.iconImage = data;
-      this.updateIcon = false;
+      this.icon = data;
+      this.updateIcon = 1;
     });
   }
 
-  showPortrait() {
+  showBanner() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.portraitImage = data;
-      this.updateImage = false;
+      this.banner = data;
+      this.updateBanner = 1;
     });
   }
 
