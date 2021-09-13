@@ -89,20 +89,23 @@
                             <div class="row">
                                 <div class="col-12 col-md-7">
                                     <label>Titulo</label>
-                                    <input class="form-control" type="text" [value]="DataArticle.title">
+                                    <input class="form-control" type="text"
+                                        [(ngModel)]="articleTitle[i] = DataArticle.title"
+                                        [ngModelOptions]="{standalone: true}" [value]="DataArticle.title">
                                     <div>
                                     </div>
                                     <label>Contenido del articulo</label>
                                     <textarea class="form-control rounded pl-2 pr-2" rows="6"
+                                        [(ngModel)]="articleDescription[i] = DataArticle.description"
+                                        [ngModelOptions]="{standalone: true}"
                                         [value]="DataArticle.description"></textarea>
                                 </div>
                                 <div class="col-12 col-md-5 mt-4 mb-4">
                                     <div class="container-image">
                                         <img [src]="DataArticle.image" class="img-thumbnail mx-auto d-block"
-                                            *ngIf="DataArticle.image; else noArticleImage">
+                                            *ngIf="!articleImage[i]; else noArticleImage">
                                         <ng-template #noArticleImage>
-                                            <img src="/../../../../assets/img/anime6.png"
-                                                class="mx-auto d-block img-thumbnail">
+                                            <img [src]="articleImage[i]" class="mx-auto d-block img-thumbnail">
                                         </ng-template>
                                         <div class="overlay" (click)="showBlog(i)">
                                             <div class="text text-light">
@@ -113,7 +116,7 @@
                                     </div>
                                     <br>
                                     <button class="btn btn-warning btn-sm pull-right" type="button"
-                                        (click)="editArticle(i)">Editar articulo</button>
+                                        (click)="editArticle(DataArticle.id,i)">Editar articulo</button>
                                 </div>
                             </div>
                         </div>
