@@ -45,13 +45,13 @@ export class EditComponent implements OnInit {
         const end = new Date();
         const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
         setTimeout(() => {
-          if (this.serviceData.icon !== 'undefined') {
+          if (data.icon !== "") {
             this.updateIcon = 0;
           }
-          if (this.serviceData.image !== 'undefined') {
+          if (data.image !== "") {
             this.updateImage = 0;
           }
-          if (this.serviceData.banner !== 'undefined') {
+          if (data.banner !== "") {
             this.updateBanner = 0;
           }
           this.serviceData = data;

@@ -23,8 +23,11 @@ export class EditComponent implements OnInit {
   portraitImage: any;
   articleImage: any = [];
   articleForm: any = {};
-  updateIcon: boolean;
-  updateImage: boolean;
+
+  updateIcon: number = 2;
+  updateBanner: number = 2;
+  icon: any;
+  banner: any;
 
   constructor(
     private blogService: BlogService,
@@ -34,26 +37,31 @@ export class EditComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
   ) {
-    this.blogView();
+    this.get();
   }
 
-  blogView() {
+  get() {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      this.blogService.getById(val.id).subscribe(data => {
-        this.dataBlog = data;
-        this.updateIcon = true;
-        this.updateImage = true;
-      });
+      this.blogService.getById(val.id).subscribe((data: any) => {
       this.blogService.getArticleById(val.id).subscribe(res => {
         const end = new Date();
         const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
         setTimeout(() => {
+          if (data.icon !== "") {
+            this.updateIcon = 0;
+          }
+          if (data.image !== "") {
+            this.updateBanner = 0;
+          }
+          this.dataBlog = data;
+          console.log(this.dataBlog);
           this.dataArticles = res;
           this.spinner.stop();
         }, elapsed);
       });
+    });
     });
   }
 
@@ -61,15 +69,15 @@ export class EditComponent implements OnInit {
 
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.iconImage = data;
-      this.updateIcon = false;
+      this.icon = data;
+      this.updateIcon = 1;
     });
   }
 
-  showPortrait() {
+  showBanner() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.portraitImage = data;
-      this.updateImage = false;
+      this.banner = data;
+      this.updateBanner = 1;
     });
   }
 

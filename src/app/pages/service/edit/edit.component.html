@@ -5,7 +5,7 @@
         <div class="card-body">
           <div class="author">
             <div class="card-header text-center">
-              <h2 class="card-title">Servicios</h2>
+              <h2 class="card-title">Servicio</h2>
               <p class="card-text">Puedes añadir solo hasta 12 servicios</p>
             </div>
           </div>
@@ -30,7 +30,7 @@
                       <img [src]="serviceData.icon" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
+                      <img [src]="icon" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
                       <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
@@ -47,18 +47,18 @@
               <div class="col-12 col-md-9">
                 <h4 class="text-center">Portada</h4>
                 <div class="container-image p-2">
-                  <div [ngSwitch]="updateIcon">
+                  <div [ngSwitch]="updateBanner">
                     <div *ngSwitchCase="0">
                       <img [src]="serviceData.banner" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="portraitBanner" class="img-thumbnail mx-auto d-block">
+                      <img [src]="banner" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
                       <img src="/../../../../assets/img/image.jpg" alt="" class="img-thumbnail mx-auto d-block">
                     </div>
                   </div>
-                  <div class="overlay" (click)="showIcon()">
+                  <div class="overlay" (click)="showBanner()">
                     <div class="text text-light">
                       <i class="tim-icons icon-upload"> </i>
                       Editar portada

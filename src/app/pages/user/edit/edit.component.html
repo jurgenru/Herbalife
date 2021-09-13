@@ -12,13 +12,19 @@
                             </div>
                             <div class="col-2">
                                 <div class="container-image">
-                                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                                        *ngIf="!userData.image; else noImage">
-                                    <ng-template #noImage>
-                                        <img [src]="userData.image" alt="">
-                                    </ng-template>
+                                    <div [ngSwitch]="updateImage">
+                                        <div *ngSwitchCase="0">
+                                            <img [src]="userData.image" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="1">
+                                            <img [src]="image" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="2">
+                                            <img src="/../../../../assets/img/anime3.png" alt="">
+                                        </div>
+                                    </div>
                                     <div class="overlay">
-                                        <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
+                                        <p class="text text-light" (click)="showImage()">cargar imagen</p>
                                     </div>
                                 </div>
                                 <p class="text-center">imagen de perfil</p>

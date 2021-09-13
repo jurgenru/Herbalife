@@ -1,10 +1,10 @@
 <div class=" content">
     <div class=" row">
         <div class=" col-md-12">
-            <div class="card card-user">
+            <div class="card">
                 <form (ngSubmit)="post()">
-                    <div class=" card-body">
-                        <div style="text-align: center">
+                    <div class="card-body">
+                        <div class="card-header text-center">
                             <h2>ENTRENADOR</h2>
                             <h5>Puedes añadir hasta 12 entrenadores</h5>
                         </div>
@@ -53,7 +53,7 @@
                                     <div class="form-group">
                                         <label> Nombre del entrenador</label>
                                         <input class="form-control" placeholder="Coloca el nombre del entrenador"
-                                            type="text" value="" formControlName="names">
+                                            type="text" formControlName="names">
                                         <small *ngIf="names.invalid && (names.touched||names.dirty)"
                                             class="text-danger"> *El nombre es <strong>requerido</strong><br></small>
                                     </div>
@@ -134,7 +134,7 @@
                                 <div class="col-12 col-md-5">
                                     <label> Nombre de la clase </label>
                                     <input class=" form-control" placeholder="Coloca el nombre de la clase" type="text"
-                                        value="" formControlName="name">
+                                        formControlName="name">
                                     <small *ngIf="name.invalid && name.touched" class="text-danger"> *El nombre de la
                                         clase es <strong>requerida</strong><br></small>
                                     <br>
@@ -156,8 +156,8 @@
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/angular2-logo-red.png"
-                                            class="mx-auto d-block" *ngIf="!image; else noImage">
+                                        <img src="../../../../assets/img/angular2-logo-red.png" class="mx-auto d-block"
+                                            *ngIf="!image; else noImage">
                                         <ng-template #noImage>
                                             <img [src]="image" alt="">
                                         </ng-template>
@@ -174,7 +174,7 @@
                                 <div class="col-12 col-md-8">
                                     <label> Titulo de Agradecimiento </label>
                                     <input class="form-control" placeholder="Coloca el titulo de agradecimiento"
-                                        type="text" value="" formControlName="titleGratitude">
+                                        type="text" formControlName="titleGratitude">
                                     <small *ngIf="titleGratitude.invalid && titleGratitude.touched" class="text-danger">
                                         *El titulo es <strong>requerido</strong><br></small>
                                     <br>
@@ -199,4 +199,5 @@
         </div>
     </div>
 </div>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Creando entrenador ..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(58,55,54)" text="Creando entrenador ...">
+</ngx-ui-loader>

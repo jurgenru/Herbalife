@@ -15,10 +15,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create.component.scss']
 })
 export class CreateComponent implements OnInit {
+
   articleForm: any = {};
   blog: any = {};
-  iconImage: any;
-  portraitImage: any;
+  icon: any;
+  banner: any;
   articleImage: any = [];
   countArticle: number = 0;
   btnAddArticle: any;
@@ -42,10 +43,6 @@ export class CreateComponent implements OnInit {
   createForm() {
     this.blog = this.formBuilder.group({
       name: ['', Validators.required],
-      icon: [''],
-      image: [''],
-      video: [''],
-      userId: [''],
     });
 
     this.articleForm = this.formBuilder.group({
@@ -78,13 +75,13 @@ export class CreateComponent implements OnInit {
 
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.iconImage = data;
+      this.icon = data;
     });
   }
 
-  showPortrait() {
+  showBanner() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.portraitImage = data;
+      this.banner = data;
     });
   }
 
@@ -100,8 +97,8 @@ export class CreateComponent implements OnInit {
     this.spinner.start();
     this.userService.me().subscribe((user: any) => {
       this.blog.value.userId = user.id;
-      this.blog.value.icon = this.iconImage;
-      this.blog.value.image = this.portraitImage;
+      this.blog.value.icon = this.icon;
+      this.blog.value.banner = this.banner;
       this.blogService.post(this.blog.value).subscribe((data: any) => {
         this.article.controls.forEach((element) => {
           element.value.blogId = data.id;

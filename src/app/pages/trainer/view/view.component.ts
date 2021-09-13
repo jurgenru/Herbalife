@@ -24,7 +24,6 @@ export class ViewComponent implements OnInit {
         }
         this.trainer = data;
         this.trainerService.getLectionById(data.id).subscribe(lec => {
-          console.log(lec);
           this.lection = lec;
         });
       });

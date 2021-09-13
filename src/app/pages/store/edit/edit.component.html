@@ -37,11 +37,6 @@
                                           <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
                                         </div>
                                       </div>
-                                    <!-- <img [src]="storeData.icon" alt="IconStore" class="mx-auto d-block"
-                                        *ngIf="!icon; else noIcon">
-                                    <ng-template #noIcon>
-                                        <img [src]="icon" alt="">
-                                    </ng-template> -->
                                     <div class="overlay" (click)="showIcon()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
@@ -52,11 +47,17 @@
                                 <br>
                                 <h5 class="text-center md-0">Portada</h5>
                                 <div class="container-image">
-                                    <img [src]="storeData.image" alt="PortraitStore" class="mx-auto d-block"
-                                        *ngIf="!image; else noImage">
-                                    <ng-template #noImage>
-                                        <img [src]="portraitImage" alt="">
-                                    </ng-template>
+                                    <div [ngSwitch]="updateImage">
+                                        <div *ngSwitchCase="0">
+                                          <img [src]="storeData.image" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="1">
+                                          <img [src]="image" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="2">
+                                          <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                                        </div>
+                                      </div>
                                     <div class="overlay" (click)="showImage()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>

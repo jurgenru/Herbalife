@@ -22,9 +22,9 @@
                                     <h4 class="text-center">Icono del blog</h4>
                                     <div class="container-image p-2">
                                         <img src="../../../../assets/img/anime3.png" alt="IconBlog"
-                                            class="img-thumbnail mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
+                                            class="img-thumbnail mx-auto d-block" *ngIf="!icon; else noImageIcon">
                                         <ng-template #noImageIcon>
-                                            <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
+                                            <img [src]="icon" class="img-thumbnail mx-auto d-block">
                                         </ng-template>
                                         <div class="overlay" (click)="showIcon()">
                                             <div class="text text-light">
@@ -37,13 +37,13 @@
                                 <div class="col-12 col-md-7">
                                     <h4 class="text-center">Banner del blog</h4>
                                     <div class="container-image p-2">
-                                        <img src="../../../../assets/img/angular2-logo-red.png" alt="PortraitImage"
+                                        <img src="../../../../assets/img/angular2-logo-red.png"
                                             class="img-thumbnail mx-auto d-block"
-                                            *ngIf="!portraitImage; else noImagePortrait">
-                                        <ng-template #noImagePortrait>
-                                            <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
+                                            *ngIf="!banner; else noBanner">
+                                        <ng-template #noBanner>
+                                            <img [src]="banner" class="img-thumbnail mx-auto d-block">
                                         </ng-template>
-                                        <div class="overlay" (click)="showPortrait()">
+                                        <div class="overlay" (click)="showBanner()">
                                             <div class="text text-light">
                                                 <i class="tim-icons icon-upload"> </i>
                                                 Agregar imagen o video a la portada

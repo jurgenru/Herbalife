@@ -16,7 +16,7 @@ export class EditComponent implements OnInit {
 
   content = 'Cargando ...';
   userData: any = {};
-  imageProfile: any;
+  image: any;
   socialMedia: any = {};
   manager: any = {};
   whatsapp: any = '';
@@ -26,6 +26,7 @@ export class EditComponent implements OnInit {
   youtube: any = '';
   tiktok: any = '';
   gmail: any = '';
+  updateImage: number = 2;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -49,6 +50,9 @@ export class EditComponent implements OnInit {
         const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
         setTimeout(() => {
           man.forEach(element => {
+            if (element.image !== "") {
+              this.updateImage = 0;
+            }
             this.userData = element;
             if(element.socialMedia) {
               this.socialMedia = JSON.parse(element.socialMedia);
@@ -71,10 +75,11 @@ export class EditComponent implements OnInit {
     });
   }
 
-  imageCropper() {
+  showImage() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.imageProfile = data;
-      this.manager.image = this.imageProfile;
+      this.image = data;
+      this.updateImage = 1;
+      this.manager.image = this.image;
     });
   }
 
