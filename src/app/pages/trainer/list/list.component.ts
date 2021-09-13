@@ -30,7 +30,6 @@ export class ListComponent implements OnInit {
     const filter = `{"fields": {"id": true, "names": true, "description": true, "created": true}, "order":["id DESC"]}`;
     this.userService.me().subscribe((data: any) => {
       this.userService.getTrainersById(data.id, filter).subscribe(trainer => {
-        console.log(trainer);
         this.lists = trainer;
       });
     });
