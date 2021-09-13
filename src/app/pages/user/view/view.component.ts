@@ -25,10 +25,10 @@ export class ViewComponent implements OnInit {
     this.userService.me().subscribe((me: any) => {
       this.managerService.getByUserId(me.id).subscribe((man: any) => {
         man.forEach(element => {
-          this.user = element;
-          if (this.user.socialMedia) {
+          if (man.socialMedia) {
             this.socialMedia = JSON.parse(this.user.socialMedia);
           }
+          this.user = element;
         });
       });
     });

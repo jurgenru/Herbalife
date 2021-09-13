@@ -7,9 +7,13 @@ import { environment } from 'src/environments/environment';
 })
 export class ArticleService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   post(body) {
-      return this.http.post(`${environment.apiUrl}articles`, body).pipe();
+    return this.http.post(`${environment.apiUrl}articles`, body).pipe();
   }
+  update(id, body) {
+    return this.http.patch(`${environment.apiUrl}articles/${id}`, body).pipe();
+  }
+
 }

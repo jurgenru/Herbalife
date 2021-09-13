@@ -31,56 +31,26 @@
             <table class="table table-bordered table-striped">
               <thead class="text-primary">
                 <tr>
-                  <th class="text-center">Id</th>
-                  <th class="text-center">Nombre</th>
+                  <th>Titulo</th>
+                  <th>Modo</th>
+                  <th class="text-center">Descripcion</th>
                   <th class="text-center">Fecha de creacion</th>
                   <th class="text-right">Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  *ngFor="
-                    let list of lists
-                      | filterService: filterService
-                      | paginate: { itemsPerPage: 100, currentPage: pageActual }
-                  "
-                >
-                  <td class="text-right">{{ list.id }}</td>
-                  <td class="text-right">{{ list.name }}</td>
-                  <td class="text-right">
-                    {{ list.created | date: "yyyy-MM-dd" }}
-                  </td>
-                  <td class="text-right">
-                    <button
-                      class="btn btn-success btn-link btn-sm btn-icon"
-                      type="button"
-                      placement="top"
-                      ngbTooltip="ver"
-                      container="body"
-                      [routerLink]="['/service/view', list.id]"
-                    >
-                      <i class="tim-icons icon-paper"></i>
-                    </button>
-                    <button
-                      class="btn btn-warning btn-link btn-sm"
-                      type="button"
-                      placement="top"
-                      ngbTooltip="editar"
-                      container="body"
-                      [routerLink]="['/service/edit', list.id]"
-                    >
-                      <i class="tim-icons icon-pencil"></i>
-                    </button>
-                    <button
-                      class="btn btn-danger btn-link btn-sm"
-                      (click)="showDelete(content)"
-                      type="button"
-                      placement="top"
-                      ngbTooltip="eliminar"
-                      container="body"
-                    >
-                      <i class="tim-icons icon-trash-simple"></i>
-                    </button>
+                <tr *ngFor="let list of lists | filterService: filterService | paginate: {itemsPerPage: 100, currentPage: pageActual}">
+                  <td>{{list.title}}</td>
+                  <td>{{list.mode}}</td>
+                  <td class=" text-center">{{list.description | slice:0:35}} ...</td>
+                  <td class=" text-center">{{list.created | date: 'dd-MM-yyyy'}}</td>
+                  <td class=" text-right">
+                    <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
+                      ngbTooltip="ver" container="body" [routerLink]="['/service/view', list.id]"><i class="tim-icons icon-paper"></i></button>
+                    <button class="btn btn-warning btn-link btn-sm" [routerLink]="['/service/edit', list.id]" type="button" placement="top" ngbTooltip="editar"
+                      container="body"><i class=" tim-icons icon-pencil"></i></button>
+                      <button class="btn btn-danger btn-link btn-sm"  (click)="showDelete(content)" type="button" placement="top" ngbTooltip="eliminar"
+                      container="body"><i class=" tim-icons icon-trash-simple"></i></button>
                   </td>
                   <ng-template #content let-modal>
                     <div class="modal-header">

@@ -21,13 +21,13 @@
                                 <br>
                                 <div class="container-image p-2">
                                     <div [ngSwitch]="updateIcon">
-                                        <div *ngSwitchCase="true">
+                                        <div *ngSwitchCase="0">
                                             <img [src]="dataBlog.icon" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchCase="false">
-                                            <img [src]="iconImage" class="img-thumbnail mx-auto d-block">
+                                        <div *ngSwitchCase="1">
+                                            <img [src]="icon" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchDefault>
+                                        <div *ngSwitchCase="2">
                                             <img src="/../../../../assets/img/anime3.png" alt="">
                                         </div>
                                     </div>
@@ -40,20 +40,20 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-7">
-                                <h4 class="text-center">Banner del blog</h4>
+                                <h4 class="text-center">Portada del blog</h4>
                                 <div class="container-image p-2">
-                                    <div [ngSwitch]="updateImage">
-                                        <div *ngSwitchCase="true">
-                                            <img [src]="dataBlog.image" class="img-thumbnail mx-auto d-block">
+                                    <div [ngSwitch]="updateBanner">
+                                        <div *ngSwitchCase="0">
+                                            <img [src]="dataBlog.banner" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchCase="false">
-                                            <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
+                                        <div *ngSwitchCase="1">
+                                            <img [src]="banner" class="img-thumbnail mx-auto d-block">
                                         </div>
-                                        <div *ngSwitchDefault>
+                                        <div *ngSwitchCase="2">
                                             <img src="/../../../../assets/img/anime3.png" alt="">
                                         </div>
                                     </div>
-                                    <div class="overlay" (click)="showPortrait()">
+                                    <div class="overlay" (click)="showBanner()">
                                         <div class="text text-light">
                                             <i class="tim-icons icon-upload"> </i>
                                             Editar imagen o video a la portada
@@ -89,20 +89,23 @@
                             <div class="row">
                                 <div class="col-12 col-md-7">
                                     <label>Titulo</label>
-                                    <input class="form-control" type="text" [value]="DataArticle.title">
+                                    <input class="form-control" type="text"
+                                        [(ngModel)]="articleTitle[i] = DataArticle.title"
+                                        [ngModelOptions]="{standalone: true}" [value]="DataArticle.title">
                                     <div>
                                     </div>
                                     <label>Contenido del articulo</label>
                                     <textarea class="form-control rounded pl-2 pr-2" rows="6"
+                                        [(ngModel)]="articleDescription[i] = DataArticle.description"
+                                        [ngModelOptions]="{standalone: true}"
                                         [value]="DataArticle.description"></textarea>
                                 </div>
                                 <div class="col-12 col-md-5 mt-4 mb-4">
                                     <div class="container-image">
                                         <img [src]="DataArticle.image" class="img-thumbnail mx-auto d-block"
-                                            *ngIf="DataArticle.image; else noArticleImage">
+                                            *ngIf="!articleImage[i]; else noArticleImage">
                                         <ng-template #noArticleImage>
-                                            <img src="/../../../../assets/img/anime6.png"
-                                                class="mx-auto d-block img-thumbnail">
+                                            <img [src]="articleImage[i]" class="mx-auto d-block img-thumbnail">
                                         </ng-template>
                                         <div class="overlay" (click)="showBlog(i)">
                                             <div class="text text-light">
@@ -113,7 +116,7 @@
                                     </div>
                                     <br>
                                     <button class="btn btn-warning btn-sm pull-right" type="button"
-                                        (click)="editArticle(i)">Editar articulo</button>
+                                        (click)="editArticle(DataArticle.id,i)">Editar articulo</button>
                                 </div>
                             </div>
                         </div>

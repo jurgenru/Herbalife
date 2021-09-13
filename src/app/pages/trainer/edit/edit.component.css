@@ -1,13 +1,3 @@
-textarea{
-    border: solid 1px #32325d;
-    min-height: 4cm;
-}
-
-.form-control.ng-touched.ng-invalid{
-  /* border: 1px solid #fd5d93; */
-  margin-bottom: 0%;
-}
-
 .container-image{
     position: relative;
 }
@@ -40,8 +30,4 @@ textarea{
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-  }
-
-  .img-banner {
-    width: 100%;
   }

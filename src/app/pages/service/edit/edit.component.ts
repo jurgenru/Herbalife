@@ -13,107 +13,72 @@ import { ServiceService } from 'src/app/services/service.service';
 })
 export class EditComponent implements OnInit {
 
-  content = 'Cargando ...';
-  dataService: any = {};
-  service: any = {};
-  serviceData: any;
-  iconImage: any;
-  bannerImage: any;
-  imageImage: any;
-  updateIcon: boolean;
-  updateBanner: boolean;
-  updateImage: boolean;
+  content: any;
+  serviceData: any = {};
+  updateIcon: number = 2;
+  updateImage: number = 2;
+  updateBanner: number = 2;
+  icon: any;
+  image: any;
+  banner: any;
 
   constructor(
     private simpleModalService: SimpleModalService,
-    private route: ActivatedRoute,
+    private serviceService: ServiceService,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
-    private serviceService: ServiceService
+    private route: ActivatedRoute
   ) {
-    this.serviceView();
+    this.get();
   }
 
-  serviceView() {
+  ngOnInit() {
+  }
+
+  get() {
+    this.content = 'Cargando ...';
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      this.serviceService.getById(val.id).subscribe(data => {
-        this.dataService = data;
-        this.updateIcon = true;
-        this.updateImage = true;
-        this.updateBanner = true;
-      });
-      this.serviceService.getServiceById(val.id).subscribe(res => {
+      this.serviceService.getById(val.id).subscribe((data: any) => {
         const end = new Date();
         const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
         setTimeout(() => {
-          this.serviceData = res;
+          if (data.icon !== "") {
+            this.updateIcon = 0;
+          }
+          if (data.image !== "") {
+            this.updateImage = 0;
+          }
+          if (data.banner !== "") {
+            this.updateBanner = 0;
+          }
+          this.serviceData = data;
           this.spinner.stop();
         }, elapsed);
       });
     });
   }
 
-  ngOnInit() { }
-
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.iconImage = data;
-      this.updateIcon = false;
+      this.icon = data;
+      this.updateIcon = 1;
+    });
+  }
+
+  showPortrait() {
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.image = data;
+      this.updateImage = 1;
     });
   }
 
   showBanner() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.bannerImage = data;
-      this.updateBanner = false;
-    });
-  }
-
-  showImage() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.imageImage = data;
-      this.updateImage = false;
-    });
-  }
-
-  edit() {
-    this.content = 'Editando ...';
-    const start = new Date();
-    this.spinner.start();
-    if (this.iconImage) {
-      this.service.icon = this.iconImage;
-    }
-    if (this.bannerImage) {
-      this.service.banner = this.bannerImage;
-    }
-    if (this.imageImage) {
-      this.service.image = this.imageImage;
-    }
-    this.service.userId = this.dataService.userId
-    this.serviceService.update(this.dataService.id, this.service).subscribe(data => {
-      const end = new Date();
-      const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
-      setTimeout(() => {
-        this.spinner.stop();
-        this.router.navigate(['service/list']);
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el servicio exitosamente', '5000', 'success', 'top', 'center');
-      }, elapsed);
-    }, error => {
-      this.spinner.stop();
-      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center');
-    });
-  }
-
-  notification(content, time, type, from, align) {
-    this.toastr.error(content, '', {
-      timeOut: time,
-      closeButton: true,
-      enableHtml: true,
-      toastClass: `alert alert-${type} alert-with-icon`,
-      positionClass: 'toast-' + from + '-' + align
+      this.banner = data;
+      this.updateBanner = 1;
     });
   }
 

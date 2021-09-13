@@ -1,43 +1,35 @@
-textarea{
-  border: solid 1px #32325d;
-  min-height: 4cm;
-}
-.form-control.ng-touched.ng-invalid{
-/* border: 1px solid #fd5d93; */
-margin-bottom: 0%;
-}
 .container-image{
-  position: relative;
+    position: relative;
 }
+
 .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #008CBA;
-}
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
 
-.container-image:hover .overlay {
-  opacity: 1;
-}
-.text {
-  cursor: pointer;
-  color: black;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+  .container-image:hover .overlay {
+    opacity: 1;
+  }
 
-.img-banner {
-  width: 100%;
+  .text {
+    cursor: pointer;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform:;
+    -ms-transform:;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    -moz-transform:;
+    -o-transform:;
 }

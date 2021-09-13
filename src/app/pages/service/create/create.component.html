@@ -13,155 +13,107 @@
           <hr color="purple" width="90%" />
           <br />
           <form [formGroup]="service" (ngSubmit)="post()">
-            <!--escoger el servicio-->
             <div class="row">
               <div class="col-sm-6 mx-auto">
                 <select class="form-control text-center" formControlName="mode">
-                  <option selected>Modo de Servicio</option>
                   <option *ngFor="let type of Types">{{ type }}</option>
                 </select>
                 <div *ngIf="mode.invalid && (mode.dirty || mode.touched)" class="text-center">
-                  <span *ngIf="mode.errors.required" class="text-danger">
+                  <small *ngIf="mode.errors.required" class="text-danger">
                     Un modo de servicio <strong>requerido</strong>
-                  </span>
-                  <br />
+                  </small>
                   <br />
                 </div>
               </div>
             </div>
             <br />
-            <!--escoger el servicio-->
-            <!--icono-->
             <div class="row">
               <div class="col-12 col-md-3">
+                <h4 class="text-center">Icono</h4>
                 <div class="container-image">
-                  <img
-                    src="../../../../assets/img/anime3.png"
-                    alt="Avatar"
-                    class="mx-auto d-block"
-                    *ngIf="!imageIcon; else noImage"
-                  />
-                  <ng-template #noImage>
-                    <img [src]="imageIcon" alt="" />
+                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!icon; else noIcon" />
+                  <ng-template #noIcon>
+                    <img [src]="icon" alt="" class="mx-auto d-block" />
                   </ng-template>
                   <div class="overlay">
-                    <p class="text text-light" (click)="imageCropper()">
-                      cargar imagen
+                    <p class="text text-light" (click)="showIcon()">
+                      cargar el icono
                     </p>
                   </div>
                 </div>
-                <br>
-                <p class="text-center">Icono de la categoría</p>
               </div>
               <div class="col-12 col-md-9">
+                <h4 class="text-center">Banner</h4>
                 <div class="container-image">
-                  <img
-                    src="../../../../assets/img/anime3.png"
-                    alt="Avatar"
-                    class="mx-auto d-block"
-                    *ngIf="!imageBanner; else noImage1"
-                  />
-                  <ng-template #noImage1>
-                    <img [src]="imageBanner" alt="" />
+                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!banner; else noBanner" />
+                  <ng-template #noBanner>
+                    <img [src]="banner" alt="" class="mx-auto d-block" />
                   </ng-template>
                   <div class="overlay">
-                    <p class="text text-light" (click)="imageCropper1()">
-                      cargar imagen
+                    <p class="text text-light" (click)="showBanner()">
+                      cargar banner
                     </p>
                   </div>
                 </div>
-                <br>
-                <p class="text-center">Imagen o Video de la Portada</p>
               </div>
             </div>
-            <!--icono-->
-            <!--portada-->
-            <!--portada-->
             <br />
             <hr color="purple" width="90%" />
             <br />
-            <!--descripcion-->
             <div class="row">
               <div class="col-12 col-md-3">
+                <h4 class="text-center">Imagen</h4>
                 <div class="container-image">
-                  <img
-                    src="../../../../assets/img/anime3.png"
-                    alt="Avatar"
-                    class="mx-auto d-block"
-                    *ngIf="!imageDescription; else noImage2"
-                  />
-                  <ng-template #noImage2>
-                    <img [src]="imageDescription" alt="" />
+                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!image; else noImage" />
+                  <ng-template #noImage>
+                    <img [src]="image" alt="" />
                   </ng-template>
                   <div class="overlay">
-                    <p class="text text-light" (click)="imageCropper2()">
+                    <p class="text text-light" (click)="showImage()">
                       cargar imagen
                     </p>
                   </div>
                 </div>
-                <br>
-                <p class="text-center">
-                  Imagen para la descripcion del servicio
-                </p>
               </div>
-
               <div class="col-md-9 text-left">
                 <div class="form-group">
                   <label> Nombre del servicio </label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Añade un nombre al servicio"
-                    formControlName="name"
-                    required
-                  />
+                  <input class="form-control" type="text" placeholder="Añade un nombre al servicio"
+                    formControlName="name" required />
                   <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                    <span *ngIf="name.errors.required" class="text-danger">
-                      Un nombre es <strong>requerido</strong>
-                    </span>
-                    <br />
+                    <small *ngIf="name.errors.required" class="text-danger">
+                      *El nombre es <strong>requerido</strong>
+                    </small>
                     <br />
                   </div>
                 </div>
                 <div class="form-group">
                   <label> Título de la descripcion </label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Añade un título al servicio"
-                    formControlName="title"
-                    required
-                  />
+                  <input class="form-control" type="text" placeholder="Añade un título al servicio"
+                    formControlName="title" required />
                   <div *ngIf="title.invalid && (title.dirty || title.touched)">
-                    <span *ngIf="title.errors.required" class="text-danger">
-                      Un título es <strong>requerido</strong>
-                    </span>
-                    <br />
+                    <small *ngIf="title.errors.required" class="text-danger">
+                      *El título es <strong>requerido</strong>
+                    </small>
                     <br />
                   </div>
                 </div>
                 <div class="form-group">
                   <label> Descripción del servicio </label>
-                  <textarea
-                    class="form-control"
-                    placeholder="Añade una breve descripcion"
-                    type="text"
-                    maxlength="150"
-                    formControlName="description"
-                    required
-                  ></textarea>
+                  <textarea class="form-control" placeholder="Añade una breve descripcion" type="text"
+                    formControlName="description" required></textarea>
                   <div *ngIf="description.invalid && (description.dirty || description.touched)">
-                    <span *ngIf="description.errors.required" class="text-danger">
-                      Una descripcion es <strong>requerida</strong>
-                    </span>
-                    <br />
+                    <small *ngIf="description.errors.required" class="text-danger">
+                      *La descripcion es <strong>requerida</strong>
+                    </small>
                     <br />
                   </div>
                 </div>
               </div>
             </div>
-            <!--descripcion-->
-            <!--tipo de servicio-->
             <div class="text-center">
               <p><b>Escoja el tipo de servicio</b></p>
               <br />
@@ -170,14 +122,8 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          formControlName="checkbox1"
-                          name="Normal"
-                          required
-                          checked
-                        />
+                        <input class="form-check-input" type="checkbox" formControlName="checkbox1" name="Normal"
+                          required checked />
                         Normal
                         <span class="form-check-sign"></span>
                       </label>
@@ -186,12 +132,7 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          formControlName="checkbox2"
-                          required
-                        />
+                        <input class="form-check-input" type="checkbox" formControlName="checkbox2" required />
                         Encuesta de emprendedores
                         <span class="form-check-sign"></span>
                       </label>
@@ -200,13 +141,8 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          formControlName="checkbox3"
-                          required
-                        />
-                        Otros
+                        <input class="form-check-input" type="checkbox" formControlName="checkbox3" required />
+                        Autoevaluacion
                         <span class="form-check-sign"></span>
                       </label>
                     </div>
@@ -214,57 +150,36 @@
                 </div>
               </div>
             </div>
-            <!--tipo de servicio-->
-            <!--agradecimientos-->
             <br />
             <div class="row text-left">
               <div class="col-md-12">
                 <div class="form-group">
                   <label> Título de agrecidimiento </label>
-                  <input
-                    class="form-control"
-                    type="text"
-                    placeholder="Añade el título de agradecimiento"
-                    formControlName="titleGratitude"
-                    required
-                  />
+                  <input class="form-control" type="text" placeholder="Añade el título de agradecimiento"
+                    formControlName="titleGratitude" required />
                   <div *ngIf="titleGratitude.invalid && (titleGratitude.dirty || titleGratitude.touched)">
-                    <span *ngIf="titleGratitude.errors.required" class="text-danger">
-                      Un título de agradecimiento es <strong>requerido</strong>
-                    </span>
-                    <br />
+                    <small *ngIf="titleGratitude.errors.required" class="text-danger">
+                      *El título de agradecimiento es <strong>requerido</strong>
+                    </small>
                     <br />
                   </div>
                 </div>
                 <div class="form-group">
                   <label> Descripcion del agrecidimiento </label>
-                  <textarea
-                    class="form-control"
-                    type="text"
-                    placeholder="Añade un agradecimiento. Maximo 150 caracteres"
-                    maxlength="150"
-                    formControlName="descriptionGratitude"
-                    required
-                  ></textarea>
-                  <div *ngIf="descriptionGratitude.invalid && (descriptionGratitude.dirty || descriptionGratitude.touched)">
-                    <span *ngIf="descriptionGratitude.errors.required" class="text-danger">
-                      Un título de agradecimiento es <strong>requerido</strong>
-                    </span>
-                    <br />
+                  <textarea class="form-control" type="text" placeholder="Añade un agradecimiento"
+                    formControlName="descriptionGratitude" required></textarea>
+                  <div
+                    *ngIf="descriptionGratitude.invalid && (descriptionGratitude.dirty || descriptionGratitude.touched)">
+                    <small *ngIf="descriptionGratitude.errors.required" class="text-danger">
+                      *El título de agradecimiento es <strong>requerido</strong>
+                    </small>
                     <br />
                   </div>
                 </div>
               </div>
             </div>
-            <!--agradecimientos-->
             <div class="text-right">
-              <button
-                type="submit"
-                class="btn btn-info"
-                [disabled]="service.invalid"
-              >
-                Guardar
-              </button>
+              <button type="submit" class="btn btn-info" [disabled]="service.invalid">Guardar</button>
             </div>
           </form>
         </div>
@@ -272,9 +187,5 @@
     </div>
   </div>
 </div>
-<ngx-ui-loader
-  fgsColor="gray"
-  fgsType="three-strings"
-  overlayColor="rgba(58,55,54)"
-  text="Creando su servicio..."
-></ngx-ui-loader>
+<ngx-ui-loader fgsColor="gray" fgsType="three-strings" overlayColor="rgba(58,55,54)" text="Creando servicio ...">
+</ngx-ui-loader>

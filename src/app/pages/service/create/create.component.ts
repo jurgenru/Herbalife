@@ -16,13 +16,13 @@ import { UserService } from "src/app/services/user.service";
 export class CreateComponent implements OnInit {
   services: number;
 
-  imageIcon: any;
-  imageBanner: any;
-  imageDescription: any;
-
-  Types: any = ["Virtual", "Presencial"];
+  icon: any;
+  banner: any;
+  image: any;
   service: any = {};
   serviceType: any = {};
+  Types: any = ["presencial", "virtual"];
+
   constructor(
     private SimpleModalService: SimpleModalService,
     private formBuilder: FormBuilder,
@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private userService: UserService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.createServiceForm();
@@ -61,30 +61,30 @@ export class CreateComponent implements OnInit {
     } else if (this.serviceType.value.checkbox2 == true) {
       this.service.value.type = "Encuesta de Emprendedores";
     } else {
-      this.service.value.type = "Otros";
+      this.service.value.type = "Autoevaluacion";
     }
   }
 
-  imageCropper() {
+  showIcon() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
-        this.imageIcon = data;
+        this.icon = data;
       }
     );
   }
 
-  imageCropper1() {
+  showImage() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
-        this.imageBanner = data;
+        this.image = data;
       }
     );
   }
 
-  imageCropper2() {
+  showBanner() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
-        this.imageDescription = data;
+        this.banner = data;
       }
     );
   }
@@ -97,12 +97,11 @@ export class CreateComponent implements OnInit {
       this.serviceType.value.checkbox2,
       this.serviceType.value.checkbox3
     );
-
     this.userService.me().subscribe((user: any) => {
       this.service.value.userId = user.id;
-      this.service.value.icon = this.imageIcon;
-      this.service.value.banner = this.imageBanner;
-      this.service.value.image = this.imageDescription;
+      this.service.value.icon = this.icon;
+      this.service.value.banner = this.banner;
+      this.service.value.image = this.image;
       this.serviceService.post(this.service.value).subscribe(
         (data) => {
           const end = new Date();
@@ -150,24 +149,31 @@ export class CreateComponent implements OnInit {
   get mode() {
     return this.service.get("mode");
   }
+
   get description() {
     return this.service.get("description");
   }
+
   get title() {
     return this.service.get("title");
   }
+
   get titleGratitude() {
     return this.service.get("titleGratitude");
   }
+
   get descriptionGratitude() {
     return this.service.get("descriptionGratitude");
   }
+
   get type() {
     return this.serviceType.get("checkbox1");
   }
+
   get type1() {
     return this.serviceType.get("checkbox2");
   }
+
   get type2() {
     return this.serviceType.get("checkbox3");
   }
