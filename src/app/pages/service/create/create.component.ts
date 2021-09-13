@@ -17,7 +17,7 @@ export class CreateComponent implements OnInit {
   services: number;
 
   imageIcon: any;
-  imageCover: any;
+  imageBanner: any;
   imageDescription: any;
 
   Types: any = ["Virtual", "Presencial"];
@@ -76,7 +76,7 @@ export class CreateComponent implements OnInit {
   imageCropper1() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
       (data) => {
-        this.imageCover = data;
+        this.imageBanner = data;
       }
     );
   }
@@ -101,7 +101,7 @@ export class CreateComponent implements OnInit {
     this.userService.me().subscribe((user: any) => {
       this.service.value.userId = user.id;
       this.service.value.icon = this.imageIcon;
-      this.service.value.video = this.imageCover;
+      this.service.value.banner = this.imageBanner;
       this.service.value.image = this.imageDescription;
       this.serviceService.post(this.service.value).subscribe(
         (data) => {

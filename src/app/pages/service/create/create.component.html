@@ -59,10 +59,10 @@
                     src="../../../../assets/img/anime3.png"
                     alt="Avatar"
                     class="mx-auto d-block"
-                    *ngIf="!imageCover; else noImage1"
+                    *ngIf="!imageBanner; else noImage1"
                   />
                   <ng-template #noImage1>
-                    <img [src]="imageCover" alt="" />
+                    <img [src]="imageBanner" alt="" />
                   </ng-template>
                   <div class="overlay">
                     <p class="text text-light" (click)="imageCropper1()">

@@ -18,10 +18,10 @@ export class EditComponent implements OnInit {
   service: any = {};
   serviceData: any;
   iconImage: any;
-  coverVideo: any;
+  bannerImage: any;
   imageImage: any;
   updateIcon: boolean;
-  updateVideo: boolean;
+  updateBanner: boolean;
   updateImage: boolean;
 
   constructor(
@@ -43,7 +43,7 @@ export class EditComponent implements OnInit {
         this.dataService = data;
         this.updateIcon = true;
         this.updateImage = true;
-        this.updateVideo = true;
+        this.updateBanner = true;
       });
       this.serviceService.getServiceById(val.id).subscribe(res => {
         const end = new Date();
@@ -65,10 +65,10 @@ export class EditComponent implements OnInit {
     });
   }
 
-  showPortrait() {
+  showBanner() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-      this.coverVideo = data;
-      this.updateVideo = false;
+      this.bannerImage = data;
+      this.updateBanner = false;
     });
   }
 
@@ -86,8 +86,8 @@ export class EditComponent implements OnInit {
     if (this.iconImage) {
       this.service.icon = this.iconImage;
     }
-    if (this.coverVideo) {
-      this.service.video = this.coverVideo;
+    if (this.bannerImage) {
+      this.service.banner = this.bannerImage;
     }
     if (this.imageImage) {
       this.service.image = this.imageImage;
