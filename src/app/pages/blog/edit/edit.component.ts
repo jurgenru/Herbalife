@@ -56,7 +56,6 @@ export class EditComponent implements OnInit {
             this.updateBanner = 0;
           }
           this.dataBlog = data;
-          console.log(this.dataBlog);
           this.dataArticles = res;
           this.spinner.stop();
         }, elapsed);

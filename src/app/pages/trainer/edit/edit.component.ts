@@ -53,9 +53,8 @@ export class EditComponent implements OnInit {
             if (data.banner !== "") {
               this.updateBanner = 0;
             }
-            if (data.socialMedia) {
+            // if (data.socialMedia) {
               this.socialMedia = JSON.parse(data.socialMedia);
-            }
             if (lec.image !== "") {
               this.updateImage = 0;
             }
