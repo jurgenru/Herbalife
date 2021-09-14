@@ -12,7 +12,6 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
-import { HomeComponent } from "./pages/home/home.component";
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { StoreService } from "./services/store.service";
 import { BlogService } from "./services/blog.service";
@@ -24,8 +23,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
 import { TrainerService } from "./services/trainer.service";
-import { StoreStageComponent } from "./stages/store-stage/store-stage.component";
-
+import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 
 @NgModule({
   imports: [
@@ -42,7 +40,7 @@ import { StoreStageComponent } from "./stages/store-stage/store-stage.component"
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
   providers: [
     StoreService,
     BlogService,

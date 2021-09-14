@@ -25,4 +25,7 @@ export class StatementService {
   getStatementsById(id) {
     return this.http.get(`${environment.apiUrl}users/${id}/statements`).pipe();
   }
+  update(id, body) {
+    return this.http.patch(`${environment.apiUrl}statements/${id}`, body).pipe();
+  }
 }

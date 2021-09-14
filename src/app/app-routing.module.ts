@@ -2,21 +2,17 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { HomeComponent } from "./pages/home/home.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
-import { StoreStageComponent } from "./stages/store-stage/store-stage.component";
+import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "home",
+    redirectTo: 'login',
     pathMatch: "full"
-  }, {
-    path: 'home', component: HomeComponent
-  }, {
+  },{
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
@@ -28,23 +24,18 @@ const routes: Routes = [
         path: "",
         loadChildren:
           "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-      }
-    ]
-  },
-  {
-    path:"",
-    component: StoreStageComponent,
-    children:[
-      {
-        path: "store-stage",
-        loadChildren: 
-        "./stages/store-stage/store-stage.module#StoreStageModule"
-      }
-    ]
-  },
-  {
+      }]}, {
+        path: "",
+        component: UserLayoutComponent,
+        children: [
+          {
+            path: "",
+            loadChildren: "./layouts/user-layout/user-layout.module#UserLayoutModule"
+          }
+        ]
+      },{
     path: "**",
-    redirectTo: "home"
+    redirectTo: "login"
   }
 ];
 

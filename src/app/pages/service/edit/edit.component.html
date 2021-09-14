@@ -12,7 +12,7 @@
           <br />
           <hr color="purple" width="90%" />
           <br />
-          <form>
+          <form #form="ngForm" (ngSubmit)="edit()">
             <div class="row">
               <div class="col-sm-6 mx-auto">
                 <!-- <select class="form-control text-center">
@@ -79,7 +79,7 @@
                       <img [src]="serviceData.image" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="portraitImage" class="img-thumbnail mx-auto d-block">
+                      <img [src]="image" class="img-thumbnail mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
                       <img src="../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
