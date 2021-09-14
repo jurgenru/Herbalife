@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     StoreStageRoutingModule,
-    RouterModule.forChild(routes),
+    RouterModule,
     NgbModule,
   ],
   exports: [
