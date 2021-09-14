@@ -27,10 +27,6 @@ export class UserService {
         return this.http.get(`${environment.apiUrl}/users/${id}/stores?filter=${filter}`).pipe();
     }
 
-    getStoreByUserId(id, filter) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/stores?filter=${filter}`).pipe();
-    }
-
     getStatementById(id, filter) {
       return this.http.get(`${environment.apiUrl}/users/${id}/statements?filter=${filter}`).pipe();
     }
@@ -41,6 +37,10 @@ export class UserService {
 
     getTrainersById(id, filter) {
       return this.http.get(`${environment.apiUrl}/users/${id}/trainers?filter=${filter}`).pipe();
+    }
+
+    getName(name, filter) {
+      return this.http.get(`${environment.apiUrl}/users/username/${name}?filter=${filter}`).pipe();
     }
 
 }
