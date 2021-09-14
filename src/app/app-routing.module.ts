@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { HomeComponent } from "./pages/home/home.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
+import { StoreStageComponent } from "./stages/store-stage/store-stage.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,17 @@ const routes: Routes = [
         path: "",
         loadChildren:
           "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
+      }
+    ]
+  },
+  {
+    path:"",
+    component: StoreStageComponent,
+    children:[
+      {
+        path: "store-stage",
+        loadChildren: 
+        "./stages/store-stage/store-stage.module#StoreStageModule"
       }
     ]
   },

@@ -24,6 +24,8 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
 import { TrainerService } from "./services/trainer.service";
+import { StoreStageComponent } from "./stages/store-stage/store-stage.component";
+
 
 @NgModule({
   imports: [
