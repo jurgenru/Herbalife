@@ -24,6 +24,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
 import { TrainerService } from "./services/trainer.service";
+import { BlogStageComponent } from './stages/blog-stage/blog-stage.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { TrainerService } from "./services/trainer.service";
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, HomeComponent],
+  declarations: [AppComponent, AdminLayoutComponent, HomeComponent, BlogStageComponent],
   providers: [
     StoreService,
     BlogService,

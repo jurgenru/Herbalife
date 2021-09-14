@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { HomeComponent } from "./pages/home/home.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
+import { BlogStageComponent } from "./stages/blog-stage/blog-stage.component";
 
 const routes: Routes = [
   {
@@ -19,7 +20,12 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
-  }, {
+  },
+  {
+    path: 'blog-stage',
+    component: BlogStageComponent
+  },
+  {
     path: "",
     component: AdminLayoutComponent,
     children: [
