@@ -12,6 +12,7 @@ import { StatementService } from "src/app/services/statement.service";
   styleUrls: ["./edit.component.scss"],
 })
 export class EditComponent implements OnInit {
+
   content = "Cargando ...";
   statementData: any = {};
   statement: any = {};
@@ -30,7 +31,6 @@ export class EditComponent implements OnInit {
   }
 
   get() {
-    this.content = "Cargando ...";
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe((val) => {
