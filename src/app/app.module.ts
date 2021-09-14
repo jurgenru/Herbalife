@@ -41,11 +41,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-<<<<<<< HEAD
-  declarations: [AppComponent, AdminLayoutComponent, HomeComponent, BlogStageComponent],
-=======
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
->>>>>>> 87a38e35a262a63b5420d37301f91dbb6a72b64e
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, BlogStageComponent],
   providers: [
     StoreService,
     BlogService,
