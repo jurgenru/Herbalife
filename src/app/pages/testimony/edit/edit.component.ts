@@ -13,12 +13,10 @@ import { StatementService } from "src/app/services/statement.service";
 })
 export class EditComponent implements OnInit {
   content = "Cargando ...";
-  dataStatement: any = {};
+  statementData: any = {};
   statement: any = {};
-  description: any = {};
-  statementData: any;
-  imageStatement: any;
-  updateImage: boolean;
+  updateImage: number = 2;
+  image: any;
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -28,22 +26,22 @@ export class EditComponent implements OnInit {
     private router: Router,
     private statementService: StatementService
   ) {
-    this.statementView();
+    this.get();
   }
 
-  statementView() {
+  get() {
+    this.content = "Cargando ...";
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe((val) => {
-      this.statementService.getById(val.id).subscribe((data) => {
-        this.dataStatement = data;
-        this.updateImage = true;
-      });
-      this.statementService.getStatementsById(val.id).subscribe((res) => {
+      this.statementService.getById(val.id).subscribe((data: any) => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
-          this.statementData = res;
+          if (data.image !== "") {
+            this.updateImage = 0;
+          }
+          this.statementData = data;
           this.spinner.stop();
         }, elapsed);
       });
@@ -52,52 +50,41 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  showImage() {
-    this.simpleModalService
-      .addModal(ImageCropperComponent)
-      .subscribe((data) => {
-        this.imageStatement = data;
-        this.updateImage = false;
-      });
-  }
-
   edit() {
     this.content = "Editando ...";
     const start = new Date();
     this.spinner.start();
-    if (this.imageStatement) {
-      this.statement.image = this.imageStatement;
+    if (this.image) {
+      this.statement.image = this.image;
     }
-    this.statement.userId = this.dataStatement.userId;
-    this.statementService
-      .update(this.dataStatement.id, this.statement)
-      .subscribe(
-        (data) => {
-          const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
-            this.spinner.stop();
-            this.router.navigate(["testimony/list"]);
-            this.notification(
-              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el testimonio exitosamente',
-              "5000",
-              "success",
-              "top",
-              "center"
-            );
-          }, elapsed);
-        },
-        (error) => {
+    this.statement.userId = this.statementData.userId;
+    this.statementService.update(this.statementData.id, this.statement).subscribe(
+      (data) => {
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
           this.spinner.stop();
+          this.router.navigate(["testimony/list"]);
           this.notification(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente',
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el testimonio exitosamente',
             "5000",
-            "danger",
+            "success",
             "top",
             "center"
           );
-        }
-      );
+        }, elapsed);
+      },
+      (error) => {
+        this.spinner.stop();
+        this.notification(
+          '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente',
+          "5000",
+          "danger",
+          "top",
+          "center"
+        );
+      }
+    );
   }
 
   notification(content, time, type, from, align) {
@@ -108,5 +95,14 @@ export class EditComponent implements OnInit {
       toastClass: `alert alert-${type} alert-with-icon`,
       positionClass: "toast-" + from + "-" + align,
     });
+  }
+
+  showImage() {
+    this.simpleModalService
+      .addModal(ImageCropperComponent)
+      .subscribe((data) => {
+        this.image = data;
+        this.updateImage = 1;
+      });
   }
 }
