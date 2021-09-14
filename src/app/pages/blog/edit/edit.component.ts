@@ -20,9 +20,6 @@ export class EditComponent implements OnInit {
   blog: any = {};
   article: any = {};
   dataArticles: any;
-  iconImage: any;
-  portraitImage: any;
-
   articleImage: any = [];
   articleTitle: any = [];
   articleDescription: any = [];
@@ -58,7 +55,7 @@ export class EditComponent implements OnInit {
             if (data.icon !== "") {
               this.updateIcon = 0;
             }
-            if (data.image !== "") {
+            if (data.banner !== "") {
               this.updateBanner = 0;
             }
             this.dataBlog = data;
@@ -101,11 +98,11 @@ export class EditComponent implements OnInit {
     this.content = 'Editando...';
     const start = new Date();
     this.spinner.start();
-    if (this.iconImage) {
-      this.blog.icon = this.iconImage;
+    if (this.icon) {
+      this.blog.icon = this.icon;
     }
-    if (this.portraitImage) {
-      this.blog.image = this.portraitImage;
+    if (this.banner) {
+      this.blog.banner = this.banner;
     }
     this.blog.userId = this.dataBlog.userId
     this.blogService.update(this.dataBlog.id, this.blog).subscribe(data => {

@@ -17,16 +17,12 @@ export class EditComponent implements OnInit {
   content = 'Cargando ...';
   userData: any = {};
   image: any;
+  icon: any;
   socialMedia: any = {};
+  socialMediaData: any = {};
   manager: any = {};
-  whatsapp: any = '';
-  telegram: any = '';
-  facebook: any = '';
-  instagram: any = '';
-  youtube: any = '';
-  tiktok: any = '';
-  gmail: any = '';
   updateImage: number = 2;
+  updateIcon: number = 2;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -53,17 +49,11 @@ export class EditComponent implements OnInit {
             if (element.image !== "") {
               this.updateImage = 0;
             }
-            this.userData = element;
-            if(element.socialMedia) {
-              this.socialMedia = JSON.parse(element.socialMedia);
-              this.whatsapp = this.socialMedia.whatsapp;
-              this.telegram = this.socialMedia.telegram;
-              this.facebook = this.socialMedia.facebook;
-              this.instagram = this.socialMedia.instagram;
-              this.youtube = this.socialMedia.youtube;
-              this.tiktok = this.socialMedia.tiktok;
-              this.gmail = this.socialMedia.gmail;
+            if (element.icon !== "") {
+              this.updateIcon = 0;
             }
+            this.userData = element;
+              this.socialMediaData = JSON.parse(element.socialMedia);
             this.spinner.stop();
           });
         }, elapsed);
@@ -80,6 +70,14 @@ export class EditComponent implements OnInit {
       this.image = data;
       this.updateImage = 1;
       this.manager.image = this.image;
+    });
+  }
+
+  showIcon() {
+    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.icon = data;
+      this.updateIcon = 1;
+      this.manager.icon = this.icon;
     });
   }
 

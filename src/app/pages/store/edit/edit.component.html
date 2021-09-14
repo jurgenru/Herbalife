@@ -10,7 +10,7 @@
                     <br>
                     <hr color="red">
                     <br>
-                    <form>
+                    <form #form="ngForm" (ngSubmit)="edit()">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-7">
                                 <label> Nombre de la categoria </label>
@@ -68,6 +68,14 @@
                             </div>
                         </div>
                         <br>
+                        <br>
+                        <div class=" button-container pull-right">
+                            <button type="submit" class="btn btn-warning">
+                                Editar
+                            </button>
+                        </div>
+                        <br>
+                        <br>
                     </form>
                     <br>
                     <hr color="red">
@@ -98,17 +106,29 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label> Nombre del producto </label>
-                                <input class=" form-control" placeholder="Nombre del producto" type="text"
+                                <input class=" form-control" 
+                                [(ngModel)]="productName[i] = product.name"
+                                [ngModelOptions]="{standalone: true}"placeholder="Nombre del producto" type="text"
                                     [value]="product.name">
                                 <label> Precio del producto </label>
-                                <input class=" form-control" type="text" [value]="product.price">
+                                <input class=" form-control" [(ngModel)]="productPrice[i] = product.price"
+                                [ngModelOptions]="{standalone: true}"placeholder="Precio del producto"type="text"
+                                 [value]="product.price">
                                 <label> Cantidad de productos disponible </label>
-                                <input class=" form-control" type="text" [value]="product.amount">
+                                <input class=" form-control" [(ngModel)]="productAmount[i] = product.amount"
+                                [ngModelOptions]="{standalone: true}"placeholder="Cantidad del producto"type="text" 
+                                [value]="product.amount">
                                 <label> Descripcion del producto </label>
                                 <textarea class=" form-control" cols="80" rows="4"
-                                    [value]="product.description"></textarea>
+                                [(ngModel)]="productDescription[i] = product.description"
+                                [ngModelOptions]="{standalone: true}"placeholder="Nombre del producto"
+                                [value]="product.description"></textarea>
                             </div>
                         </div>
+                        <br>
+                        <br>
+                        <button class="btn btn-warning btn-sm pull-right" type="button"
+                        (click)="editProduct(product.id,i)">Editar produto</button>
                         <br>
                         <br>
                     </form>
@@ -117,13 +137,6 @@
                         <br>
                         <button class="btn btn-primary btn-fab btn-icon btn-round float-right">
                             <i class="tim-icons icon-simple-add"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <div class=" button-container pull-right">
-                        <button class="btn btn-info">
-                            Editar
                         </button>
                     </div>
                 </div>

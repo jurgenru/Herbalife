@@ -30,4 +30,7 @@ export class StoreService {
     deleteProductById(id) {
         return this.http.delete(`${environment.apiUrl}stores/${id}/products`).pipe();
     }
+    update(id, body) {
+        return this.http.patch(`${environment.apiUrl}stores/${id}`, body).pipe();
+    }
 }
