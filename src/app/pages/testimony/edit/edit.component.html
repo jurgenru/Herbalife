@@ -1,1 +1,96 @@
-<p>edit works!</p>
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="author">
+            <div class="card-header text-center">
+              <h2 class="card-title"><b>Editar Testimonio</b></h2>
+            </div>
+          </div>
+          <hr color="purple" width="90%" />
+          <br />
+          <form #form="ngForm" (ngSubmit)="edit()">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6 text-left">
+                  <div class="col-md-12">
+                    <div class="container-image p-2">
+                      <h4 class="text-center">Imagen</h4>
+                      <div class="container-image p-2">
+                        <div [ngSwitch]="updateImage">
+                          <div *ngSwitchCase="0">
+                            <img
+                              [src]="statementData.image"
+                              class="img-thumbnail mx-auto d-block"
+                            />
+                          </div>
+                          <div *ngSwitchCase="1">
+                            <img
+                              [src]="image"
+                              class="img-thumbnail mx-auto d-block"
+                            />
+                          </div>
+                          <div *ngSwitchCase="2">
+                            <img
+                              src="../../../../assets/img/anime3.png"
+                              alt=""
+                              class="img-thumbnail mx-auto d-block"
+                            />
+                          </div>
+                        </div>
+                        <div class="overlay" (click)="showImage()">
+                          <div class="text text-light">
+                            <i class="tim-icons icon-upload"> </i>
+                            Editar imagen
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label> Nombre del Testimonio </label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="statement.name"
+                        [ngModelOptions]="{ standalone: true }"
+                        [value]="statementData.name"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label> Comentario del Testimonio </label>
+                      <textarea
+                        class="form-control"
+                        type="text"
+                        [(ngModel)]="statement.description"
+                        [ngModelOptions]="{ standalone: true }"
+                        [value]="statementData.description"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="button-container pull-right">
+                <button type="submit" class="btn btn-warning">Editar</button>
+              </div>
+              <br /><br />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(58,55,54)"
+  [text]="content"
+></ngx-ui-loader>
