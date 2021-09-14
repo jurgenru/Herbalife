@@ -7,7 +7,7 @@ import { UserService } from "./services/user.service";
 
 @Component({
   selector: "app-root",
-  template: `<router-outlet><ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader></router-outlet>`,
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
   constructor(
@@ -17,7 +17,7 @@ export class AppComponent {
     private toastr: ToastrService,
     private spinner: NgxUiLoaderService,
   ) {
-    this.session();
+    // this.session();
   }
 
   session() {

@@ -1,76 +1,55 @@
 <div class="content">
-    <app-navbar-home></app-navbar-home>
     <div class="header">
         <ngb-carousel *ngIf="images">
             <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[0]" alt="Random first slide" class="img-fluid">
-              </div>
-              <div class="carousel-caption">
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </div>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/img/header.jpg" alt="Random first slide" class="img-fluid">
+                </div>
+                <div class="carousel-caption d-none d-sm-block">
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
             </ng-template>
             <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[1]" alt="Random second slide" class="img-fluid">
-              </div>
-              <div class="carousel-caption">
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/img/header.jpg" alt="Random second slide" class="img-fluid">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
             </ng-template>
             <ng-template ngbSlide>
-              <div class="picsum-img-wrapper">
-                <img [src]="images[2]" alt="Random third slide" class="img-fluid">
-              </div>
-              <div class="carousel-caption">
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-              </div>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/img/header.jpg" alt="Random third slide" class="img-fluid">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Third slide label</h3>
+                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                </div>
             </ng-template>
-          </ngb-carousel>
+        </ngb-carousel>
     </div>
     <br>
     <div class="main">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="card card-user">
-                        <div class="card-body">
-                            <div class="author">
-                                <a href="">
-                                    <img src="../../../assets/img/emilyz.jpg" class="img-thumbnail" alt="">
-                                </a>
-                                <h4 class="title">Mike Andrew</h4>
-                            </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
+        <div class="service">
+            <h3 class=" title mt-5 text-center">SERVICIOS</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-4" *ngFor="let service of services">
+                        <div class="card card-user">
+                            <div class="card-body">
+                                <div class="author">
+                                    <a href="">
+                                        <img [src]="service.image" class="img-thumbnail" alt="">
+                                        <br><br>
+                                        <h4 class=" title">{{service.title}}</h4>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card card-user">
-                        <div class="card-body">
-                            <div class="author">
-                                <a href="">
-                                    <img src="../../../assets/img/emilyz.jpg" class="img-thumbnail" alt="">
-                                </a>
-                                <h4 class="title">Mike Andrew</h4>
-                            </div>
                             <div class="card-footer">
-                                <div class=" button-container">
+                                <div class="button-container">
+                                    compartir :
                                     <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
                                         <i class="fab fa-facebook"> </i>
                                     </button>
@@ -81,31 +60,6 @@
                                         <i class="fab fa-google-plus"> </i>
                                     </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="card card-user">
-                        <div class="card-body">
-                            <div class="author">
-                                <a href="">
-                                    <img src="../../../assets/img/emilyz.jpg" class="img-thumbnail" alt="">
-                                </a>
-                                <h4 class="title">Mike Andrew</h4>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="button-container">
-                                <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                    <i class="fab fa-facebook"> </i>
-                                </button>
-                                <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                    <i class="fab fa-twitter"> </i>
-                                </button>
-                                <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                    <i class="fab fa-google-plus"> </i>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -113,212 +67,23 @@
             </div>
         </div>
         <div class="store">
-            <h3 class=" title mt-5 text-center">TIENDA</h3>
+            <h3 class=" title mt-5 text-center">TIENDAS</h3>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" *ngFor="let store of stores">
                         <div class="card card-user">
                             <div class="card-body">
                                 <div class="author">
                                     <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
+                                        <img [src]="store.image" class="img-thumbnail" alt="">
+                                        <br><br>
+                                        <h4 class="title">{{store.title}}</h4>
                                     </a>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class="fab fa-facebook"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class="fab fa-twitter"> </i>
-                                    </button>
-                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class="fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="">
-                                        <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
+                                    compartir :
                                     <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
                                         <i class="fab fa-facebook"> </i>
                                     </button>
@@ -339,17 +104,17 @@
             <h3 class=" title mt-5 text-center">ENTRENADORES</h3>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" *ngFor="let trainer of trainers">
                         <div class=" card card-user">
-                            <img class="card-img img-fluid" src="../../../assets/img/image.jpg" alt="Card image">
+                            <img class="card-img img-fluid" [src]="trainer.imageLection">
                             <div class="card-img-overlay">
-                                <h3 class="card-title text-center text-trainer">AEROBICOS</h3>
+                                <h3 class="card-title text-center">{{trainer.nameLection}}</h3>
                             </div>
                             <div class="card-body">
                                 <div class="author">
                                     <a href="javascript:void(0)">
-                                        <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
-                                        <h5 class=" title">Mike Andrew</h5>
+                                        <img alt="..." class="avatar" [src]="trainer.icon" />
+                                        <h4 class=" title">{{trainer.names}}</h4>
                                     </a>
                                 </div>
                             </div>
@@ -368,135 +133,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <div class=" card card-user">
-                            <img class="card-img img-fluid" src="../../../assets/img/image.jpg" alt="Card image">
-                            <div class="card-img-overlay">
-                                <h3 class="card-title text-center text-trainer">AEROBICOS</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="javascript:void(0)">
-                                        <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
-                                        <h5 class=" title">Mike Andrew</h5>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class=" card card-user">
-                            <img class="card-img img-fluid" src="../../../assets/img/image.jpg" alt="Card image">
-                            <div class="card-img-overlay">
-                                <h3 class="card-title text-center text-trainer">AEROBICOS</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="javascript:void(0)">
-                                        <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
-                                        <h5 class=" title">Mike Andrew</h5>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
         <div class="blog">
-            <h3 class=" title mt-5 text-center">BLOG</h3>
+            <h3 class=" title mt-5 text-center">BLOGS</h3>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" *ngFor="let blog of blogs">
                         <div class="card card-user">
                             <div class="card-body">
                                 <div class="author">
-                                    <img src="../../../assets/img/bg5.jpg" class="img-fluid" alt="">
-                                    <button class="btn btn-sm btn-fill btn-info">dieta</button>
+                                    <a href="">
+                                        <img [src]="blog.banner" class="img-thumbnail" alt="">
+                                        <br><br>
+                                        <h4 class=" title">{{blog.name}}</h4>
+                                    </a>
                                 </div>
                             </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
+                            <div class="card-footer">
+                                <div class="button-container">
+                                    compartir :
+                                    <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                                        <i class="fab fa-facebook"> </i>
                                     </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
+                                    <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                                        <i class="fab fa-twitter"> </i>
                                     </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <img src="../../../assets/img/bg5.jpg" class="img-fluid" alt="">
-                                    <button class="btn btn-sm btn-fill btn-info">dieta</button>
-                                </div>
-                            </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <img src="../../../assets/img/bg5.jpg" class="img-fluid" alt="">
-                                    <button class="btn btn-sm btn-fill btn-info">dieta</button>
-                                </div>
-                            </div>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
+                                    <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                                        <i class="fab fa-google-plus"> </i>
                                     </button>
                                 </div>
                             </div>
@@ -506,65 +172,23 @@
             </div>
         </div>
         <div class="testimonials">
+            
+            <h3 class=" title mt-5 text-center">TESTIMONIOS</h3>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" *ngFor="let statement of statements">
                         <div class="card card-stats">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-5">
                                         <div class="author">
-                                            <img src="assets/img/emilyz.jpg" />
+                                            <img [src]="statement.image" />
                                         </div>
                                     </div>
                                     <div class="col-7">
                                         <div class="numbers">
-                                            <p class="card-category">eiusmod tempor incididunt</p>
-                                            <h5 class="card-title">dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-stats">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <div class="author">
-                                            <img src="assets/img/emilyz.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="numbers">
-                                            <p class="card-category">eiusmod tempor incididunt</p>
-                                            <h5 class="card-title">dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="card card-stats">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <div class="author">
-                                            <img src="assets/img/emilyz.jpg" />
-                                        </div>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="numbers">
-                                            <p class="card-category">eiusmod tempor incididunt</p>
-                                            <h5 class="card-title">dolore magna aliqua. Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                consequat</h5>
+                                            <p class="card-category">{{statement.name}}</p>
+                                            <h5 class="card-title">{{statement.description}}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -575,6 +199,6 @@
             </div>
         </div>
     </div>
-    <app-float-social></app-float-social>
-    <app-footer></app-footer>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>
