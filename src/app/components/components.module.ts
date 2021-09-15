@@ -13,9 +13,10 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule],
   declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent],
   exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent]
 })

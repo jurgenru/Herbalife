@@ -14,11 +14,11 @@
                                 formControlName="email">
                         </div>
                         <div *ngIf="email.invalid && (email.dirty || email.touched)">
-                            <span *ngIf="email.errors.required" class="text-danger">El correo electronico es
-                                <strong>requerido</strong></span>
-                            <span *ngIf="email.errors.email" class="text-danger">
+                            <small *ngIf="email.errors.required" class="text-danger">El correo electronico es
+                                <strong>requerido</strong></small>
+                            <small *ngIf="email.errors.email" class="text-danger">
                                 Introduce un correo electronico apropiado
-                            </span>
+                            </small>
                             <br>
                             <br>
                         </div>
@@ -29,8 +29,8 @@
                                 formControlName="password">
                         </div>
                         <div *ngIf="password.invalid && (password.dirty || password.touched)">
-                            <span *ngIf="password.errors.required" class="text-danger">El numero de celular es
-                                <strong>requerido</strong></span>
+                            <small *ngIf="password.errors.required" class="text-danger">El numero de celular es
+                                <strong>requerido</strong></small>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -48,3 +48,6 @@
         </div>
     </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(58,55,54)" text="Iniciando sesion ...">
+</ngx-ui-loader>
