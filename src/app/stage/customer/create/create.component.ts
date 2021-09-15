@@ -22,19 +22,12 @@ export class CreateComponent implements OnInit {
     this.createProfileForm();
    }
 
-  showImage() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
-    //   // this.banner = data;
-    this.image = data;
-    });
-  }
-
   createProfileForm(){ 
     this.profile = this.formBuilder.group({
       names: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      country: ['', Validators.required]
+      country: ['']
     });
   }
 
@@ -55,7 +48,14 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    this.profile.value.image = this.image;
+    console.log(this.profile.value);
+  }
 
+  showImage() {
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.image = data;
+    });
   }
 
 }
