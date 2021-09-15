@@ -5,7 +5,6 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
-import { BlogStageComponent } from "./stages/blog-stage/blog-stage.component";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 
 const routes: Routes = [
@@ -17,10 +16,6 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
-  },
-  {
-    path: 'blog-stage',
-    component: BlogStageComponent
   },
   {
     path: "",

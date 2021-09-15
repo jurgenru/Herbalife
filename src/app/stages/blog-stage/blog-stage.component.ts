@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-blog-stage',
-  templateUrl: './blog-stage.component.html',
-  styleUrls: ['./blog-stage.component.css']
+  template: '<router-outlet></router-outlet>'
 })
 export class BlogStageComponent implements OnInit {
 
