@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-blog-stage',
+  selector: 'app-blog',
   template: '<router-outlet></router-outlet>'
 })
-export class BlogStageComponent implements OnInit {
+export class BlogComponent implements OnInit {
 
   constructor() { }
 

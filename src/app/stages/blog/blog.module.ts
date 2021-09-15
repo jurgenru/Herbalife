@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { routedComponents, BlogStageRoutingModule } from './blog-stage.routing';
+import { routedComponents, BlogRoutingModule } from './blog.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [...routedComponents],
   imports: [
     RouterModule,
-    BlogStageRoutingModule,
+    BlogRoutingModule,
     CommonModule,
     NgbModule
   ],
@@ -17,4 +17,4 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ...routedComponents
   ]
 })
-export class BlogStageModule { }
+export class BlogModule { }
