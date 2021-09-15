@@ -6,9 +6,9 @@ export const UserLayoutRoutes: Routes = [
         path: 'page/:name', component: HomeComponent
       }
       , {
-        path: '',
+        path: 'customer',
         children: [{
-          path: 'store-stage',
+          path: 'store',
           loadChildren: '../../stages/store-stage/store-stage.module#StoreStageModule'
         }]
       },

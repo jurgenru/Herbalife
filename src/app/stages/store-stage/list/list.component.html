@@ -3,178 +3,45 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                  <div class="row">
-                      <div class="col">
-                        <div class=" card card-user">
-                            <img class="card-img img-fluid" src="../../../assets/img/image.jpg" alt="Card image">
-                            <div class="card-img-overlay">
-                                <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
+                    <div class="row">
+                        <div class="col">
+                            <div class=" card card-user">
+                                <img class="card-img img-fluid" src="../../../assets/img/image.jpg" alt="Card image">
+                                <div class="card-img-overlay">
+                                    <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
+                                </div>
                             </div>
                         </div>
-                      </div>
 
-                  </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="store">
                         <h3 class=" title mt-5 text-center">TIENDA</h3>
                         <div class="container">
                             <div class="scrollmenu">
-                            <div class="row justify-content-center">
-                                <div class="col-6 col-md-2">
-                                    <div class="card">
-                                        <img src="../../../assets/img/angular.jpg" class="card-img-top" alt="">
-                                        <div class="card-body text-center">
-                                            <button class="btn btn-sm btn-round btn-info">Categoria 1</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-2">
-                                    <div class="card">
-                                        <img src="../../../assets/img/angular.jpg" class="card-img-top" alt="">
-                                        <div class="card-body text-center">
-                                            <button class="btn btn-sm btn-round btn-info">Categoria 2</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-2">
-                                    <div class="card">
-                                        <img src="../../../assets/img/angular.jpg" class="card-img-top" alt="">
-                                        <div class="card-body text-center">
-                                            <button class="btn btn-sm btn-round btn-info">Categoria 3</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-2">
-                                    <div class="card">
-                                        <img src="../../../assets/img/angular.jpg" class="card-img-top" alt="">
-                                        <div class="card-body">
-                                            <button class="btn btn-sm btn-round btn-info">Categoria 4</button>
+                                <div class="row justify-content-center">
+                                    <div class="col-6 col-md-2" *ngFor="let store of stores">
+                                        <div class="card">
+                                            <img src="../../../assets/img/angular.jpg" class="card-img-top" alt="">
+                                            <div class="card-body text-center">
+                                                <button class="btn btn-sm btn-round btn-info">{{store.title}}</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                             <div class="row">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" *ngFor="let product of products">
                                     <div class="card card-user">
                                         <div class="card-body">
                                             <div class="author">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
+                                                <img src="../../../assets/img/bg5.jpg" class="img-fluid" alt="">
                                             </div>
                                             <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <button class="btn btn-round btn-primary" href="javascript:void(0)">
-                                                    <i class="tim-icons icon-cart"> </i> Añadir
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <div class="author">
-                                                <a href="">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <button class="btn btn-round btn-primary" href="javascript:void(0)">
-                                                    <i class="tim-icons icon-cart"> </i> Añadir
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <div class="author">
-                                                <a href="">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <button class="btn btn-round btn-primary" href="javascript:void(0)">
-                                                    <i class="tim-icons icon-cart"> </i> Añadir
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <div class="author">
-                                                <a href="">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <button class="btn btn-round btn-primary" href="javascript:void(0)">
-                                                    <i class="tim-icons icon-cart"> </i> Añadir
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <div class="author">
-                                                <a href="">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
-                                            </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="button-container">
-                                                <button class="btn btn-round btn-primary" href="javascript:void(0)">
-                                                    <i class="tim-icons icon-cart"> </i> Añadir
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card card-user">
-                                        <div class="card-body">
-                                            <div class="author">
-                                                <a href="">
-                                                    <img src="../../../assets/img/bg5.jpg" class="img-thumbnail" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="text-center">
-                                                <p class="card-text">Nombre del producto</p>
-                                                <h4><i class="tim-icons icon-coins"></i> 40 Bs</h4>
+                                                <br>
+                                                <p class="card-text">{{product.name}}</p>
+                                                <h4><i class="tim-icons icon-coins"></i> {{product.price}} Bs</h4>
                                             </div>
                                         </div>
                                         <div class="card-footer">
@@ -194,4 +61,3 @@
         </div>
     </div>
 </div>
-
