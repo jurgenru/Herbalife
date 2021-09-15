@@ -2,14 +2,14 @@ import { Component, ElementRef, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Location } from "@angular/common";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
     selector: "app-navbar-home",
     templateUrl: "./navbar-home.component.html",
-    // styleUrls: ["./navbar-home.component.css"]
+    styleUrls: ["./navbar-home.component.css"]
   })
   export class NavbarHomeComponent implements OnInit, OnDestroy {
-    private listTitles: any[];
     location: Location;
     mobile_menu_visible: any = 0;
     private toggleButton: any;
@@ -19,15 +19,18 @@ import { Location } from "@angular/common";
     public isCollapsed = true;
   
     closeResult: string;
+    user: any;
   
     constructor(
       location: Location,
       private element: ElementRef,
       private router: Router,
-      private modalService: NgbModal
+      private modalService: NgbModal,
+      private userService: UserService
     ) {
       this.location = location;
       this.sidebarVisible = false;
+      this.me();
     }
     // function that adds color white/transparent to the navbar on resize (this is for the collapse)
      updateColor = () => {
@@ -158,19 +161,6 @@ import { Location } from "@angular/common";
       }
     }
   
-    getTitle() {
-      var titlee = this.location.prepareExternalUrl(this.location.path());
-      if (titlee.charAt(0) === "#") {
-        titlee = titlee.slice(1);
-      }
-  
-      for (var item = 0; item < this.listTitles.length; item++) {
-        if (this.listTitles[item].path === titlee) {
-          return this.listTitles[item].title;
-        }
-      }
-      return "Dashboard";
-    }
   
     open(content) {
       this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
@@ -217,6 +207,18 @@ import { Location } from "@angular/common";
       else if(body.classList.contains('white-content')) {
         body.classList.remove('white-content');
       }
+    }
+
+    logOut() {
+      localStorage.clear();
+      this.router.navigate(['/page/admin']);
+    }
+
+    me() {
+      this.userService.me().subscribe(user => {
+        this.user = user;
+        this.user = user;
+      });
     }
       
   }

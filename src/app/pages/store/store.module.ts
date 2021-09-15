@@ -9,13 +9,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterStorePipe } from 'src/app/pipes/filter-store.pipe';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
     ...routedComponents,
-    FilterStorePipe,
-    EditComponent
+    FilterStorePipe
   ],
   imports: [
     RouterModule,

@@ -12,4 +12,13 @@ export const UserLayoutRoutes: Routes = [
       loadChildren: '../../stages/blog/blog.module#BlogModule'
     }]
   },
+  {
+    path: 'page/:name', component: HomeComponent
+  }, {
+    path: '',
+    children: [{
+      path: 'customer',
+      loadChildren: '../../stage/customer/customer.module#CustomerModule'
+    }]
+  }
 ]

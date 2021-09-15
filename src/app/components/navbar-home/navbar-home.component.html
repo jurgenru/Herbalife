@@ -22,6 +22,76 @@
                 <li class="nav-item">
                     <a class="nav-link">BLOG</a>
                 </li>
+                <li class="nav-item" ngbDropdown *ngIf="user">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
+                      <div class="theme d-none d-lg-block d-xl-block"></div>
+                      <i class="tim-icons icon-palette"></i>
+                      <p class="d-lg-none">Temas</p>
+                    </a>
+                    <ul class="dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('white-content', 'blue')"
+                          ngbDropdownItem>
+                          light theme
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('black-content', 'red')"
+                          ngbDropdownItem>
+                          dark theme
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link"><i class=" tim-icons icon-cart"></i></a>
+                </li>
+                <li class="nav-item" ngbDropdown *ngIf="user">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
+                        <div class="user">
+                            <div class="photo">
+                                <img src="assets/img/anime3.png" alt="">
+                                <!-- <img *ngIf="image; else noImage" [src]="image"> -->
+                                <ng-template #noImage>
+                                    <img src="assets/img/anime3.png" alt="">
+                                </ng-template>
+                            </div>
+                            <span class="username text-uppercase">{{user?.username}}</span>
+                            <b class="caret d-none d-lg-block d-xl-block"> </b>
+                        </div>
+                        <p class="d-lg-none">Log out</p>
+                    </a>
+                    <ul class="dropdown-navbar" ngbDropdownMenu>
+                        <li class="nav-link">
+                            <a class="nav-item text-dark" ngbDropdownItem>
+                                Perfil
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a class="nav-item text-dark" ngbDropdownItem>
+                                Actividades
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a class="nav-item text-dark" ngbDropdownItem>
+                                Compras
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li class="nav-link">
+                            <a class="nav-item text-dark logOut" ngbDropdownItem (click)="logOut()">
+                                Cerrar Sesion
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                    <button type="button" class="btn btn-danger btn-sm register"
+                        routerLink="/register">REGISTRARSE</button>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                    <button type="button" class="btn btn-info btn-sm login" routerLink="/login">INICIAR SESION</button>
+                </li>
                 <!-- <li class="nav-item" ngbDropdown>
                     <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
                         <div class="theme d-none d-lg-block d-xl-block"></div>
@@ -72,16 +142,12 @@
                 </li> -->
                 <!-- <li class="separator d-lg-none"></li> -->
             </ul>
-
-            <button type="button" class="btn btn-danger pull-right btn-sm" routerLink="/register">REGISTRARSE</button>
-            <button type="button" class="btn btn-info pull-right btn-sm" routerLink="/login">INICIAR SESION</button>
         </div>
     </div>
 </nav>
 <ng-template #content let-modal>
     <div class=" modal-header">
         <input class=" form-control" id="inlineFormInputGroup" placeholder="SEARCH" type="text" />
-
         <button aria-label="Close" class=" close" data-dismiss="modal" type="button"
             (click)="modal.dismiss('Cross click')">
             <i class=" tim-icons icon-simple-remove"> </i>

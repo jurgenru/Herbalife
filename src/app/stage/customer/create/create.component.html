@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-user">
+                <form [formGroup]="profile" (ngSubmit)="post()">
+                    <div class="card-body">
+                        <h3 class="card-title">Crear Perfil</h3>
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class="col-md-12 col-m-1">
+                                    <div class="form-group">
+                                        <label>Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre Completo"
+                                            formControlName="names">
+                                            <!-- <small *ngIf="names.invalid && (names.touched||names.dirty)"
+                                            class="text-danger"> *El nombre es <strong>requerido</strong><br></small> -->
+
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-m-1">
+                                    <div class="form-group">
+                                        <label for="">Direccion</label>
+                                        <input type="text" class="form-control" placeholder="Direccion"
+                                            formControlName="address">
+                                            <!-- <small *ngIf="address.invalid && (address.touched||address.dirty)"
+                                            class="text-danger"> *La direccion es <strong>requerida</strong><br></small> -->
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="col-md-12 col-m-1">
+                                            <div class="form-group">
+                                                <label for="">Pais</label>
+                                                <input type="text" class="form-control" placeholder="Pais"
+                                                    formControlName="country">
+                                                    <!-- <small *ngIf="country.invalid && (country.touched||country.dirty)"
+                                                    class="text-danger"> *El pais es <strong>requerido</strong><br></small> -->
+        
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="col-md-12 col-m-1">
+                                            <div class="form-group">
+                                                <label for="">Ciudad</label>
+                                                <input type="text" class="form-control" placeholder="Cuidad"
+                                                    formControlName="city">
+                                                    <!-- <small *ngIf="city.invalid && (city.touched||city.dirty)"
+                                                    class="text-danger"> *La ciudad es <strong>requerida</strong><br></small> -->
+        
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <h4 class="text-center">Imagen de perfil</h4>
+                                <div class="container-image p-2">
+                                    <img src="../../../../assets/img/angular2-logo-red.png"
+                                        class="img-thumbnail mx-auto d-block" *ngIf="!banner; else noBanner">
+                                    <ng-template #noBanner>
+                                        <img [src]="banner" class="img-thumbnail mx-auto d-block">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showImage()">
+                                        <div class="text text-light">
+                                            <i class="tim-icons icon-upload"> </i>
+                                            Agregar imagen
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn pull-right btn-info" [disabled]="profile.invalid">Crear</button>
+                    </div>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
