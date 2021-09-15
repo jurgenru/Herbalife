@@ -17,7 +17,7 @@ export class AppComponent {
     private toastr: ToastrService,
     private spinner: NgxUiLoaderService,
   ) {
-    // this.session();
+    // this.session();s
   }
 
   session() {
@@ -25,26 +25,10 @@ export class AppComponent {
     this.spinner.start();
     const filter = `{"fields": {"role": true, "id": true}`;
     this.userService.me().subscribe((data: any) => {
-      this.userService.getById(data.id, filter).subscribe((user: any) => {
-        {
-          if (user.role == 'admin') {
-            this.managerService.getByUserId(user.id).subscribe(manager => {
-              if (Object.keys(manager).length === 0) {
-                const end = new Date();
-                const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-                setTimeout(() => {
-                  this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Complete sus datos personales', '5000', 'warning', 'top', 'center');
-                  this.router.navigate(['/user/admin']);  
-                  this.spinner.stop();
-                }, elapsed);
-              } else {
-                this.router.navigate(['/dashboard']);
-                this.spinner.stop();
-              }
-            });
-          }
-        }
-      });
+console.log(data);
+      // this.userService.getById(data.id, filter).subscribe((user: any) => {
+      //   console.log(user);
+      // });
     }, error => {
       this.spinner.stop();
       this.router.navigate(['/']);

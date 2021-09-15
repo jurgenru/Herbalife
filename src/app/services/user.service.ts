@@ -11,6 +11,10 @@ export class UserService {
         return this.http.post(`${environment.apiUrl}users/login`, body).pipe();
     }
 
+    register(body){ 
+      return this.http.post(`${environment.apiUrl}users/signup`, body).pipe();
+    }
+
     me() {
         return this.http.get(`${environment.apiUrl}users/me`).pipe();
     }

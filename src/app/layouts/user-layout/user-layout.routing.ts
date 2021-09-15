@@ -4,12 +4,17 @@ import { HomeComponent } from "src/app/pages/home/home.component";
 export const UserLayoutRoutes: Routes = [
     {
         path: 'page/:name', component: HomeComponent
-      }
-      , {
+      },{
+      path: '',
+      children: [{
         path: 'customer',
-        children: [{
-          path: 'store',
-          loadChildren: '../../stages/store-stage/store-stage.module#StoreStageModule'
-        }]
-      },
+        loadChildren: '../../stage/customer/customer.module#CustomerModule'
+      }]
+    },{
+      path: 'customer',
+      children: [{
+        path: 'store',
+        loadChildren: '../../stages/store-stage/store-stage.module#StoreStageModule'
+      }]
+    },
 ]
