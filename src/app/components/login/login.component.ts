@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { NgxUiLoaderService } from "ngx-ui-loader";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -10,12 +11,13 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private spinner: NgxUiLoaderService,
     private userService: UserService,
-    private toastr: ToastrService) {}
+    private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -26,10 +28,18 @@ export class LoginComponent implements OnInit {
   });
 
   login() {
+    const start = new Date();
+    this.spinner.start();
     this.userService.login(this.user.value).subscribe((data: any) => {
-      localStorage.setItem('herTok', data.token);
-      this.router.navigate(['/dashboard']);
+      const end = new Date();
+      const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+      setTimeout(() => {
+        this.spinner.stop();
+        localStorage.setItem('herTok', data.token);
+        this.router.navigate(['/dashboard']);
+      }, elapsed);
     }, error => {
+      this.spinner.stop();
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> El correo electronico y/o contraseña con incorrectas , intente nuevamente', '5000', 'danger', 'top', 'center');
     });
   }
@@ -48,7 +58,7 @@ export class LoginComponent implements OnInit {
       closeButton: true,
       enableHtml: true,
       toastClass: `alert alert-${type} alert-with-icon`,
-      positionClass: 'toast-' + from + '-' +  align
+      positionClass: 'toast-' + from + '-' + align
     });
   }
 

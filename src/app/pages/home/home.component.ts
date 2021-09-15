@@ -47,7 +47,12 @@ export class HomeComponent implements OnInit {
                         if (element.username && element.role === 'admin') {
                             const filter = `{"fields": {"id": true, "title": true, "image": true, "created": true}, "limit": 6 , "order":["created DESC"]}`;
                             this.userService.getServicesById(element.id, filter).subscribe(ser => {
+                                const end = new Date();
+                                const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+                                setTimeout(() => {
                                 this.services = ser;
+                                this.spinner.stop();
+                            }, elapsed);
                                 const filter2 = `{"fields": {"id": true, "name": true, "banner": true, "created": true}, "limit": 6 , "order":["created DESC"]}`;
                                 this.userService.getBlogById(element.id, filter2).subscribe(blo => {
                                     this.blogs = blo;
@@ -63,12 +68,8 @@ export class HomeComponent implements OnInit {
                                                     this.trainers.push(element);
                                                     const filter5 = `{"fields": {"id": true, "name": true, "image": true,"description": true, "created": true}, "order":["created DESC"]}`;
                                                     this.userService.getStatementById(element.id, filter5).subscribe(stat => {
-                                                        const end = new Date();
-                                                        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-                                                        setTimeout(() => {
+
                                                             this.statements = stat;
-                                                            this.spinner.stop();
-                                                        }, elapsed);
                                                     });
                                                 });
                                             });
