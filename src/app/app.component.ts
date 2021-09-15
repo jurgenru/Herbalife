@@ -17,7 +17,7 @@ export class AppComponent {
     private toastr: ToastrService,
     private spinner: NgxUiLoaderService,
   ) {
-    this.session();
+    // this.session();s
   }
 
   session() {

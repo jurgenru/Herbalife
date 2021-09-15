@@ -8,8 +8,21 @@
     min-height: calc(100vh - 70px);
   }
 }
+
+.main-customer {
+  &, &[data="red"]{
+    border-color: $danger;
+  }
+
+  .content {
+    padding: 78px 30px 30px 30px;
+    min-height: calc(100vh - 70px);
+  }
+
+}
+
 @media screen and (max-width: 768px){
-  .main-panel .content {
+  .main-panel .main-customer .content {
       padding-left: 15px;
       padding-right: 15px;
   }
@@ -34,7 +47,7 @@
   }
 }
 @media screen and (max-width: 991px){
-  .main-panel {
+  .main-panel, .main-customer {
       .content {
       padding-left: 30px !important;
     }
