@@ -10,13 +10,14 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 const routes: Routes = [
   {
     path: "",
-    redirectTo: 'page/admin',
-    pathMatch: "full"
-  },{
+    redirectTo: 'home',
+    pathMatch: "full",
+  }, {
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
-  }, {
+  },
+  {
     path: "",
     component: AdminLayoutComponent,
     children: [
@@ -24,16 +25,17 @@ const routes: Routes = [
         path: "",
         loadChildren:
           "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
-      }]}, {
+      }]
+  }, {
+    path: "",
+    component: UserLayoutComponent,
+    children: [
+      {
         path: "",
-        component: UserLayoutComponent,
-        children: [
-          {
-            path: "",
-            loadChildren: "./layouts/user-layout/user-layout.module#UserLayoutModule"
-          }
-        ]
-      },{
+        loadChildren: "./layouts/user-layout/user-layout.module#UserLayoutModule"
+      }
+    ]
+  }, {
     path: "**",
     redirectTo: "login"
   }

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-store-stage',
   template: '<router-outlet></router-outlet>'
 })
-export class StoreStageComponent implements OnInit {
+export class StoreComponent implements OnInit {
 
   constructor() { }
 

@@ -12,7 +12,12 @@ export class ProductService {
   post(body) {
     return this.http.post(`${environment.apiUrl}products`, body).pipe();
   }
+
   update(id, body) {
     return this.http.patch(`${environment.apiUrl}products/${id}`, body).pipe();
+  }
+
+  getById(id) {
+    return this.http.get(`${environment.apiUrl}products/${id}`).pipe();
   }
 }

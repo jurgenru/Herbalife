@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list/list.component';
-import { ViewComponent } from './view/view.component';
-import { routedComponents, routes, StoreStageRoutingModule } from './store-stage.routing';
+import { routedComponents, StoreRoutingModule,  } from './store.routing';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-
 
 @NgModule({
   declarations: [
    routedComponents,],
   imports: [
     CommonModule,
-    StoreStageRoutingModule,
+    StoreRoutingModule,
     RouterModule,
     NgbModule,
   ],
@@ -22,4 +17,4 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
    routedComponents
   ],
 })
-export class StoreStageModule { }
+export class StoreModule { }

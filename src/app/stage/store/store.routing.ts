@@ -1,19 +1,19 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ListComponent } from "./list/list.component";
-import { StoreStageComponent } from "./store-stage.component";
 import { ViewComponent } from "./view/view.component";
+import { StoreComponent } from "./store.component";
+import { DetailComponent } from "./detail/detail.component";
 
 export const routes: Routes = [
     {
         path: '',
-        component: StoreStageComponent,
+        component: StoreComponent,
         children: [
         {
-            path: 'list',
-            component: ListComponent
+            path: 'detail/:id',
+            component: DetailComponent
         }, {
-            path: 'view',
+            path: 'view/:id',
             component: ViewComponent
         },
         ]
@@ -23,9 +23,9 @@ export const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class StoreStageRoutingModule { }
+export class StoreRoutingModule { }
 export const routedComponents = [
-    StoreStageComponent,
-    ListComponent,
+    StoreComponent,
+    DetailComponent,
     ViewComponent
 ]
