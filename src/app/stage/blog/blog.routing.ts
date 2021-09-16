@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { BlogComponent } from './blog.component';
 import { DetailComponent } from "./detail/detail.component";
+import { ListComponent } from "./list/list.component";
 import { ViewComponent } from "./view/view.component";
 
 const routes: Routes = [{
@@ -15,6 +16,9 @@ const routes: Routes = [{
         {
             path: 'view/:id',
             component: ViewComponent
+        }, {
+            path: 'list',
+            component: ListComponent
         }
     ]
 }];
@@ -27,5 +31,6 @@ export class BlogRoutingModule { }
 export const routedComponents = [
     BlogComponent,
     ViewComponent,
-    DetailComponent
+    DetailComponent,
+    ListComponent
 ]

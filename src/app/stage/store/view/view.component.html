@@ -27,12 +27,12 @@
                     <div class="col-10 col-md-4" *ngFor="let product of products">
                         <div class="card">
                             <a [routerLink]="['/customer/store/detail', product.id]">
-                            <img class="card-img-top" [src]="product.image" alt="Card image cap">
-                            <div class="card-body">
-                                <h4 class="card-title text-center">{{product.name}}</h4>
-                                <p class="card-text text-center"><strong>Precio : </strong>{{product.price}} Bs</p>
-                            </div>
-                        </a>
+                                <img class="card-img-top" [src]="product.image" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">{{product.name}}</h4>
+                                    <p class="card-text text-center"><strong>Precio : </strong>{{product.price}} Bs</p>
+                                </div>
+                            </a>
                             <button class="btn btn-sm btn-info pull-right">añadir <i
                                     class="tim-icons icon-cart"></i></button>
                         </div>
@@ -42,3 +42,5 @@
         </div>
     </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>

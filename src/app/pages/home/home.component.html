@@ -30,7 +30,6 @@
             </ng-template>
         </ngb-carousel>
     </div>
-    <br>
     <div class="main">
         <div class="service">
             <h3 class=" title mt-5 text-center">SERVICIOS</h3>
@@ -107,19 +106,17 @@
                     <div class="col-12 col-md-4" *ngFor="let trainer of trainers">
                         <div class=" card card-user">
                             <a [routerLink]="['/customer/trainer/view', trainer.id]">
-                            <img class="card-img img-fluid" [src]="trainer.imageLection">
-                            <div class="card-img-overlay">
-                                <h3 class="card-title text-center">{{trainer.nameLection}}</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="author">
-                                    <a href="javascript:void(0)">
+                                <img class="card-img img-fluid" [src]="trainer.imageLection">
+                                <div class="card-img-overlay">
+                                    <h3 class="card-title text-center">{{trainer.nameLection}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="author">
                                         <img alt="..." class="avatar" [src]="trainer.icon" />
                                         <h4 class=" title">{{trainer.names}}</h4>
-                                    </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                             <div class=" card-footer">
                                 <div class=" button-container">
                                     <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
@@ -135,7 +132,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -174,7 +170,6 @@
             </div>
         </div>
         <div class="testimonials">
-            
             <h3 class=" title mt-5 text-center">TESTIMONIOS</h3>
             <div class="container-fluid">
                 <div class="row">
