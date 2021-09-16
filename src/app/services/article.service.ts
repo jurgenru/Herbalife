@@ -12,8 +12,13 @@ export class ArticleService {
   post(body) {
     return this.http.post(`${environment.apiUrl}articles`, body).pipe();
   }
+
   update(id, body) {
     return this.http.patch(`${environment.apiUrl}articles/${id}`, body).pipe();
+  }
+
+  getById(id) {
+    return this.http.get(`${environment.apiUrl}articles/${id}`).pipe();
   }
 
 }

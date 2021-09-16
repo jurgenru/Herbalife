@@ -1,164 +1,55 @@
 <div class="content">
-    <div class="container text-center">
-        <h1 class="pt-5 title text-uppercase">dieta</h1>
-        <div class="row mt-4">
+    <div class="header">
+        <img [src]="blog.banner" class="img-blog">
+    </div>
+    <div class="container mt-5">
+        <div class="row">
             <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg " alt="">
-                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
-                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
-                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
-                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
-                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                </div>
-            </div>
-            <div class="col-12 col-md-2">
-                <div class="p-1">
-                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                <div class="p-1 text-center">
+                    <img src="../../../../assets/img/angular.jpg" class="mx-auto iconImg" alt="">
                     <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <h2 class="pt-5 title">Titulo </h2>
-                <div class="col-12 col-md-12 text-center mb-5">
-                    <img src="../../../assets/img/angular.jpg" class="d-block mx-auto img-fuild" width="100%"
-                        height="250" alt="">
-                    <span class="pl-5 h1 float-left content-start">
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </span>
-                    <div class="button-container pull-right">
-                        Compartir:
-                        <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                            <i class="fab fa-facebook"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                            <i class="fab fa-twitter"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                            <i class="fab fa-google-plus"> </i>
-                        </button>
+    <br>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center text-uppercase">{{blog.name}}</h2>
+            <hr color="purple" width="85%" />
+            <br>
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-10" *ngFor="let article of articles">
+
+                        <a [routerLink]="['/customer/blog/detail', article.id]">
+                            <div class="row">
+                                <br>
+                                <div class="col-12 col-md-4">
+                                    <img [src]="article.image" class="mx-3 img-thumbnail" alt="">
+                                </div>
+                                <div class="col-12 col-md-8 text-justify">
+                                    <h3>{{article.title}}</h3>
+                                    <p>{{article.description}}</p>
+                                    <span class="float-lef">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                </div>
+                                <div class="col-12 col-md-12 pt-3">
+                                    <strong class="pull-right">00 Comentarios</strong>
+                                    <br />
+                                    <br />
+                                    <hr color="purple" />
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <br />
-                <br />
-                <div class="col-12 col-md-12 text-justify h4">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem reiciendis laborum in harum
-                    neque, porro nulla aliquid consequatur quo reprehenderit, molestias excepturi officiis dicta
-                    nihil ducimus temporibus culpa nostrum atque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem reiciendis laborum in harum
-                    neque, porro nulla aliquid consequatur quo reprehenderit, molestias excepturi officiis dicta
-                    nihil ducimus temporibus culpa nostrum atque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem reiciendis laborum in harum
-                    neque, porro nulla aliquid consequatur quo reprehenderit, molestias excepturi officiis dicta
-                    nihil ducimus temporibus culpa nostrum atque.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem reiciendis laborum in harum
-                    neque, porro nulla aliquid consequatur quo reprehenderit, molestias excepturi officiis dicta
-                    nihil ducimus temporibus culpa nostrum atque.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos laudantium fuga, consequuntur
-                    consectetur, quod incidunt deserunt ut reprehenderit similique sed sit perferendis adipisci ab
-                    blanditiis autem molestiae at! Quos, eius.
-                    <br />
-                    <br />
-                    <button class="btn btn-info pull-right btn-sm">Obtén un regalo</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="box-media d-flex">
-                    <img src="../../../assets/img/angular.jpg" class="rounded-circle" width="64" height="64" alt="">
-                    <div class="pl-3">
-                        <p class="box-name">Nombre <span>00 minutos</span></p>
-                        <div class="text-justify pl-3">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, nam accusamus molestias
-                            recusandae tenetur corporis rerum quasi, cumque itaque suscipit maxime ipsa. Mollitia at
-                            quas, omnis architecto quia sit ut!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aperiam odio adipisci,
-                            doloribus vero recusandae? Deleniti commodi voluptatem, quidem quia inventore ipsum
-                            consectetur, cum consequuntur vel numquam omnis velit eaque.
-                        </div>
-                        <div class="button-container pull-right">
-                            <a class="" href="javascript:void(0)">
-                                <i class="text-info far fa-heart"></i>
-                            </a> 343
-                            <a class="" href="javascript:void(0)">
-                                <i class="text-info far fa-paper-plane"></i> Responder
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <form action="" class="box-comentarios pull-right">
-                    <div class="d-flex">
-                        <img src="../../../assets/img/angular.jpg" class="rounded-circle mr-3" width="64" height="64"
-                            alt="">
-                        <textarea class="form-control rounded" name="" id="" rows="6"
-                            placeholder="Escribe tu comentario"></textarea>
-                    </div>
-                    <button class="btn btn-info btn-sm pull-right" type="button">Enviar</button>
-                </form>
-            </div>
-            <div class="col-10">
-                <div class="box-media d-flex">
-                    <img src="../../../assets/img/angular.jpg" class="rounded-circle" width="64" height="64" alt="">
-                    <div class="pl-3">
-                        <p class="box-name">Nombre <span>00 minutos</span></p>
-                        <div class="text-justify pl-3">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, nam accusamus molestias
-                            recusandae tenetur corporis rerum quasi, cumque itaque suscipit maxime ipsa. Mollitia at
-                            quas, omnis architecto quia sit ut!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aperiam odio adipisci,
-                            doloribus vero recusandae? Deleniti commodi voluptatem, quidem quia inventore ipsum
-                            consectetur, cum consequuntur vel numquam omnis velit eaque.
-                        </div>
-                        <div class="button-container pull-right">
-                            <a class="" href="javascript:void(0)">
-                                <i class="text-info far fa-heart"></i>
-                            </a> 343
-                            <a class="" href="javascript:void(0)">
-                                <i class="text-info far fa-paper-plane"></i> Responder
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- <form action="" class="box-comentarios pull-right">
-                    <div class="d-flex">
-                        <img src="../../../assets/img/angular.jpg" class="rounded-circle mr-3" width="64" height="64"
-                            alt="">
-                        <textarea class="form-control rounded" name="" id="" rows="6"
-                            placeholder="Escribe tu comentario"></textarea>
-                    </div>
-                    <button class="btn btn-info btn-sm pull-right" type="button">Enviar</button>
-                </form> -->
             </div>
         </div>
     </div>
