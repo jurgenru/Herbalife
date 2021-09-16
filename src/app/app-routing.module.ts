@@ -46,9 +46,9 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      useHash: true
-    })
-  ],
+      useHash: true,
+      scrollPositionRestoration: 'enabled'
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
