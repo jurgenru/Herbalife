@@ -1,4 +1,14 @@
-.img-blog {
+.icon {
+    width: 30px;
+}
+.img-service {
     width: 100% !important;
     height: 550px;
+}
+.iconImg{
+    width: 45px;
+}
+.scrollMenu{
+    display: flex;
+    overflow-x: auto;
 }
