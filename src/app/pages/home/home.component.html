@@ -40,7 +40,7 @@
                         <div class="card card-user">
                             <div class="card-body">
                                 <div class="author">
-                                    <a href="">
+                                    <a [routerLink]="['/customer/service/view', service.id]">
                                         <img [src]="service.image" class="img-thumbnail" alt="">
                                         <br><br>
                                         <h4 class=" title">{{service.title}}</h4>

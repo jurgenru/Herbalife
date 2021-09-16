@@ -32,5 +32,11 @@ export const UserLayoutRoutes: Routes = [
       path: 'store',
       loadChildren: '../../stage/store/store.module#StoreModule'
     }]
+  }, {
+    path: 'customer',
+    children: [{
+      path: 'service',
+      loadChildren: '../../stage/service/service.module#ServiceModule'
+    }]
   }
 ]
