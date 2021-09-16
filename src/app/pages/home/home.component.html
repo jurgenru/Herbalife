@@ -1,6 +1,6 @@
 <div class="content">
     <div class="header">
-        <ngb-carousel *ngIf="images">
+        <ngb-carousel>
             <ng-template ngbSlide>
                 <div class="picsum-img-wrapper">
                     <img src="../../../assets/img/header.jpg" alt="Random first slide" class="img-fluid">
@@ -74,7 +74,7 @@
                         <div class="card card-user">
                             <div class="card-body">
                                 <div class="author">
-                                    <a href="">
+                                    <a [routerLink]="['/customer/store/view', store.id]">
                                         <img [src]="store.image" class="img-thumbnail" alt="">
                                         <br><br>
                                         <h4 class="title">{{store.title}}</h4>

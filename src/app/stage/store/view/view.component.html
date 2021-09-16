@@ -1,0 +1,44 @@
+<div class="content" *ngIf="store">
+    <div class="header">
+        <img [src]="store.image" class="img-store">
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title text-center">Categorias</h3>
+            <!-- <div class="scrollMenu">
+                <div class="row justify-content-center">
+                    <div>
+                        <img src="../../../assets/img/angular.jpg" class="icon rounded mx-auto d-block" alt="">
+                        <div>
+                            <button class="btn btn-sm btn-info">nombre</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title text-center">{{store.title}}</h3>
+            <p class="text-center">{{store.description}}</p>
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="row">
+                    <div class="col-10 col-md-4" *ngFor="let product of products">
+                        <div class="card">
+                            <a [routerLink]="['/customer/store/detail', product.id]">
+                            <img class="card-img-top" [src]="product.image" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{product.name}}</h4>
+                                <p class="card-text text-center"><strong>Precio : </strong>{{product.price}} Bs</p>
+                            </div>
+                        </a>
+                            <button class="btn btn-sm btn-info pull-right">añadir <i
+                                    class="tim-icons icon-cart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
