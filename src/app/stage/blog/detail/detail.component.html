@@ -1,0 +1,154 @@
+<div class="content">
+    <div class="container text-center">
+        <!-- <h1 class="pt-5 title text-uppercase">dieta</h1> -->
+        <div class="row mt-4">
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg " alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+            <div class="col-12 col-md-2">
+                <div class="p-1">
+                    <img src="../../../assets/img/angular.jpg" class="mx-auto img-fuild img-thumbnail iconImg" alt="">
+                    <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <h2 class="pt-5 title text-center">{{article.title}}</h2>
+                <div class="col-12 col-md-12 text-center mb-5">
+                    <img [src]="article.image" class="img-fluid img-article">
+                        <span class="float-left">
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </span>
+                    <div class="button-container pull-right">
+                        Compartir:
+                        <button class="btn btn-icon btn-round btn-facebook btn-sm" href="javascript:void(0)">
+                            <i class="fab fa-facebook fa-1"> </i>
+                        </button>
+                        <button class="btn btn-icon btn-round btn-twitter btn-sm" href="javascript:void(0)">
+                            <i class="fab fa-twitter fa-1"> </i>
+                        </button>
+                        <button class="btn btn-icon btn-round btn-google btn-sm" href="javascript:void(0)">
+                            <i class="fab fa-google-plus fa-1"> </i>
+                        </button>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="col-12 col-md-12 text-justify">
+                    <p>{{article.description}}</p>
+                    <br />
+                    <br />
+                    <button class="btn btn-info pull-right btn-sm">Obtén un regalo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <hr color="purple"  width="80%"/>
+    <br>
+    <div class="container">
+        <h3>Comentarios</h3>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <div class="box-media d-flex">
+                    <img src="../../../assets/img/angular.jpg" class="rounded-circle" width="64" height="64" alt="">
+                    <div class="pl-3">
+                        <p class="box-name">Nombre <span>00 minutos</span></p>
+                        <div class="text-justify pl-3">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, nam accusamus molestias
+                            recusandae tenetur corporis rerum quasi, cumque itaque suscipit maxime ipsa. Mollitia at
+                            quas, omnis architecto quia sit ut!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aperiam odio adipisci,
+                            doloribus vero recusandae? Deleniti commodi voluptatem, quidem quia inventore ipsum
+                            consectetur, cum consequuntur vel numquam omnis velit eaque.
+                        </div>
+                        <div class="button-container pull-right">
+                            <a class="" href="javascript:void(0)">
+                                <i class="text-info far fa-heart"></i>
+                            </a> 343
+                            <a class="" href="javascript:void(0)">
+                                <i class="text-info far fa-paper-plane"></i> Responder
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <form action="" class="box-comentarios pull-right">
+                    <div class="d-flex">
+                        <img src="../../../assets/img/angular.jpg" class="rounded-circle mr-3" width="64" height="64"
+                            alt="">
+                        <textarea class="form-control rounded" name="" id="" rows="6"
+                            placeholder="Escribe tu comentario"></textarea>
+                    </div>
+                    <button class="btn btn-info btn-sm pull-right" type="button">Enviar</button>
+                </form>
+            </div>
+            <div class="col-10">
+                <div class="box-media d-flex">
+                    <img src="../../../assets/img/angular.jpg" class="rounded-circle" width="64" height="64" alt="">
+                    <div class="pl-3">
+                        <p class="box-name">Nombre <span>00 minutos</span></p>
+                        <div class="text-justify pl-3">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum, nam accusamus molestias
+                            recusandae tenetur corporis rerum quasi, cumque itaque suscipit maxime ipsa. Mollitia at
+                            quas, omnis architecto quia sit ut!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aperiam odio adipisci,
+                            doloribus vero recusandae? Deleniti commodi voluptatem, quidem quia inventore ipsum
+                            consectetur, cum consequuntur vel numquam omnis velit eaque.
+                        </div>
+                        <div class="button-container pull-right">
+                            <a class="" href="javascript:void(0)">
+                                <i class="text-info far fa-heart"></i>
+                            </a> 343
+                            <a class="" href="javascript:void(0)">
+                                <i class="text-info far fa-paper-plane"></i> Responder
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <form action="" class="box-comentarios pull-right">
+                    <div class="d-flex">
+                        <img src="../../../assets/img/angular.jpg" class="rounded-circle mr-3" width="64" height="64"
+                            alt="">
+                        <textarea class="form-control rounded" name="" id="" rows="6"
+                            placeholder="Escribe tu comentario"></textarea>
+                    </div>
+                    <button class="btn btn-info btn-sm pull-right" type="button">Enviar</button>
+                </form> -->
+            </div>
+        </div>
+    </div>
+</div>

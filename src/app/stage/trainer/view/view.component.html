@@ -1,13 +1,9 @@
 <div class="content">
   <div class="header">
-    <img
-      src="../../../assets/img/header.jpg"
-      alt="Random first slide"
-      class="img-fluid"
-    />
-    <br />
-    <br />
-    <div class="row">
+    <img [src]="trainer.banner" class="img-trainer">
+  </div>
+  <div class="container-fluid">
+      <div class="row">
       <div class="col-md-6 mx-auto">
         <div class="card card-user">
           <div class="card-body">
@@ -18,14 +14,11 @@
               <div class="block block-three"></div>
               <div class="block block-four"></div>
               <a href="javascript:void(0)">
-                <img alt="..." class="avatar" src="assets/img/emilyz.jpg" />
+                <img alt="..." class="avatar" [src]="trainer.icon" />
 
-                <h5 class="title">Nombre del entrenador</h5>
+                <h5 class="title">{{trainer.names}}</h5>
               </a>
-              <p class="description">Descripcion</p>
-            </div>
-            <div class="card-description">
-              Palabras sobre quien es
+              <p class="description">{{trainer.description}}</p>
             </div>
           </div>
           <div class="card-footer">
@@ -60,11 +53,11 @@
           <div class="card-body">
             <div class="row">
               <div class="col">
-                <h4 class="card-title">Sobre la clase</h4>
-                <p class="card-text">La clase la clase</p>
+                <h4 class="card-title text-center">{{lection.name}}</h4>
+                <p class="card-text text-center">{{lection.description}}</p>
               </div>
               <div class="col text-right">
-                <img src="../../../../assets/img/anime3.png" alt="Avatar" />
+                <img [src]="lection.image" class="img-thumbnail" />
               </div>
             </div>
           </div>
@@ -78,5 +71,5 @@
         </button>
       </div>
     </div>
-  </div>
+</div>
 </div>
