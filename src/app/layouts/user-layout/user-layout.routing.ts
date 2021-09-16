@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "src/app/pages/home/home.component";
+import { TestComponent } from "src/app/stage/test/test.component";
 
 export const UserLayoutRoutes: Routes = [
   {
@@ -38,5 +39,7 @@ export const UserLayoutRoutes: Routes = [
       path: 'service',
       loadChildren: '../../stage/service/service.module#ServiceModule'
     }]
+  },{
+    path: 'customer/test', component: TestComponent
   }
 ]

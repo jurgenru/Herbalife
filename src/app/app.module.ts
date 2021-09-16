@@ -24,6 +24,7 @@ import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
 import { TrainerService } from "./services/trainer.service";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { TestComponent } from './stage/test/test.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, TestComponent],
   providers: [
     StoreService,
     BlogService,
