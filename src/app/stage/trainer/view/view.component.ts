@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
-  selector: 'app-view',
+  selector: 'app-trainer-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })
