@@ -41,7 +41,7 @@ import { TestComponent } from './stage/test/test.component';
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, TestComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
   providers: [
     StoreService,
     BlogService,
