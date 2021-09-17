@@ -16,3 +16,8 @@
 .caret {
     margin-left: 6px;
 }
+
+.title {
+    margin-top: 10px;
+    cursor: pointer;
+}

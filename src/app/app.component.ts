@@ -17,7 +17,7 @@ export class AppComponent {
     private toastr: ToastrService,
     private spinner: NgxUiLoaderService,
   ) {
-    // this.session();s
+    // this.session();
   }
 
   session() {
@@ -25,9 +25,7 @@ export class AppComponent {
     this.spinner.start();
     const filter = `{"fields": {"role": true, "id": true}`;
     this.userService.me().subscribe((data: any) => {
-console.log(data);
       // this.userService.getById(data.id, filter).subscribe((user: any) => {
-      //   console.log(user);
       // });
     }, error => {
       this.spinner.stop();
