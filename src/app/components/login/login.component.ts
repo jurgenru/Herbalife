@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     const start = new Date();
-    this.spinner.start();
+    // this.spinner.start();
     this.userService.login(this.user.value).subscribe((data: any) => {
+      localStorage.setItem('herTok', data.token);
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
         this.spinner.stop();
-        localStorage.setItem('herTok', data.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/customer/view']);
       }, elapsed);
     }, error => {
       this.spinner.stop();
