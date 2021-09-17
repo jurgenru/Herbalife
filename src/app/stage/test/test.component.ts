@@ -79,10 +79,23 @@ export class TestComponent implements OnInit {
       optionB: "Pido más tiempo para el segundo proyecto.",
       optionC: "Le digo al cliente que no tenemos el tiempo necesario para cumplir.",
     },
-  ]
+  ];
+  currentTest = 0;
+  result = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  nextTest(option: any) {
+    setTimeout(() => {
+      this.currentTest++;
+      if (this.currentTest == 12) {
+        this.result = true;
+      }
+      console.log(this.currentTest);
+      console.log('respuesta', option);
+    }, 2000);
+  }
 }
