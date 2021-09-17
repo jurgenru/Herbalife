@@ -93,17 +93,20 @@ export class TestComponent implements OnInit {
     $("#test").slideUp(0, this.nextQuestion(option)).fadeIn(1000);
   }
   nextQuestion(option: any) {
+    
     this.btnBlock = true;
     this.currentTest++;
-
+    
     if (this.currentTest > 11) {
       this.result = true;
+      // console.log(this.currentTest);
+      // console.log('respuesta', option);
     } else {
       setTimeout(() => {
         this.btnBlock = false;
-        console.log(this.currentTest);
-        console.log('respuesta', option);
       }, 1000);
     }
+    console.log(this.currentTest);
+    console.log('respuesta', option);
   }
 }
