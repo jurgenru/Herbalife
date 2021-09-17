@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { routedComponents, ServiceRoutingModule } from './service.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     ServiceRoutingModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    NgxUiLoaderModule
   ],
   exports: [
     ...routedComponents

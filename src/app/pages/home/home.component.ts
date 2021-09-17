@@ -19,11 +19,9 @@ export class HomeComponent implements OnInit {
     statements: any;
 
     constructor(
-        private route: ActivatedRoute,
         private userService: UserService,
         private trainerService: TrainerService,
         private spinner: NgxUiLoaderService,
-        private router: Router,
     ) {
         this.getContent();
     }

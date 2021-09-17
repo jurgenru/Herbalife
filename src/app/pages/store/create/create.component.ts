@@ -108,9 +108,8 @@ export class CreateComponent implements OnInit {
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
           this.spinner.stop();
-          this.router.navigate(['/store/list'])
+          this.router.navigate(['/store/list']);
           this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado la tienda exitosamente', '5000', 'success', 'top', 'center');
-
         }, elapsed);
       }, error => {
         this.spinner.stop();

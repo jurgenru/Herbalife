@@ -1,0 +1,36 @@
+<div class="content">
+    <h3 class=" title mt-5 text-center">CATEGORIAS</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4" *ngFor="let store of stores">
+                <div class="card card-user">
+                    <div class="card-body">
+                        <div class="author">
+                            <a [routerLink]="['/customer/store/view', store.id]">
+                                <img [src]="store.image" class="img-thumbnail" alt="">
+                                <br><br>
+                                <h4 class="title">{{store.title}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container">
+                            compartir :
+                            <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                                <i class="fab fa-facebook"> </i>
+                            </button>
+                            <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                                <i class="fab fa-twitter"> </i>
+                            </button>
+                            <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                                <i class="fab fa-google-plus"> </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>

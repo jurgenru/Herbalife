@@ -4,9 +4,16 @@
             <div class="card card-login register">
                 <div class="card-header">
                     <h1 class="text-center">Registrarse</h1>
-                </div>
+                    <p>o registrate con : </p>
+                        <div class="d-flex justify-content-around">
+                            <button class="btn btn-danger btn-simple btn-sm"><i class="tim-icons icon-email-85"></i> Google</button>
+                            <button class="btn btn-info btn-simple btn-sm"><i class="fab fa-facebook"> </i> Facebook</button>    
+                        </div>
+                    </div>
+                <hr color="purple" />
                 <form [formGroup]="user" (ngSubmit)="register()">
                     <div class="card-body">
+                        <h4 class="text-center">Formulario</h4>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class=" tim-icons icon-single-02"></i></div>

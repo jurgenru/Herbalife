@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { TrainerService } from 'src/app/services/trainer.service';
 
 @Component({
@@ -14,8 +15,9 @@ export class ViewComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private trainerService: TrainerService
-  ) { 
+    private trainerService: TrainerService,
+    private spinner: NgxUiLoaderService
+  ) {
     this.get();
   }
 
@@ -23,12 +25,18 @@ export class ViewComponent implements OnInit {
   }
 
   get() {
+    const start = new Date();
+    this.spinner.start();
     this.route.params.subscribe(val => {
       this.trainerService.getById(val.id).subscribe((data: any) => {
         this.trainer = data;
         this.trainerService.getLectionById(data.id).subscribe(lect => {
-          this.lection = lect;
-          console.log(lect);
+          const end = new Date();
+          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+          setTimeout(() => {
+            this.lection = lect;
+            this.spinner.stop();
+          }, elapsed);
         });
       });
     });
