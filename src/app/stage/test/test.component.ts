@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  test: any =[
+  test: any = [
     {
       question: "¿Necesitas estar seguro de que algo va a funcionar antes de intentarlo?",
       optionA: "Si mi instinto dice que sí, puedo implementar una idea rápidamente aunque sea algo radical que no hecho antes.",
