@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { routedComponents, StoreRoutingModule,  } from './store.routing';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     StoreRoutingModule,
     RouterModule,
     NgbModule,
+    NgxUiLoaderModule
   ],
   exports: [
    routedComponents

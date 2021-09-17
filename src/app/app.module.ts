@@ -24,6 +24,7 @@ import { ServiceService } from "./services/service.service";
 import { StatementService } from "./services/statement.service";
 import { TrainerService } from "./services/trainer.service";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { ProfileService } from "./services/profile.service";
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
     ServiceService,
     StatementService,
     TrainerService,
+    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

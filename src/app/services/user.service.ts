@@ -47,4 +47,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}/users/username/${name}?filter=${filter}`).pipe();
     }
 
+    getProfileById(id) {
+      return this.http.get(`${environment.apiUrl}/users/${id}/profile`).pipe();  
+    }
+
 }

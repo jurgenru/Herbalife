@@ -63,7 +63,6 @@ export class EditComponent implements OnInit {
             const end = new Date();
             const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
             setTimeout(() => {
-              console.log(res);
               this.spinner.stop();
             }, elapsed);
           });
@@ -140,7 +139,6 @@ export class EditComponent implements OnInit {
         this.spinner.stop();
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado el artículo exitosamente', '5000', 'success', 'top', 'center');
       }, elapsed);
-      console.log(data);
     }, error => {
       this.spinner.stop();
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center');

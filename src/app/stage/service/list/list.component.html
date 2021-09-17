@@ -1,0 +1,36 @@
+<div class="content">
+    <h3 class=" title mt-5 text-center">SERVICIOS</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4" *ngFor="let service of services">
+                <div class="card card-user">
+                    <div class="card-body">
+                        <div class="author">
+                            <a [routerLink]="['/customer/service/view', service.id]">
+                                <img [src]="service.image" class="img-thumbnail" alt="">
+                                <br><br>
+                                <h4 class=" title">{{service.title}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container">
+                            compartir :
+                            <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
+                                <i class="fab fa-facebook"> </i>
+                            </button>
+                            <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+                                <i class="fab fa-twitter"> </i>
+                            </button>
+                            <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
+                                <i class="fab fa-google-plus"> </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>

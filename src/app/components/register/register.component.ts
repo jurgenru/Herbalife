@@ -31,40 +31,27 @@ export class RegisterComponent implements OnInit {
   register() {
     const start = new Date();
     this.spinner.start();
+    this.user.value.phoneNumber = this.user.value.password;
     this.userService.register(this.user.value).subscribe((data: any) => {
       const login = {
         email: data.email,
         password: this.user.value.password
       }
-      this.userService.login(login).subscribe((data: any) => {
+      this.userService.login(login).subscribe((log: any) => {
+        localStorage.setItem('herTok', log.token);
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
-          switch (data.user.role) {
-            case 'partern':
-              this.spinner.stop();
-              break;
+          switch (log.user.role) {
             case 'customer':
-              this.spinner.stop();
-              localStorage.setItem('herTok', data.user.token);
               this.router.navigate(['/customer/create']);
               this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha creado su usuario correctamente, complete su perfil ahora', '5000', 'success', 'top', 'center');
+              this.spinner.stop();
               break;
             default:
               break;
           }
         }, elapsed);
-        //   const end = new Date();
-        //   const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-        //   this.spinner.stop();
-        //   setTimeout(() => {
-        //     localStorage.setItem('herTok', user.token);
-        //     this.router.navigate(['/page/admin']);
-        //     this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha creado sus usuario correctamente', '5000', 'success', 'top', 'center');
-        //   }, elapsed);
-        // }, error => {
-        //   this.spinner.stop();
-        //   this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> No pudo crear su usuario, intente nuevamente', '5000', 'danger', 'top', 'center');
       });
     });
   }
