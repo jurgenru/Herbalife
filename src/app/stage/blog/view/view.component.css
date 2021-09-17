@@ -18,13 +18,17 @@
     width: 100%;
     z-index: -1;
 }
-
-.iconImg{
-    width: 80px;
-    height: 80px;
-}
-
 .img-blog {
     width: 100% !important;
     height: 550px;
+}
+.icon {
+    width: 30px;
+}
+.iconImg{
+    width: 45px;
+}
+.scrollMenu{
+    display: flex;
+    overflow-x: auto;
 }
