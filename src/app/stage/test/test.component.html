@@ -3,6 +3,7 @@
         <div class="card col-md-8 m-2 mx-auto" *ngIf="!result">
             <div class="card-body">
                 <div class="card-title text-center">
+                    <p class="text-center">{{currentTest + 1}} de {{test.length}}</p>
                     <h3>{{ test[currentTest].question }}</h3>
                     <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fuild" width="100" height="100"
                         alt="">
