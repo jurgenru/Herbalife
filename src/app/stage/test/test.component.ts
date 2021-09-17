@@ -30,11 +30,14 @@ export class TestComponent implements OnInit {
   }
 
   nextQuestion(option: any) {
+
     this.btnBlock = true;
     this.currentTest++;
 
     if (this.currentTest > 11) {
       this.result = true;
+      // console.log(this.currentTest);
+      // console.log('respuesta', option);
     } else {
       setTimeout(() => {
         this.btnBlock = false;
