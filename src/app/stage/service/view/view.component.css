@@ -12,3 +12,6 @@
     display: flex;
     overflow-x: auto;
 }
+.scrollMenu::-webkit-scrollbar {
+    height: 5px;
+}
