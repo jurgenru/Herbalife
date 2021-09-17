@@ -1,6 +1,6 @@
 <div class="content">
-    <div class="container">
-        <div class="card col-md-8 m-2 mx-auto" *ngIf="!result">
+    <div id="test" class="container">
+        <div class="card card-user col-md-8 m-2 mx-auto" *ngIf="!result">
             <div class="card-body">
                 <div class="card-title text-center">
                     <p class="text-center">{{currentTest + 1}} de {{test.length}}</p>
@@ -9,25 +9,25 @@
                         alt="">
                 </div>
                 <div class="text-right">
-                    <button (click)="nextTest(test[currentTest].optionA)"
+                    <button [disabled]="btnBlock" (click)="transition(test[currentTest].optionA)"
                         class="btn btn-warning text-left border btn-round btn-block btn-fuild btn-lg">
                         <strong class="m-2">a)</strong>
                         {{ test[currentTest].optionA}}
                     </button>
-                    <button (click)="nextTest(test[currentTest].optionB)"
+                    <button [disabled]="btnBlock" (click)="nextTest(test[currentTest].optionB)"
                         class="btn btn-success text-left border btn-round btn-block btn-lg">
                         <strong class="m-2">b)</strong>
                         {{test[currentTest].optionB}}
                     </button>
-                    <button (click)="nextTest(test[currentTest].optionC)"
+                    <button [disabled]="btnBlock" (click)="nextTest(test[currentTest].optionC)"
                         class="btn btn-primary text-left border btn-round btn-block btn-lg">
                         <strong class="m-2">c)</strong>
                         {{test[currentTest].optionC}}
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="card card-user">
+        
+      
             <div class="card-body" *ngIf="result">
                 <p class="card-text"></p>
                 <div class="author">

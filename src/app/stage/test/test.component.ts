@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -82,20 +82,40 @@ export class TestComponent implements OnInit {
   ];
   currentTest = 0;
   result = false;
+  btnBlock =false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  nextTest(option: any) {
+  transition(option: any){
+    $("#test").slideUp(0,this.nextQuestion(option)).fadeIn(1000);
+  }
+  nextQuestion(option: any){
+    this.btnBlock=true;
     setTimeout(() => {
-      this.currentTest++;
+      
       if (this.currentTest == 12) {
         this.result = true;
       }
+      this.btnBlock = false;
       console.log(this.currentTest);
       console.log('respuesta', option);
-    }, 2000);
+    });
+    this.currentTest++;
+  }
+
+  nextTest(option: any) {
+    $("#hola").fadeOut(0,function(){
+      setTimeout(() => {
+        this.currentTest++;
+        if (this.currentTest == 12) {
+          this.result = true;
+        }
+        console.log(this.currentTest);
+        console.log('respuesta', option);
+      },100);
+    }).fadeIn(2000);
   }
 }
