@@ -16,7 +16,7 @@ export class TestComponent implements OnInit {
     {
       question: "¿Cómo te sientes cuando sabes que no eres la persona más inteligente del grupo?",
       optionA: "Bien. Pienso que la gente más inteligente podrá hacer las cosas que yo no puedo.",
-      optionB: "Me afecta un poco al ego, pero lo maneo bien.",
+      optionB: "Me afecta un poco al ego, pero lo manejo bien.",
       optionC: "Casi siempre soy la persona más inteligente.",
     },
     {
@@ -56,8 +56,8 @@ export class TestComponent implements OnInit {
       optionC: "Vivo y gasto en el momento, el dinero no se irá conmigo",
     },
     {
-      question: "Si alguien expresa interés e trabajar contigo, ¿Cómo le hacs siguimiento?",
-      optionA: "Soy persistete por teléfono, por correo o en persona. El contacto constante da resultado.",
+      question: "Si alguien expresa interés en trabajar contigo, ¿Cómo le haces siguimiento?",
+      optionA: "Soy persistente por teléfono, por correo o en persona. El contacto constante da resultado.",
       optionB: "Le busco una o dos veces por semana, no quiero ser una molestia.",
       optionC: "Una vez después de un contacto inicial, luego dejo que venga a mí.",
     },
