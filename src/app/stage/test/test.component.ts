@@ -94,15 +94,16 @@ export class TestComponent implements OnInit {
   }
   nextQuestion(option: any) {
     this.btnBlock = true;
-    setTimeout(() => {
+    this.currentTest++;
 
-      this.currentTest++;
-      if (this.currentTest == 12) {
-        this.result = true;
-      }
-      console.log(this.currentTest);
-      console.log('respuesta', option);
-      this.btnBlock = false;
-    }, 1000);
+    if (this.currentTest > 11) {
+      this.result = true;
+    } else {
+      setTimeout(() => {
+        this.btnBlock = false;
+        console.log(this.currentTest);
+        console.log('respuesta', option);
+      }, 1000);
+    }
   }
 }
