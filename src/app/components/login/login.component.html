@@ -5,9 +5,9 @@
                 <div class="card-header">
                     <h1 class="text-center">Iniciar Sesion</h1>
                     <p>o iniciar sesion con : </p>
-                    <div class="d-flex justify-content-around">
-                        <button class="btn btn-danger btn-simple btn-sm"><i class="tim-icons icon-email-85"></i> Google</button>
-                        <button class="btn btn-info btn-simple btn-sm"><i class="fab fa-facebook"> </i> Facebook</button>    
+                    <div>
+                        <button class="btn btn-danger btn-simple btn-sm btn-block"><i class="tim-icons icon-email-85"></i> Google</button>
+                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i> Facebook</button>    
                     </div>
                 </div>
                 <form [formGroup]="user" (ngSubmit)="login()">
@@ -45,7 +45,7 @@
                             <h6><a class="link footer-link" routerLink="/register">Registrarse</a></h6>
                         </div>
                         <div class=" pull-right">
-                            <h6><a class=" link footer-link" href="javascript:void(0)"> Need Help? </a></h6>
+                            <h6><a class=" link footer-link" routerLink="/">Volver</a></h6>
                         </div>
                     </div>
                 </form>

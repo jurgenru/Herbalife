@@ -5,11 +5,13 @@
                 <div class="card-header">
                     <h1 class="text-center">Registrarse</h1>
                     <p>o registrate con : </p>
-                        <div class="d-flex justify-content-around">
-                            <button class="btn btn-danger btn-simple btn-sm"><i class="tim-icons icon-email-85"></i> Google</button>
-                            <button class="btn btn-info btn-simple btn-sm"><i class="fab fa-facebook"> </i> Facebook</button>    
-                        </div>
+                    <div>
+                        <button class="btn btn-danger btn-simple btn-sm btn-block"><i
+                                class="tim-icons icon-email-85"></i> Google</button>
+                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
+                            Facebook</button>
                     </div>
+                </div>
                 <hr color="purple" />
                 <form [formGroup]="user" (ngSubmit)="register()">
                     <div class="card-body">
@@ -21,9 +23,12 @@
                                 formControlName="username">
                         </div>
                         <div *ngIf="username.invalid && (username.dirty || username.touched)">
-                            <small *ngIf="username.errors.required" class="text-danger">El nombre de usuario es <strong>requerido</strong></small>
-                            <small *ngIf="username.errors.maxlength"  class="text-danger">El nombre del usuario debe ser menor o igual a 10</small>
-                            <small *ngIf="username.errors.minlength"  class="text-danger">El nombre de usuario debe ser igual o mayor a 3</small>
+                            <small *ngIf="username.errors.required" class="text-danger">El nombre de usuario es
+                                <strong>requerido</strong></small>
+                            <small *ngIf="username.errors.maxlength" class="text-danger">El nombre del usuario debe ser
+                                menor o igual a 10</small>
+                            <small *ngIf="username.errors.minlength" class="text-danger">El nombre de usuario debe ser
+                                igual o mayor a 3</small>
                             <br>
                             <br>
                         </div>
@@ -62,7 +67,7 @@
                             <h6><a class="link footer-link" routerLink="/login">Iniciar Sesion</a></h6>
                         </div>
                         <div class=" pull-right">
-                            <h6><a class=" link footer-link" href="javascript:void(0)"> Need Help? </a></h6>
+                            <h6><a class=" link footer-link" routerLink="/">Volver</a></h6>
                         </div>
                     </div>
                 </form>
