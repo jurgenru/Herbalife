@@ -7,15 +7,13 @@
     height: 550px;
 }
 .iconImg{
-    width: 45px;
+    width: 70px;
 }
+
 .scrollMenu{
     display: flex;
     overflow-x: auto;
 }
-/* .scrollMenu::-webkit-scrollbar{
-    background: #27293d; 
+.scrollMenu::-webkit-scrollbar {
+    height: 5px;
 }
-.scrollMenu::-webkit-scrollbar-thumb:hover {
-    background: #1e1e2f; 
-  } */

@@ -7,80 +7,16 @@
             <h3 class="card-title text-center">Categorias</h3>
             <div class="row justify-content-center">
                 <div class="scrollMenu">
-                    <div class="col-6 col-md-2" >
-                        <div class = "card">
+                    <div class="col-6 col-md-3" *ngFor="let service of services">
+                        <div class="card">
                         <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
+                            <img [src]="service.icon" class="rounded mx-auto d-block iconImg" *ngIf="service.icon; else noIcon">
+                            <ng-template #noIcon>
+                                <i class="tim-icons icon-atom"></i>
+                            </ng-template>
                         </div>
                         <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                        <div class = "card">
-                        <div class="card-img-top p-1 text-center">
-                            <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fluid iconImg"
-                                alt="">
-                        </div>
-                        <div class="card-body text-center">
-                            <button type="button" class="btn btn-secondary animation-on-hover btn-sm">Secondary</button>
+                            <a class="btn btn-danger animation-on-hover btn-sm text-light" (click)="viewService(service.id)">{{service.title | slice:0:10}}</a>
                         </div>
                         </div>
                     </div>
