@@ -30,7 +30,7 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/customer/blog/list">BLOG</a>
                 </li>
-                <li class="nav-item" ngbDropdown *ngIf="user">
+                <li class="nav-item" ngbDropdown *ngIf="status">
                     <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
                       <div class="theme d-none d-lg-block d-xl-block"></div>
                       <i class="tim-icons icon-palette"></i>
@@ -51,10 +51,10 @@
                       </li>
                     </ul>
                   </li>
-                <li class="nav-item" *ngIf="user">
+                <li class="nav-item" *ngIf="status">
                     <a class="nav-link"><i class="tim-icons icon-cart"></i></a>
                 </li>
-                <li class="nav-item" ngbDropdown *ngIf="user">
+                <li class="nav-item" ngbDropdown *ngIf="status">
                     <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
                         <div class="user">
                             <div class="photo">
@@ -92,11 +92,11 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item" *ngIf="!user">
+                <li class="nav-item" *ngIf="!status">
                     <button type="button" class="btn btn-danger btn-sm register"
                         routerLink="/register">REGISTRARSE</button>
                 </li>
-                <li class="nav-item" *ngIf="!user">
+                <li class="nav-item" *ngIf="!status">
                     <button type="button" class="btn btn-info btn-sm login" routerLink="/login">INICIAR SESION</button>
                 </li>
                 <!-- <li class="nav-item" ngbDropdown>

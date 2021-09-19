@@ -29,15 +29,28 @@ export class LoginComponent implements OnInit {
 
   login() {
     const start = new Date();
-    // this.spinner.start();
+    this.spinner.start();
     this.userService.login(this.user.value).subscribe((data: any) => {
-      localStorage.setItem('herTok', data.token);
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-      setTimeout(() => {
-        this.spinner.stop();
-        this.router.navigate(['/customer/view']);
-      }, elapsed);
+      switch (data.user.role) {
+        case 'customer':
+          localStorage.setItem('herTok', data.token);
+          setTimeout(() => {
+            this.router.navigate(['/customer/view']);
+            this.spinner.stop();
+          }, elapsed);
+          break;
+        case 'admin':
+          localStorage.setItem('herTok', data.token);
+          setTimeout(() => {
+            this.router.navigate(['/dashboard']);
+            this.spinner.stop();
+          }, elapsed);
+          break;
+        default:
+          break;
+      }
     }, error => {
       this.spinner.stop();
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> El correo electronico y/o contraseña con incorrectas , intente nuevamente', '5000', 'danger', 'top', 'center');

@@ -22,7 +22,6 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     this.test = this.testService;
-    console.log(this.test);
   }
 
   transition(option: any) {
@@ -36,8 +35,6 @@ export class TestComponent implements OnInit {
 
     if (this.currentTest > 11) {
       this.result = true;
-      // console.log(this.currentTest);
-      // console.log('respuesta', option);
     } else {
       setTimeout(() => {
         this.btnBlock = false;
@@ -56,6 +53,5 @@ export class TestComponent implements OnInit {
       default:
         break;
     }
-    console.log(this.currentA, this.currentB, this.currentC);
   }
 }

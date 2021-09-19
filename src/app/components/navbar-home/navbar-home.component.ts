@@ -23,6 +23,7 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   closeResult: string;
   user: any;
   image: any;
+  status: boolean;
 
   constructor(
     location: Location,
@@ -217,12 +218,14 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/page/admin']);
+    this.router.navigate(['/']);
+    this.status = false;
   }
 
   me() {
     if (localStorage.getItem('herTok')) {
       this.userService.me().subscribe((user: any) => {
+        this.status = true;
         this.user = user;
         const filter = `{"fields": {"id": true}}`;
         this.userService.getById(user.id, filter).subscribe((data: any) => {
