@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
@@ -14,14 +14,17 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./create.component.css"],
 })
 export class CreateComponent implements OnInit {
-  services: number;
 
+  modeForm: FormGroup;
+  services: number;
   icon: any;
   banner: any;
   image: any;
   service: any = {};
   serviceType: any = {};
-  Types: any = ["presencial", "virtual"];
+  modes: string[] = ['presencial', 'virtual'];
+  default: string = 'presencial';
+  type: any = 'normal';
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -31,7 +34,12 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private userService: UserService
-  ) { }
+  ) {
+    this.modeForm = new FormGroup({
+      mode: new FormControl(null)
+    });
+    this.modeForm.controls['mode'].setValue(this.default, { onlySelf: true });
+  }
 
   ngOnInit(): void {
     this.createServiceForm();
@@ -40,29 +48,11 @@ export class CreateComponent implements OnInit {
   createServiceForm() {
     this.service = this.formBuilder.group({
       name: ["", Validators.required],
-      mode: ["", Validators.required],
       description: ["", Validators.required],
       title: ["", Validators.required],
       titleGratitude: ["", Validators.required],
       descriptionGratitude: ["", Validators.required],
-      type: [""],
     });
-
-    this.serviceType = this.formBuilder.group({
-      checkbox1: [false],
-      checkbox2: [false],
-      checkbox3: [false],
-    });
-  }
-
-  showMessage(stCb1: any, stCb2: any, stCb3: any) {
-    if (this.serviceType.value.checkbox1 == true) {
-      this.service.value.type = "Normal";
-    } else if (this.serviceType.value.checkbox2 == true) {
-      this.service.value.type = "Encuesta de Emprendedores";
-    } else {
-      this.service.value.type = "Autoevaluacion";
-    }
   }
 
   showIcon() {
@@ -90,13 +80,10 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    this.service.value.type = this.type;
+    this.service.value.mode = this.modeForm.value.mode
     const start = new Date();
     this.spinner.start();
-    this.showMessage(
-      this.serviceType.value.checkbox1,
-      this.serviceType.value.checkbox2,
-      this.serviceType.value.checkbox3
-    );
     this.userService.me().subscribe((user: any) => {
       this.service.value.userId = user.id;
       this.service.value.icon = this.icon;
@@ -132,6 +119,41 @@ export class CreateComponent implements OnInit {
     });
   }
 
+  uncheck() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+
+    if (checkbox1.checked) {
+      this.type = checkbox1.value;
+      checkbox2.checked = null;
+      checkbox3.checked = null;
+    }
+  }
+
+  uncheck2() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+
+    if (checkbox2.checked) {
+      this.type = checkbox2.value;
+      checkbox1.checked = null;
+      checkbox3.checked = null;
+    }
+  }
+
+  uncheck3() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+    if (checkbox3.checked) {
+      this.type = checkbox3.value;
+      checkbox1.checked = null;
+      checkbox2.checked = null;
+    }
+  }
+
   notification(content, time, type, from, align) {
     this.toastr.error(content, "", {
       timeOut: time,
@@ -144,10 +166,6 @@ export class CreateComponent implements OnInit {
 
   get name() {
     return this.service.get("name");
-  }
-
-  get mode() {
-    return this.service.get("mode");
   }
 
   get description() {
@@ -166,15 +184,4 @@ export class CreateComponent implements OnInit {
     return this.service.get("descriptionGratitude");
   }
 
-  get type() {
-    return this.serviceType.get("checkbox1");
-  }
-
-  get type1() {
-    return this.serviceType.get("checkbox2");
-  }
-
-  get type2() {
-    return this.serviceType.get("checkbox3");
-  }
 }

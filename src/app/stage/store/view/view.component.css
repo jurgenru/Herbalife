@@ -6,3 +6,14 @@
     width: 100% !important;
     height: 550px;
 }
+.iconImg{
+    width: 70px;
+}
+
+.scrollMenu{
+    display: flex;
+    overflow-x: auto;
+}
+.scrollMenu::-webkit-scrollbar {
+    height: 5px;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -12,13 +12,16 @@ export class ViewComponent implements OnInit {
 
   blog: any = {};
   articles: any;
+  blogs: any;
 
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
     private spinner: NgxUiLoaderService,
+    private router: Router
   ) {
     this.get();
+    this.list();
   }
 
   ngOnInit() {
@@ -40,6 +43,21 @@ export class ViewComponent implements OnInit {
         });
       });
     });
+  }
+
+  list() {
+    const filter = `{"fields": {"id": true, "icon": true, "name": true}, "order":["id DESC"]}`;
+    this.blogService.get(filter).subscribe(data => {
+      this.blogs = data;
+    });
+  }
+
+  viewBlog(id) {
+    this.router.navigate(['/customer/blog/view', id]);
+    setTimeout(() => {
+      location.reload();
+    }, 50);
+
   }
 
 }

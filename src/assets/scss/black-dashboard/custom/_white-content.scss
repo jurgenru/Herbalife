@@ -15,7 +15,12 @@
         color: $black-states;
       }
   }
-
+  .scrollMenu::-webkit-scrollbar{
+    background: #f6f6f8; 
+}
+.scrollMenu::-webkit-scrollbar-thumb:hover {
+    background: #78787a; 
+  }
   .navbar.navbar-transparent .navbar-minimize button i{
     color: $black-states;
   }

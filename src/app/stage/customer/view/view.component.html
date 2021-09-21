@@ -22,6 +22,10 @@
                                 <p>{{profile.phoneNumber}}</p>
                             </div>
                             <div class="col-12 col-md-4">
+                                <div>
+                                    <button class="btn btn-warning btn-link btn-sm pull-right" type="button" routerLink="/customer/edit"><i
+                                      class=" tim-icons icon-pencil"></i> Editar</button>
+                                </div>
                                 <img [src]="profile.image" class="img-thumbnail" *ngIf="profile.image; else noImage">
                                 <ng-template #noImage></ng-template>
                             </div>

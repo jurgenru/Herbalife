@@ -1,0 +1,60 @@
+<div class="content">
+    <div class="container mt-4 justify-content-center">
+        <div class="col-12" *ngIf="!result">
+            <div class="text-center mb-4">
+                <p class="text-center">{{currentTest + 1}} de {{test.data.length}}</p>
+                <h3>{{ test.data[currentTest].question }}</h3>
+                <img src="../../../../assets/img/angular.jpg" class="mx-auto img-fuild" width="100" height="100" alt="">
+            </div>
+            <div class="text-right" id="test">
+                <button [disabled]="btnBlock" (click)="transition('A')"
+                    class="btn btn-warning text-left btn-round btn-block btn-fuild btn-lg">
+                    <strong class="m-2">a)</strong>
+                    {{ test.data[currentTest].optionA}}
+                </button>
+                <button [disabled]="btnBlock" (click)="transition('B')"
+                    class="btn btn-success text-left btn-round btn-block btn-lg">
+                    <strong class="m-2">b)</strong>
+                    {{test.data[currentTest].optionB}}
+                </button>
+                <button [disabled]="btnBlock" (click)="transition('C')"
+                    class="btn btn-primary text-left btn-round btn-block btn-lg">
+                    <strong class="m-2">c)</strong>
+                    {{test.data[currentTest].optionC}}
+                </button>
+            </div>
+        </div>
+        <div class="card card-user col-md-8 m-2 mx-auto" *ngIf="result">
+            <div class="card-body">
+                <p class="card-text"></p>
+                <div class="author h3">
+                    <div class="block block-one"></div>
+                    <div class="block block-two"></div>
+                    <div class="block block-three"></div>
+                    <div class="block block-four"></div>
+                    <img src="../../../assets/img/emilyz.jpg" class="avatar" />
+                    <h4 class="card-header card-header-info mb-3">RESULTADO</h4>
+                    <i class="far fa-lightbulb fa-4x"></i>
+                    <br>
+                    <br>
+                    <p *ngIf="currentA > currentB && currentA > currentC">Tienes las cualidades para
+                        emprender, la habilidad para venderte a ti y a tu
+                        idea, y pones el bienestar del negocio encima de tu ego. De todas maneras, nada de esto servirá
+                        si no te organizas. Debes combinar tus cualidades con la planificación.</p>
+                    <p *ngIf="currentB > currentA && currentB > currentC">Tienes lo básico para
+                        emprender: pasión, tomar riesgos y persistencia. Para
+                        perfeccionar estas cualidades trata de prepararte un poco más, amplía tus relaciones, investiga
+                        sobre emprendimiento, crea tu propio capital.</p>
+                    <p *ngIf="currentC > currentB && currentC > currentA">Sigue practicando tus
+                        cualidades. Trabajas mejor en ambientes estructurados y
+                        prefieres tener un ingreso fijo. Tu visión frente al riesgo es conservadora, te gusta estar
+                        seguro antes de hacer cambios.</p>
+                    <p class="card-footer" *ngIf="currentA == 4 && currentB == 4 && currentC == 4">
+                        No se puede saber si los emprendedores nacen o se hacen, pero una vez
+                        que lo decides, todo es posible de desarrollar y mejorar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
