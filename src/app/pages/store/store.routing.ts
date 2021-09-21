@@ -36,5 +36,6 @@ export const routedComponents = [
     StoreComponent,
     CreateComponent,
     ListComponent,
-    ViewComponent
+    ViewComponent,
+    EditComponent
 ]

@@ -7,6 +7,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { HomeComponent } from "src/app/pages/home/home.component";
 import { UserLayoutRoutes } from "./user-layout.routing";
+import { TestComponent } from "src/app/stage/test/test.component";
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { UserLayoutRoutes } from "./user-layout.routing";
     ],
     declarations: [
         HomeComponent,
+        TestComponent
     ]
 })
-export class UserLayoutModule {}
+export class UserLayoutModule { }

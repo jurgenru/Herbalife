@@ -15,18 +15,53 @@
           </div>
           <hr color="purple" width="90%" />
           <br />
-          <form>
+          <form #form="ngForm" (ngSubmit)="post()">
             <div class="form-group">
               <div class="row">
-                <div class="col-12 col-md-12 text-left">
-                  <h1 class="display-4">Promoción 1</h1>
+                <div class="col-4">
+                  <nav>
+                    <ul>
+                      <li><a>Elige una opcion</a>
+                        <ul>
+                          <li><a>SERVICIO</a>
+                            <ul *ngFor="let service of services">
+                              <li><a>{{service.title}}</a></li>
+                            </ul>
+                          </li>
+                          <li><a>CATEGORIA</a>
+                            <ul>
+                              <li><a>Angular</a></li>
+                              <li><a>VUE</a></li>
+                              <li><a>React</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a>ENTRENADOR</a>
+                            <ul>
+                              <li><a>Angular</a></li>
+                              <li><a>VUE</a></li>
+                              <li><a>React</a>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a>BLOG</a>
+                            <ul>
+                              <li><a>Angular</a></li>
+                              <li><a>VUE</a></li>
+                              <li><a>React</a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+                <div class="col-8">
+                  <h1 class="text-center">Promoción 1</h1>
                   <div class="container-image">
-                    <img
-                      src="../../../../assets/img/anime3.png"
-                      alt="Avatar"
-                      class="mx-auto d-block"
-                      *ngIf="!imageContent; else noImage"
-                    />
+                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                      *ngIf="!imageContent; else noImage" />
                     <ng-template #noImage>
                       <img [src]="imageContent" alt="" />
                     </ng-template>
@@ -36,17 +71,14 @@
                   </div>
                   <p class="text-center">Icono o Video de la primer portada</p>
                 </div>
+
                 <hr color="purple" width="90%" />
                 <br />
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 2</h1>
                   <div class="container-image">
-                    <img
-                      src="../../../../assets/img/anime3.png"
-                      alt="Avatar"
-                      class="mx-auto d-block"
-                      *ngIf="!imageContent2; else noImage2"
-                    />
+                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                      *ngIf="!imageContent2; else noImage2" />
                     <ng-template #noImage2>
                       <img [src]="imageContent2" alt="" />
                     </ng-template>
@@ -61,12 +93,8 @@
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 3</h1>
                   <div class="container-image">
-                    <img
-                      src="../../../../assets/img/anime3.png"
-                      alt="Avatar"
-                      class="mx-auto d-block"
-                      *ngIf="!imageContent3; else noImage3"
-                    />
+                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                      *ngIf="!imageContent3; else noImage3" />
                     <ng-template #noImage3>
                       <img [src]="imageContent3" alt="" />
                     </ng-template>
@@ -81,12 +109,8 @@
                 <div class="col-12 col-md-12 text-left">
                   <h1 class="display-4">Promoción 4</h1>
                   <div class="container-image">
-                    <img
-                      src="../../../../assets/img/anime3.png"
-                      alt="Avatar"
-                      class="mx-auto d-block"
-                      *ngIf="!imageContent4; else noImage4"
-                    />
+                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                      *ngIf="!imageContent4; else noImage4" />
                     <ng-template #noImage4>
                       <img [src]="imageContent4" alt="" />
                     </ng-template>

@@ -1,0 +1,10 @@
+.btn{
+    white-space: normal;
+    word-wrap: break-word;
+    opacity: 1; /* Set opacity to 1 */
+    transition: opacity 1s;
+}
+
+.btn:hover{
+  border: 5px solid navajowhite;
+}

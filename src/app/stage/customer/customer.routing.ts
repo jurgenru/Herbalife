@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CreateComponent } from "./create/create.component";
 import { CustomerComponent } from "./customer.component";
+import { EditComponent } from "./edit/edit.component";
 import { ViewComponent } from "./view/view.component";
 
 export const routes: Routes = [
@@ -14,6 +15,9 @@ export const routes: Routes = [
         },{
             path: 'view',
             component: ViewComponent
+        }, {
+            path: 'edit',
+            component: EditComponent
         }]
     }];
 
@@ -25,5 +29,6 @@ export class CustomerRoutingModule {}
 export const routedComponents = [
     CustomerComponent,
     CreateComponent,
-    ViewComponent
+    ViewComponent,
+    EditComponent
 ]
