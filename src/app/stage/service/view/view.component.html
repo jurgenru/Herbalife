@@ -48,6 +48,7 @@
               </div>
               <div class="row">
                 <div class="col-sm-6 mx-auto text-center">
+                  {{service.type}}
                   <div *ngIf="service.type == 'test'">
                     <h4>¿ Tienes curiosidad por saber si tu podrías hacerlo ? <br>
                       Haz este test y descubrelo</h4>
@@ -56,7 +57,8 @@
                     </button>
                   </div>
                   <div *ngIf="service.type == 'auto'">
-                    <button type="button" class="btn btn-success">
+                    <h4>¿ Desea hacer una autoevaluacion ?</h4>
+                    <button type="button" class="btn btn-success" routerLink="/customer/autotest/view">
                       AUTO EVALUACIÓN
                     </button>
                   </div>
