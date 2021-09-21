@@ -21,7 +21,8 @@ export class ViewComponent implements OnInit {
     this.get();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
   get() {
     const start = new Date();
@@ -34,10 +35,15 @@ export class ViewComponent implements OnInit {
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
           this.products = stor;
+          console.log('product', this.products);
           this.spinner.stop();
         }, elapsed);
         });
       });
     });
+  }
+
+  addToCard(item: any){
+    this.storeService.addToCard(item);
   }
 }

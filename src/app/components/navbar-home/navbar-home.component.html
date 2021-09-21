@@ -52,7 +52,10 @@
                     </ul>
                   </li>
                 <li class="nav-item" *ngIf="user">
-                    <a class="nav-link"><i class="tim-icons icon-cart"></i></a>
+                    <a class="nav-link" routerLink="/customer/store/card">
+                        <i class="tim-icons icon-cart"></i>
+                        <span class="badge badge-pill badge-danger">{{totalItem}}</span>
+                    </a>
                 </li>
                 <li class="nav-item" ngbDropdown *ngIf="user">
                     <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>

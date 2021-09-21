@@ -5,6 +5,7 @@ import { Location } from "@angular/common";
 import { UserService } from "src/app/services/user.service";
 import { ProfileService } from "src/app/services/profile.service";
 import { ToastrService } from 'ngx-toastr';
+import { StoreService } from "src/app/services/store.service";
 
 @Component({
   selector: "app-navbar-home",
@@ -23,6 +24,8 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   closeResult: string;
   user: any;
 
+  public totalItem : number = 0;
+
   constructor(
     location: Location,
     private element: ElementRef,
@@ -30,7 +33,8 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
     private modalService: NgbModal,
     private userService: UserService,
     private profileService: ProfileService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private storeService: StoreService,
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -60,6 +64,10 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
+
+    this.storeService.getProducts().subscribe(res => {
+      this.totalItem = res.length;
+    })
   }
 
   collapse() {
