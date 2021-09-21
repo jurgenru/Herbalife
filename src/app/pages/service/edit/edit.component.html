@@ -15,9 +15,11 @@
           <form #form="ngForm" (ngSubmit)="edit()">
             <div class="row">
               <div class="col-sm-6 mx-auto">
-                <!-- <select class="form-control text-center">
-                    <option *ngFor="let type of Types">{{ type }}</option>
-                  </select> -->
+                <label for="modes">Modo</label>
+                <select class="form-control text-center" [ngModelOptions]="{standalone: true}"
+                  [(ngModel)]="service.mode" [value]="service.mode">
+                  <option *ngFor="let mode of modes">{{mode.value}}</option>
+                </select>
               </div>
             </div>
             <br />
@@ -96,49 +98,50 @@
               <div class="col-md-9 text-left">
                 <div class="form-group">
                   <label> Nombre del servicio </label>
-                  <input class="form-control" type="text" [value]="serviceData.name" />
+                  <input class="form-control" type="text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="service.namae" [value]="serviceData.name" />
                 </div>
                 <div class="form-group">
                   <label> Título de la descripcion </label>
-                  <input class="form-control" type="text" [value]="serviceData.title" />
+                  <input class="form-control" type="text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="service.title" [value]="serviceData.title" />
                 </div>
                 <div class="form-group">
                   <label> Descripción del servicio </label>
-                  <textarea class="form-control" type="text" [value]="serviceData.description"></textarea>
+                  <textarea class="form-control" type="text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="service.description" [value]="serviceData.description"></textarea>
                 </div>
               </div>
             </div>
             <div class="text-center">
               <p><b>Escoja el tipo de servicio</b></p>
               <br />
-              <div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" />
-                        Normal
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="normal" (click)="uncheck()" id="normal" />
+                      Normal
+                      <span class="form-check-sign"></span>
+                    </label>
                   </div>
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" />
-                        Encuesta de emprendedores
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="test" (click)="uncheck2()" id="test" />
+                      Encuesta de emprendedores
+                      <span class="form-check-sign"></span>
+                    </label>
                   </div>
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" />
-                        Autoevaluacion
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="auto" (click)="uncheck3()" id="auto" />
+                      Autoevaluacion
+                      <span class="form-check-sign"></span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -148,11 +151,13 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label> Título de agrecidimiento </label>
-                  <input class="form-control" type="text" [value]="serviceData.titleGratitude" />
+                  <input class="form-control" type="text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="service.titleGratitude" [value]="serviceData.titleGratitude" />
                 </div>
                 <div class="form-group">
                   <label>Descripcion del agrecidimiento</label>
-                  <textarea class="form-control" type="text" [value]="serviceData.descriptionGratitude"></textarea>
+                  <textarea class="form-control" type="text" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="service.descriptionGratitude" [value]="serviceData.descriptionGratitude"></textarea>
                 </div>
               </div>
             </div>

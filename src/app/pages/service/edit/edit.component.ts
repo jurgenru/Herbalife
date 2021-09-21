@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
@@ -12,15 +13,21 @@ import { ServiceService } from "src/app/services/service.service";
   styleUrls: ["./edit.component.scss"],
 })
 export class EditComponent implements OnInit {
+
   content: any;
   serviceData: any = {};
   service: any = {};
   updateIcon: number = 2;
   updateImage: number = 2;
   updateBanner: number = 2;
+  modes = [
+    { value: 'presencial' },
+    { value: 'virtual' }
+  ];
   icon: any;
   image: any;
   banner: any;
+  type: any;
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -33,7 +40,7 @@ export class EditComponent implements OnInit {
     this.get();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   get() {
     this.content = "Cargando ...";
@@ -61,6 +68,9 @@ export class EditComponent implements OnInit {
   }
 
   edit() {
+    if(this.type !== undefined) {
+      this.service.type = this.type;
+    }
     this.content = "Editando ...";
     const start = new Date();
     this.spinner.start();
@@ -101,6 +111,41 @@ export class EditComponent implements OnInit {
         );
       }
     );
+  }
+
+  uncheck() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+
+    if (checkbox1.checked) {
+      this.type = checkbox1.value;
+      checkbox2.checked = null;
+      checkbox3.checked = null;
+    }
+  }
+
+  uncheck2() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+
+    if (checkbox2.checked) {
+      this.type = checkbox2.value;
+      checkbox1.checked = null;
+      checkbox3.checked = null;
+    }
+  }
+
+  uncheck3() {
+    var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+    var checkbox2 = document.getElementById("test") as HTMLInputElement;
+    var checkbox3 = document.getElementById("auto") as HTMLInputElement;
+    if (checkbox3.checked) {
+      this.type = checkbox3.value;
+      checkbox1.checked = null;
+      checkbox2.checked = null;
+    }
   }
 
   notification(content, time, type, from, align) {
