@@ -1,31 +1,11 @@
 <div class="content">
     <div class="header">
         <ngb-carousel>
-            <ng-template ngbSlide>
+            <ng-template ngbSlide *ngFor="let promotion of promotions">
                 <div class="picsum-img-wrapper">
-                    <img src="../../../assets/img/header.jpg" alt="Random first slide" class="img-fluid">
-                </div>
-                <div class="carousel-caption d-none d-sm-block">
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img src="../../../assets/img/header.jpg" alt="Random second slide" class="img-fluid">
-                </div>
-                <div class="carousel-caption">
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img src="../../../assets/img/header.jpg" alt="Random third slide" class="img-fluid">
-                </div>
-                <div class="carousel-caption">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <a [routerLink]="promotion.content">
+                        <img [src]="promotion.image" class="img-fluid image-promotion">
+                    </a>
                 </div>
             </ng-template>
         </ngb-carousel>

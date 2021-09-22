@@ -5,12 +5,16 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 
-export class ProfileService {
+export class PromotionService {
 
     constructor(private http: HttpClient) { }
 
     post(body){ 
       return this.http.post(`${environment.apiUrl}promotions`, body).pipe();
+    }
+
+    update(id, body){
+      return this.http.post(`${environment.apiUrl}promotions/${id}`, body).pipe();
     }
 
 }

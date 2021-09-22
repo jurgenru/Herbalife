@@ -51,4 +51,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}/users/${id}/profile`).pipe();  
     }
 
+    getPromotionById(id) {
+      return this.http.get(`${environment.apiUrl}/users/${id}/promotions`).pipe();  
+    }
+
 }
