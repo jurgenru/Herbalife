@@ -15,15 +15,12 @@
           <form [formGroup]="service" (ngSubmit)="post()">
             <div class="row">
               <div class="col-sm-6 mx-auto">
-                <select class="form-control text-center" formControlName="mode">
-                  <option *ngFor="let type of Types">{{ type }}</option>
-                </select>
-                <div *ngIf="mode.invalid && (mode.dirty || mode.touched)" class="text-center">
-                  <small *ngIf="mode.errors.required" class="text-danger">
-                    Un modo de servicio <strong>requerido</strong>
-                  </small>
-                  <br />
-                </div>
+                <form [formGroup]="modeForm">
+                  <label for="modes">Modo</label>
+                  <select class="form-control text-center" id="mode" formControlName="mode">
+                    <option *ngFor="let c of modes" >{{ c }}</option>
+                  </select>
+                </form>
               </div>
             </div>
             <br />
@@ -117,13 +114,12 @@
             <div class="text-center">
               <p><b>Escoja el tipo de servicio</b></p>
               <br />
-              <div [formGroup]="serviceType">
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" formControlName="checkbox1" name="Normal"
-                          required checked />
+                        <input class="form-check-input" type="checkbox" value="normal" (click)="uncheck()" id="normal"
+                          checked />
                         Normal
                         <span class="form-check-sign"></span>
                       </label>
@@ -132,7 +128,7 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" formControlName="checkbox2" required />
+                        <input class="form-check-input" type="checkbox" value="test" (click)="uncheck2()" id="test" />
                         Encuesta de emprendedores
                         <span class="form-check-sign"></span>
                       </label>
@@ -141,14 +137,13 @@
                   <div class="col-md-4">
                     <div class="form-check form-check-inline">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" formControlName="checkbox3" required />
+                        <input class="form-check-input" type="checkbox" value="auto" (click)="uncheck3()" id="auto" />
                         Autoevaluacion
                         <span class="form-check-sign"></span>
                       </label>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
             <br />
             <div class="row text-left">
@@ -187,5 +182,5 @@
     </div>
   </div>
 </div>
-<ngx-ui-loader fgsColor="gray" fgsType="three-strings" overlayColor="rgba(58,55,54)" text="Creando servicio ...">
+<ngx-ui-loader fgsColor="gray" fgsType="three-strings" overlayColor="rgba(24,31,46)" text="Creando servicio ...">
 </ngx-ui-loader>

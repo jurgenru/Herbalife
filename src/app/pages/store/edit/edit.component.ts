@@ -109,7 +109,6 @@ edit(){
   this.content = 'Editando tienda...';
   const start = new Date();
   this.spinner.start();
-
   if(this.icon){
     this.editedStore.icon = this.icon;
   }

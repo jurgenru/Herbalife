@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
+import { ServiceService } from 'src/app/services/service.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -9,19 +11,28 @@ import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cr
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+
   imageContent: any;
   imageContent2: any;
   imageContent3: any;
   imageContent4: any;
+  services: any;
 
-  constructor(private SimpleModalService: SimpleModalService) { }
+  constructor(
+    private SimpleModalService: SimpleModalService,
+    private userService: UserService,
+    private serviceService: ServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getServices();    
   }
 
   imageCropper() {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent = data;
+      const prom1 = {
+
+      }
     });
   }
 
@@ -41,5 +52,19 @@ export class CreateComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.imageContent4 = data;
     });
+  }
+
+  getServices() {
+    this.userService.me().subscribe((user: any) => {
+    const filter = `{"fields": {"id": true, "title": true}, "order":["id DESC"]}`;
+      this.userService.getServicesById(user.id, filter).subscribe(ser => {
+        console.log(ser);
+        this.services = ser;
+      });
+    });
+  }
+
+  post() {
+    console.log(this.imageContent4, this.imageContent2, this.imageContent3, this.imageContent);
   }
 }

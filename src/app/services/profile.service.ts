@@ -16,4 +16,8 @@ export class ProfileService {
       return this.http.get(`${environment.apiUrl}profiles/userId/${id}`).pipe();
     }
 
+    update(id, body){ 
+      return this.http.patch(`${environment.apiUrl}profiles/${id}`, body).pipe();
+    }
+
 }

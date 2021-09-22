@@ -22,6 +22,8 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
 
   closeResult: string;
   user: any;
+  image: any;
+  status: boolean;
 
   constructor(
     location: Location,
@@ -216,21 +218,27 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/page/admin']);
+    this.router.navigate(['/']);
+    this.status = false;
   }
 
   me() {
     if (localStorage.getItem('herTok')) {
       this.userService.me().subscribe((user: any) => {
+        this.status = true;
         this.user = user;
         const filter = `{"fields": {"id": true}}`;
         this.userService.getById(user.id, filter).subscribe((data: any) => {
           switch (data.role) {
             case 'customer':
-              this.profileService.getByuserId(user.id).subscribe(prof => {
+              this.profileService.getByuserId(user.id).subscribe((prof: any) => {
                 if(Object.keys(prof).length === 0) {
                   this.router.navigate(['customer/create']);
                   this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Complete su perfil antes de continuar', '5000', 'warning', 'top', 'center');
+                } else {
+                  prof.forEach(element => {          
+                    this.image = element.image;
+                  });
                 }
               });
               break;

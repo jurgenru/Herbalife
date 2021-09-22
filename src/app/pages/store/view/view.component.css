@@ -1,3 +1,13 @@
 .img-product {
     width: 130px;
 }
+.icon {
+    width: 30px;
+}
+.iconImg{
+    width: 45px;
+}
+.scrollMenu{
+    display: flex;
+    overflow-x: auto;
+}
