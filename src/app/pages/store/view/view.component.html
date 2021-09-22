@@ -54,7 +54,8 @@
                                             <td>Cantidad</td>
                                             <td>Precio</td>
                                             <td>Imagen</td>
-                                            <td>Fecha de creacion</td>
+                                            <td>Características adicionales</td>
+                                            <td>Fecha de creación</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,6 +65,7 @@
                                             <td>{{product.amount}} Unidades</td>
                                             <td>{{product.price}} Bs</td>
                                             <td><img class="img-product" [src]="product.image" alt=""></td>
+                                            <td>{{product.additionalFeatures}}</td>
                                             <td>{{product.created | date: 'yyyy-MM-dd'}}</td>
                                         </tr>
                                     </tbody>

@@ -27,6 +27,10 @@ export class EditComponent implements OnInit {
   productPrice: any = [];
   productAmount: any = [];
   productDescription: any = [];
+  productAddPrice: any =[];
+  productAddDescription: any =[];
+  productFeatures: any =[];
+  features: any = [];
 
   productData: any;
   editedStore: any = {};
@@ -45,7 +49,6 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
   get() {
     this.content = 'Cargando ...';
@@ -53,7 +56,7 @@ export class EditComponent implements OnInit {
     this.spinner.start();
     this.route.params.subscribe(val => {
       this.storeService.getById(val.id).subscribe((data: any) => {
-        this.storeService.getProductsById(val.id).subscribe(prod => {
+        this.storeService.getProductsById(val.id).subscribe((prod: any) => {
           const end = new Date();
           const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
           setTimeout(() => {
@@ -65,7 +68,10 @@ export class EditComponent implements OnInit {
             }
             this.storeData = data;
             this.productData = prod;
+            //this.features = prod.additionalFatures.split(',');
+            //this.features = JSON.parse(this.productData.additionalFatures);
             this.spinner.stop();
+            
           }, elapsed);
         }, error => {
           this.spinner.stop()
@@ -123,7 +129,6 @@ edit(){
     this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center')
   });
 }
-
 editProduct(productId: any, index: any){
   this.content = 'Editando producto...';
   const start = new Date();
@@ -143,6 +148,12 @@ editProduct(productId: any, index: any){
   }
   if(this.productImage[index]){
     this.editedProduct.image = this.productImage[index];
+  }
+  if(this.productAddPrice[index]){
+    this.editedProduct.additionalPrice = this.productAddPrice[index];
+  }
+  if(this.productAddDescription[index]){
+    this.editedProduct.addtionalDescription = this.productAddDescription[index];
   }
   
   this.productService.update(productId,this.editedProduct).subscribe( data =>{

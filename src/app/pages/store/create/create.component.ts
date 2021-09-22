@@ -18,11 +18,16 @@ export class CreateComponent implements OnInit {
 
   store: any = {};
   productForm: any = {};
+  features: any = {};
 
   iconImage: any;
   portraitImage: any;
   productImage: any = [];
-
+  countFeatures = [0,0,0,0,0,0,0,0,0,0,0,0];
+  countProduct: number = 0;
+  btnAddProduct: any;
+  btnAddFeature: any = [];
+  
   constructor(
     private simpleModalService: SimpleModalService,
     private formBuilder: FormBuilder,
@@ -52,22 +57,45 @@ export class CreateComponent implements OnInit {
     });
   }
   addProductForm() {
+    this.countProduct++;
     const FormInputs = this.formBuilder.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       image: [''],
       price: ['', Validators.required],
       userId: [''],
-      additionalFeatures: [''],
       additionalPrice: [''],
+      addtionalDescription: [''],
       amount: ['', Validators.required],
-      storeId: []
-    });
-
+      storeId: [],
+      additionalFeatures:this.formBuilder.array([])
+    }); 
     this.product.push(FormInputs);
+    if (this.countProduct > 11) {
+      this.btnAddProduct = true;
+    }
   }
   removeProduct(index: number) {
+    this.countProduct--;
     this.product.removeAt(index);
+    if (this.countProduct < 12) {
+      this.btnAddProduct = false;
+    }
+  }
+
+  addFeature( featureArray: FormArray, index:any) {
+    this.countFeatures[index]++;
+    featureArray.push(this.formBuilder.control(''));
+    if( this.countFeatures[index]>2){
+      this.btnAddFeature[index] = true;
+    }
+  }
+  removeFeature( featureArray: FormArray, j:number,index:number){
+    this.countFeatures[index]--;
+    featureArray.removeAt(j)
+    if( this.countFeatures[index]<3){
+      this.btnAddFeature[index] = false;
+    }
   }
 
   showIcon() {
@@ -87,7 +115,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  post() {
+  post() {   
     const start = new Date();
     this.spinner.start();
     this.userService.me().subscribe((user: any) => {
@@ -98,6 +126,8 @@ export class CreateComponent implements OnInit {
         this.product.controls.forEach((element) => {
           element.value.userId = user.id;
           element.value.storeId = data.id;
+          element.value.additionalFeatures = element.value.additionalFeatures.toString();
+          console.log(element.value);
           this.productService.post(element.value).subscribe((productData: any) => {
           }, error => {
             this.spinner.stop();
