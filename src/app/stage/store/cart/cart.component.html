@@ -1,17 +1,16 @@
 <div class="content">
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
-            <div class="col-12">
-                <div class="card" *ngIf="product.length != 0">
-                    <div class="card-header">
+            <div class="col-12" *ngIf="product.length != 0">
+                    <div class="t-header">
                         <div class="row">
                             <div class="col-8">
-                                <h3 class="card-title">Lista de Compra</h3>
+                                <h3 class="t-title">Lista de Compra</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive ps">
+                    <div class="t-body">
+                        <div class="table-responsive ps p-1">
                             <table class="table table-bordered table-striped">
                                 <thead class="text-primary">
                                     <tr>
@@ -25,19 +24,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of product">
+                                    <tr *ngFor="let product of product;">
                                         <td class="text-center">{{product.name}}</td>
-                                        <td><img width="auto" height="100px" [src]="product.image" alt=""></td>
+                                        <td><img class="mx-auto d-block img-fuild" height="100" [src]="product.image" alt=""></td>
                                         <td class="text-center">{{product.description}}</td>
                                         <td class="text-right">{{product.price}}</td>
                                         <td class="text-center">
-                                              <input
-                                                type="number"
-                                                id="contador"
-                                                class="form-control"
-                                                [value]="product.quantify"
-                                                min="1"
-                                              />
+                                            <span class="d-flex justify-content-center">
+                                                <button (click)="addQuantity(product)" class="btn btn-danger btn-sm">+</button>
+                                                <input type="text" id="quantity" class="form-control col-md-3" [value]="product.quantity"/>
+                                                <button (click)="removeQuantity(product)" class="btn btn-danger btn-sm">-</button>
+                                            </span>
                                         </td>
                                         <td class="text-right">{{product.total}}</td>
                                         <td class=" text-right">
@@ -46,26 +43,10 @@
                                                 type="button" placement="top" ngbTooltip="eliminar de la lista" container="body"><i
                                                     class=" tim-icons icon-trash-simple"></i></button>
                                         </td>
-                                        <!-- <ng-template #content let-modal>
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="modal-basic-title">Eliminar la Tienda</h4>
-                                                <button type="button" class="close" aria-label="Close"
-                                                    (click)="modal.dismiss('Cross click')">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>¿ Esta seguro de eliminar el blog ?</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-danger"
-                                                    (click)="modal.close(list.id)">Eliminar</button>
-                                            </div>
-                                        </ng-template> -->
                                     </tr>
                                     <tr>
                                         <td colspan="7" class=" text-right">
-                                            <button class="btn btn-danger btn-sm mr-1" (click)="emptyCard()">Borrar Lista</button>
+                                            <button class="btn btn-danger btn-sm mr-1" (click)="emptyCart()">Borrar Lista</button>
                                             <button class="btn btn-info btn-sm mr-1" routerLink="/customer/store/list" >Añadir más</button>
                                             <strong>Total: {{grandTotal}} Bs</strong>
                                         </td>
@@ -74,13 +55,10 @@
                             </table>
                         </div>
                     </div>
-                    <!-- <div class="row justify-content-center h-100">
-                        <pagination-controls (pageChange)="pageActual = $event" previousLabel=" " nextLabel=" "
-                            maxSize="12">
-                        </pagination-controls>
-                    </div> -->
-                </div>
-                <div class="card" *ngIf="product.length == 0">
+            </div>
+            <div class="col-12" *ngIf="product.length == 0">
+                <div class="card">
+                    <img class="mx-auto d-block img-fuild" src="../../../../assets/img/angular2-logo-white.png" alt="">
                     <button routerLink="/customer/store/list" class="btn btn-info">Ver Tienda</button>
                 </div>
             </div>

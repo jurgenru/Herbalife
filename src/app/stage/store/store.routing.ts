@@ -4,7 +4,7 @@ import { ViewComponent } from "./view/view.component";
 import { StoreComponent } from "./store.component";
 import { DetailComponent } from "./detail/detail.component";
 import { ListComponent } from "./list/list.component";
-import { CardComponent } from "./card/card.component";
+import { CartComponent } from "./cart/cart.component";
 
 export const routes: Routes = [
     {
@@ -22,8 +22,8 @@ export const routes: Routes = [
                 component: ListComponent
             },
             {
-                path: 'card',
-                component: CardComponent
+                path: 'cart',
+                component: CartComponent
             }
         ]
     }];

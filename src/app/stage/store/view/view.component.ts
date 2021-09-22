@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CartService } from 'src/app/services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private spinner: NgxUiLoaderService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
   ) {
     this.get();
     this.list();
@@ -46,9 +48,10 @@ export class ViewComponent implements OnInit {
     });
   }
 
-  addToCard(item: any){
-    this.storeService.addToCard(item);
+  addToCart(item: any):void{
+    this.cartService.addToCart(item);
   }
+    
   list() {
     const filter = `{"fields": {"id": true, "icon": true, "title": true}, "order":["id DESC"]}`;
     this.storeService.get(filter).subscribe(data => {

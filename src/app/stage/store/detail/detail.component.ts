@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ProductService } from 'src/app/services/product.service';
-import { StoreService } from 'src/app/services/store.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-store-detail',
@@ -17,7 +17,7 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProductService,
     private spinner: NgxUiLoaderService,
-    private storeService: StoreService,
+    private cartService: CartService,
   ) {
     this.get();
   }
@@ -40,8 +40,8 @@ export class DetailComponent implements OnInit {
     })
   }
 
-  addToCard(item: any){
-    this.storeService.addToCard(item);
+  addToCart(item: any){
+    this.cartService.addToCart(item);
   }
 
 }
