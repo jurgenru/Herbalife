@@ -26,6 +26,7 @@ import { TrainerService } from "./services/trainer.service";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
+import { CartService } from "./services/cart.service";
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { PromotionService } from "./services/promotion.service";
     TrainerService,
     ProfileService,
     PromotionService,
+    CartService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
