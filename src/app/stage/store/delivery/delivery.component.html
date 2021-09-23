@@ -1,0 +1,129 @@
+<div class="content">
+    <div class="container mt-4">
+        <div class="card col-md-8 m-2 mx-auto">
+            <div class="card-body" *ngIf="!buy">
+                <h3 class="card-header text-center mb-3">DATOS DE ENTREGA</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Método de Pago</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Método de Entrega</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Información de facturación CI/NIT</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>País</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ciudad</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Celular</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Dirección *Llenar solo en caso si la entrega es tipo Delivery</label>
+                            <input class="form-control" placeholder="Nombres" type="text"/>
+                        </div>
+                    </div>
+                    <div class="text-center col-12 col-md-12">
+                        <strong>Total</strong> {{grandTotal}} Bs
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button (click)="btnBuy()" class="btn btn-info btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" *ngIf="buy">
+                <h3 class="card-header text-center mb-3">¡GRACIAS POR SU COMPRA!</h3>
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <button class="btn btn-info btn-sm pull-right"><i class="far fa-file-pdf mr-1"></i>Descargar</button>
+                    </div>
+                    <div class="col-12 col-md-8 pl-5 pr-5">
+                        <ul class="list-group">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Cliente: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>CI: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Celular: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Email: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                        </ul>
+                        <strong>DETALLE</strong>
+                        <ul class="list-group">
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Método de Pago: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Método de Entrega: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Ciudad: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Fecha: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center">
+                                <strong>Hora: </strong>
+                                <h5>Descript</h5>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <img src="../../../../assets/img/angular.jpg" class="d-block img-fluid" alt="">
+                        <div class="d-flex justify-content-between align-items-center">
+                            Descarga tu QR para recibir el producto
+                            <i class="fas fa-download mr-2"></i>
+                        </div>
+                    </div>
+                    <div class="text-center col-12 col-md-12">
+                        <strong>Total</strong> {{grandTotal}} Bs
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button (click)="buying()" class="btn btn-info btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
