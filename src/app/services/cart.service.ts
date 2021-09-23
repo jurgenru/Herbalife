@@ -19,6 +19,7 @@ export class CartService {
       if(countData.length > 0){
         countData.map((a:any) =>{
         this.cartItemList.push(a);
+        this.productList.next(this.cartItemList);
         })
       }
     }
@@ -26,6 +27,7 @@ export class CartService {
   }
 
   getProducts(){
+    this.init();
     return this.productList.asObservable();
   }
 
