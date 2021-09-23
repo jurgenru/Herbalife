@@ -77,6 +77,11 @@
                                 Perfil
                             </a>
                         </li>
+                        <li class="nav-link" *ngIf="role == 'admin'">
+                            <a class="nav-item text-dark" routerLink="/dashboard" ngbDropdownItem>
+                                administrador
+                            </a>
+                        </li>
                         <li class="nav-link">
                             <a class="nav-item text-dark" ngbDropdownItem>
                                 Actividades

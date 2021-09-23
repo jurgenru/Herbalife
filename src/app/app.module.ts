@@ -27,6 +27,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
+import { AuthGuard } from "./auth/auth.guard";
 
 @NgModule({
   imports: [
@@ -45,6 +46,7 @@ import { CartService } from "./services/cart.service";
   ],
   declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
   providers: [
+    AuthGuard,
     StoreService,
     BlogService,
     UserService,

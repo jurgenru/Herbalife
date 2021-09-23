@@ -27,6 +27,7 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   status: boolean;
 
   public totalItem : number = 0;
+  role: any;
 
   constructor(
     location: Location,
@@ -237,6 +238,7 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
         this.user = user;
         const filter = `{"fields": {"id": true}}`;
         this.userService.getById(user.id, filter).subscribe((data: any) => {
+          this.role = data.role;
           switch (data.role) {
             case 'customer':
               this.profileService.getByuserId(user.id).subscribe((prof: any) => {
