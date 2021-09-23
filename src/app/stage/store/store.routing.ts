@@ -5,6 +5,7 @@ import { StoreComponent } from "./store.component";
 import { DetailComponent } from "./detail/detail.component";
 import { ListComponent } from "./list/list.component";
 import { CartComponent } from "./cart/cart.component";
+import { DeliveryComponent } from './delivery/delivery.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,10 @@ export const routes: Routes = [
             {
                 path: 'cart',
                 component: CartComponent
+            },
+            {
+                path: 'delivery',
+                component: DeliveryComponent
             }
         ]
     }];
@@ -37,5 +42,7 @@ export const routedComponents = [
     StoreComponent,
     DetailComponent,
     ViewComponent,
-    ListComponent
+    ListComponent,
+    CartComponent,
+    DeliveryComponent
 ]
