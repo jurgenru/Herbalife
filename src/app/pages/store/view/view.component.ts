@@ -11,7 +11,7 @@ export class ViewComponent implements OnInit {
 
   store: any = {};
   products: any;
-
+  features: any;
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
@@ -21,8 +21,12 @@ export class ViewComponent implements OnInit {
       this.storeService.getById(val.id).subscribe(data => {
         this.store = data;
       });
-      this.storeService.getProductsById(val.id).subscribe(prod => {
+      this.storeService.getProductsById(val.id).subscribe((prod:any) => {
         this.products = prod;
+        this.products.forEach(element => {
+          element.additionalFeatures = JSON.parse(element.additionalFeatures);
+          console.log(element.additionalFeatures);
+        });
       });
     });
   }
