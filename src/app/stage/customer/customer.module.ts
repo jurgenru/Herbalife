@@ -7,10 +7,14 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { SimpleModalModule } from "ngx-simple-modal";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { CustomerRoutingModule, routedComponents } from "./customer.routing";
+import { ActivityComponent } from './activity/activity.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 @NgModule({
     declarations: [
         ...routedComponents,
+        ActivityComponent,
+        ShoppingComponent,
     ],
     imports: [
         RouterModule,
