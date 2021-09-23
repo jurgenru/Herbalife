@@ -5,8 +5,9 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 
 export class StoreService {
-    constructor(private http: HttpClient) { }
 
+    constructor(private http: HttpClient) { }    
+    
     post(body) {
         return this.http.post(`${environment.apiUrl}stores`, body).pipe();
     }

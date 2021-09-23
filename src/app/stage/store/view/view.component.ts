@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { CartService } from 'src/app/services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -18,13 +19,15 @@ export class ViewComponent implements OnInit {
     private route: ActivatedRoute,
     private storeService: StoreService,
     private spinner: NgxUiLoaderService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService,
   ) {
     this.get();
     this.list();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
   get() {
     const start = new Date();
@@ -37,6 +40,7 @@ export class ViewComponent implements OnInit {
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
           this.products = stor;
+          console.log('product', this.products);
           this.spinner.stop();
         }, elapsed);
         });
@@ -44,6 +48,10 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  addToCart(item: any):void{
+    this.cartService.addToCart(item);
+  }
+    
   list() {
     const filter = `{"fields": {"id": true, "icon": true, "title": true}, "order":["id DESC"]}`;
     this.storeService.get(filter).subscribe(data => {

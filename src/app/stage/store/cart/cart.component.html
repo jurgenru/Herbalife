@@ -1,0 +1,67 @@
+<div class="content">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12" *ngIf="product.length != 0">
+                    <div class="t-header">
+                        <div class="row">
+                            <div class="col-8">
+                                <h3 class="t-title">Lista de Compra</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t-body">
+                        <div class="table-responsive ps p-1">
+                            <table class="table table-bordered table-striped">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th class="text-center">Nombre</th>
+                                        <th class="text-center">Imagen</th>
+                                        <th class="text-center">Descripción</th>
+                                        <th class="text-center">Precio</th>
+                                        <th class="text-center">Cantidad</th>
+                                        <th class="text-center">Total</th>
+                                        <th class="text-right">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of product;">
+                                        <td class="text-center">{{product.name}}</td>
+                                        <td><img class="mx-auto d-block img-fuild" height="100" [src]="product.image" alt=""></td>
+                                        <td class="text-center">{{product.description}}</td>
+                                        <td class="text-right">{{product.price}}</td>
+                                        <td class="text-center">
+                                            <span class="d-flex justify-content-center">
+                                                <button (click)="addQuantity(product)" class="btn btn-danger btn-sm">+</button>
+                                                <input type="text" id="quantity" class="form-control col-md-3" [value]="product.quantity"/>
+                                                <button (click)="removeQuantity(product)" class="btn btn-danger btn-sm">-</button>
+                                            </span>
+                                        </td>
+                                        <td class="text-right">{{product.total}}</td>
+                                        <td class=" text-right">
+                                            
+                                            <button class="btn btn-danger btn-link btn-sm" (click)="removeItem(product)"
+                                                type="button" placement="top" ngbTooltip="eliminar de la lista" container="body"><i
+                                                    class=" tim-icons icon-trash-simple"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="7" class=" text-right">
+                                            <button class="btn btn-danger btn-sm mr-1" (click)="emptyCart()">Borrar Lista</button>
+                                            <button class="btn btn-info btn-sm mr-1" routerLink="/customer/store/list" >Añadir más</button>
+                                            <strong>Total: {{grandTotal}} Bs</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-12" *ngIf="product.length == 0">
+                <div class="card">
+                    <img class="mx-auto d-block img-fuild" src="../../../../assets/img/angular2-logo-white.png" alt="">
+                    <button routerLink="/customer/store/list" class="btn btn-info">Ver Tienda</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

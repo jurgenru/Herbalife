@@ -1,196 +1,272 @@
 <div class="content">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card card-user">
+    <div class="col-12">
+      <div class="card">
         <div class="card-body">
-          <div class="author">
-            <div class="card-header text-center">
-              <h2 class="card-title"><b>Edita tu Contenido</b></h2>
-              <p class="card-text">
-                Puedes añadir hasta 4 promociones que se podrá ver en la pagina
-                <br />
-                principal, y aparecerán como anuncios en las demás páginas.
-              </p>
+          <h2 class="card-title"><b>EDITAR CONTENIDO</b></h2>
+          <br>
+          <hr color="purple" width="90%">
+          <br>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services" class="submenu"><a
+                                (click)="content(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores" class="submenu"><a
+                                (click)="content(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                                (click)="content(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs" class="submenu"><a
+                                (click)="content(blog.id, 'blog', blog.name)">{{blog.name|
+                                slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida <strong>{{selectedOption}}</strong></p>
+              </div>
+              <div class="col-8">
+                <h1 class="text-center">Promoción 1</h1>
+                <div class="container-image">
+                  <div [ngSwitch]="updateImage">
+                    <div *ngSwitchCase="0">
+                      <img [src]="promotion.image" class="mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="imageContent">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" class="mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="imageCropper(promotion.id)">cargar imagen</p>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services" class="submenu"><a
+                                (click)="content2(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores" class="submenu"><a
+                                (click)="content2(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers"><a
+                                (click)="content2(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs" class="submenu"><a
+                                (click)="content2(blog.id, 'blog', blog.name)">{{blog.name|
+                                slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida <strong>{{selectedOption2}}</strong></p>
+              </div>
+              <div class="col-8">
+                <h1 class="text-center">Promoción 2</h1>
+                <div class="container-image">
+                  <div [ngSwitch]="updateImage2">
+                    <div *ngSwitchCase="0">
+                      <img [src]="promotion2.image" class="mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="imageContent2">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" class="mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="imageCropper2(promotion.id)">cargar imagen</p>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services" class="submenu"><a
+                                (click)="content3(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores" class="submenu"><a
+                                (click)="content3(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                                (click)="content3(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs" class="submenu"><a
+                                (click)="content3(blog.id, 'blog', blog.name)">{{blog.name|
+                                slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida <strong>{{selectedOption3}}</strong></p>
+              </div>
+              <div class="col-8">
+                <h1 class="text-center">Promoción 3</h1>
+                <div class="container-image">
+                  <div [ngSwitch]="updateImage3">
+                    <div *ngSwitchCase="0">
+                      <img [src]="promotion3.image" class="mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="imageContent3">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" class="mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="imageCropper3(promotion.id)">cargar imagen</p>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services" class="submenu"><a
+                                (click)="content4(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores" class="submenu"><a
+                                (click)="content4(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                                (click)="content4(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs" class="submenu"><a
+                                (click)="content4(blog.id, 'blog', blog.name)">{{blog.name|
+                                slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida <strong>{{selectedOption4}}</strong></p>
+              </div>
+              <div class="col-8">
+                <h1 class="text-center">Promoción 4</h1>
+                <div class="container-image">
+                  <div [ngSwitch]="updateImage4">
+                    <div *ngSwitchCase="0">
+                      <img [src]="promotion4.image" class="mx-auto d-block">
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="imageContent4">
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" class="mx-auto d-block">
+                    </div>
+                  </div>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="imageCropper4(promotion.id)">cargar imagen</p>
+                  </div>
+                </div>
+                <br>
+              </div>
             </div>
           </div>
-          <hr color="purple" width="90%" />
-          <br />
-          <form>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-12 col-md-12 text-left">
-                  <h1 class="display-4">Promoción 1</h1>
-                  <div class="font-icon-detail">
-                    <b
-                      >Agregar la imagen o video para la portada de la categoría
-                    </b>
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
-                  </div>
-                  <td class="td-actions text-right">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-single-02"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-success btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                  </td>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-12 text-left">
-                  <h1 class="display-4">Promoción 2</h1>
-                  <div class="font-icon-detail">
-                    <b
-                      >Agregar la imagen o video para la portada de la
-                      categoría</b
-                    >
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
-                  </div>
-                  <td class="td-actions text-left">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-single-02"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-success btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                  </td>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-12 text-left">
-                  <h1 class="display-4">Promoción 3</h1>
-                  <div class="font-icon-detail">
-                    <b
-                      >Agregar la imagen o video para la portada de la
-                      categoría</b
-                    >
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
-                  </div>
-                  <td class="td-actions text-left">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-single-02"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-success btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                  </td>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-12 text-left">
-                  <h1 class="display-4">Promoción 4</h1>
-                  <div class="font-icon-detail">
-                    <b
-                      >Agregar la imagen o video para la portada de la
-                      categoría</b
-                    >
-                    <br />
-                    <i class="tim-icons icon-upload"> </i>
-                  </div>
-                  <td class="td-actions text-left">
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-info btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-single-02"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-success btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                    <button
-                      type="button"
-                      rel="tooltip"
-                      class="btn btn-danger btn-icon btn-sm"
-                      data-original-title=""
-                      title=""
-                    >
-                      <i class="tim-icons icon-simple-remove"></i>
-                    </button>
-                  </td>
-                </div>
-              </div>
-              <div class="text-right">
-                <button type="submit" class="btn btn-info">Guardar</button>
-              </div>
-            </div>
-          </form>
+          <button type="button" class="btn btn-warning btn-sm pull-right" (click)="edit()">Editar</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" text="Editando ...">
+</ngx-ui-loader>
