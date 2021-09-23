@@ -126,7 +126,7 @@ export class CreateComponent implements OnInit {
         this.product.controls.forEach((element) => {
           element.value.userId = user.id;
           element.value.storeId = data.id;
-          element.value.additionalFeatures = element.value.additionalFeatures.toString();
+          element.value.additionalFeatures = JSON.stringify(element.value.additionalFeatures);
           console.log(element.value);
           this.productService.post(element.value).subscribe((productData: any) => {
           }, error => {

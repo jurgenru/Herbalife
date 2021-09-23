@@ -65,7 +65,11 @@
                                             <td>{{product.amount}} Unidades</td>
                                             <td>{{product.price}} Bs</td>
                                             <td><img class="img-product" [src]="product.image" alt=""></td>
-                                            <td>{{product.additionalFeatures}}</td>
+                                            <td>
+                                                <span *ngFor="let feature of product.additionalFeatures">
+                                                    {{feature}}, 
+                                                </span>
+                                            </td>
                                             <td>{{product.created | date: 'yyyy-MM-dd'}}</td>
                                         </tr>
                                     </tbody>
