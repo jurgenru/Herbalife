@@ -44,7 +44,8 @@ export class LoginComponent implements OnInit {
         case 'admin':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/home']);
+            this.isLogged();
             this.spinner.stop();
           }, elapsed);
           break;
@@ -75,4 +76,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  isLogged() {
+      this.userService.me().subscribe((us: any) => {
+           const filter = `{"fields": {"id": true}}`;
+           this.userService.getById(us.id, filter).subscribe((admin: any) => {
+               if(admin.role == 'admin'){
+                localStorage.setItem('currentUser', "loggedin");
+                   return true;
+               }
+           });
+       });
+     }
 }

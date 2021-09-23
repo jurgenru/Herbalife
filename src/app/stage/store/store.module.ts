@@ -4,24 +4,22 @@ import { routedComponents, StoreRoutingModule,  } from './store.routing';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { CartComponent } from './cart/cart.component';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-   routedComponents,
-   CartComponent,],
+    ...routedComponents,],
   imports: [
-    CommonModule,
-    StoreRoutingModule,
     RouterModule,
-    NgbModule,
+    StoreRoutingModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModule,
     NgxUiLoaderModule
   ],
   exports: [
-   routedComponents
+  ...routedComponents
   ],
 })
 export class StoreModule { }

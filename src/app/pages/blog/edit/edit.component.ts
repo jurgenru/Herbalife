@@ -49,9 +49,6 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.blogService.getById(val.id).subscribe((data: any) => {
         this.blogService.getArticleById(val.id).subscribe(res => {
-          const end = new Date();
-          const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
-          setTimeout(() => {
             if (data.icon !== "") {
               this.updateIcon = 0;
             }
@@ -65,7 +62,6 @@ export class EditComponent implements OnInit {
             setTimeout(() => {
               this.spinner.stop();
             }, elapsed);
-          });
         });
       });
     });
