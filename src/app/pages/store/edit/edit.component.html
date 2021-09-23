@@ -125,6 +125,26 @@
                                 [value]="product.description"></textarea>
                             </div>
                         </div>
+                        <div class="row justify-content-center">
+                            <div class="form-group col-md-4">
+                                <label> Precio extra del producto </label>
+                                <input class=" form-control" [(ngModel)]="productAddPrice[i] = product.additionalPrice"
+                                [ngModelOptions]="{standalone: true}" placeholder="Precio extra del producto"
+                                    type="text" [value]="product.additionalPrice">
+                                <label> Descripción extra del producto </label>
+                                <textarea class=" form-control" cols="80" rows="20"
+                                [(ngModel)]="productAddDescription[i] = product.addtionalDescription"
+                                [ngModelOptions]="{standalone: true}" placeholder="Datos extra del producto"
+                                [value]="product.addtionalDescription"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <div *ngFor="let feature of product.additionalFeatures; let j = index;">
+                                    <label>Caracteristica {{j+1}}</label>
+                                    <input (change)="changeFeature($event,i,j)" class="form-control"  type="text"
+                                    [value]="feature">
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <br>
                         <button class="btn btn-warning btn-sm pull-right" type="button"

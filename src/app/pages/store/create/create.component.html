@@ -142,46 +142,37 @@
                                     <br>
                                     <br>
                                     <div class="text-center">
-                                        <h5> Puedes añadir hasta 4 categorias del producto con sus respectivas
-                                            caracteristicas</h5>
+                                        <h5> Puedes añadir datos adicionales y hasta 3 caracteristicas del producto</h5>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-3 pl-md-4">
-                                            <select id="sabor" class="form-control">
-                                                <option selected>Sabor</option>
-                                                <option>Frutilla</option>
-                                                <option>Chocolate</option>
-                                                <option>Vainilla</option>
-                                                <option>agregar</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <select id="peso" class="form-control">
-                                                <option selected>Peso</option>
-                                                <option>Peso1</option>
-                                                <option>Peso2</option>
-                                                <option>Peso3</option>
-                                                <option>Peso4</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <select id="tipo" class="form-control">
-                                                <option selected>Tipo</option>
-                                                <option>tipo1</option>
-                                                <option>tipo2</option>
-                                                <option>tipo3</option>
-                                                <option>tipo4</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-3">
+                                    <div class="row justify-content-center">
+                                        <div class="form-group col-md-4">
                                             <label> Precio extra del producto </label>
                                             <input class=" form-control" placeholder="Precio extra del producto"
                                                 type="text" value="" formControlName="additionalPrice">
+                                            <label> Descripción extra del producto </label>
                                             <textarea class=" form-control" cols="80"
-                                                placeholder="Datos extra del producto" rows="20" value=""
-                                                formControlName="additionalFeatures"></textarea>
+                                                placeholder="Datos extra del producto" rows="20"
+                                                formControlName="addtionalDescription"></textarea>
                                         </div>
+                                        <div class="col-md-6" formArrayName="additionalFeatures">
+                                            <div
+                                                *ngFor="let features of FormInputs.get('additionalFeatures')['controls']; let j=index">
+                                                <label>Caracteristica {{j+1}}</label>
+                                                <input class="form-control" type="text" [formControlName]="j">
+                                                <button (click)="removeFeature(FormInputs.get('additionalFeatures'),j,i)"
+                                                    class="btn btn-warning btn-sm btn-fab btn-icon btn-round">
+                                                    <i class="tim-icons icon-simple-delete"></i>
+                                                </button>
+                                            </div>
+                                            <button (click)="addFeature(FormInputs.get('additionalFeatures'),i)"
+                                            [disabled]="btnAddFeature[i]" class="btn-primary btn-round float-right">
+                                                <i class="tim-icons icon-simple-add"></i> Agregar Caracteristica
+                                            </button>
+                                        </div>
+                                        <br>
+                                        <br>
                                     </div>
+                                    <br>
                                     <hr>
                                     <button (click)="removeProduct(i)"
                                         class="btn btn-danger btn-fab btn-icon btn-round float-left">
@@ -191,8 +182,7 @@
                             </div>
                             <div class=" button-container">
                                 <button (click)="addProductForm()"
-                                    class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                                    href="javascript:void(0)">
+                                    [disabled]="btnAddProduct" class="btn btn-primary btn-fab btn-icon btn-round float-right">
                                     <i class="tim-icons icon-simple-add"></i>
                                 </button>
                             </div>

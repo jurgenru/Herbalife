@@ -27,7 +27,13 @@ export class EditComponent implements OnInit {
   productPrice: any = [];
   productAmount: any = [];
   productDescription: any = [];
+  productAddPrice: any =[];
+  productAddDescription: any =[];
+  
+  productFeatures: any = [];
 
+  features: any=[];
+  featureIndex: number = 0;
   productData: any;
   editedStore: any = {};
   editedProduct: any = {};
@@ -45,7 +51,6 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
   get() {
     this.content = 'Cargando ...';
@@ -53,9 +58,10 @@ export class EditComponent implements OnInit {
     this.spinner.start();
     this.route.params.subscribe(val => {
       this.storeService.getById(val.id).subscribe((data: any) => {
-        this.storeService.getProductsById(val.id).subscribe(prod => {
+        this.storeService.getProductsById(val.id).subscribe((prod: any) => {
           const end = new Date();
           const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
+      
           setTimeout(() => {
             if (data.icon !== "") {
               this.updateIcon = 0;
@@ -65,6 +71,11 @@ export class EditComponent implements OnInit {
             }
             this.storeData = data;
             this.productData = prod;
+            this.productData.forEach(element => {
+              this.features[this.featureIndex] =  JSON.parse(element.additionalFeatures);
+              this.featureIndex++;
+              element.additionalFeatures = JSON.parse(element.additionalFeatures);
+            }); 
             this.spinner.stop();
           }, elapsed);
         }, error => {
@@ -77,7 +88,6 @@ export class EditComponent implements OnInit {
       this.spinner.stop();
     });
   }
-
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.icon = data;
@@ -99,6 +109,15 @@ export class EditComponent implements OnInit {
     });
   }
 
+  changeFeature(event,productIndex,featureIndex){
+    this.productFeatures = this.features[productIndex];
+    this.features[productIndex].forEach((element, index) => {
+      if(index == featureIndex){
+        this.productFeatures[index]= event.target.value;
+      }    
+    });
+    this.features[productIndex]=this.productFeatures;
+  }
 edit(){
   this.content = 'Editando tienda...';
   const start = new Date();
@@ -143,6 +162,13 @@ editProduct(productId: any, index: any){
   if(this.productImage[index]){
     this.editedProduct.image = this.productImage[index];
   }
+  if(this.productAddPrice[index]){
+    this.editedProduct.additionalPrice = this.productAddPrice[index];
+  }
+  if(this.productAddDescription[index]){
+    this.editedProduct.addtionalDescription = this.productAddDescription[index];
+  }
+  this.editedProduct.additionalFeatures = JSON.stringify(this.features[index])
   
   this.productService.update(productId,this.editedProduct).subscribe( data =>{
     const end = new Date();
@@ -165,5 +191,19 @@ notification(content, time, type, from, align) {
     toastClass: `alert alert-${type} alert-with-icon`,
     positionClass: 'toast-' + from + '-' + align
   });
+}
+redirectFair() {
+
+  localStorage.setItem('tokenFV', 'u001s34u23a'); 
+  localStorage.setItem('idFV', '0001'); 
+  
+  let userData = {
+    token: localStorage.getItem("tokenFV"),
+    id: localStorage.getItem("idFV")
+  };
+  const redirect = window.open("http://54.91.163.221/", "polarnia")
+  setTimeout(()=>{
+    redirect.postMessage(userData, "http://54.91.163.221/")
+  }, 1500);
 }
 }
