@@ -30,11 +30,12 @@ export class DeliveryComponent implements OnInit {
     this.order = this.formBuilder.group({
       names: ['', Validators.required],
       phoneNumber: ['', Validators.required],
-      nit: ['', Validators.required],
+      ci: ['', Validators.required],
       status: ['', Validators.required],
       country: ['', Validators.required],
       city: ['', Validators.required],
       address: ['', Validators.required],
+      email: ['', Validators.required],
     })
   }
 
@@ -55,6 +56,21 @@ export class DeliveryComponent implements OnInit {
       })
     })
   }
+
+    // id
+    // productId
+    // userId
+    // purcharseId
+    // commentary
+    // country
+    // city 
+    // names 
+    // phoneNumber
+    // email 
+    // nit 
+    // address 
+    // total 
+    // status 
 
   post(){
     this.order.value.productId =  [];
