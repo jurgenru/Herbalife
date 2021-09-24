@@ -15,11 +15,40 @@ import { RegisterComponent } from "./register/register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { SimpleModalModule } from "ngx-simple-modal";
-import { ScheduleCallComponent } from './schedule-call/schedule-call.component';
+import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule, SimpleModalModule, FormsModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent, ScheduleCallComponent],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent]
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    ImageCropperModule,
+    ReactiveFormsModule,
+    NgxUiLoaderModule,
+    SimpleModalModule,
+    FormsModule,
+  ],
+  declarations: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    NavbarHomeComponent,
+    FloatSocialComponent,
+    ImageCropperComponent,
+    LoginComponent,
+    RegisterComponent,
+    ScheduleCallComponent,
+  ],
+  exports: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    NavbarHomeComponent,
+    FloatSocialComponent,
+    ImageCropperComponent,
+    LoginComponent,
+    RegisterComponent,
+    ScheduleCallComponent
+  ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

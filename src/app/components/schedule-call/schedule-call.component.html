@@ -1,78 +1,53 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h4>{{ title }}</h4>
+    <h3>{{ title }}</h3>
   </div>
   <div class="modal-body">
     <div class="row text-center">
-      <div class="col">
+      <div class="col text-left">
+        <label>Escoge el día que prefieres la reunion</label>
         <ngb-datepicker
           #dp
           [(ngModel)]="model"
           (navigate)="date = $event.next"
         ></ngb-datepicker>
-        <hr />
-
+        <label>Escoge la hora que prefieres la reunion</label>
         <button
           class="btn btn-sm btn-outline-primary mr-2"
           (click)="selectToday()"
         >
           Select Today
         </button>
-        <button
-          class="btn btn-sm btn-outline-primary mr-2"
-          (click)="dp.navigateTo()"
-        >
-          To current month
-        </button>
-        <button
-          class="btn btn-sm btn-outline-primary mr-2"
-          (click)="dp.navigateTo({ year: 2013, month: 2 })"
-        >
-          To Feb 2013
-        </button>
-
-        <hr />
-
-        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-        <pre>Model: {{ model | json }}</pre>
       </div>
       <div class="col text-left">
-        <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-        <select
-          class="form-control text-center"
-          id="mode"
-          formControlName="mode"
-        >
-          <option *ngFor="let c of modes">{{ c }}</option>
-        </select>
-        <div class="form-group">
+        <div>
+          <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
+          <select class="text-center" id="mode">
+            <option *ngFor="let c of modes">{{ c }}</option>
+          </select>
+        </div>
+        <div>
           <label> Nombre completo </label>
           <input
-            class="form-control"
             type="text"
-            placeholder="Añade tu nombre completo"
-            formControlName="name"
-            required
+            class="form-control"
+            placeholder="Escriba su nombre completo"
           />
         </div>
-        <div class="form-group">
+        <div>
           <label> Celular </label>
           <input
+            type="number"
             class="form-control"
-            type="text"
-            placeholder="Añade tu numero de celular"
-            formControlName="name"
-            required
+            placeholder="Escriba su numero de celular"
           />
         </div>
-        <div class="form-group">
-          <label> Correo electonico </label>
+        <div>
+          <label> Correo electronico </label>
           <input
+            type="email"
             class="form-control"
-            type="text"
-            placeholder="Añade tu correo electronico"
-            formControlName="name"
-            required
+            placeholder="Escriba su correo electronico"
           />
         </div>
       </div>
