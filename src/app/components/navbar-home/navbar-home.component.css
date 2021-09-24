@@ -32,3 +32,9 @@
   position: absolute;
   border-radius: 50%;
 }
+
+.icon {
+  height: 90px;
+    border-radius: 80px;
+    width: 105px;
+}

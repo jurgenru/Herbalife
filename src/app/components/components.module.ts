@@ -10,14 +10,45 @@ import { NavbarHomeComponent } from "./navbar-home/navbar-home.component";
 import { FloatSocialComponent } from "./float-social/float-social.component";
 import { ImageCropperComponent } from "./image-cropper/image-cropper.component";
 import { ImageCropperModule } from "ngx-image-cropper";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { SimpleModalModule } from "ngx-simple-modal";
+import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, RegisterModalComponent, LoginModalComponent],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, RegisterModalComponent, LoginModalComponent]
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    ImageCropperModule,
+    ReactiveFormsModule,
+    NgxUiLoaderModule,
+    SimpleModalModule,
+    FormsModule,
+  ],
+  declarations: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    NavbarHomeComponent,
+    FloatSocialComponent,
+    ImageCropperComponent,
+    ScheduleCallComponent,
+    RegisterModalComponent,
+    LoginModalComponent
+  ],
+  exports: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent,
+    NavbarHomeComponent,
+    FloatSocialComponent,
+    ImageCropperComponent,
+    ScheduleCallComponent,
+    RegisterModalComponent,
+    LoginModalComponent
+  ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {}
