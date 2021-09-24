@@ -14,10 +14,12 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { SimpleModalModule } from "ngx-simple-modal";
+import { ScheduleCallComponent } from './schedule-call/schedule-call.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent],
+  imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule, SimpleModalModule],
+  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent, ScheduleCallComponent],
   exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent]
 })
 export class ComponentsModule { }
