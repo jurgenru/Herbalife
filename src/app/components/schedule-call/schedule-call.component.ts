@@ -17,7 +17,7 @@ export interface AlertModel {
   styleUrls: ["./schedule-call.component.scss"],
 })
 export class ScheduleCallComponent
-  extends SimpleModalComponent<AlertModel, boolean>
+  extends SimpleModalComponent<AlertModel, null>
   implements AlertModel
 {
   title: string;
@@ -31,7 +31,6 @@ export class ScheduleCallComponent
   }
 
   confirm() {
-    this.result = true;
     this.close();
   }
 

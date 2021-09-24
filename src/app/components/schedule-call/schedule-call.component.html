@@ -1,64 +1,67 @@
-<div class="modal-content">
-  <div class="modal-header">
-    <h3>{{ title }}</h3>
-  </div>
-  <div class="modal-body">
-    <div class="row text-center">
-      <div class="col text-left">
-        <label>Escoge el día que prefieres la reunion</label>
-        <ngb-datepicker
-          #dp
-          [(ngModel)]="model"
-          (navigate)="date = $event.next"
-        ></ngb-datepicker>
-        <label>Escoge la hora que prefieres la reunion</label>
-        <button
-          class="btn btn-sm btn-outline-primary mr-2"
-          (click)="selectToday()"
-        >
-          Select Today
-        </button>
-      </div>
-      <div class="col text-left">
-        <div>
-          <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-          <select class="text-center" id="mode">
-            <option *ngFor="let c of modes">{{ c }}</option>
-          </select>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+      <div class="row text-center">
+        <div class="col text-left">
+          <label>Escoge el día que prefieres la reunion</label>
+          <ngb-datepicker
+            #dp
+            [(ngModel)]="model"
+            (navigate)="date = $event.next"
+          ></ngb-datepicker>
+          <label>Escoge la hora que prefieres la reunion</label>
+          <button
+            class="btn btn-sm btn-outline-primary mr-2"
+            (click)="selectToday()"
+          >
+            Select Today
+          </button>
         </div>
-        <div>
-          <label> Nombre completo </label>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Escriba su nombre completo"
-          />
-        </div>
-        <div>
-          <label> Celular </label>
-          <input
-            type="number"
-            class="form-control"
-            placeholder="Escriba su numero de celular"
-          />
-        </div>
-        <div>
-          <label> Correo electronico </label>
-          <input
-            type="email"
-            class="form-control"
-            placeholder="Escriba su correo electronico"
-          />
+        <div class="col text-left">
+          <div>
+            <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
+            <select class="text-center" id="mode">
+              <option *ngFor="let c of modes">{{ c }}</option>
+            </select>
+          </div>
+          <div>
+            <label> Nombre completo </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Escriba su nombre completo"
+            />
+          </div>
+          <div>
+            <label> Celular </label>
+            <input
+              type="tel"
+              class="form-control"
+              placeholder="Escriba su numero de celular"
+              pattern="[0-9]{3}[0-9]{2}[0-9]{3}"
+            />
+          </div>
+          <div>
+            <label> Correo electronico </label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Escriba su correo electronico"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" (click)="close()">
-      Cancel
-    </button>
-    <button type="button" class="btn btn-primary" (click)="confirm()">
-      OK
-    </button>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" (click)="close()">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="confirm()">
+        OK
+      </button>
+    </div>
   </div>
 </div>
