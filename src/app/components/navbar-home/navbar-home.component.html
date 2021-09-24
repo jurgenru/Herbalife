@@ -51,13 +51,13 @@
                       </li>
                     </ul>
                   </li>
-                <li class="nav-item" *ngIf="user && role != 'admin'">
+                <li class="nav-item" *ngIf="user && role != 'admin' && status">
                     <a class="nav-link" routerLink="/customer/store/cart">
                         <i class="tim-icons icon-cart"></i>
                         <span *ngIf="totalItem != 0" class="cart-badge badge-danger"></span>
                     </a>
                 </li>
-                <li class="nav-item" ngbDropdown>
+                <li class="nav-item" ngbDropdown *ngIf="user && status">
                     <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" ngbDropdownToggle>
                       <div class=" notification d-none d-lg-block d-xl-block"></div>
                       <i class=" tim-icons icon-bell-55"> </i>

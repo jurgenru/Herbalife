@@ -10,14 +10,14 @@ import { NavbarHomeComponent } from "./navbar-home/navbar-home.component";
 import { FloatSocialComponent } from "./float-social/float-social.component";
 import { ImageCropperComponent } from "./image-cropper/image-cropper.component";
 import { ImageCropperModule } from "ngx-image-cropper";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { RegisterModalComponent } from "./register-modal/register-modal.component";
+import { LoginModalComponent } from "./login-modal/login-modal.component";
 
 @NgModule({
   imports: [CommonModule, RouterModule, NgbModule, ImageCropperModule, ReactiveFormsModule, NgxUiLoaderModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, LoginComponent, RegisterComponent]
+  declarations: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, RegisterModalComponent, LoginModalComponent],
+  exports: [FooterComponent, NavbarComponent, SidebarComponent, NavbarHomeComponent, FloatSocialComponent, ImageCropperComponent, RegisterModalComponent, LoginModalComponent]
 })
 export class ComponentsModule { }

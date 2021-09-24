@@ -1,23 +1,31 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { SimpleModalComponent } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { UserService } from "src/app/services/user.service";
+
+export interface AlertModel {
+  title?: string;
+  message: string;
+}
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends SimpleModalComponent<AlertModel, null> implements OnInit {
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private spinner: NgxUiLoaderService,
     private userService: UserService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService) { 
+      super();
+    }
 
   ngOnInit() {
   }

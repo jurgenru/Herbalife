@@ -28,6 +28,8 @@ import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
 import { AuthGuard } from "./auth/auth.guard";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
 
 @NgModule({
   imports: [
@@ -44,7 +46,7 @@ import { AuthGuard } from "./auth/auth.guard";
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],
   providers: [
     AuthGuard,
     StoreService,

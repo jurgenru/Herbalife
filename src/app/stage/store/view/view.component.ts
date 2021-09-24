@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SimpleModalService } from 'ngx-simple-modal';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
 import { CartService } from 'src/app/services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-store-list',
@@ -13,21 +16,23 @@ export class ViewComponent implements OnInit {
 
   store: any = {};
   products: any;
-  stores: any; 
+  stores: any;
 
   constructor(
+    private simpleModalService: SimpleModalService,
     private route: ActivatedRoute,
     private storeService: StoreService,
     private spinner: NgxUiLoaderService,
     private router: Router,
     private cartService: CartService,
+    private userService: UserService
   ) {
     this.get();
     this.list();
   }
 
   ngOnInit() {
-   }
+  }
 
   get() {
     const start = new Date();
@@ -39,18 +44,24 @@ export class ViewComponent implements OnInit {
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
-          this.products = stor;
-          this.spinner.stop();
-        }, elapsed);
+            this.products = stor;
+            this.spinner.stop();
+          }, elapsed);
         });
       });
     });
   }
 
-  addToCart(item: any):void{
-    this.cartService.addToCart(item);
+  addToCart(item) {
+    this.userService.me().subscribe(user => {
+      if (user) {
+        this.cartService.addToCart(item);
+      }
+    }, error => {
+      this.showRegister();
+    });
   }
-    
+
   list() {
     const filter = `{"fields": {"id": true, "icon": true, "title": true}, "order":["id DESC"]}`;
     this.storeService.get(filter).subscribe(data => {
@@ -63,7 +74,14 @@ export class ViewComponent implements OnInit {
     setTimeout(() => {
       location.reload();
     }, 50);
+  }
 
+  showRegister() {
+    this.simpleModalService.addModal(RegisterModalComponent, {}, { closeOnClickOutside: true }).subscribe(data => {
+      if (data) {
+        location.reload();
+      }
+    });
   }
 
 }

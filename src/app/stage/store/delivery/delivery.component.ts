@@ -43,7 +43,6 @@ export class DeliveryComponent implements OnInit {
       this.managerService.getByUserId(user.id).subscribe((data: any) => {
         data.forEach(element => {
           this.userData = element;
-          console.log(element);
         });
         this.order.value.names = this.userData.names;
         this.order.value.country = this.userData.country
@@ -61,9 +60,6 @@ export class DeliveryComponent implements OnInit {
     JSON.parse(localStorage.getItem('cartList')).forEach(element => {
       this.order.value.productId.push({"id":element.id, "quantity":element.quantity, "total": element.total});
     });
-
-    console.log('post', this.order.value);
-    // this.buy = true;
   }
 
   buying(){
