@@ -28,6 +28,7 @@ import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
 import { AuthGuard } from "./auth/auth.guard";
+import { OrderService } from "./services/order.service";
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { AuthGuard } from "./auth/auth.guard";
     ProfileService,
     PromotionService,
     CartService,
+    OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
