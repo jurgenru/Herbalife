@@ -1,12 +1,89 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h4>{{title || 'Confirm'}}</h4>
+    <h4>{{ title }}</h4>
   </div>
   <div class="modal-body">
-    <p>{{message || 'Are you sure?'}}</p>
+    <div class="row text-center">
+      <div class="col">
+        <ngb-datepicker
+          #dp
+          [(ngModel)]="model"
+          (navigate)="date = $event.next"
+        ></ngb-datepicker>
+        <hr />
+
+        <button
+          class="btn btn-sm btn-outline-primary mr-2"
+          (click)="selectToday()"
+        >
+          Select Today
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary mr-2"
+          (click)="dp.navigateTo()"
+        >
+          To current month
+        </button>
+        <button
+          class="btn btn-sm btn-outline-primary mr-2"
+          (click)="dp.navigateTo({ year: 2013, month: 2 })"
+        >
+          To Feb 2013
+        </button>
+
+        <hr />
+
+        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+        <pre>Model: {{ model | json }}</pre>
+      </div>
+      <div class="col text-left">
+        <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
+        <select
+          class="form-control text-center"
+          id="mode"
+          formControlName="mode"
+        >
+          <option *ngFor="let c of modes">{{ c }}</option>
+        </select>
+        <div class="form-group">
+          <label> Nombre completo </label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Añade tu nombre completo"
+            formControlName="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label> Celular </label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Añade tu numero de celular"
+            formControlName="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label> Correo electonico </label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Añade tu correo electronico"
+            formControlName="name"
+            required
+          />
+        </div>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" (click)="close()" >Cancel</button>
-    <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+    <button type="button" class="btn btn-outline-danger" (click)="close()">
+      Cancel
+    </button>
+    <button type="button" class="btn btn-primary" (click)="confirm()">
+      OK
+    </button>
   </div>
 </div>

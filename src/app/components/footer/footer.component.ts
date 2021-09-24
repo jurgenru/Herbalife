@@ -16,8 +16,7 @@ export class FooterComponent implements OnInit {
 
   callSchedule() {
     let schedule = this.SimpleModalService.addModal(ScheduleCallComponent, {
-      title:'COnfirm title',
-      message:'confirm message'
+      title:'Programa tu llamada'
     }).subscribe((isConfirmed)=>{
       if(isConfirmed){
         alert('accepted')
@@ -25,8 +24,5 @@ export class FooterComponent implements OnInit {
         alert('declined')
       }
     });
-    setTimeout(()=>{
-      schedule.unsubscribe();
-    }, 10000);
   }
 }
