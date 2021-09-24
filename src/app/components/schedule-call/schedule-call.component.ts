@@ -24,7 +24,7 @@ export class ScheduleCallComponent
   modes: string[] = ["este", "otro"];
   default: string = "este";
   model: NgbDateStruct;
-  date: { year: number; month: number };
+  date: { year: number; month: number; day: number };
 
   constructor(private calendar: NgbCalendar) {
     super();
