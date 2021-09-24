@@ -1,8 +1,10 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ActivityComponent } from "./activity/activity.component";
 import { CreateComponent } from "./create/create.component";
 import { CustomerComponent } from "./customer.component";
 import { EditComponent } from "./edit/edit.component";
+import { ShoppingComponent } from "./shopping/shopping.component";
 import { ViewComponent } from "./view/view.component";
 
 export const routes: Routes = [
@@ -18,7 +20,15 @@ export const routes: Routes = [
         }, {
             path: 'edit',
             component: EditComponent
-        }]
+        },{
+            path: 'activity',
+            component: ActivityComponent
+        }
+        ,{
+            path: 'shopping',
+            component: ShoppingComponent
+        }
+    ]
     }];
 
 @NgModule({
@@ -30,5 +40,7 @@ export const routedComponents = [
     CustomerComponent,
     CreateComponent,
     ViewComponent,
-    EditComponent
+    EditComponent,
+    ActivityComponent,
+    ShoppingComponent,
 ]
