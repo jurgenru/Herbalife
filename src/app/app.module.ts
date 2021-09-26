@@ -30,6 +30,7 @@ import { CartService } from "./services/cart.service";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
+import { OrderService } from "./services/order.service";
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { RegisterComponent } from "./auth/register/register.component";
     ProfileService,
     PromotionService,
     CartService,
+    OrderService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
