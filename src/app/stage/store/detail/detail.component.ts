@@ -53,7 +53,6 @@ export class DetailComponent implements OnInit {
     }, error => {
       this.showRegister();
     });
-    this.cartService.addToCart(item);
   }
 
   showRegister() {

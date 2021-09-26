@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CartService } from 'src/app/services/cart.service';
-import { ManagerService } from 'src/app/services/manager.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
-import { ProfileService } from 'src/app/services/profile.service';
 import { UserService } from 'src/app/services/user.service';
-import { parse } from 'url';
 
 @Component({
   selector: 'app-delivery',
@@ -24,29 +20,26 @@ export class DeliveryComponent implements OnInit {
   email: any;
   product: any = {};
   payment: string[] = ['efectivo', 'tarjeta'];
-  delivery: string[] = ['envio','presencial'];
+  delivery: string[] = ['envio', 'presencial'];
 
   constructor(
     private cartService: CartService,
     private userService: UserService,
-    private managerService: ManagerService,
     private formBuilder: FormBuilder,
     private orderService: OrderService,
     private productService: ProductService,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
-    private router: Router,
-    private profileService: ProfileService
-    ) { 
-     
-    }
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.get();
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.order = this.formBuilder.group({
       paymentMethod: [this.payment[0], Validators.required],
       deliveryMethod: [this.delivery[0], Validators.required],
@@ -56,15 +49,14 @@ export class DeliveryComponent implements OnInit {
       city: ['', Validators.required],
       address: ['', Validators.required],
       email: ['', Validators.required],
-      total:[this.cartService.getTotalPrice()]
+      total: [this.cartService.getTotalPrice()]
     })
   }
 
-  get(){
-    this.userService.me().subscribe((user:any) => {
-      console.log(user);
+  get() {
+    this.userService.me().subscribe((user: any) => {
       this.userService.getProfileById(user.id).subscribe((data: any) => {
-    this.userData = data;
+        this.userData = data;
         this.order.get('email').setValue(user.email);
         this.order.get('country').setValue(this.userData.country);
         this.order.get('city').setValue(this.userData.city);
@@ -73,57 +65,50 @@ export class DeliveryComponent implements OnInit {
     });
   }
 
-  post(){
+  post() {
     const start = new Date();
     this.spinner.start();
-    this.order.value.purcharseId  = this.userData.userId;
+    this.order.value.purcharseId = this.userData.userId;
     this.order.value.userId = "1"
     this.order.value.names = this.userData.names;
-    console.log(this.order.value);
     this.order.value.productId = [];
     JSON.parse(localStorage.getItem('cartList')).forEach(element => {
-      this.order.value.productId.push({"id":element.id, "quantity":element.quantity, "total": element.total});
+      this.order.value.productId.push({ "id": element.id, "quantity": element.quantity, "total": element.total });
     });
     this.order.value.productId = JSON.stringify(this.order.value.productId);
-    console.log('post', this.order.value);
-    this.orderService.post(this.order.value).subscribe((ord:any) => {
+    this.orderService.post(this.order.value).subscribe((ord: any) => {
       JSON.parse(localStorage.getItem('cartList')).forEach(element => {
         this.productService.getById(element.id).subscribe((data: any) => {
-          // this.product = data;
-          // this.product.amount = data.amount - element.quantity;
           this.product = {
             'amount': data.amount - element.quantity
           }
-          console.log('product', this.product);
-          this.productService.update(element.id,this.product).subscribe( data =>{
-          },error => {
-            console.log('product',error);
+          this.productService.update(element.id, this.product).subscribe(data => {
+          }, error => {
           });
         })
       });
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-        setTimeout(() => {
-          this.router.navigate(['/']);
-          this.spinner.stop();
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Compra realizada', '5000', 'success', 'top', 'center');
-          this.orderList(ord.id);
-        }, elapsed);
-        this.buy = true;
-        localStorage.removeItem('cartList');
-    },error => {
+      setTimeout(() => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Compra realizada', '5000', 'success', 'top', 'center');
+        this.orderList(ord.id);
+      }, elapsed);
+      this.buy = true;
+      localStorage.removeItem('cartList');
+    }, error => {
       this.spinner.stop();
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al comprar, intente nuevamente', '5000', 'danger', 'top', 'center');
     });
   }
 
-  orderList(id){
-    this.orderService.getById(id).subscribe((res:any)=>{
+  orderList(id) {
+    this.orderService.getById(id).subscribe((res: any) => {
       this.orderData = res;
     });
   }
 
-  buying(){
+  buying() {
     // this.buy = false;
   }
 
