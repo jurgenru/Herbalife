@@ -121,7 +121,7 @@
                                             <br>
                                             <label> Cantidad de productos disponible </label>
                                             <input class=" form-control" placeholder="Cantidad de productos disponible"
-                                                type="text" formControlName="amount">
+                                                type="number" formControlName="amount">
                                             <div *ngIf="product.controls[i].get('amount').invalid && 
                                                 product.controls[i].get('amount').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>

@@ -30,6 +30,8 @@ export class CartComponent implements OnInit {
       item.quantity = parseInt(item.quantity) + 1;
       this.cartService.quantityProduct(item);
       this.grandTotal = this.cartService.getTotalPrice();
+    }else{
+      this.cartService.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> No se dispone con una cantidad mayor a '+`${item.quantity}`+' del producto: '+`${item.name}`, '5000', 'warning', 'top', 'center');
     }
   }
   removeQuantity(item:any){

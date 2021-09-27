@@ -1,0 +1,68 @@
+<div class="modal-content">
+    <div class="content">
+        <div class="container">
+            <div class="col-12">
+                <div class="modal-header">
+                    <span class="text-center">Registrarse</span>
+                </div>
+                <form [formGroup]="user" (ngSubmit)="register()">
+                    <div class="modal-body">
+                        <p>o registrate con :</p>
+                        <button class="btn btn-danger btn-simple btn-sm btn-block"><i
+                                class="tim-icons icon-email-85"></i>
+                            Google</button>
+                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
+                            Facebook</button>
+                        <h4 class="text-center">Formulario</h4>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class=" tim-icons icon-single-02"></i></div>
+                            </div><input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="username">
+                        </div>
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                            <small *ngIf="username.errors.required" class="text-danger">El nombre de usuario es
+                                <strong>requerido</strong></small>
+                            <small *ngIf="username.errors.maxlength" class="text-danger">El nombre del usuario debe ser
+                                menor o igual a 10</small>
+                            <small *ngIf="username.errors.minlength" class="text-danger">El nombre de usuario debe ser
+                                igual o mayor a 3</small>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class=" tim-icons icon-email-85"></i></div>
+                            </div><input type="text" class="form-control" placeholder="Correo Electronico" formControlName="email">
+                        </div>
+                        <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <small *ngIf="email.errors.required" class="text-danger">El correo electronico es
+                                <strong>requerido</strong>
+                            </small>
+                            <small *ngIf="email.errors.email" class="text-danger">
+                                Introduce un correo electronico apropiado
+                            </small>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="input-group">
+                            <div class=" input-group-prepend">
+                                <div class=" input-group-text"><i class=" tim-icons icon-lock-circle"></i></div>
+                            </div><input type="password" class="form-control" placeholder="Numero de celular" formControlName="password">
+                        </div>
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                            <small *ngIf="password.errors.required" class="text-danger">El numero de celular es
+                                <strong>requerido</strong>
+                            </small>
+                        </div>
+                        <hr color="purple" width="85%">
+                        <button type="submit" class="btn btn-info btn-block mb-3" [disabled]="!user.valid">Registrarse</button>
+                        <div class=" pull-left">
+                            <span><a class="link footer-link" (click)="login()" class="log">Iniciar Sesion</a></span>
+                        </div>
+                        <br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

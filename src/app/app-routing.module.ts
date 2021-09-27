@@ -3,8 +3,8 @@ import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { RegisterComponent } from "./components/register/register.component";
-import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
+import { LoginComponent } from "./auth/login/login.component";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
 
 const routes: Routes = [

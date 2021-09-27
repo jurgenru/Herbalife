@@ -28,6 +28,13 @@ import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
 import { AuthGuard } from "./auth/auth.guard";
+import { LoginComponent } from "./auth/login/login.component";
+import { RegisterComponent } from "./auth/register/register.component";
+import { OrderService } from "./services/order.service";
+import { CommentaryService } from "./services/commentary.service";
+import { MomentModule } from 'angular2-moment';
+import * as moment  from 'moment';
+moment.locale('es');
 
 @NgModule({
   imports: [
@@ -38,13 +45,14 @@ import { AuthGuard } from "./auth/auth.guard";
     ComponentsModule,
     NgbModule,
     ImageCropperModule,
+    MomentModule,
     RouterModule,
     AppRoutingModule,
     NgxUiLoaderModule,
     NgxPaginationModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],
   providers: [
     AuthGuard,
     StoreService,
@@ -57,6 +65,8 @@ import { AuthGuard } from "./auth/auth.guard";
     ProfileService,
     PromotionService,
     CartService,
+    OrderService,
+    CommentaryService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

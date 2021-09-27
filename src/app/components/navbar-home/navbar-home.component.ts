@@ -6,6 +6,7 @@ import { UserService } from "src/app/services/user.service";
 import { ProfileService } from "src/app/services/profile.service";
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from "src/app/services/cart.service";
+import { ManagerService } from "src/app/services/manager.service";
 
 @Component({
   selector: "app-navbar-home",
@@ -26,8 +27,9 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   image: any;
   status: boolean;
 
-  public totalItem : number = 0;
+  public totalItem: number = 0;
   role: any;
+  icon: any;
 
   constructor(
     location: Location,
@@ -38,10 +40,12 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
     private profileService: ProfileService,
     private toastr: ToastrService,
     private cartService: CartService,
+    private managerService: ManagerService
   ) {
     this.location = location;
     this.sidebarVisible = false;
     this.me();
+    this.getIcon();
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   updateColor = () => {
@@ -242,29 +246,43 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
           switch (data.role) {
             case 'customer':
               this.profileService.getByuserId(user.id).subscribe((prof: any) => {
-                if(Object.keys(prof).length === 0) {
+                if (Object.keys(prof).length === 0) {
                   this.router.navigate(['customer/create']);
                   this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Complete su perfil antes de continuar', '5000', 'warning', 'top', 'center');
                 } else {
-                  prof.forEach(element => {          
+                  prof.forEach(element => {
                     this.image = element.image;
                   });
                 }
               });
               break;
+            case 'admin':
+              this.managerService.getByUserId(user.id).subscribe((adm: any) => {
+                adm.forEach(element => {
+                  this.image = element.image;
+                });
+              });
           }
         });
       });
     }
   }
 
-    notification(content, time, type, from, align) {
+  notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
       timeOut: time,
       closeButton: true,
       enableHtml: true,
       toastClass: `alert alert-${type} alert-with-icon`,
       positionClass: 'toast-' + from + '-' + align
+    });
+  }
+
+  getIcon() {
+    this.managerService.getByUserId(1).subscribe((ic: any) => {
+      ic.forEach(element => {
+        this.icon = element.icon;
+      });
     });
   }
 
