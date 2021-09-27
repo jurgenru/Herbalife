@@ -7,7 +7,7 @@
             <h4 class="card-title text-center">Categorias</h4>
             <div class="row justify-content-center">
                 <div class="scrollMenu">
-                    <div class="col-6 col-md-2" *ngFor="let blog of blogs">
+                    <div class="col-6 col-md-3" *ngFor="let blog of blogs">
                         <div class="card">
                         <div class="card-img-top p-1 text-center">
                             <img [src]="blog.icon" class="rounded mx-auto d-block iconImg" *ngIf="blog.icon; else noIcon">
@@ -53,7 +53,7 @@
                                     </span>
                                 </div>
                                 <div class="col-12 col-md-12 pt-3">
-                                    <strong class="pull-right">00 Comentarios</strong>
+                                    <strong class="pull-right">{{article.countComment}} Comentarios</strong>
                                     <br />
                                     <br />
                                     <hr color="purple" />
