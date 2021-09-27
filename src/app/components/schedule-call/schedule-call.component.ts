@@ -6,7 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { SimpleModalComponent } from "ngx-simple-modal";
-import { NgbDateStruct, NgbCalendar } from "@ng-bootstrap/ng-bootstrap";
+import { NgbDateStruct, NgbCalendar, NgbDate } from "@ng-bootstrap/ng-bootstrap";
 import { PicktimeService } from "src/app/services/pickTime.service";
 
 export interface AlertModel {
@@ -28,6 +28,7 @@ export class ScheduleCallComponent
   types: string[] = ["este", "otro"];
   default: string = "este";
   model: NgbDateStruct;
+  toDate: NgbDate;
   date: { year: number; month: number };
   btnBlock: boolean = false;
 
@@ -37,6 +38,7 @@ export class ScheduleCallComponent
     private pickTime: PicktimeService
   ) {
     super();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
     this.typeForm = new FormGroup({
       type: new FormControl(null),
