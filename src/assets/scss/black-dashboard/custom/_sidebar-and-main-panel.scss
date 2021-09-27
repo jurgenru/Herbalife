@@ -344,6 +344,12 @@
     &[data="green"]{
       @include linear-gradient($success-states, $success);
     }
+    &[data="purple"]{
+      @include linear-gradient(purple, #0c2646);
+    }
+    &[data="yellow"]{
+      @include linear-gradient(yellow, #d34a0b);
+    }
 
     .user{
         padding-bottom: 20px;
