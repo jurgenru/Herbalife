@@ -1,67 +1,254 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3>{{ title }}</h3>
-    </div>
-    <div class="modal-body">
-      <div class="row text-center">
-        <div class="col text-left">
-          <label>Escoge el día que prefieres la reunion</label>
-          <ngb-datepicker
-            #dp
-            [(ngModel)]="model"
-            (navigate)="date = $event.next"
-          ></ngb-datepicker>
-          <label>Escoge la hora que prefieres la reunion</label>
-          <button
-            class="btn btn-sm btn-outline-primary mr-2"
-            (click)="selectToday()"
-          >
-            Select Today
-          </button>
-        </div>
-        <div class="col text-left">
-          <div>
-            <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-            <select class="text-center" id="mode">
-              <option *ngFor="let c of modes">{{ c }}</option>
-            </select>
+<form [formGroup]="schedule" (ngSubmit)="post()">
+  <div class="form-group">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{ title }}</h3>
+      </div>
+      <div class="modal-body">
+        <div class="row text-center">
+          <div class="col text-left">
+            <label>Escoge el día que prefieres la reunion</label>
+            <ngb-datepicker
+              #dp
+              [(ngModel)]="model"
+              (navigate)="date = $event.next"
+              (click)="generateDay(date)"
+            ></ngb-datepicker>
+            <label>Escoge la hora que prefieres la reunion</label>
+            <div class="row">
+              <div class="col">
+                <h5>{{ timePick.data[0].morning }}</h5>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeA)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeA }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeB)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeB }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeC)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeC }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeD)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeD }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeE)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeE }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeF)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeF }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeG)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeG }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeH)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeH }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeI)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeI }}
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="generateTime(timePick.data[0].timeJ)"
+                  [disabled]="btnBlock"
+                >
+                  {{ timePick.data[0].timeJ }}
+                </button>
+                <!-- <button
+                  class="btn btn-sm btn-outline-primary mr-2"
+                  (click)="selectToday()"
+                >
+                  Select Today
+                </button> -->
+              </div>
+              <div class="col">
+                <h5>{{ timePick.data[1].afternoon }}</h5>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeA }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeB }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeC }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeD }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeE }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeF }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeG }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeH }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeI }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeJ }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeK }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeL }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeM }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeN }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeO }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeP }}
+                </button>
+                <button class="btn btn-sm btn-outline-primary mr-2">
+                  {{ timePick.data[1].timeQ }}
+                </button>
+              </div>
+            </div>
           </div>
-          <div>
-            <label> Nombre completo </label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Escriba su nombre completo"
-            />
-          </div>
-          <div>
-            <label> Celular </label>
-            <input
-              type="tel"
-              class="form-control"
-              placeholder="Escriba su numero de celular"
-              pattern="[0-9]{3}[0-9]{2}[0-9]{3}"
-            />
-          </div>
-          <div>
-            <label> Correo electronico </label>
-            <input
-              type="email"
-              class="form-control"
-              placeholder="Escriba su correo electronico"
-            />
+          <div class="col text-left">
+            <form [formGroup]="typeForm">
+              <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
+              <select class="text-center" id="mode" formControlName="type">
+                <option *ngFor="let c of types">{{ c }}</option>
+              </select>
+            </form>
+            <div>
+              <label> Nombre completo </label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Escriba su nombre completo"
+                required
+                formControlName="name"
+              />
+              <div
+                *ngIf="
+                  nameField.errors && (nameField.dirty || nameField.touched)
+                "
+              >
+                <small *ngIf="nameField.errors.required" class="text-danger">
+                  El nombre es <strong>requerido</strong>
+                </small>
+                <br />
+                <br />
+              </div>
+            </div>
+            <div>
+              <label> Celular </label>
+              <input
+                type="tel"
+                class="form-control"
+                placeholder="Escriba su numero de celular"
+                pattern="[0-9]{3}[0-9]{2}[0-9]{3}"
+                required
+                formControlName="cellphone"
+              />
+              <div
+                *ngIf="
+                  cellphoneField.errors &&
+                  (cellphoneField.dirty || cellphoneField.touched)
+                "
+              >
+                <small
+                  *ngIf="cellphoneField.errors.required"
+                  class="text-danger"
+                >
+                  El numero de celular es <strong>requerido</strong>
+                </small>
+                <small
+                  *ngIf="cellphoneField.errors.pattern"
+                  class="text-danger"
+                >
+                  Debe ser un <strong>numero de celular</strong>
+                </small>
+                <br />
+                <br />
+              </div>
+            </div>
+            <div>
+              <label> Correo electronico </label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Escriba su correo electronico"
+                required
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  emailField.errors && (emailField.dirty || emailField.touched)
+                "
+              >
+                <small *ngIf="emailField.errors.required" class="text-danger">
+                  El correo electronico es <strong>requerido</strong>
+                </small>
+                <small *ngIf="emailField.errors.email" class="text-danger">
+                  Debe ser un <strong>correo electronico</strong>
+                </small>
+                <br />
+                <br />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-danger" (click)="close()">
-        Cancel
-      </button>
-      <button type="button" class="btn btn-primary" (click)="confirm()">
-        OK
-      </button>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="close()">Cancel</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="schedule.invalid"
+          (click)="confirm()"
+        >
+          OK
+        </button>
+      </div>
     </div>
   </div>
-</div>
+</form>
