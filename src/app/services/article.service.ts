@@ -21,4 +21,10 @@ export class ArticleService {
     return this.http.get(`${environment.apiUrl}articles/${id}`).pipe();
   }
 
+  getCommentaryById(id, filter) {
+    return this.http.get(`${environment.apiUrl}articles/${id}/commentaries?filter=${filter}`).pipe();
+  }
+
+
+
 }

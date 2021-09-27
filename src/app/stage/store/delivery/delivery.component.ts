@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CartService } from 'src/app/services/cart.service';
-import { ManagerService } from 'src/app/services/manager.service';
+import { OrderService } from 'src/app/services/order.service';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,62 +14,111 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DeliveryComponent implements OnInit {
   buy: boolean = false;
-  order: any = {};
-  userData: any
+  order: FormGroup;
+  orderData: any = {};
+  userData: any = {};
+  email: any;
+  product: any = {};
+  payment: string[] = ['efectivo', 'tarjeta'];
+  delivery: string[] = ['envio', 'presencial'];
+
   constructor(
     private cartService: CartService,
     private userService: UserService,
-    private managerService: ManagerService,
     private formBuilder: FormBuilder,
-    ) { 
-      this.get();
-    }
+    private orderService: OrderService,
+    private productService: ProductService,
+    private spinner: NgxUiLoaderService,
+    private toastr: ToastrService,
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.get();
     this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.order = this.formBuilder.group({
-      names: ['', Validators.required],
+      paymentMethod: [this.payment[0], Validators.required],
+      deliveryMethod: [this.delivery[0], Validators.required],
       phoneNumber: ['', Validators.required],
       nit: ['', Validators.required],
-      status: ['', Validators.required],
       country: ['', Validators.required],
       city: ['', Validators.required],
       address: ['', Validators.required],
+      email: ['', Validators.required],
+      total: [this.cartService.getTotalPrice()]
     })
   }
 
-  get(){
-    this.userService.me().subscribe((user:any) => {
-      this.managerService.getByUserId(user.id).subscribe((data: any) => {
-        data.forEach(element => {
-          this.userData = element;
-          console.log(element);
-        });
-        this.order.value.names = this.userData.names;
-        this.order.value.country = this.userData.country
-        this.order.value.city = this.userData.city;
-        this.order.value.address = this.userData.address;
-        this.order.value.email = user.email;
-        this.order.value.userId = user.id;
-        this.order.value.total = this.cartService.getTotalPrice();
-      })
-    })
-  }
-
-  post(){
-    this.order.value.productId =  [];
-    JSON.parse(localStorage.getItem('cartList')).forEach(element => {
-      this.order.value.productId.push({"id":element.id, "quantity":element.quantity, "total": element.total});
+  get() {
+    this.userService.me().subscribe((user: any) => {
+      this.userService.getProfileById(user.id).subscribe((data: any) => {
+        this.userData = data;
+        this.order.get('email').setValue(user.email);
+        this.order.get('country').setValue(this.userData.country);
+        this.order.get('city').setValue(this.userData.city);
+        this.order.get('address').setValue(this.userData.address);
+      });
     });
-
-    console.log('post', this.order.value);
-    // this.buy = true;
   }
 
-  buying(){
-    this.buy = false;
+  post() {
+    const start = new Date();
+    this.spinner.start();
+    this.order.value.purcharseId = this.userData.userId;
+    this.order.value.userId = "1"
+    this.order.value.names = this.userData.names;
+    this.order.value.productId = [];
+    JSON.parse(localStorage.getItem('cartList')).forEach(element => {
+      this.order.value.productId.push({ "id": element.id, "quantity": element.quantity, "total": element.total });
+    });
+    this.order.value.productId = JSON.stringify(this.order.value.productId);
+    this.orderService.post(this.order.value).subscribe((ord: any) => {
+      JSON.parse(localStorage.getItem('cartList')).forEach(element => {
+        this.productService.getById(element.id).subscribe((data: any) => {
+          this.product = {
+            'amount': data.amount - element.quantity
+          }
+          this.productService.update(element.id, this.product).subscribe(data => {
+          }, error => {
+          });
+        })
+      });
+      const end = new Date();
+      const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+      setTimeout(() => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Compra realizada', '5000', 'success', 'top', 'center');
+        this.orderList(ord.id);
+      }, elapsed);
+      this.buy = true;
+      localStorage.removeItem('cartList');
+    }, error => {
+      this.spinner.stop();
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al comprar, intente nuevamente', '5000', 'danger', 'top', 'center');
+    });
+  }
+
+  orderList(id) {
+    this.orderService.getById(id).subscribe((res: any) => {
+      this.orderData = res;
+    });
+  }
+
+  buying() {
+    // this.buy = false;
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, '', {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: 'toast-' + from + '-' + align
+    });
   }
 }

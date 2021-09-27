@@ -20,39 +20,39 @@ export class UserService {
     }
 
     getById(id, filter) {
-        return this.http.get(`${environment.apiUrl}/users/${id}?filter=${filter}`).pipe();
+        return this.http.get(`${environment.apiUrl}users/${id}?filter=${filter}`).pipe();
     }
 
     getBlogById(id, filter) {
-        return this.http.get(`${environment.apiUrl}/users/${id}/blogs?filter=${filter}`).pipe();
+        return this.http.get(`${environment.apiUrl}users/${id}/blogs?filter=${filter}`).pipe();
     }
 
     getStoreById(id, filter) {
-        return this.http.get(`${environment.apiUrl}/users/${id}/stores?filter=${filter}`).pipe();
+        return this.http.get(`${environment.apiUrl}users/${id}/stores?filter=${filter}`).pipe();
     }
 
     getStatementById(id, filter) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/statements?filter=${filter}`).pipe();
+      return this.http.get(`${environment.apiUrl}users/${id}/statements?filter=${filter}`).pipe();
     }
 
     getServicesById(id, filter) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/services?filter=${filter}`).pipe();
+      return this.http.get(`${environment.apiUrl}users/${id}/services?filter=${filter}`).pipe();
     }
 
     getTrainersById(id, filter) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/trainers?filter=${filter}`).pipe();
+      return this.http.get(`${environment.apiUrl}users/${id}/trainers?filter=${filter}`).pipe();
     }
 
     getName(name, filter) {
-      return this.http.get(`${environment.apiUrl}/users/username/${name}?filter=${filter}`).pipe();
+      return this.http.get(`${environment.apiUrl}users/username/${name}?filter=${filter}`).pipe();
     }
 
     getProfileById(id) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/profile`).pipe();  
+      return this.http.get(`${environment.apiUrl}users/${id}/profile`).pipe();  
     }
 
     getPromotionById(id) {
-      return this.http.get(`${environment.apiUrl}/users/${id}/promotions`).pipe();  
+      return this.http.get(`${environment.apiUrl}users/${id}/promotions`).pipe();  
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { SimpleModalComponent } from "ngx-simple-modal";
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 
@@ -29,14 +29,14 @@ export class ImageCropperComponent extends SimpleModalComponent<AlertModel, null
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
   }
+
   imageLoaded() {
-      // show cropper
   }
+
   cropperReady() {
-      // cropper ready
   }
+  
   loadImageFailed() {
-      // show message
   }
 
   imageSave() {

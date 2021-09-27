@@ -127,7 +127,6 @@ export class CreateComponent implements OnInit {
           element.value.userId = user.id;
           element.value.storeId = data.id;
           element.value.additionalFeatures = JSON.stringify(element.value.additionalFeatures);
-          console.log(element.value);
           this.productService.post(element.value).subscribe((productData: any) => {
           }, error => {
             this.spinner.stop();

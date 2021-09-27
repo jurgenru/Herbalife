@@ -25,7 +25,6 @@ export class ViewComponent implements OnInit {
         this.products = prod;
         this.products.forEach(element => {
           element.additionalFeatures = JSON.parse(element.additionalFeatures);
-          console.log(element.additionalFeatures);
         });
       });
     });

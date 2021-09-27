@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
         password: this.user.value.password
       }
       this.userService.login(login).subscribe((log: any) => {
-        localStorage.setItem('herTok', log.token);
+        localStorage.setIteom('herTok', log.token);
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {

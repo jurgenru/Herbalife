@@ -18,6 +18,7 @@
                                         <th class="text-center">Imagen</th>
                                         <th class="text-center">Descripción</th>
                                         <th class="text-center">Precio</th>
+                                        <th class="text-center">Precio Adicional</th>
                                         <th class="text-center">Cantidad</th>
                                         <th class="text-center">Total</th>
                                         <th class="text-right">Acciones</th>
@@ -29,6 +30,7 @@
                                         <td><img class="mx-auto d-block img-fuild" height="100" [src]="product.image" alt=""></td>
                                         <td class="text-center">{{product.description}}</td>
                                         <td class="text-center">{{product.price}}</td>
+                                        <td class="text-center">{{product.additionalPrice}}</td>
                                         <td class="text-center">
                                             <span class="d-flex justify-content-center">
                                                 <button (click)="removeQuantity(product)" class="btn btn-danger btn-sm">-</button>
@@ -48,7 +50,7 @@
                                             <button class="btn btn-danger btn-sm m-1 pull-right" (click)="emptyCart()">Borrar Lista</button>
                                             <button class="btn btn-info btn-sm m-1 pull-right" routerLink="/customer/store/list" >Añadir más</button>
                                         </td>
-                                        <td class="text-center" colspan="2"><strong>Total:</strong>  {{grandTotal}} Bs</td>
+                                        <td class="text-center" colspan="3"><strong>Total:</strong>  {{grandTotal}} Bs</td>
                                         
                                     </tr>
                                 </tbody>

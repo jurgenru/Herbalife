@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ArticleService } from 'src/app/services/article.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -11,13 +12,14 @@ import { BlogService } from 'src/app/services/blog.service';
 export class ViewComponent implements OnInit {
 
   blog: any = {};
-  articles: any;
+  articles: any = [];
   blogs: any;
 
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService,
     private spinner: NgxUiLoaderService,
+    private articleService: ArticleService,
     private router: Router
   ) {
     this.get();
@@ -33,13 +35,19 @@ export class ViewComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.blogService.getById(val.id).subscribe((data: any) => {
         this.blog = data;
-        this.blogService.getArticleById(data.id).subscribe(art => {
-          const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
-          this.articles = art;
-          this.spinner.stop();
-        }, elapsed);
+        this.blogService.getArticleById(data.id).subscribe((art: any) => {
+          art.forEach(element => {
+            const filter = `{"fields": {"id": true}}`;
+            this.articleService.getCommentaryById(element.id, filter).subscribe((comen: any) => {
+              element.countComment = comen.length;
+              const end = new Date();
+              const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+              setTimeout(() => {
+                this.articles.push(element);
+                this.spinner.stop();
+              }, elapsed);
+            });
+          });
         });
       });
     });
@@ -57,7 +65,6 @@ export class ViewComponent implements OnInit {
     setTimeout(() => {
       location.reload();
     }, 50);
-
   }
 
 }

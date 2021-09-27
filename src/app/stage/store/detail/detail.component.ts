@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
 
 @Component({
   selector: 'app-store-detail',
@@ -14,10 +17,12 @@ export class DetailComponent implements OnInit {
   product: any = {};
 
   constructor(
+    private simpleModalService: SimpleModalService,
     private route: ActivatedRoute,
     private productService: ProductService,
     private spinner: NgxUiLoaderService,
     private cartService: CartService,
+    private userService: UserService
   ) {
     this.get();
   }
@@ -41,7 +46,21 @@ export class DetailComponent implements OnInit {
   }
 
   addToCart(item: any){
-    this.cartService.addToCart(item);
+    this.userService.me().subscribe(user => {
+      if (user) {
+        this.cartService.addToCart(item);
+      }
+    }, error => {
+      this.showRegister();
+    });
+  }
+
+  showRegister() {
+    this.simpleModalService.addModal(RegisterModalComponent, {}, { closeOnClickOutside: true }).subscribe(data => {
+      if (data) {
+        location.reload();
+      }
+    });
   }
 
 }

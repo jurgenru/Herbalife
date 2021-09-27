@@ -118,6 +118,7 @@ export class EditComponent implements OnInit {
     });
     this.features[productIndex]=this.productFeatures;
   }
+  
 edit(){
   this.content = 'Editando tienda...';
   const start = new Date();

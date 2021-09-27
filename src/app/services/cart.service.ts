@@ -34,9 +34,19 @@ export class CartService {
   addToCart(product:any){
     this.init();
     product.quantity = parseInt(product.quantity) + 1;
+    if(product.additionalPrice > 0){}
     if(product.total){
-      Object.assign(product, {quantity: product.quantity, total: parseFloat(product.price)*parseInt(product.quantity)});
+      if(product.additionalPrice > 0){
+        Object.assign(product, {quantity: product.quantity, total: (parseFloat(product.price)+parseFloat(product.additionalPrice))*parseInt(product.quantity)});
+      }else{
+        Object.assign(product, {quantity: product.quantity, total: parseFloat(product.price)*parseInt(product.quantity)});
+      }
     }else{
+      if(product.additionalPrice > 0){
+        Object.assign(product, {quantity: 1, total: parseFloat(product.price)+parseFloat(product.additionalPrice)});
+      }else{
+        Object.assign(product, {quantity: 1, total: product.price});
+      }
       Object.assign(product, {quantity: 1, total: product.price});
     }
     this.cartItemList.map((a:any, index:any) => {
@@ -59,7 +69,11 @@ export class CartService {
   quantityProduct(product: any){
     this.init();
     if(product.quantity > 0){
-      Object.assign(product, {quantity: product.quantity, total: parseFloat(product.price)*parseInt(product.quantity)});
+      if(product.additionalPrice > 0){
+        Object.assign(product, {quantity: product.quantity, total: (parseFloat(product.price)+parseFloat(product.additionalPrice))*parseInt(product.quantity)});
+      }else{
+        Object.assign(product, {quantity: product.quantity, total: parseFloat(product.price)*parseInt(product.quantity)});
+      }
       this.cartItemList.map((a:any, index:any) => {
         if(product.id == a.id){
           this.cartItemList.push(product);
