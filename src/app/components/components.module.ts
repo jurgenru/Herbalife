@@ -16,7 +16,6 @@ import { SimpleModalModule } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +36,7 @@ import { LoginModalComponent } from "./login-modal/login-modal.component";
     ImageCropperComponent,
     ScheduleCallComponent,
     RegisterModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
   ],
   exports: [
     FooterComponent,

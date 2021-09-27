@@ -8,6 +8,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { HomeComponent } from "src/app/pages/home/home.component";
 import { UserLayoutRoutes } from "./user-layout.routing";
 import { TestComponent } from "src/app/stage/test/test.component";
+import { ShareButtonComponent } from '../../components/share-button/share-button.component';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { TestComponent } from "src/app/stage/test/test.component";
     ],
     declarations: [
         HomeComponent,
-        TestComponent
+        TestComponent,
+        ShareButtonComponent
     ]
 })
 export class UserLayoutModule { }
