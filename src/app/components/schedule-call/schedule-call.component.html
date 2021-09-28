@@ -14,215 +14,11 @@
               (navigate)="date = $event.next"
               (click)="generateDay(date)"
             ></ngb-datepicker>
-            <label>Escoge la hora que prefieres la reunion</label>
-            <div class="row">
-              <div class="col">
-                <h5>{{ timePick.data[0].morning }}</h5>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeA)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeA }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeB)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeB }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeC)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeC }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeD)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeD }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeE)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeE }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeF)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeF }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeG)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeG }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeH)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeH }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeI)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeI }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[0].timeJ)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[0].timeJ }}
-                </button>
-                <!-- <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="selectToday()"
-                >
-                  Select Today
-                </button> -->
-              </div>
-              <div class="col">
-                <h5>{{ timePick.data[1].afternoon }}</h5>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeA)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeA }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeB)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeB }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeC)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeC }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeD)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeD }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeE)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeE }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeF)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeF }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeG)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeG }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeH)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeH }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeI)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeI }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeJ)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeJ }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeA)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeK }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeL)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeL }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeM)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeM }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeN)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeN }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeO)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeO }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeP)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeP }}
-                </button>
-                <button
-                  class="btn btn-sm btn-outline-primary mr-2"
-                  (click)="generateTime(timePick.data[1].timeQ)"
-                  [disabled]="btnBlock"
-                >
-                  {{ timePick.data[1].timeQ }}
-                </button>
-              </div>
-            </div>
           </div>
           <div class="col text-left">
             <form [formGroup]="typeForm">
               <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-              <select class="text-center" id="mode" formControlName="type">
+              <select class="text-center" id="mode" formControlName="type" class="form-control">
                 <option *ngFor="let c of types">{{ c }}</option>
               </select>
             </form>
@@ -302,6 +98,213 @@
                 <br />
                 <br />
               </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="text-left">
+          <label>Escoge la hora que prefieres la reunion</label>
+          <div class="row">
+            <div class="col">
+              <h5>{{ timePick.data[0].morning }}</h5>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeA)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeA }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeB)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeB }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeC)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeC }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeD)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeD }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeE)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeE }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeF)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeF }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeG)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeG }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeH)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeH }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeI)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeI }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[0].timeJ)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[0].timeJ }}
+              </button>
+              <!-- <button
+                    class="btn btn-sm btn-outline-primary mr-2"
+                    (click)="selectToday()"
+                  >
+                    Select Today
+                  </button> -->
+            </div>
+            <div class="col">
+              <h5>{{ timePick.data[1].afternoon }}</h5>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeA)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeA }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeB)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeB }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeC)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeC }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeD)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeD }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeE)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeE }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeF)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeF }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeG)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeG }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeH)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeH }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeI)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeI }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeJ)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeJ }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeA)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeK }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeL)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeL }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeM)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeM }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeN)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeN }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeO)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeO }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeP)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeP }}
+              </button>
+              <button
+                class="btn btn-sm btn-outline-primary mr-2"
+                (click)="generateTime(timePick.data[1].timeQ)"
+                [disabled]="btnBlock"
+              >
+                {{ timePick.data[1].timeQ }}
+              </button>
             </div>
           </div>
         </div>
