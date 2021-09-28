@@ -4,7 +4,7 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 @Component({
   selector: 'app-form-upload',
   templateUrl: './form-upload.component.html',
-  styleUrls: ['./form-upload.component.scss']
+  styleUrls: ['./form-upload.component.css']
 })
 export class FormUploadComponent implements OnInit {
 

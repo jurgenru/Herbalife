@@ -41,7 +41,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     RegisterModalComponent,
     LoginModalComponent,
     ShareButtonComponent,
-    // FormUploadComponent
+    FormUploadComponent
   ],
   exports: [
     FooterComponent,
@@ -54,7 +54,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     RegisterModalComponent,
     LoginModalComponent,
     ShareButtonComponent,
-    // FormUploadComponent
+    FormUploadComponent
   ]
 })
 export class ComponentsModule {}

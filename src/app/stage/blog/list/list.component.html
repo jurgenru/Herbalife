@@ -16,12 +16,7 @@
                     <div class="card-footer">
                         <div class="button-container">
                             compartir :
-                            <app-share-button  type='facebook'
-                            [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
-                            <app-share-button  type='twitter'
-                            [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
-                            <app-share-button  type='google-plus'
-                            [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
+                            <app-share-button [text]="blog.name" [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
                         </div>
                     </div>
                 </div>

@@ -68,7 +68,7 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
-    // UploadFileService,
+    UploadFileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

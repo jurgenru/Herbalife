@@ -29,12 +29,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button  type='facebook'
-                                    [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
-                                    <app-share-button  type='twitter'
-                                    [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
-                                    <app-share-button  type='google-plus'
-                                    [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
+                                    <app-share-button [text]="service.title" [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -60,12 +55,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button  type='facebook'
-                                    [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
-                                    <app-share-button  type='twitter'
-                                    [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
-                                    <app-share-button  type='google-plus'
-                                    [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
+                                    <app-share-button [text]="store.title" [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -93,15 +83,7 @@
                             </a>
                             <div class=" card-footer">
                                 <div class=" button-container">
-                                    <button class=" btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                                        <i class=" fab fa-facebook"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                                        <i class=" fab fa-twitter"> </i>
-                                    </button>
-                                    <button class=" btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                                        <i class=" fab fa-google-plus"> </i>
-                                    </button>
+                                    <app-share-button [text]="trainer.names" [shareUrl]="['customer/trainer/view/'+trainer.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -127,12 +109,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button  type='facebook'
-                                    [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
-                                    <app-share-button  type='twitter'
-                                    [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
-                                    <app-share-button  type='google-plus'
-                                    [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
+                                    <app-share-button [text]="blog.name" [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
