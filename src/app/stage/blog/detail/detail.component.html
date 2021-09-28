@@ -45,17 +45,17 @@
         <h3>Comentarios</h3>
         <div class="row justify-content-center">
             <div class="col-10">
-                <form [formGroup]="content" (ngSubmit)="postComment()">
+                <form [formGroup]="annotation" (ngSubmit)="postComment()">
                     <div class="d-flex">
                         <textarea class="form-control rounded" name="" id="" rows="6"
-                            placeholder="Escribe tu comentario"></textarea>
+                            placeholder="Escribe tu comentario" formControlName="comment"></textarea>
                     </div>
                     <div *ngIf="comment.invalid && (comment.dirty || comment.touched)">
                         <small *ngIf="comment.errors.required" class="text-danger">
                             *El comentario es <strong>requerido</strong>
                         </small>
                     </div>
-                    <button type="submit" class="btn btn-info btn-sm pull-right"  [disabled]="content.invalid">Enviar</button>
+                    <button type="submit" class="btn btn-info btn-sm pull-right" [disabled]="annotation.invalid">Enviar</button>
                 </form>
             </div>
             <div class="col-10" *ngFor="let comment of comments">
@@ -64,7 +64,7 @@
                 <div class="box-media d-flex">
                     <img [src]="comment.userImage" class="rounded-circle" width="45" height="45" alt="">
                     <div class="pl-3">
-                        <p class="box-name">{{comment.userName}} <span>{{comment.created | amTimeAgo}}</span></p>
+                        <p class="box-name">{{comment.userName}} <span>{{comment.created | amTimeAgo:true}}</span></p>
                         <div class="text-justify pl-3">{{comment.comment}}</div>
                     </div>
                 </div>

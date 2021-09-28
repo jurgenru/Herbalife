@@ -18,7 +18,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DetailComponent implements OnInit {
 
   article: any = {};
-  content: any = {};
+  annotation: any = {};
   comments: any = [];
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
@@ -40,6 +40,16 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.createCommentForm();
+  }
+
+  createCommentForm() {
+    this.annotation = this.formBuilder.group({
+      comment: ["", Validators.required]
+    });
+  }
+
+  get comment() {
+    return this.annotation.get("comment");
   }
 
   get() {
@@ -64,16 +74,6 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  createCommentForm() {
-    this.content = this.formBuilder.group({
-      comment: ["", Validators.required]
-    });
-  }
-
-  get comment() {
-    return this.content.get("comment");
-  }
-
   getComments() {
     const filter = `{"fields": {"id": true, "content": true, "comment": true, "userId": true, "created": true}, "order":["id DESC"]}`;
     this.articleService.getCommentaryById(this.article.id, filter).subscribe((comen: any) => {
@@ -82,6 +82,12 @@ export class DetailComponent implements OnInit {
           element.userImage = pro.image;
           element.userName = pro.names;
           this.comments.push(element);
+        }, error => {
+          this.userService.getManagerById(element.userId).subscribe((man: any) => {
+            element.userImage = man.image;
+            element.userName = man.names;
+            this.comments.push(element);
+          });
         });
       });
     });
@@ -90,18 +96,32 @@ export class DetailComponent implements OnInit {
   postComment() {
     this.userService.me().subscribe(user => {
       if (user) {
-        this.content.value.articleId = this.article.id;
+        this.annotation.value.articleId = this.article.id;
         this.userService.me().subscribe((user: any) => {
-          this.content.value.userId = parseInt(user.id, 10);
-          this.commentaryService.post(this.content.value).subscribe((com: any) => {
+          this.annotation.value.userId = parseInt(user.id, 10);
+          this.commentaryService.post(this.annotation.value).subscribe((com: any) => {
             this.userService.getProfileById(com.userId).subscribe((use: any) => {
-              const newComment = {
-                comment: com.comment,
-                userImage: use.image,
-                userName: use.names,
-                created: com.created
+              if (use) {
+                const newComment = {
+                  comment: com.comment,
+                  userImage: use.image,
+                  userName: use.names,
+                  created: com.created
+                }
+                this.comments.unshift(newComment);
               }
-              this.comments.unshift(newComment);
+            }, error => {
+              this.userService.getManagerById(com.userId).subscribe((man: any) => {
+                if (man) {
+                  const newComment = {
+                    comment: com.comment,
+                    userImage: man.image,
+                    userName: man.names,
+                    created: com.created
+                  }
+                  this.comments.unshift(newComment);
+                }
+              });
             });
           });
         });
@@ -131,7 +151,7 @@ export class DetailComponent implements OnInit {
             });
           }
         }, (reason) => {
-          
+
         });
       }
     }, error => {
