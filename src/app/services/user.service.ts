@@ -55,4 +55,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}users/${id}/promotions`).pipe();  
     }
 
+    getManagerById(id) {
+      return this.http.get(`${environment.apiUrl}users/${id}/manager`).pipe();    
+    }
+
 }
