@@ -17,7 +17,6 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { ShareButtonComponent } from "./share-button/share-button.component";
 import { FormUploadComponent } from './form-upload/form-upload.component';
-import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
@@ -30,7 +29,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     NgxUiLoaderModule,
     SimpleModalModule,
     FormsModule,
-    BrowserModule
   ],
   declarations: [
     FooterComponent,
