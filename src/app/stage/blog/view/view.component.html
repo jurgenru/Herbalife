@@ -44,13 +44,14 @@
                                 <div class="col-12 col-md-8 text-justify">
                                     <h3>{{article.title}}</h3>
                                     <p>{{article.description}}</p>
-                                    <span class="float-lef">
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
+                                    <div class="float-left">
+                                        <br>
+                                        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+                                            <li [ngClass]="{'selected': (star <= article.rating)}">
+                                                <i class="fa fa-star fa-5"></i>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="col-12 col-md-12 pt-3">
                                     <strong class="pull-right">{{article.countComment}} Comentarios</strong>

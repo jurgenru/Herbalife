@@ -102,6 +102,7 @@ export class CreateComponent implements OnInit {
       this.blogService.post(this.blog.value).subscribe((data: any) => {
         this.article.controls.forEach((element) => {
           element.value.blogId = data.id;
+          element.value.ranting = "[]";
           this.articleService.post(element.value).subscribe((articleData: any) => {
           }, error => {
             this.spinner.stop();
@@ -112,7 +113,7 @@ export class CreateComponent implements OnInit {
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
           this.spinner.stop();
-          this.router.navigate(['/blog/list'])
+          this.router.navigate(['/blog/list']);
           this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha creado el blog exitosamente', '5000', 'success', 'top', 'center');
         }, elapsed);
       }, error => {
