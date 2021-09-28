@@ -16,6 +16,9 @@ import { SimpleModalModule } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
+import { ShareButtonComponent } from "./share-button/share-button.component";
+import { FormUploadComponent } from './form-upload/form-upload.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,6 +40,8 @@ import { LoginModalComponent } from "./login-modal/login-modal.component";
     ScheduleCallComponent,
     RegisterModalComponent,
     LoginModalComponent,
+    ShareButtonComponent,
+    // FormUploadComponent
   ],
   exports: [
     FooterComponent,
@@ -47,7 +52,9 @@ import { LoginModalComponent } from "./login-modal/login-modal.component";
     ImageCropperComponent,
     ScheduleCallComponent,
     RegisterModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    ShareButtonComponent,
+    // FormUploadComponent
   ]
 })
 export class ComponentsModule {}
