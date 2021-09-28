@@ -14,6 +14,7 @@ export class ViewComponent implements OnInit {
   blog: any = {};
   articles: any = [];
   blogs: any;
+  stars: number[] = [1, 2, 3, 4, 5];
 
   constructor(
     private route: ActivatedRoute,
@@ -43,6 +44,12 @@ export class ViewComponent implements OnInit {
               const end = new Date();
               const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
               setTimeout(() => {
+                if (JSON.parse(element.rating) == 0) {
+                  element.rating = 0;
+                } else {
+                  const ratingArray = JSON.parse(element.rating);
+                  element.rating = this.MediaRating(ratingArray.reduce(this.Reduce, 0), (ratingArray.length));
+                }
                 this.articles.push(element);
                 this.spinner.stop();
               }, elapsed);
@@ -65,6 +72,14 @@ export class ViewComponent implements OnInit {
     setTimeout(() => {
       location.reload();
     }, 50);
+  }
+
+  MediaRating(total, media) {
+    return Math.round(total / media);
+  }
+
+  Reduce(rating, num) {
+    return rating + num;
   }
 
 }

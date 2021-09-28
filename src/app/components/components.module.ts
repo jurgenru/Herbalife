@@ -10,7 +10,6 @@ import { NavbarHomeComponent } from "./navbar-home/navbar-home.component";
 import { FloatSocialComponent } from "./float-social/float-social.component";
 import { ImageCropperComponent } from "./image-cropper/image-cropper.component";
 import { ImageCropperModule } from "ngx-image-cropper";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { SimpleModalModule } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
@@ -18,6 +17,8 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { ShareButtonComponent } from "./share-button/share-button.component";
 import { FormUploadComponent } from './form-upload/form-upload.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { FormUploadComponent } from './form-upload/form-upload.component';
     NgxUiLoaderModule,
     SimpleModalModule,
     FormsModule,
+    BrowserModule
   ],
   declarations: [
     FooterComponent,
