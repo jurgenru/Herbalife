@@ -1,8 +1,20 @@
 <form [formGroup]="schedule" (ngSubmit)="post()">
   <div class="form-group">
     <div class="modal-content">
-      <div class="modal-header">
-        <h3>{{ title }}</h3>
+      <div class="row">
+        <div class="col-10">
+          <div class="modal-header">
+            <h3>{{ title }}</h3>
+          </div>
+        </div>
+        <div class="col text-center">
+          <br />
+          <i
+            class="fas fa-times-circle fa-lg"
+            (click)="close()"
+            ngbTooltip="cerrar"
+          ></i>
+        </div>
       </div>
       <div class="modal-body">
         <div class="row text-center">
@@ -10,7 +22,7 @@
             <label>Escoge el día que prefieres la reunion</label>
             <ngb-datepicker
               #dp
-              [(ngModel)]="model"
+              formControlName="day"
               (navigate)="date = $event.next"
               (click)="generateDay(date)"
             ></ngb-datepicker>
@@ -18,7 +30,12 @@
           <div class="col text-left">
             <form [formGroup]="typeForm">
               <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-              <select class="text-center" id="mode" formControlName="type" class="form-control">
+              <select
+                class="text-center"
+                id="mode"
+                formControlName="type"
+                class="form-control"
+              >
                 <option *ngFor="let c of types">{{ c }}</option>
               </select>
             </form>
@@ -95,7 +112,6 @@
                 <small *ngIf="emailField.errors.email" class="text-danger">
                   Debe ser un <strong>correo electronico</strong>
                 </small>
-                <br />
                 <br />
               </div>
             </div>
@@ -177,12 +193,6 @@
               >
                 {{ timePick.data[0].timeJ }}
               </button>
-              <!-- <button
-                    class="btn btn-sm btn-outline-primary mr-2"
-                    (click)="selectToday()"
-                  >
-                    Select Today
-                  </button> -->
             </div>
             <div class="col">
               <h5>{{ timePick.data[1].afternoon }}</h5>
@@ -310,7 +320,6 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-danger" (click)="close()">Cancel</button>
         <button
           type="submit"
           class="btn btn-primary"

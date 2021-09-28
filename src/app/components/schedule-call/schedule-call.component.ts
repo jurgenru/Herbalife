@@ -38,7 +38,7 @@ export class ScheduleCallComponent
     private pickTime: PicktimeService
   ) {
     super();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
     this.typeForm = new FormGroup({
       type: new FormControl(null),
@@ -83,9 +83,6 @@ export class ScheduleCallComponent
 
   get emailField() {
     return this.schedule.get("email");
-  }
-  get typeField() {
-    return this.schedule.get("type");
   }
 
   generateTime(data) {
