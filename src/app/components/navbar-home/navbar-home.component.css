@@ -34,11 +34,11 @@
 }
 
 .icon {
-  width: 67px;
-  top: 7px;
-  position: relative;
-  border-radius: 42px;
-  height: 56px;
+  width: 140px;
+  top: 16px;
+  position: absolute;
+  border-radius: 83px;
+  height: 140px;
 }
 
 .notificationItem {
