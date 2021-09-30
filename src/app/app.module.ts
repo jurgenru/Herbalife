@@ -34,6 +34,7 @@ import { OrderService } from "./services/order.service";
 import { CommentaryService } from "./services/commentary.service";
 import { MomentModule } from 'angular2-moment';
 import * as moment  from 'moment';
+import { UploadFileService } from "./services/upload-file.service";
 import { NotificationService } from "./services/notification.service";
 moment.locale('es');
 
@@ -68,6 +69,7 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
+    UploadFileService,
     NotificationService,
     {
       provide: HTTP_INTERCEPTORS,

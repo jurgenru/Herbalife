@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
 
     get() {
         this.userService.me().subscribe((data: any) => {
-            const filter = `{"fields": {"id": true, "deliveryMethod": true, "total": true, "created": true, "purcharseId": true}, "order":["id DESC"]}`;
+            const filter = `{"fields": {"id": true, "deliveryMethod": true, "total": true, "created": true, "status": true, "purcharseId": true}, "order":["id DESC"]}`;
             this.userService.getOrderById(data.id, filter).subscribe((ord: any) => {
                 ord.forEach(element => {
                     this.userService.getProfileById(element.purcharseId).subscribe((pro: any) => {

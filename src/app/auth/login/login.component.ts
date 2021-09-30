@@ -45,14 +45,14 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
         case 'customer':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/customer/view']);
+            this.router.navigate(['/']);
             this.spinner.stop();
           }, elapsed);
           break;
         case 'admin':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
             this.isLogged();
             this.spinner.stop();
           }, elapsed);

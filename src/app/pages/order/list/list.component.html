@@ -18,9 +18,10 @@
                         <table class="table table-bordered table-striped">
                             <thead class="text-primary">
                                 <tr>
-                                    <th class="text-center">Nombre del comprador</th>
+                                    <th class="text-center">Nombre Comprador</th>
                                     <th>Metodo de envio</th>
                                     <th>Total</th>
+                                    <th>Estado</th>
                                     <th class="text-center">Fecha de creacion</th>
                                     <th class="text-right">Acciones</th>
                                 </tr>
@@ -29,18 +30,24 @@
                                 <tr
                                     *ngFor="let list of lists | filterOrder: filterPost | paginate: {itemsPerPage: 100, currentPage: pageActual}">
                                     <td class="text-center">{{list.names}}</td>
-                                    <th class="text-center">{{list.deliveryMethod}}</th>
-                                    <th class="text-center">{{list.total}}</th>
+                                    <td class="text-center">{{list.deliveryMethod}}</td>
+                                    <td class="text-center">{{list.total}}</td>
+                                    <td>
+                                        <div [ngSwitch]="list.status">
+                                            <span *ngSwitchCase="false" class="text-center">en espera</span>
+                                            <span *ngSwitchCase="true" class="text-center">vendido</span>
+                                         </div>
+                                    </td>
                                     <td class="text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
                                     <td class=" text-right">
                                         <button class=" btn btn-success btn-link btn-sm btn-icon" type="button"
                                             placement="top" ngbTooltip="ver" container="body"
                                             [routerLink]="['/order/view', list.id]"><i
                                                 class="tim-icons icon-paper"></i></button>
-                                        <button class="btn btn-warning btn-link btn-sm" type="button" placement="top"
+                                        <!-- <button class="btn btn-warning btn-link btn-sm" type="button" placement="top"
                                             ngbTooltip="editar" container="body"
                                             [routerLink]="[ '/order/edit', list.id ]"><i
-                                                class=" tim-icons icon-pencil"></i></button>
+                                                class=" tim-icons icon-pencil"></i></button> -->
                                         <button class="btn btn-danger btn-link btn-sm" (click)="showDelete(content)"
                                             type="button" placement="top" ngbTooltip="eliminar" container="body"><i
                                                 class=" tim-icons icon-trash-simple"></i></button>
