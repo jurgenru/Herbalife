@@ -12,12 +12,11 @@ import {
   NgbDate,
 } from "@ng-bootstrap/ng-bootstrap";
 import { PicktimeService } from "src/app/services/pickTime.service";
-import { SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
-import { NgxUiLoaderService } from "ngx-ui-loader";
 import { UserService } from "src/app/services/user.service";
 import { AppointmentService } from "src/app/services/appointment.service";
 import { Router } from "@angular/router";
+import { NgxUiLoaderService } from "ngx-ui-loader";
 
 export interface AlertModel {
   title: string;
@@ -40,16 +39,17 @@ export class ScheduleCallComponent
   toDate: NgbDate;
   date: { year: number; month: number };
   btnBlock: boolean = false;
+  status: boolean = true;
 
   constructor(
     private calendar: NgbCalendar,
     private formBuilder: FormBuilder,
     private pickTime: PicktimeService,
     private toastr: ToastrService,
-    private spinner: NgxUiLoaderService,
     private userService: UserService,
     private appointmentService: AppointmentService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxUiLoaderService
   ) {
     super();
     // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -72,7 +72,7 @@ export class ScheduleCallComponent
     this.timePick = this.pickTime;
   }
 
-  schedule = this.formBuilder.group({
+  appointment = this.formBuilder.group({
     names: ["", Validators.required],
     phoneNumber: [
       "",
@@ -85,27 +85,27 @@ export class ScheduleCallComponent
   });
 
   get nameField() {
-    return this.schedule.get("name");
+    return this.appointment.get("names");
   }
 
   get cellphoneField() {
-    return this.schedule.get("cellphone");
+    return this.appointment.get("phoneNumber");
   }
 
   get emailField() {
-    return this.schedule.get("email");
+    return this.appointment.get("email");
   }
 
   generateTime(data) {
     this.btnBlock = true;
-    this.schedule.value.time = data;
+    this.appointment.value.hour = data;
     console.log(data);
   }
 
   generateDay(data) {
     data = this.calendar.getToday();
     // (data) => `${data.year}-${data.month}-${data.day}`;
-    this.schedule.value.day = data;
+    this.appointment.value.schedule = JSON.stringify(data);
     console.log(data);
   }
 
@@ -119,9 +119,10 @@ export class ScheduleCallComponent
     this.spinner.start();
 
     this.userService.me().subscribe((user: any) => {
-      this.schedule.value.userId = user.id;
-      console.log(this.schedule.value);
-      this.appointmentService.post(this.schedule.value).subscribe(
+      this.appointment.value.userId = user.id;
+      this.appointment.value.status = this.status;
+      console.log(this.appointment.value);
+      this.appointmentService.post(this.appointment.value).subscribe(
         (data) => {
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
