@@ -7,6 +7,7 @@ import { ProfileService } from "src/app/services/profile.service";
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from "src/app/services/cart.service";
 import { ManagerService } from "src/app/services/manager.service";
+import { NotificationService } from "src/app/services/notification.service";
 
 @Component({
   selector: "app-navbar-home",
@@ -26,10 +27,13 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   user: any;
   image: any;
   status: boolean;
+  notifications: any;
 
   public totalItem: number = 0;
   role: any;
   icon: any;
+  countNot: number;
+  showNot: any;
 
   constructor(
     location: Location,
@@ -40,7 +44,8 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
     private profileService: ProfileService,
     private toastr: ToastrService,
     private cartService: CartService,
-    private managerService: ManagerService
+    private managerService: ManagerService,
+    private notificationService: NotificationService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -240,6 +245,8 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
       this.userService.me().subscribe((user: any) => {
         this.status = true;
         this.user = user;
+        this.lengthNotification();
+        this.getNotifications();
         const filter = `{"fields": {"id": true}}`;
         this.userService.getById(user.id, filter).subscribe((data: any) => {
           this.role = data.role;
@@ -284,6 +291,44 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
         this.icon = element.icon;
       });
     });
+  }
+
+  getNotifications() {
+    const filter = `{"fields":{"modified": false}, "order":["id DESC"]}`;
+    this.userService.getNotificationById(this.user.id, filter).subscribe((us: any) => {
+      this.notifications = us;
+      this.showNot = us.length;
+    });
+  }
+
+  lengthNotification() {
+    const filter = `{"fields":{"id": true, "status": true}, "where":{"status":"false"}}`;
+    this.userService.getNotificationById(this.user.id, filter).subscribe((not: any) => {
+      this.countNot = not.length;
+    });
+  }
+
+  viewNotification(event, id, content, reason, status) {
+    if (status === false) {
+      const not = {
+        status: true
+      }
+      this.notificationService.update(id, not).subscribe(up => {
+        this.countNot = 0;
+        event.path[3].style.backgroundColor = '#ffffff';
+      });
+    }
+
+    switch (reason) {
+      case 'article':
+        this.router.navigate(['/customer/blog/detail/', content]);
+        break;
+      case 'order':
+        this.router.navigate(['/order/view/', content]);
+        break;
+      default:
+        break;
+    }
   }
 
 }

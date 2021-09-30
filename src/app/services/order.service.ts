@@ -16,4 +16,8 @@ export class OrderService {
   getById(id){
     return this.http.get(`${environment.apiUrl}orders/${id}`).pipe()
   }
+
+  delete(id) {
+    return this.http.delete(`${environment.apiUrl}orders/${id}`).pipe();
+  }
 }

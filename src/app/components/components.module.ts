@@ -17,6 +17,7 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MomentModule } from "angular2-moment";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     NgxUiLoaderModule,
     SimpleModalModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    MomentModule
   ],
   declarations: [
     FooterComponent,

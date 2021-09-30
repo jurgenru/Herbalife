@@ -59,4 +59,13 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}users/${id}/manager`).pipe();    
     }
 
+    getNotificationById(id, filter) {
+      return this.http.get(`${environment.apiUrl}users/${id}/notifications?filter=${filter}`).pipe();    
+    }
+
+    getOrderById(id, filter) {
+      return this.http.get(`${environment.apiUrl}users/${id}/orders?filter=${filter}`).pipe();    
+
+    }
+
 }
