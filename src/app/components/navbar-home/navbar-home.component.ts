@@ -207,6 +207,28 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     window.removeEventListener("resize", this.updateColor);
   }
+  changeNavbarColor(color) {
+    var navbar = document.getElementsByClassName('navbar')[0];
+    var mainPanel = document.getElementsByClassName('main-panel')[0];
+
+    this.sidebarColor = color;
+
+    if (navbar != undefined) {
+      navbar.setAttribute('data', color);
+    }
+    if (mainPanel != undefined) {
+      mainPanel.setAttribute('data', color);
+    }
+  }
+  changeButton(color) {
+    var buttons = document.getElementsByClassName('btn-theme');
+       for (var i = 0; i < buttons.length; i++) {
+      buttons[i].setAttribute("data", color);
+    }
+    // if (buttons != undefined) {
+    //   buttons.setAttribute('data', color);
+    // }
+  }
 
   changeSidebarColor(color) {
     var sidebar = document.getElementsByClassName('sidebar')[0];
@@ -223,7 +245,9 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   }
 
   changeDashboardColor(color, color2) {
-    this.changeSidebarColor(color2)
+    this.changeSidebarColor(color2);
+    this.changeNavbarColor(color2);
+    this.changeButton(color2)
     var body = document.getElementsByTagName('body')[0];
 
     if (body && color === 'white-content') {

@@ -37,18 +37,48 @@
                         <p class="d-lg-none">Temas</p>
                     </a>
                     <ul class="dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
-                        <li class="nav-link">
-                            <a class="nav-item" href="javascript:void(0)"
-                                (click)="changeDashboardColor('white-content', 'blue')" ngbDropdownItem>
-                                light theme
-                            </a>
-                        </li>
-                        <li class="nav-link">
-                            <a class="nav-item" href="javascript:void(0)"
-                                (click)="changeDashboardColor('black-content', 'red')" ngbDropdownItem>
-                                dark theme
-                            </a>
-                        </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('black-content', 'red')"
+                          ngbDropdownItem>
+                          dark theme
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('white-content', 'purple')"
+                          ngbDropdownItem>
+                          purple white
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('black-content', 'purple')"
+                          ngbDropdownItem>
+                          purple dark
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('white-content', 'yellow')"
+                          ngbDropdownItem>
+                          yellow white
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('black-content', 'yellow')"
+                          ngbDropdownItem>
+                          yellow dark
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('white-content', 'green')"
+                          ngbDropdownItem>
+                          green white
+                        </a>
+                      </li>
+                      <li class="nav-link">
+                        <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('dark-content', 'green')"
+                          ngbDropdownItem>
+                          green dark
+                        </a>
+                      </li>
                     </ul>
                 </li>
                 <li class="nav-item" *ngIf="user && role != 'admin' && status">
