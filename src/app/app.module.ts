@@ -34,6 +34,7 @@ import { OrderService } from "./services/order.service";
 import { CommentaryService } from "./services/commentary.service";
 import { MomentModule } from 'angular2-moment';
 import * as moment  from 'moment';
+import { AppointmentService } from "./services/appointment.service";
 moment.locale('es');
 
 @NgModule({
@@ -67,6 +68,7 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
+    AppointmentService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
