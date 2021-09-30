@@ -17,7 +17,12 @@ export class HomeComponent implements OnInit {
     lection: any;
     statements: any;
     promotions: any;
-
+    futureDate: any;
+    key = 'cd';
+    days: any;
+    hours: any;
+    min: any;
+    sec: any;
     constructor(
         private userService: UserService,
         private trainerService: TrainerService,
@@ -27,7 +32,32 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (localStorage.getItem(this.key) === null) {
+            this.setFutureDate();
+          }
     }
+    setFutureDate(){
+        var timeleft = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+        var countDown  = timeleft*24*60*60*1000;
+        this.futureDate  = new Date().getTime() + countDown;
+        localStorage.setItem('cd', this.futureDate.toString());
+    }
+    getFutureDate() {
+        return parseInt(localStorage.getItem(this.key));
+      }
+    
+    x = setInterval(()=>{
+        var today = new Date().getTime();
+        var distance = this.getFutureDate()-today;
+        this.days = Math.floor(distance/(1000*60*60*24));
+        this.hours = Math.floor((distance %(1000*60*60*24))/(1000*60*60));
+        this.min = Math.floor((distance %(1000*60*60))/(1000*60));
+        this.sec = Math.floor((distance %(1000*60))/1000);
+        if(distance <0){
+            this.setFutureDate();
+        }
+    },1000)
+
 
     getContent() {
         const start = new Date();
