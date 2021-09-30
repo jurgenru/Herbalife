@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
     }
 
     getContent() {
-        const start = new Date();
         this.spinner.start();
+        const start = new Date();
         const filter = `{"fields": {"id": true, "title": true, "image": true, "created": true}, "limit": 6 , "order":["created DESC"]}`;
         this.promotionService.get().subscribe(pro => {
             this.promotions = pro;
