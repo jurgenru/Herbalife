@@ -342,13 +342,14 @@
       @include linear-gradient($info-states, $info);
     }
     &[data="green"]{
-      @include linear-gradient($success-states, $success);
+      // @include linear-gradient($success-states, $success);
+      @include linear-gradient(rgb(22, 231, 15), #13c00d)
     }
     &[data="purple"]{
-      @include linear-gradient(purple, #0c2646);
+      @include linear-gradient(purple, #b948bd);;
     }
     &[data="yellow"]{
-      @include linear-gradient(yellow, #d34a0b);
+      @include linear-gradient(rgb(207, 162, 13), #e4d50b);
     }
 
     .user{
