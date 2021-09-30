@@ -6,7 +6,6 @@ import { ServiceService } from "src/app/services/service.service";
 import { StatementService } from "src/app/services/statement.service";
 import { StoreService } from "src/app/services/store.service";
 import { TrainerService } from "src/app/services/trainer.service";
-import { UserService } from "src/app/services/user.service";
 
 @Component({
     selector: 'app-home',
@@ -24,7 +23,6 @@ export class HomeComponent implements OnInit {
     promotions: any;
 
     constructor(
-        private userService: UserService,
         private trainerService: TrainerService,
         private spinner: NgxUiLoaderService,
         private promotionService: PromotionService,

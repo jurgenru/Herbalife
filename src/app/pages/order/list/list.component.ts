@@ -13,6 +13,7 @@ export class ListComponent implements OnInit {
 
     filterPost = '';
     lists: any = [];
+    pageActual = 1;
 
     constructor(
         private userService: UserService,

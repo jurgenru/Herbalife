@@ -65,7 +65,16 @@ export class UserService {
 
     getOrderById(id, filter) {
       return this.http.get(`${environment.apiUrl}users/${id}/orders?filter=${filter}`).pipe();    
+    }
 
+    registerWithGoogle(body) {
+      return this.http.post(`${environment.apiUrl}users/signup-google`, body).pipe(
+        );
+    }
+  
+    registerWithFacebook(body) {
+      return this.http.post(`${environment.apiUrl}users/signup-facebook`, body).pipe(
+        );
     }
 
 }
