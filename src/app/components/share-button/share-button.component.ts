@@ -30,6 +30,14 @@ export class ShareButtonComponent implements OnInit {
         searchParams.set('url', url + this.shareUrl);
         this.navUrl =  'https://twitter.com/share?text='+this.text+'&' + searchParams;
         break;
+	  case 'linkedin':
+        searchParams.set('url', url + this.shareUrl);
+        this.navUrl =  'http://www.linkedin.com/shareArticle?mini=true&' + searchParams;
+        break;
+	  case 'whatsapp':
+        searchParams.set('url', url + this.shareUrl);
+        this.navUrl =  'https://api.whatsapp.com/send?text='+this.text +' '+ searchParams;
+        break;
     }
     return window.open(this.navUrl, "sharer", "toolbar=20,status=0,width=500,height=495");
   }

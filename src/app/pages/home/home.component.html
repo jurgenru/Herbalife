@@ -29,7 +29,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button [text]="service.title" [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
+                                    <app-share-button [text]="['Ofrecemos servicios en '+service.title]" [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button [text]="store.title" [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
+                                    <app-share-button [text]="['Variedad de productos en nuestra tienda de '+store.title]" [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,8 @@
                             </a>
                             <div class=" card-footer">
                                 <div class=" button-container">
-                                    <app-share-button [text]="trainer.names" [shareUrl]="['customer/trainer/view/'+trainer.id]"></app-share-button>
+									compartir :
+                                    <app-share-button [text]="['Conoce al entrenador/a '+trainer.names]" [shareUrl]="['customer/trainer/view/'+trainer.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +110,7 @@
                             <div class="card-footer">
                                 <div class="button-container">
                                     compartir :
-                                    <app-share-button [text]="blog.name" [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
+                                    <app-share-button [text]="['Revisa nuestro blog '+blog.name]" [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
                                 </div>
                             </div>
                         </div>
