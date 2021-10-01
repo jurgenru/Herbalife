@@ -34,12 +34,10 @@ import * as moment  from 'moment';
 import { UploadFileService } from "./services/upload-file.service";
 import { NotificationService } from "./services/notification.service";
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { InscriptionService } from "./services/inscription-service";
 import { AppointmentService } from "./services/appointment.service";
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 moment.locale('es');
 
 @NgModule({
@@ -57,6 +55,7 @@ moment.locale('es');
     NgxUiLoaderModule,
     NgxPaginationModule,
     SocialLoginModule,
+    NgxQRCodeModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],

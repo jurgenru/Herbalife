@@ -70,12 +70,11 @@ export class ViewComponent implements OnInit {
         userId: user.id,
         serviceId: this.service.id
       }
-      this.inscriptionService.post(ins).subscribe(sus => {
+      // this.inscriptionService.post(ins).subscribe(sus => {
         this.router.navigate(['/customer/service/confirmation', this.service.id]);
-        console.log(this.service.id);
-      }, error => {
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      });
+      // }, error => {
+      //   this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      // });
     }, error => {
       this.showRegister();
     });
