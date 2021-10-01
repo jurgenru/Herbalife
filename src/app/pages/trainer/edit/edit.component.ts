@@ -73,7 +73,7 @@ export class EditComponent implements OnInit {
   }
 
   showIcon() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.updateIcon = 1;
       this.trainer.icon = data;
@@ -81,7 +81,7 @@ export class EditComponent implements OnInit {
   }
 
   showImage() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.image = data;
       this.updateImage = 1;
       this.lection.image = data;
@@ -89,7 +89,7 @@ export class EditComponent implements OnInit {
   }
 
   showBanner() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.banner = data;
       this.updateBanner = 1;
       this.trainer.banner = data;

@@ -38,6 +38,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import { InscriptionService } from "./services/inscription-service";
 moment.locale('es');
 
 @NgModule({
@@ -73,6 +74,7 @@ moment.locale('es');
     OrderService,
     CommentaryService,
     UploadFileService,
+    InscriptionService,
     NotificationService,
     {
       provide: 'SocialAuthServiceConfig',

@@ -40,7 +40,7 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
 
   login() {
     const start = new Date();
-    this.spinner.start();
+    // this.spinner.start();
     this.userService.login(this.user.value).subscribe((data: any) => {
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -49,15 +49,15 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
             this.router.navigate(['/']);
-            this.spinner.stop();
+            // this.spinner.stop();
           }, elapsed);
           break;
         case 'admin':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/']);
+            this.router.navigate(['/dashboard']);
             this.isLogged();
-            this.spinner.stop();
+            // this.spinner.stop();
           }, elapsed);
           break;
         default:

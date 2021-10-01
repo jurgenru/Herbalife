@@ -48,23 +48,25 @@
               </div>
               <div class="row">
                 <div class="col-sm-6 mx-auto text-center">
-                  <div *ngIf="service.type == 'test'">
-                    <h4>¿ Tienes curiosidad por saber si tu podrías hacerlo ? <br>
-                      Haz este test y descubrelo</h4>
-                    <button type="button" class="btn btn-success" routerLink="/customer/test">
-                      COMENZAR
-                    </button>
-                  </div>
-                  <div *ngIf="service.type == 'auto'">
-                    <h4>¿ Desea hacer una autoevaluacion ?</h4>
-                    <button type="button" class="btn btn-success" routerLink="/customer/autotest/view">
-                      AUTO EVALUACIÓN
-                    </button>
-                  </div>
-                  <div *ngIf="service.type == 'normal'">
-                    <button type="button" class="btn btn-success">
-                      ACCEDER AL PAQUETE
-                    </button>
+                  <div [ngSwitch]="service.type">
+                    <div *ngSwitchCase="'test'">
+                      <h4>¿ Tienes curiosidad por saber si tu podrías hacerlo ? <br>
+                        Haz este test y descubrelo</h4>
+                      <button type="button" class="btn btn-success" (click)="registerServiceTest()">
+                        COMENZAR DIAGNOSTICO
+                      </button>
+                    </div>
+                    <div *ngSwitchCase="'auto'">
+                      <h4>¿ Desea hacer una autoevaluacion ?</h4>
+                      <button type="button" class="btn btn-success" (click)="registerServiceAuto()">
+                        AUTO EVALUACIÓN
+                      </button>
+                    </div>
+                    <div *ngSwitchCase="'normal'">
+                      <button type="button" class="btn btn-success" (click)="registerServiceNormal()">
+                        Registrarse al servicio
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
