@@ -105,7 +105,6 @@ export class EditComponent implements OnInit {
   showProduct(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.productImage[index] = data;
-      //((this.productForm.get('product') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
 
@@ -193,8 +192,8 @@ notification(content, time, type, from, align) {
     positionClass: 'toast-' + from + '-' + align
   });
 }
-redirectFair() {
 
+redirectFair() {
   localStorage.setItem('tokenFV', 'u001s34u23a'); 
   localStorage.setItem('idFV', '0001'); 
   
