@@ -40,6 +40,7 @@ export class ScheduleCallComponent
   btnBlock: boolean = false;
   newTime: any;
   newSchedule: any;
+  finalDate: any;
 
   constructor(
     private calendar: NgbCalendar,
@@ -86,23 +87,23 @@ export class ScheduleCallComponent
   generateTime(time) {
     this.btnBlock = true;
     this.newTime = time;
-    this.appointment.value.hour = this.newTime;
   }
 
   generateDay(schedule) {
     this.newSchedule = schedule;
     this.newSchedule = this.calendar.getToday();
-    let finalDate =
+    this.finalDate =
       this.newSchedule.year +
       "-" +
       this.newSchedule.month +
       "-" +
       this.newSchedule.day;
-    this.appointment.value.schedule = finalDate;
   }
 
   post() {
     // this.appointment.value.type = this.typeForm.value.type;
+    this.appointment.value.hour = this.newTime;
+    this.appointment.value.schedule = this.finalDate;
     const start = new Date();
 
     this.userService.me().subscribe((user: any) => {

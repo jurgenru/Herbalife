@@ -24,7 +24,7 @@
               #dp
               formControlName="schedule"
               (navigate)="date = $event.next"
-              (click)="generateDay(date)"
+              (click)="generateDay($event.next)"
             ></ngb-datepicker>
           </div>
           <div class="col text-left">
