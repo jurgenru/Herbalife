@@ -32,14 +32,6 @@ export class CreateComponent implements OnInit {
     description: ["", Validators.required],
   });
 
-  showAlert() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
-      (data) => {
-        this.imageContent = data;
-      }
-    );
-  }
-
   get nameField() {
     return this.statement.get("name");
   }
@@ -72,7 +64,7 @@ export class CreateComponent implements OnInit {
   }
 
   imageCropper() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
         this.imageContent = data;
       }

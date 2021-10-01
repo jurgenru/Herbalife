@@ -8,6 +8,7 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { HomeComponent } from "src/app/pages/home/home.component";
 import { UserLayoutRoutes } from "./user-layout.routing";
 import { TestComponent } from "src/app/stage/test/test.component";
+import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
     imports: [
@@ -17,10 +18,11 @@ import { TestComponent } from "src/app/stage/test/test.component";
         HttpClientModule,
         NgbModule,
         NgxUiLoaderModule,
+        ComponentsModule,
     ],
     declarations: [
         HomeComponent,
-        TestComponent
+        TestComponent,
     ]
 })
 export class UserLayoutModule { }

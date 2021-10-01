@@ -38,7 +38,7 @@ export class ViewComponent implements OnInit {
         this.blog = data;
         this.blogService.getArticleById(data.id).subscribe((art: any) => {
           art.forEach(element => {
-            const filter = `{"fields": {"id": true}}`;
+            const filter = `{"fields": {"id": true}, "order":["id DESC"]}`;
             this.articleService.getCommentaryById(element.id, filter).subscribe((comen: any) => {
               element.countComment = comen.length;
               const end = new Date();

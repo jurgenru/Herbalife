@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from "src/app/services/user.service";
 import { ManagerService } from "src/app/services/manager.service";
+import { NotificationService } from "src/app/services/notification.service";
 
 @Component({
   selector: "app-navbar",
@@ -11,13 +12,16 @@ import { ManagerService } from "src/app/services/manager.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   user: any = {};
   private toggleButton: any;
   private sidebarVisible: boolean;
   public sidebarColor: string = "red";
+  status: boolean;
+  notifications: any;
+  showNot: any;
+  countNot: number;
 
   public isCollapsed = true;
 
@@ -30,7 +34,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private modalService: NgbModal,
     private userService: UserService,
-    private managerService: ManagerService
+    private managerService: ManagerService,
+    private notificationService: NotificationService
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -59,7 +64,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.mobile_menu_visible = 0;
       }
     });
-    // this.me();
+    this.me();
   }
 
   collapse() {
@@ -232,15 +237,53 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate(['/']);
   }
 
-
   me() {
     this.userService.me().subscribe((data: any) => {
       this.managerService.getByUserId(data.id).subscribe((man: any) => {
+        this.getNotifications(data.id);
+        this.lengthNotification(data.id);
         man.forEach(element => {
           this.image = element.image;
         });
       });
     });
+  }
+
+  getNotifications(id) {
+    const filter = `{"fields":{"modified": false}, "order":["id DESC"]}`;
+    this.userService.getNotificationById(id, filter).subscribe((us: any) => {
+      this.notifications = us;
+      this.showNot = us.length;
+    });
+  }
+
+  lengthNotification(id) {
+    const filter = `{"fields":{"id": true, "status": true}, "where":{"status":"false"}}`;
+    this.userService.getNotificationById(id, filter).subscribe((not: any) => {
+      this.countNot = not.length;
+    });
+  }
+
+  viewNotification(event, id, content, reason, status) {
+    if (status === false) {
+      const not = {
+        status: true
+      }
+      this.notificationService.update(id, not).subscribe(up => {
+        this.countNot = 0;
+        event.path[3].style.backgroundColor = '#ffffff';
+      });
+    }
+    switch (reason) {
+      case 'article':
+        this.router.navigate(['/customer/blog/detail/', content]);
+        break;
+      case 'order':
+        this.router.navigate(['/order/view/', content]);
+        break;
+      default:
+        break;
+    }
   }
 
 }

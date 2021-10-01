@@ -99,7 +99,7 @@ export class EditComponent implements OnInit {
 
   showImage() {
     this.simpleModalService
-      .addModal(ImageCropperComponent)
+      .addModal(ImageCropperComponent, {format: 1/1})
       .subscribe((data) => {
         this.image = data;
         this.updateImage = 1;

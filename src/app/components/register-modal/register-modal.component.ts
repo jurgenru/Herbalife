@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/services/user.service";
 import { LoginModalComponent } from "../login-modal/login-modal.component";
+import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
 
 export interface AlertModel {
   token?: string;
@@ -22,7 +23,8 @@ export class RegisterModalComponent extends SimpleModalComponent<AlertModel, nul
     private simpleModalService: SimpleModalService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private authService: SocialAuthService
   ) {
     super();
   }
@@ -85,6 +87,35 @@ export class RegisterModalComponent extends SimpleModalComponent<AlertModel, nul
         }
       });
     }, 500);
+  }
+
+  signInWithGoogle() {
+    const start = new Date();
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
+      const user = {
+        email: data.email,
+        username: (data.firstName.substr(0,7)).toLowerCase(),
+        password: data.id
+      }
+      this.userService.registerWithGoogle(user).subscribe((user: any) => {
+        const log = {
+          email: data.email,
+          password: data.id
+        }
+        this.userService.login(log).subscribe((log: any) => {
+          const end = new Date();
+          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+          setTimeout(() => {
+            this.result = log.token;
+            localStorage.setItem('herTok', log.token);
+          }, elapsed);
+        });
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span>El correo ya ha sido registrado, intente con otro', '5000', 'danger', 'top', 'center');
+      });
+    }, error => {
+
+    });
   }
 
 }

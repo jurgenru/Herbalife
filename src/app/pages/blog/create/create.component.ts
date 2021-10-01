@@ -74,19 +74,19 @@ export class CreateComponent implements OnInit {
   }
 
   showIcon() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
     });
   }
 
   showBanner() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.banner = data;
     });
   }
 
   showBlog(index: any) {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.articleImage[index] = data;
       ((this.articleForm.get('article') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });

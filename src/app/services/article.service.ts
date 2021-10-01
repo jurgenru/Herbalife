@@ -25,6 +25,4 @@ export class ArticleService {
     return this.http.get(`${environment.apiUrl}articles/${id}/commentaries?filter=${filter}`).pipe();
   }
 
-
-
 }

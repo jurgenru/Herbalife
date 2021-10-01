@@ -2,25 +2,9 @@
     width: 100%;
     height: 530px !important;
 }
-/* td #day{
-    border: 5px solid;
-    width:100px;
-}
-td #hour{
-    border: 5px solid;
-    width:100px;
-}
-td #minute{
-    border: 5px solid;
-    width:100px;
-}
-td #second{
-    border: 5px solid;
-    width:100px;
-} */
 
 .countdown{
-    /* border: 5px solid; */
+    
     margin: 0 auto;
     text-align: center;
     border-collapse: separate;
@@ -32,4 +16,12 @@ td #second{
 .time td{
     border: 5px solid;
     width:100px;
+}
+
+
+@media (min-width: 768px) { 
+    -image-promotion {
+        width: 100%;
+        height: 530px !important;
+    }
 }
