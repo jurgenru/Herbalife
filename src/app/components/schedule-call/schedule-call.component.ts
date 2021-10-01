@@ -48,8 +48,7 @@ export class ScheduleCallComponent
     private toastr: ToastrService,
     private userService: UserService,
     private appointmentService: AppointmentService,
-    private router: Router,
-    private spinner: NgxUiLoaderService
+    private router: Router
   ) {
     super();
     // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -116,7 +115,6 @@ export class ScheduleCallComponent
     // );
     // this.schedule.value.type = this.typeForm.value.type;
     const start = new Date();
-    this.spinner.start();
 
     this.userService.me().subscribe((user: any) => {
       this.appointment.value.userId = user.id;
@@ -127,11 +125,10 @@ export class ScheduleCallComponent
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
-            this.spinner.stop();
             this.router.navigate(["home"]);
             this.notification(
-              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su cita de consulta',
-              "5000",
+              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su cita de consulta, por favor espere a que lo accepten',
+              "6000",
               "success",
               "top",
               "center"
@@ -139,7 +136,6 @@ export class ScheduleCallComponent
           }, elapsed);
         },
         (error) => {
-          this.spinner.stop();
           this.notification(
             '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su cita de consulta, intente nuevamente',
             "5000",
