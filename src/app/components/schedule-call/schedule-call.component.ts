@@ -89,20 +89,28 @@ export class ScheduleCallComponent
     this.newTime = time;
   }
 
-  generateDay(schedule) {
-    this.newSchedule = schedule;
-    this.newSchedule = this.calendar.getToday();
+  // generateDay(schedule) {
+  //   this.newSchedule = schedule;
+  //   this.newSchedule = this.calendar.getToday();
+  //   this.finalDate =
+  //     this.newSchedule.year +
+  //     "-" +
+  //     this.newSchedule.month +
+  //     "-" +
+  //     this.newSchedule.day;
+  //   console.log("Date", this.finalDate);
+  // }
+
+  onModelChange($event) {
+    console.log("Model change", $event);
+    this.newSchedule = $event;
     this.finalDate =
       this.newSchedule.year +
       "-" +
       this.newSchedule.month +
       "-" +
       this.newSchedule.day;
-    console.log("Date", this.finalDate);
-  }
-
-  onModelChange($event) {
-    console.log("Model change", $event);
+    console.log("date: ", this.finalDate);
   }
 
   post() {
