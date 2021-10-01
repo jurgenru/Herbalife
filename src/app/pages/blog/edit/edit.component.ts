@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
@@ -22,15 +22,18 @@ export class EditComponent implements OnInit {
   dataArticles: any;
   articleImage: any = [];
   articleTitle: any = [];
+  iconImage: any;
+  portraitImage: any;
+
   articleDescription: any = [];
   title: any;
   articleForm: any = {};
-
+  newArticleImage: any=[];
   updateIcon: number = 2;
   updateBanner: number = 2;
   icon: any;
   banner: any;
-
+  add: any;
   constructor(
     private blogService: BlogService,
     private simpleModalService: SimpleModalService,
@@ -38,7 +41,8 @@ export class EditComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private formBuilder: FormBuilder,
   ) {
     this.get();
   }
@@ -67,7 +71,9 @@ export class EditComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.createArticleForm();
+  }
 
   showIcon() {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
@@ -86,6 +92,13 @@ export class EditComponent implements OnInit {
   showBlog(index: any) {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.articleImage[index] = data;
+    });
+  }
+
+  showNewArticle(index: any){
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.newArticleImage[index] = data;
+      ((this.articleForm.get('newArticle') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
 
@@ -140,7 +153,36 @@ export class EditComponent implements OnInit {
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar, intente nuevamente', '5000', 'danger', 'top', 'center');
     });
   }
+  createArticleForm(){
+    this.articleForm = this.formBuilder.group({
+      newArticle: this.formBuilder.array([])
+    });
+  }
+  addArticle(){
+    this.add = true;
+    const FormInputs = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      image: [''],
+      blogId: [],
+      ranting: ['']
+    });
+    this.newArticle.push(FormInputs);
+  }
 
+  removeArticle(index: number) {
+   // this.countArticle--;
+    this.article.removeAt(index);
+    // if (this.countArticle < 12) {
+    //   this.btnAddArticle = false;
+    // }
+  }
+  post(){
+    console.log(this.newArticle.value);
+  }
+  get newArticle(): FormArray {
+    return this.articleForm.get('newArticle') as FormArray;
+  }
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
       timeOut: time,

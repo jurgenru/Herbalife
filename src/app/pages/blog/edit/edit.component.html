@@ -122,7 +122,76 @@
                         </div>
                     </div>
                 </div>
+                <form [formGroup]="articleForm">
+                    <div formArrayName="newArticle">
+                        <div *ngFor="let FormInputs of newArticle.controls; let i = index;">
+                            <div [formGroupName]="i">
+                                <div class="text-center">
+                                    <h4>Nuevo artículo</h4>
+                                </div>
+                                <br />
+                                <br />
+                                <div class="row">
+                                    <div class="col-12 col-md-5">
+                                        <div class="container-image">
+                                            <img src="../../../../assets/img/img_3115.jpg" alt="newArticleImage"
+                                                width="100%" height="100%" class="d-block img-fluid"
+                                                *ngIf="!newArticleImage[i]; else noNewArticleImage">
+                                            <ng-template #noNewArticleImage>
+                                                <img [src]="newArticleImage[i]" alt="" width="100%" height="100%"
+                                                    class="d-block img-fluid">
+                                            </ng-template>
+                                            <div class="overlay" (click)="showNewArticle(i)">
+                                                <div class="text text-light">
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    Agregar imagen o video al artículo
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <label> Titulo </label>
+                                        <input class=" form-control" placeholder="Coloca el titulo del artículo"
+                                            formControlName="title" type="text">
+                                        <div *ngIf="newArticle.controls[i].get('title').invalid && 
+                                        newArticle.controls[i].get('title').touched">
+                                            <small class="text-danger"> *El titulo es
+                                                <strong>requerido</strong></small>
+                                            <br>
+                                            <br>
+                                        </div>
+                                        <label>Descripcion del articulo </label>
+                                        <textarea class="form-control rounded pl-2 pr-2" [attr.id]="'Description' + i"
+                                            placeholder="Coloca el contenido del articulo" rows="6"
+                                            formControlName="description"></textarea>
+                                        <small *ngIf="newArticle.controls[i].get('description').invalid && 
+                                        newArticle.controls[i].get('description').touched" class="text-danger">
+                                            *La descripcion es <strong>requerida</strong></small>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <hr color="red" />
+                            </div>
+                            <button (click)="removeArticle(i)"
+                                            class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                            <i class="tim-icons icon-simple-delete"></i>
+                             </button>
+                        </div>
+                    </div>
+                </form>
             </div>
+            
+                <div class=" button-container pull-right">
+                    <button (click)="addArticle()" class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                        href="javascript:void(0)">
+                        <i class="tim-icons icon-simple-add"></i>
+                    </button>
+                    <br>
+                    <button *ngIf="add" class="btn btn-success btn-sm pull-right" type="button" (click)="post()"
+                        [disabled]="newArticle.invalid">Agregar articulos</button>
+                </div>
+            
         </div>
     </div>
 </div>
