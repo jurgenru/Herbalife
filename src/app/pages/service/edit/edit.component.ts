@@ -47,7 +47,8 @@ export class EditComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe((val) => {
-      this.serviceService.getById(val.id).subscribe((data: any) => {
+      const filter = `{"fields": {"modified: false}}`;
+      this.serviceService.getById(val.id, filter).subscribe((data: any) => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {

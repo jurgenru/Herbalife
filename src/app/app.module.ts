@@ -39,6 +39,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { InscriptionService } from "./services/inscription-service";
+import { AppointmentService } from "./services/appointment.service";
 moment.locale('es');
 
 @NgModule({
@@ -76,6 +77,7 @@ moment.locale('es');
     UploadFileService,
     InscriptionService,
     NotificationService,
+    AppointmentService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
