@@ -16,7 +16,6 @@ import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/services/user.service";
 import { AppointmentService } from "src/app/services/appointment.service";
 import { Router } from "@angular/router";
-import { NgxUiLoaderService } from "ngx-ui-loader";
 
 export interface AlertModel {
   title: string;
@@ -39,7 +38,8 @@ export class ScheduleCallComponent
   toDate: NgbDate;
   date: { year: number; month: number };
   btnBlock: boolean = false;
-  status: boolean = true;
+  newTime: any;
+  newSchedule: any;
 
   constructor(
     private calendar: NgbCalendar,
@@ -83,42 +83,31 @@ export class ScheduleCallComponent
     schedule: [""],
   });
 
-  get nameField() {
-    return this.appointment.get("names");
-  }
-
-  get cellphoneField() {
-    return this.appointment.get("phoneNumber");
-  }
-
-  get emailField() {
-    return this.appointment.get("email");
-  }
-
-  generateTime(data) {
+  generateTime(time) {
     this.btnBlock = true;
-    this.appointment.value.hour = data;
-    console.log(data);
+    this.newTime = time;
+    this.appointment.value.hour = this.newTime;
   }
 
-  generateDay(data) {
-    data = this.calendar.getToday();
+  generateDay(schedule) {
     // (data) => `${data.year}-${data.month}-${data.day}`;
-    this.appointment.value.schedule = JSON.stringify(data);
-    console.log(data);
+    this.newSchedule = schedule;
+    this.newSchedule = this.calendar.getToday();
+    let finalDate =
+      this.newSchedule.year +
+      "-" +
+      this.newSchedule.month +
+      "-" +
+      this.newSchedule.day;
+    this.appointment.value.schedule = finalDate;
   }
 
   post() {
-    // console.log(
-    //   this.schedule.value,
-    //   (this.schedule.value.type = this.typeForm.value.type)
-    // );
-    // this.schedule.value.type = this.typeForm.value.type;
+    // this.appointment.value.type = this.typeForm.value.type;
     const start = new Date();
 
     this.userService.me().subscribe((user: any) => {
       this.appointment.value.userId = user.id;
-      this.appointment.value.status = this.status;
       console.log(this.appointment.value);
       this.appointmentService.post(this.appointment.value).subscribe(
         (data) => {
@@ -156,5 +145,17 @@ export class ScheduleCallComponent
       toastClass: `alert alert-${type} alert-with-icon`,
       positionClass: "toast-" + from + "-" + align,
     });
+  }
+
+  get nameField() {
+    return this.appointment.get("names");
+  }
+
+  get cellphoneField() {
+    return this.appointment.get("phoneNumber");
+  }
+
+  get emailField() {
+    return this.appointment.get("email");
   }
 }
