@@ -6,12 +6,13 @@ import { TrainerService } from 'src/app/services/trainer.service';
 @Component({
   selector: 'app-trainer-view',
   templateUrl: './view.component.html',
-  styleUrls: ['./view.component.scss']
+  styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
 
   trainer: any = {};
   lection: any = {};
+  socialMedia: any = { };
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,8 @@ export class ViewComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.trainerService.getById(val.id).subscribe((data: any) => {
         this.trainer = data;
+        this.socialMedia = JSON.parse(this.trainer.socialMedia) 
+        console.log(this.socialMedia);
         this.trainerService.getLectionById(data.id).subscribe(lect => {
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -42,4 +45,7 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  socialUrl(data){
+    return window.open(data, "_blank");
+  }
 }
