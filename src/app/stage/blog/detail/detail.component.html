@@ -15,15 +15,7 @@
                         <button class="btn btn-info btn-sm pull-left" (click)="sendRating(content)">calificar</button>
                     </div>
                     <div class="button-container pull-right">
-                        <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                            <i class="fab fa-facebook fa-1"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                            <i class="fab fa-twitter fa-1"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                            <i class="fab fa-google-plus fa-1"> </i>
-                        </button>
+                        <app-share-button [text]="['Artículo: '+article.title]" [shareUrl]="['customer/blog/detail/'+article.id]"></app-share-button>
                     </div>
                 </div>
                 <br />
