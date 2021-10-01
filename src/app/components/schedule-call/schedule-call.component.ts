@@ -6,8 +6,16 @@ import {
   Validators,
 } from "@angular/forms";
 import { SimpleModalComponent } from "ngx-simple-modal";
-import { NgbDateStruct, NgbCalendar, NgbDate } from "@ng-bootstrap/ng-bootstrap";
+import {
+  NgbDateStruct,
+  NgbCalendar,
+  NgbDate,
+} from "@ng-bootstrap/ng-bootstrap";
 import { PicktimeService } from "src/app/services/pickTime.service";
+import { ToastrService } from "ngx-toastr";
+import { UserService } from "src/app/services/user.service";
+import { AppointmentService } from "src/app/services/appointment.service";
+import { Router } from "@angular/router";
 
 export interface AlertModel {
   title: string;
@@ -23,7 +31,6 @@ export class ScheduleCallComponent
 {
   typeForm: FormGroup;
   timePick: any;
-  schedule: any = {};
   title: string;
   types: string[] = ["este", "otro"];
   default: string = "este";
@@ -31,14 +38,20 @@ export class ScheduleCallComponent
   toDate: NgbDate;
   date: { year: number; month: number };
   btnBlock: boolean = false;
+  newTime: any;
+  newSchedule: any;
+  finalDate: any;
 
   constructor(
     private calendar: NgbCalendar,
     private formBuilder: FormBuilder,
-    private pickTime: PicktimeService
+    private pickTime: PicktimeService,
+    private toastr: ToastrService,
+    private userService: UserService,
+    private appointmentService: AppointmentService,
+    private router: Router
   ) {
     super();
-    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
     this.typeForm = new FormGroup({
       type: new FormControl(null),
@@ -56,54 +69,93 @@ export class ScheduleCallComponent
 
   ngOnInit(): void {
     this.timePick = this.pickTime;
-    this.createScheduleForm();
   }
 
-  createScheduleForm() {
-    this.schedule = this.formBuilder.group({
-      name: ["", Validators.required],
-      cellphone: [
-        "",
-        [Validators.required, Validators.pattern("[0-9]{3}[0-9]{2}[0-9]{3}")],
-      ],
-      email: ["", [Validators.required, Validators.email]],
-      type: [""],
-      time: [""],
-      day: [""],
+  appointment = this.formBuilder.group({
+    names: ["", Validators.required],
+    phoneNumber: [
+      "",
+      [Validators.required, Validators.pattern("[0-9]{3}[0-9]{2}[0-9]{3}")],
+    ],
+    email: ["", [Validators.required, Validators.email]],
+    // type: [""],
+    hour: [""],
+    schedule: [""],
+  });
+
+  generateTime(time) {
+    this.btnBlock = true;
+    this.newTime = time;
+  }
+
+  onModelChange($event) {
+    console.log("Model change", $event);
+    this.newSchedule = $event;
+    this.finalDate =
+      this.newSchedule.year +
+      "-" +
+      this.newSchedule.month +
+      "-" +
+      this.newSchedule.day;
+    console.log("date: ", this.finalDate);
+  }
+
+  post() {
+    // this.appointment.value.type = this.typeForm.value.type;
+    this.appointment.value.hour = this.newTime;
+    this.appointment.value.schedule = this.finalDate;
+    const start = new Date();
+
+    this.userService.me().subscribe((user: any) => {
+      this.appointment.value.userId = user.id;
+      console.log(this.appointment.value);
+      this.appointmentService.post(this.appointment.value).subscribe(
+        (data) => {
+          const end = new Date();
+          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+          setTimeout(() => {
+            this.router.navigate(["home"]);
+            this.notification(
+              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su cita de consulta, por favor espere a que lo accepten',
+              "5000",
+              "success",
+              "top",
+              "center"
+            );
+          }, elapsed);
+        },
+        (error) => {
+          this.notification(
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su cita de consulta, intente nuevamente',
+            "5000",
+            "danger",
+            "top",
+            "center"
+          );
+        }
+      );
+    });
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, "", {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: "toast-" + from + "-" + align,
     });
   }
 
   get nameField() {
-    return this.schedule.get("name");
+    return this.appointment.get("names");
   }
 
   get cellphoneField() {
-    return this.schedule.get("cellphone");
+    return this.appointment.get("phoneNumber");
   }
 
   get emailField() {
-    return this.schedule.get("email");
-  }
-  get typeField() {
-    return this.schedule.get("type");
-  }
-
-  generateTime(data) {
-    this.btnBlock = true;
-    console.log(data);
-    this.schedule.value.time = data;
-  }
-
-  generateDay(data) {
-    console.log(data);
-    data = this.calendar.getToday();
-    this.schedule.value.day = data;
-  }
-
-  post() {
-    console.log(
-      this.schedule.value,
-      (this.schedule.value.type = this.typeForm.value.type)
-    );
+    return this.appointment.get("email");
   }
 }

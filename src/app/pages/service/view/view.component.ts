@@ -17,7 +17,8 @@ export class ViewComponent implements OnInit {
     private serviceService: ServiceService
   ) {
     this.route.params.subscribe((val) => {
-      this.serviceService.getById(val.id).subscribe(data => {
+      const filter = `{"fields": {"modified": false}}`;
+      this.serviceService.getById(val.id, filter).subscribe(data => {
         this.service = data;
       })
     });

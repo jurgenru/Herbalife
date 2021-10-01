@@ -5,7 +5,7 @@ import { ScheduleCallComponent } from "../schedule-call/schedule-call.component"
 @Component({
   selector: "app-footer",
   templateUrl: "./footer.component.html",
-  styleUrls: ["./footer.component.css"]
+  styleUrls: ["./footer.component.css"],
 })
 export class FooterComponent implements OnInit {
   test: Date = new Date();
@@ -15,14 +15,12 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   callSchedule() {
-    let schedule = this.SimpleModalService.addModal(ScheduleCallComponent, {
-      title:'Programa tu llamada'
-    }).subscribe((isConfirmed)=>{
-      if(isConfirmed){
-        alert('accepted')
-      }else{
-        alert('declined')
-      }
-    });
+    this.SimpleModalService.addModal(
+      ScheduleCallComponent,
+      {
+        title: "Programa tu consulta",
+      },
+      { closeOnClickOutside: true }
+    );
   }
 }
