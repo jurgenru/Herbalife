@@ -215,28 +215,28 @@ export class EditComponent implements OnInit {
   }
 
   imageCropper(id) {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent = data;
       this.updateImage = 1;
     });
   }
 
   imageCropper2(id) {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent2 = data;
       this.updateImage2 = 1;
     });
   }
 
   imageCropper3(id) {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent3 = data;
       this.updateImage3 = 1;
     });
   }
 
   imageCropper4(id) {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent4 = data;
       this.updateImage4 = 1;
     });

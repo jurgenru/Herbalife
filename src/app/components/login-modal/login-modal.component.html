@@ -5,14 +5,14 @@
                 <div class="modal-header">
                     <span class="text-center">Iniciar Sesion</span>
                 </div>
-                <form [formGroup]="user" (ngSubmit)="login()">
-                    <div class="modal-body">
-                        <p>o inicia sesion con :</p>
-                        <button class="btn btn-danger btn-simple btn-sm btn-block"><i
-                                class="tim-icons icon-email-85"></i>
-                            Google</button>
-                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
-                            Facebook</button>
+                <div class="modal-body">
+                    <p>o inicia sesion con :</p>
+                    <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="logInWithGoogle()"><i
+                            class="tim-icons icon-email-85"></i>
+                        Google</button>
+                    <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
+                        Facebook</button>
+                    <form [formGroup]="user" (ngSubmit)="login()">
                         <h4 class="text-center">Formulario</h4>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -40,13 +40,14 @@
                                 <strong>requerido</strong></small>
                         </div>
                         <hr color="purple" width="85%">
-                        <button type="submit" class="btn btn-info btn-block mb-3" [disabled]="!user.valid">Iniciar Session</button>
-                        <div class=" pull-left">
-                            <span><a class="link footer-link" (click)="register()">Registrarse</a></span>
-                        </div>
-                        <br>
+                        <button type="submit" class="btn btn-info btn-block mb-3" [disabled]="!user.valid">Iniciar
+                            Session</button>
+                    </form>
+                    <div class=" pull-left">
+                        <span><a class="link footer-link" (click)="register()">Registrarse</a></span>
                     </div>
-                </form>
+                    <br>
+                </div>
             </div>
         </div>
     </div>

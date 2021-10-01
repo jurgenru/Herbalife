@@ -51,25 +51,25 @@ export class CreateComponent implements OnInit {
   }
 
   imageCropper() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent = data;
     });
   }
 
   imageCropper2() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent2 = data;
     });
   }
 
   imageCropper3() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent3 = data;
     });
   }
 
   imageCropper4() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent4 = data;
     });
   }
