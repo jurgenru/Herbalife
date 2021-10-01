@@ -7,6 +7,7 @@ import { SimpleModalService } from 'ngx-simple-modal';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/services/article.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-blog-edit',
@@ -34,6 +35,8 @@ export class EditComponent implements OnInit {
   icon: any;
   banner: any;
   add: any;
+  countArticle=0;
+  btnAddArticle: any;
   constructor(
     private blogService: BlogService,
     private simpleModalService: SimpleModalService,
@@ -43,6 +46,7 @@ export class EditComponent implements OnInit {
     private router: Router,
     private articleService: ArticleService,
     private formBuilder: FormBuilder,
+    private userService: UserService,
   ) {
     this.get();
   }
@@ -159,26 +163,55 @@ export class EditComponent implements OnInit {
     });
   }
   addArticle(){
+    this.countArticle++;
     this.add = true;
     const FormInputs = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
       image: [''],
       blogId: [],
-      ranting: ['']
+      rating: ['']
     });
     this.newArticle.push(FormInputs);
+    if ((this.countArticle + this.dataArticles.length) > 11) {
+      this.btnAddArticle = true;
+    }
   }
 
   removeArticle(index: number) {
-   // this.countArticle--;
-    this.article.removeAt(index);
-    // if (this.countArticle < 12) {
-    //   this.btnAddArticle = false;
-    // }
+    this.countArticle--;
+    this.newArticle.removeAt(index);
+
+    if ((this.countArticle + this.dataArticles.length) < 12) {
+      this.btnAddArticle = false;
+    }
+    if(this.countArticle == 0){
+      this.add =false
+    }
   }
   post(){
-    console.log(this.newArticle.value);
+    const start = new Date();
+    this.spinner.start();
+    this.route.params.subscribe(val => {
+      this.newArticle.controls.forEach((element) => {
+        element.value.blogId = parseInt(val.id);
+        element.value.rating = "[]";
+        this.articleService.post(element.value).subscribe(newArticleData => {
+          console.log(newArticleData);
+        }, error => {
+          this.spinner.stop();
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el articulo, intente nuevamente', '5000', 'danger', 'top', 'center');
+        });
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.spinner.stop();
+          this.router.navigate(['/blog/list']);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se agregaron los articulos al blog', '5000', 'success', 'top', 'center');
+        }, elapsed);
+      });
+    });
+    
   }
   get newArticle(): FormArray {
     return this.articleForm.get('newArticle') as FormArray;

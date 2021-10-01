@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -6,6 +7,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -38,6 +40,14 @@ export class EditComponent implements OnInit {
   editedStore: any = {};
   editedProduct: any = {};
 
+  newProductImage: any=[];
+  btnAddProduct: any;
+  btnPostProduct: any;
+  countProduct=0;
+  productForm: any={};
+  countFeatures = [0,0,0,0,0,0,0,0,0,0,0,0];
+  btnAddFeature: any = [];
+  newFeatures: any = {};
   constructor(
     private simpleModalService: SimpleModalService,
     private storeService: StoreService,
@@ -46,11 +56,14 @@ export class EditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
+    private formBuilder: FormBuilder,
+    private userService: UserService,
   ) {
     this.get();
   }
 
   ngOnInit(): void {
+    this.addProductForm()
   }
   get() {
     this.content = 'Cargando ...';
@@ -106,6 +119,12 @@ export class EditComponent implements OnInit {
     this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
       this.productImage[index] = data;
       //((this.productForm.get('product') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
+    });
+  }
+  showNewProduct(index: any) {
+    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+      this.newProductImage[index] = data;
+      ((this.productForm.get('newProduct') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
 
@@ -184,6 +203,90 @@ editProduct(productId: any, index: any){
   });
 }
 
+addProductForm(){
+  this.productForm = this.formBuilder.group({
+    newProduct: this.formBuilder.array([])
+  });
+}
+addProduct(){
+  this.countProduct++;
+  this.btnPostProduct = true;
+  const FormInputs = this.formBuilder.group({
+    name: ['', Validators.required],
+    description: ['', Validators.required],
+    image: [''],
+    price: ['', Validators.required],
+    userId: [''],
+    additionalPrice: [''],
+    addtionalDescription: [''],
+    amount: ['', Validators.required],
+    storeId: [],
+    additionalFeatures:this.formBuilder.array([])
+  });
+  this.newProduct.push(FormInputs);
+  if ((this.countProduct + this.productData.length) > 11) {
+    this.btnAddProduct = true;
+    console.log(this.productData.length);
+  }
+}
+removeProduct(index: number) {
+  this.countProduct--;
+  this.newProduct.removeAt(index);
+  if ((this.countProduct  + this.productData.length)< 12) {
+    this.btnAddProduct = false;
+  }
+  if(this.countProduct <= 0){
+    this.btnPostProduct = false;
+  }
+}
+addFeature( featureArray: FormArray, index:any) {
+  this.countFeatures[index]++;
+  featureArray.push(this.formBuilder.control(''));
+  if( this.countFeatures[index]>2){
+    this.btnAddFeature[index] = true;
+  }
+}
+removeFeature( featureArray: FormArray, j:number,index:number){
+  this.countFeatures[index]--;
+  featureArray.removeAt(j)
+  if( this.countFeatures[index]<3){
+    this.btnAddFeature[index] = false;
+  }
+}
+
+get newProduct(): FormArray {
+  return this.productForm.get('newProduct') as FormArray;
+}
+post(){
+  this.content = 'Agregando los productos';
+    const start = new Date();
+    this.spinner.start();
+    
+    this.route.params.subscribe(val => {
+      this.userService.me().subscribe((user: any) => {
+        this.newProduct.controls.forEach((element) => {
+          element.value.userId = user.id;
+          element.value.storeId = parseInt(val.id);
+          element.value.additionalFeatures = JSON.stringify(element.value.additionalFeatures);
+          this.productService.post(element.value).subscribe((productData: any) => {
+            console.log(productData);
+            const end = new Date();
+            const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+            setTimeout(() => {
+              this.spinner.stop();
+              this.router.navigate(['/store/list']);
+              this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha agregado el producto', '5000', 'success', 'top', 'center');
+            }, elapsed);
+          }, error => {
+            this.spinner.stop();
+            this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el producto, intente nuevamente', '5000', 'danger', 'top', 'center');
+          });
+         
+        });
+      });
+    });
+  console.log(this.newProduct.value);
+}
 notification(content, time, type, from, align) {
   this.toastr.error(content, '', {
     timeOut: time,
@@ -192,19 +295,5 @@ notification(content, time, type, from, align) {
     toastClass: `alert alert-${type} alert-with-icon`,
     positionClass: 'toast-' + from + '-' + align
   });
-}
-redirectFair() {
-
-  localStorage.setItem('tokenFV', 'u001s34u23a'); 
-  localStorage.setItem('idFV', '0001'); 
-  
-  let userData = {
-    token: localStorage.getItem("tokenFV"),
-    id: localStorage.getItem("idFV")
-  };
-  const redirect = window.open("http://54.91.163.221/", "polarnia")
-  setTimeout(()=>{
-    redirect.postMessage(userData, "http://54.91.163.221/")
-  }, 1500);
 }
 }
