@@ -11,8 +11,11 @@
                             <div class="container-image">
                                 <img [src]="product.image" class="img-thumbnail">
                             </div>
+                            <div class="button-container pull-right">
+                                <app-share-button [text]="['Conoce sobre nuestro producto de '+product.name]" [shareUrl]="['customer/store/detail/'+product.id]"></app-share-button>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-9">
                             <h4>Descripción</h4>
                             <p>{{product.description}}</p>
                             <br>

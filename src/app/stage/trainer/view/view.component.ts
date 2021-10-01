@@ -32,7 +32,6 @@ export class ViewComponent implements OnInit {
       this.trainerService.getById(val.id).subscribe((data: any) => {
         this.trainer = data;
         this.socialMedia = JSON.parse(this.trainer.socialMedia) 
-        console.log(this.socialMedia);
         this.trainerService.getLectionById(data.id).subscribe(lect => {
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
