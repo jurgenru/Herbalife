@@ -117,7 +117,7 @@ export class ScheduleCallComponent
             this.router.navigate(["home"]);
             this.notification(
               '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su cita de consulta, por favor espere a que lo accepten',
-              "6000",
+              "5000",
               "success",
               "top",
               "center"
