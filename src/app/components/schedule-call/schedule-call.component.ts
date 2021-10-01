@@ -52,7 +52,6 @@ export class ScheduleCallComponent
     private router: Router
   ) {
     super();
-    // this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
     this.typeForm = new FormGroup({
       type: new FormControl(null),
@@ -88,18 +87,6 @@ export class ScheduleCallComponent
     this.btnBlock = true;
     this.newTime = time;
   }
-
-  // generateDay(schedule) {
-  //   this.newSchedule = schedule;
-  //   this.newSchedule = this.calendar.getToday();
-  //   this.finalDate =
-  //     this.newSchedule.year +
-  //     "-" +
-  //     this.newSchedule.month +
-  //     "-" +
-  //     this.newSchedule.day;
-  //   console.log("Date", this.finalDate);
-  // }
 
   onModelChange($event) {
     console.log("Model change", $event);
