@@ -78,6 +78,7 @@ moment.locale('es');
     UploadFileService,
     InscriptionService,
     NotificationService,
+    AppointmentService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
