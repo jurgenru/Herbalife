@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { CartService } from 'src/app/services/cart.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
@@ -28,6 +29,7 @@ export class DeliveryComponent implements OnInit {
     private formBuilder: FormBuilder,
     private orderService: OrderService,
     private productService: ProductService,
+    private notificationService: NotificationService,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
   ) {
@@ -77,6 +79,8 @@ export class DeliveryComponent implements OnInit {
     });
     this.order.value.productId = JSON.stringify(this.order.value.productId);
     this.orderService.post(this.order.value).subscribe((ord: any) => {
+      
+      this.postNotification(ord.id, 'Se hizo un compra en tu tienda', 'order');
       JSON.parse(localStorage.getItem('cartList')).forEach(element => {
         this.productService.getById(element.id).subscribe((data: any) => {
           this.product = {
@@ -108,8 +112,15 @@ export class DeliveryComponent implements OnInit {
     });
   }
 
-  buying() {
-    // this.buy = false;
+  postNotification(content, description, reason) {
+    const notif = {
+      userId: "1",
+      content: content.toString(),
+      description: description,
+      reason: reason
+    }
+    this.notificationService.post(notif).subscribe(not => {
+    });
   }
 
   notification(content, time, type, from, align) {

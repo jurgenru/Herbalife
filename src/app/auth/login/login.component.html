@@ -6,8 +6,8 @@
                     <h1 class="text-center">Iniciar Sesion</h1>
                     <p>o iniciar sesion con : </p>
                     <div>
-                        <button class="btn btn-danger btn-simple btn-sm btn-block"><i class="tim-icons icon-email-85"></i> Google</button>
-                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i> Facebook</button>    
+                        <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="logInWithGoogle()"><i class="tim-icons icon-email-85"></i>Iniciar sesion con Google</button>
+                        <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>Iniciar sesion con Facebook</button>    
                     </div>
                 </div>
                 <form [formGroup]="user" (ngSubmit)="login()">

@@ -1,0 +1,83 @@
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="title">Detalles del Pedido</h2>
+                </div>
+                <div class="card-body" *ngIf="order">
+                    <div class="row">
+                        <div class="col-4">
+                            <h4 class="title text-center">Cliente</h4>
+                            <p class="text-center">{{order.names}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">NIT/Celular</h4>
+                            <p class="text-center">{{order.nit}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">Correo Electronico</h4>
+                            <p class="text-center">{{order.email}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4">
+                            <h4 class="title text-center">Metodo de Pago</h4>
+                            <p class="text-center">{{order.paymentMethod}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">Metodo de envio</h4>
+                            <p class="text-center">{{order.deliveryMethod}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">Numero de Contacto</h4>
+                            <p class="text-center">{{order.phoneNumber}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-4">
+                            <h4 class="title text-center">Pais</h4>
+                            <p class="text-center">{{order.country}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">Ciudad</h4>
+                            <p class="text-center">{{order.city}}</p>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="title text-center">Total</h4>
+                            <p class="text-center">{{order.total}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Productos</h4>
+                            <div class="table-responsive ps">
+                                <table class="table table-striped table-bordered">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <td>Nombre</td>
+                                            <td>Cantidad</td>
+                                            <td>sub Total</td>
+                                            <td>Imagen</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let product of products">
+                                            <td>{{product.name}}</td>
+                                            <td>{{product.quantity}} Unidades</td>
+                                            <td>{{product.total}} Bs</td>
+                                            <td><img class="img-product mx-auto d-block" [src]="product.image" alt=""></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

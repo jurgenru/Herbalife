@@ -56,7 +56,7 @@ export class CreateComponent implements OnInit {
   }
 
   showIcon() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
         this.icon = data;
       }
@@ -64,7 +64,7 @@ export class CreateComponent implements OnInit {
   }
 
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
       (data) => {
         this.image = data;
       }
@@ -72,7 +72,7 @@ export class CreateComponent implements OnInit {
   }
 
   showBanner() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
       (data) => {
         this.banner = data;
       }

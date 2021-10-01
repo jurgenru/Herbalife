@@ -17,4 +17,8 @@ export class PromotionService {
       return this.http.post(`${environment.apiUrl}promotions/${id}`, body).pipe();
     }
 
+    get(){
+      return this.http.get(`${environment.apiUrl}promotions`).pipe();
+    }
+
 }

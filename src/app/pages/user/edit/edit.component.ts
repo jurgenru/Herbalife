@@ -66,7 +66,7 @@ export class EditComponent implements OnInit {
   }
 
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.image = data;
       this.updateImage = 1;
       this.manager.image = this.image;
@@ -74,7 +74,7 @@ export class EditComponent implements OnInit {
   }
 
   showIcon() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.updateIcon = 1;
       this.manager.icon = this.icon;

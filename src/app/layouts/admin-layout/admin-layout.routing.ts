@@ -63,4 +63,12 @@ export const AdminLayoutRoutes: Routes = [
     }],
     canActivate: [AuthGuard]
   },
+  {
+    path: '',
+    children: [{
+      path: 'order',
+      loadChildren: '../../pages/order/order.module#OrderModule'
+    }],
+    canActivate: [AuthGuard]
+  }
 ];

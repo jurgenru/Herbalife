@@ -21,8 +21,10 @@ export class CartComponent implements OnInit {
   }
 
   getTotal(){
-      this.product = JSON.parse(localStorage.getItem('cartList'));
-      this.grandTotal = this.cartService.getTotalPrice();
+      if(JSON.parse(localStorage.getItem('cartList'))){
+        this.product = JSON.parse(localStorage.getItem('cartList'));
+        this.grandTotal = this.cartService.getTotalPrice();
+      }
   }
 
   addQuantity(item:any){

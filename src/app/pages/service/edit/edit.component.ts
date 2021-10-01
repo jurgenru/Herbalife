@@ -47,7 +47,8 @@ export class EditComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe((val) => {
-      this.serviceService.getById(val.id).subscribe((data: any) => {
+      const filter = `{"fields": {"modified: false}}`;
+      this.serviceService.getById(val.id, filter).subscribe((data: any) => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
@@ -68,7 +69,7 @@ export class EditComponent implements OnInit {
   }
 
   edit() {
-    if(this.type !== undefined) {
+    if (this.type !== undefined) {
       this.service.type = this.type;
     }
     this.content = "Editando ...";
@@ -160,7 +161,7 @@ export class EditComponent implements OnInit {
 
   showIcon() {
     this.simpleModalService
-      .addModal(ImageCropperComponent)
+      .addModal(ImageCropperComponent, {format: 1/1})
       .subscribe((data) => {
         this.icon = data;
         this.updateIcon = 1;
@@ -169,7 +170,7 @@ export class EditComponent implements OnInit {
 
   showPortrait() {
     this.simpleModalService
-      .addModal(ImageCropperComponent)
+      .addModal(ImageCropperComponent, {format: 16/9})
       .subscribe((data) => {
         this.image = data;
         this.updateImage = 1;
@@ -178,7 +179,7 @@ export class EditComponent implements OnInit {
 
   showBanner() {
     this.simpleModalService
-      .addModal(ImageCropperComponent)
+      .addModal(ImageCropperComponent, {format: 16/9})
       .subscribe((data) => {
         this.banner = data;
         this.updateBanner = 1;

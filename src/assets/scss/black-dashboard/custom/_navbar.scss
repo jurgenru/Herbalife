@@ -35,9 +35,9 @@
   }
 
 
-  &.navbar-transparent{
-    background: transparent !important;
-  }
+  // &.navbar-transparent{
+  //   background: transparent !important;
+  // }
 
   &.bg-white{
     .navbar-nav{
@@ -98,7 +98,15 @@
   &.bg-danger {
     background-color: $danger !important;
   }
-
+  &[data="purple"]{
+    @include linear-gradient(purple, #b948bd);
+  }
+  &[data="yellow"]{
+    @include linear-gradient(rgb(207, 162, 13), #e4d50b);
+  }
+  &[data="green"]{
+    @include linear-gradient(rgb(22, 231, 15), #13c00d);
+  }
   .navbar-brand {
     position: fixed;
     padding-top: .3125rem;
