@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3 class="card-title">Lista de Pedidos</h3>
+                        </div>
+                        <div class="col-4">
+                            <input class="form-control" placeholder="Buscar pedido ..." type="text" name="filterPost"
+                                [(ngModel)]="filterPost" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ps">
+                        <table class="table table-bordered table-striped">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th class="text-center">Nombre Comprador</th>
+                                    <th>Metodo de envio</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th class="text-center">Fecha de creacion</th>
+                                    <th class="text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    *ngFor="let list of lists | filterOrder: filterPost | paginate: {itemsPerPage: 100, currentPage: pageActual}">
+                                    <td class="text-center">{{list.names}}</td>
+                                    <td class="text-center">{{list.deliveryMethod}}</td>
+                                    <td class="text-center">{{list.total}}</td>
+                                    <td>
+                                        <div [ngSwitch]="list.status">
+                                            <span *ngSwitchCase="false" class="text-center">en espera</span>
+                                            <span *ngSwitchCase="true" class="text-center">vendido</span>
+                                         </div>
+                                    </td>
+                                    <td class="text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
+                                    <td class=" text-right">
+                                        <button class=" btn btn-success btn-link btn-sm btn-icon" type="button"
+                                            placement="top" ngbTooltip="ver" container="body"
+                                            [routerLink]="['/order/view', list.id]"><i
+                                                class="tim-icons icon-paper"></i></button>
+                                        <!-- <button class="btn btn-warning btn-link btn-sm" type="button" placement="top"
+                                            ngbTooltip="editar" container="body"
+                                            [routerLink]="[ '/order/edit', list.id ]"><i
+                                                class=" tim-icons icon-pencil"></i></button> -->
+                                        <button class="btn btn-danger btn-link btn-sm" (click)="showDelete(content)"
+                                            type="button" placement="top" ngbTooltip="eliminar" container="body"><i
+                                                class=" tim-icons icon-trash-simple"></i></button>
+                                    </td>
+                                    <ng-template #content let-modal>
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="modal-basic-title">Eliminar el Pedido</h4>
+                                            <button type="button" class="close" aria-label="Close"
+                                                (click)="modal.dismiss('Cross click')">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>¿ Esta seguro de eliminar el pedido ?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-danger"
+                                                (click)="modal.close(list.id)">Eliminar</button>
+                                        </div>
+                                    </ng-template>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-center h-100">
+                    <pagination-controls (pageChange)="pageActual = $event" previousLabel=" " nextLabel=" "
+                        maxSize="12">
+                    </pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

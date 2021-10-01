@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SimpleModalService } from 'ngx-simple-modal';
+import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
+import { InscriptionService } from 'src/app/services/inscription-service';
 import { ServiceService } from 'src/app/services/service.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-service-view',
@@ -16,8 +21,12 @@ export class ViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServiceService,
+    private userService: UserService,
     private spinner: NgxUiLoaderService,
-    private router: Router
+    private simpleModalService: SimpleModalService,
+    private inscriptionService: InscriptionService,
+    private router: Router,
+    private toastr: ToastrService,
   ) {
     this.get();
     this.list();
@@ -29,13 +38,14 @@ export class ViewComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      this.serviceService.getById(val.id).subscribe(ser => {
+      const filter = `{"fields": {"descriptionGratitude": false, "titleGratitude": false, "modified": false, ""}}`;
+      this.serviceService.getById(val.id, filter).subscribe(ser => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
         setTimeout(() => {
-        this.service = ser;
-        this.spinner.stop();
-      }, elapsed);
+          this.service = ser;
+          this.spinner.stop();
+        }, elapsed);
       });
     });
   }
@@ -47,10 +57,79 @@ export class ViewComponent implements OnInit {
     });
   }
 
-  viewService(id){
+  viewService(id) {
     this.router.navigate(['/customer/service/view', id]);
     setTimeout(() => {
       location.reload();
     }, 50);
   }
+
+  registerServiceNormal() {
+    this.userService.me().subscribe((user: any) => {
+      const ins = {
+        userId: user.id,
+        serviceId: this.service.id
+      }
+      this.inscriptionService.post(ins).subscribe(sus => {
+        this.router.navigate(['/customer/service/confirmation', this.service.id]);
+        console.log(this.service.id);
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
+    }, error => {
+      this.showRegister();
+    });
+  }
+
+  registerServiceTest() {
+    this.userService.me().subscribe((user: any) => {
+      const ins = {
+        userId: user.id,
+        serviceId: this.service.id
+      }
+      this.inscriptionService.post(ins).subscribe(sus => {
+        this.router.navigate(['/customer/test']);
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
+    }, error => {
+      this.showRegister();
+    });
+  }
+
+  registerServiceAuto() {
+    this.userService.me().subscribe((user: any) => {
+      const ins = {
+        userId: user.id,
+        serviceId: this.service.id
+      }
+      this.inscriptionService.post(ins).subscribe(sus => {
+        // this.router.navigate(['/customer/test']);
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
+    }, error => {
+      this.showRegister();
+    });
+
+  }
+
+  showRegister() {
+    this.simpleModalService.addModal(RegisterModalComponent, {}, { closeOnClickOutside: true }).subscribe(data => {
+      if (data) {
+        location.reload();
+      }
+    });
+  }
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, '', {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: 'toast-' + from + '-' + align
+    });
+  }
+
 }

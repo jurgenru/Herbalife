@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   declarations: [...routedComponents],
@@ -13,11 +14,13 @@ import { MomentModule } from 'angular2-moment';
     RouterModule,
     BlogRoutingModule,
     ReactiveFormsModule,
+    ComponentsModule,
     FormsModule,
     CommonModule,
     NgbModule,
     NgxUiLoaderModule,
-    MomentModule
+    MomentModule,
+    ComponentsModule
   ],
   exports: [
     ...routedComponents

@@ -7,7 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
 import { ArticleService } from 'src/app/services/article.service';
+import { BlogService } from 'src/app/services/blog.service';
 import { CommentaryService } from 'src/app/services/commentary.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -23,6 +25,7 @@ export class DetailComponent implements OnInit {
   stars: number[] = [1, 2, 3, 4, 5];
   selectedValue: number;
   rant: any;
+  userIdBlog: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +37,8 @@ export class DetailComponent implements OnInit {
     private modalService: NgbModal,
     private toastr: ToastrService,
     private simpleModalService: SimpleModalService,
+    private notificationService: NotificationService,
+    private blogService: BlogService
   ) {
     this.get();
   }
@@ -70,6 +75,9 @@ export class DetailComponent implements OnInit {
           this.getComments();
           this.spinner.stop();
         }, elapsed);
+        this.blogService.getById(data.blogId).subscribe((blg: any) => {
+          this.userIdBlog = blg.userId;
+        });
       });
     });
   }
@@ -100,6 +108,7 @@ export class DetailComponent implements OnInit {
         this.userService.me().subscribe((user: any) => {
           this.annotation.value.userId = parseInt(user.id, 10);
           this.commentaryService.post(this.annotation.value).subscribe((com: any) => {
+            this.postNotification(this.article.id, 'Acaban de comentar en tu articulo', 'article');
             this.userService.getProfileById(com.userId).subscribe((use: any) => {
               if (use) {
                 const newComment = {
@@ -109,6 +118,7 @@ export class DetailComponent implements OnInit {
                   created: com.created
                 }
                 this.comments.unshift(newComment);
+                this.annotation.reset();
               }
             }, error => {
               this.userService.getManagerById(com.userId).subscribe((man: any) => {
@@ -120,6 +130,7 @@ export class DetailComponent implements OnInit {
                     created: com.created
                   }
                   this.comments.unshift(newComment);
+                  this.annotation.reset();
                 }
               });
             });
@@ -146,6 +157,7 @@ export class DetailComponent implements OnInit {
             this.articleService.update(this.article.id, update).subscribe(up => {
               this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se ha calificado exitosamente', '5000', 'success', 'top', 'center');
               this.selectedValue = 0;
+              this.postNotification(this.article.id, 'Acaban de calificar tu articulo', 'article')
             }, error => {
               this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span>Hubo un error al calificar, intente nuevamente', '5000', 'danger', 'top', 'center');
             });
@@ -187,6 +199,17 @@ export class DetailComponent implements OnInit {
       if (data) {
         location.reload();
       }
+    });
+  }
+
+  postNotification(content, description, reason) {
+    const notif = {
+      userId: this.userIdBlog,
+      content: content.toString(),
+      description: description,
+      reason: reason
+    }
+    this.notificationService.post(notif).subscribe(not => {
     });
   }
 

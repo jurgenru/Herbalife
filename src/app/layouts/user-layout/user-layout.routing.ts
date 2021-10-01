@@ -41,11 +41,5 @@ export const UserLayoutRoutes: Routes = [
     }]
   },{
     path: 'customer/test', component: TestComponent
-  },{
-    path: 'customer',
-    children: [{
-      path: 'autotest',
-      loadChildren: '../../stage/autotest/autotest.module#AutotestModule'
-    }]
   }
 ]

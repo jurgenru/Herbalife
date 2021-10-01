@@ -6,6 +6,7 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { SimpleModalModule } from "ngx-simple-modal";
+import { ComponentsModule } from "src/app/components/components.module";
 
 @NgModule({
   declarations: [routedComponents],
@@ -19,6 +20,7 @@ import { SimpleModalModule } from "ngx-simple-modal";
     CommonModule,
     NgbModule,
     NgxUiLoaderModule,
+    ComponentsModule
   ],
   exports: [routedComponents],
 })

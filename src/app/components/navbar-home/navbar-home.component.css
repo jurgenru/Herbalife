@@ -34,15 +34,14 @@
 }
 
 .icon {
-    border-radius: 80px;
-    height: 110px;
-    border-radius: 77px;
-    width: 110px;
-    margin-top: 12px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1.25rem;
+  width: 140px;
+  top: 16px;
+  position: absolute;
+  border-radius: 83px;
+  height: 140px;
+}
+
+.notificationItem {
+  background-color: #edf1f1;
+  cursor: pointer;
 }

@@ -121,6 +121,20 @@
 
               }
 .btn-neutral { @include btn-styles($white, $white); }
+.btn-theme { 
+  &:hover{
+    opacity: 0.75;
+  }
+  &[data="purple"]{
+    @include linear-gradient(purple, #b948bd);
+  }
+  &[data="yellow"]{
+    @include linear-gradient(rgb(207, 162, 13), #e4d50b);
+  }
+  &[data="green"]{
+    @include linear-gradient(rgb(22, 231, 15), #13c00d);
+  }
+}
 
 .btn{
      &:disabled,

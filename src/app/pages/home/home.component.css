@@ -1,4 +1,10 @@
 .image-promotion {
     width: 100%;
-    height: 530px !important;
+}
+
+@media (min-width: 768px) { 
+    -image-promotion {
+        width: 100%;
+        height: 530px !important;
+    }
 }

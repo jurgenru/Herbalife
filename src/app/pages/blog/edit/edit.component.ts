@@ -80,21 +80,21 @@ export class EditComponent implements OnInit {
   }
 
   showIcon() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.updateIcon = 1;
     });
   }
 
   showBanner() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.banner = data;
       this.updateBanner = 1;
     });
   }
 
   showBlog(index: any) {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.articleImage[index] = data;
     });
   }
