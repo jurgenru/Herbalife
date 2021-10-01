@@ -4,12 +4,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
-
 import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { ImageCropperModule } from 'ngx-image-cropper';
@@ -35,6 +32,14 @@ import { CommentaryService } from "./services/commentary.service";
 import { MomentModule } from 'angular2-moment';
 import * as moment  from 'moment';
 import { AppointmentService } from "./services/appointment.service";
+import { UploadFileService } from "./services/upload-file.service";
+import { NotificationService } from "./services/notification.service";
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+import { InscriptionService } from "./services/inscription-service";
 moment.locale('es');
 
 @NgModule({
@@ -51,6 +56,7 @@ moment.locale('es');
     AppRoutingModule,
     NgxUiLoaderModule,
     NgxPaginationModule,
+    SocialLoginModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],
@@ -69,6 +75,27 @@ moment.locale('es');
     OrderService,
     CommentaryService,
     AppointmentService,
+    UploadFileService,
+    InscriptionService,
+    NotificationService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '694479197105-b05gqrr8th2paldhgt2h6iccc441l1pf.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1475148492847466')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

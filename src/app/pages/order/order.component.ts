@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-autotest',
+  selector: 'app-order',
   template: '<router-outlet></router-outlet>'
 })
-export class AutotestComponent implements OnInit {
+export class OrderComponent implements OnInit {
 
   constructor() { }
 

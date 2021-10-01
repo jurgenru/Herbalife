@@ -15,8 +15,8 @@ export class ServiceService {
       return this.http.get(`${environment.apiUrl}services?filter=${filter}`).pipe();
     }
 
-    getById(id) {
-      return this.http.get(`${environment.apiUrl}services/${id}`).pipe();
+    getById(id, filter) {
+      return this.http.get(`${environment.apiUrl}services/${id}?filter=${filter}`).pipe();
     }
 
     delete(id){

@@ -27,10 +27,6 @@ const routes: Routes = [
         path: "view/:id",
         component: ViewComponent,
       },
-      {
-        path: 'edit/:id',
-        component: EditComponent
-      }
     ],
   },
 ];

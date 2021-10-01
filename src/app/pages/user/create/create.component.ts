@@ -92,14 +92,14 @@ export class CreateComponent implements OnInit {
   }
 
   imageCropper() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.imageProfile = data;
       this.user.value.image = this.imageProfile;
     });
   }
 
   showIcon() {
-    this.SimpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.user.value.icon = this.icon;
     });

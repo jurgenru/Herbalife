@@ -5,6 +5,8 @@ import { SimpleModalComponent } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { UserService } from "src/app/services/user.service";
+import { GoogleLoginProvider } from "angularx-social-login";
+import { SocialAuthService } from "angularx-social-login";
 
 export interface AlertModel {
   title?: string;
@@ -23,7 +25,8 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
     private router: Router,
     private spinner: NgxUiLoaderService,
     private userService: UserService,
-    private toastr: ToastrService) { 
+    private toastr: ToastrService,
+    private authService: SocialAuthService) { 
       super();
     }
 
@@ -37,7 +40,7 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
 
   login() {
     const start = new Date();
-    this.spinner.start();
+    // this.spinner.start();
     this.userService.login(this.user.value).subscribe((data: any) => {
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -45,16 +48,16 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
         case 'customer':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/customer/view']);
-            this.spinner.stop();
+            this.router.navigate(['/']);
+            // this.spinner.stop();
           }, elapsed);
           break;
         case 'admin':
           localStorage.setItem('herTok', data.token);
           setTimeout(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/dashboard']);
             this.isLogged();
-            this.spinner.stop();
+            // this.spinner.stop();
           }, elapsed);
           break;
         default:
@@ -72,6 +75,35 @@ export class LoginComponent extends SimpleModalComponent<AlertModel, null> imple
 
   get password() {
     return this.user.get('password');
+  }
+
+  logInWithGoogle() {
+    const start = new Date();
+    this.spinner.start();
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
+      const log = {
+        email: data.email,
+        password: data.id
+      }
+      this.userService.login(log).subscribe((log: any) => {
+        localStorage.setItem('herTok', log.token);
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          switch (log.user.role) {
+            case 'customer':
+              this.router.navigate(['/']);
+              this.spinner.stop();
+              break;
+            default:
+              break;
+          }
+        }, elapsed);
+      }, error => {
+        this.spinner.stop();
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span>La cuenta no ha sido encontrada, intente con otro', '5000', 'danger', 'top', 'center');
+      });
+    });
   }
 
   notification(content, time, type, from, align) {

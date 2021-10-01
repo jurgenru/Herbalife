@@ -5,3 +5,8 @@
 .title {
     cursor: pointer;
 }
+
+.notificationItem {
+    background-color: #edf1f1;
+    cursor: pointer;
+  }

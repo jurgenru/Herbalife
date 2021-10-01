@@ -15,8 +15,10 @@ import { SimpleModalModule } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
-import { BrowserModule } from "@angular/platform-browser";
+import { ShareButtonComponent } from "./share-button/share-button.component";
+import { FormUploadComponent } from './form-upload/form-upload.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MomentModule } from "angular2-moment";
 
 @NgModule({
   imports: [
@@ -28,7 +30,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     NgxUiLoaderModule,
     SimpleModalModule,
     FormsModule,
-    BrowserModule
+    MomentModule
   ],
   declarations: [
     FooterComponent,
@@ -39,7 +41,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ImageCropperComponent,
     ScheduleCallComponent,
     RegisterModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    ShareButtonComponent,
+    FormUploadComponent
   ],
   exports: [
     FooterComponent,
@@ -50,7 +54,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ImageCropperComponent,
     ScheduleCallComponent,
     RegisterModalComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    ShareButtonComponent,
+    FormUploadComponent
   ]
 })
 export class ComponentsModule {}

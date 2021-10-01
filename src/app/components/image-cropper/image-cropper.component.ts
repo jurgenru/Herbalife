@@ -3,8 +3,7 @@ import { SimpleModalComponent } from "ngx-simple-modal";
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 export interface AlertModel {
-    title?: string;
-    message: string;
+  format: number;
   }
 
 @Component({
@@ -13,11 +12,11 @@ export interface AlertModel {
   styleUrls: ["./image-cropper.component.css"]
 })
 
-
-export class ImageCropperComponent extends SimpleModalComponent<AlertModel, null> {
+export class ImageCropperComponent extends SimpleModalComponent<AlertModel, boolean> implements AlertModel {
 
     imageChangedEvent: any = '';
     croppedImage: any = '';
+    format: number;
 
     constructor() {
       super();

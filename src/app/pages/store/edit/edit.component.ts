@@ -88,24 +88,24 @@ export class EditComponent implements OnInit {
       this.spinner.stop();
     });
   }
+
   showIcon() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.updateIcon = 1;
     });
   }
 
   showImage() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.image = data;
       this.updateImage = 1;
     });
   }
 
   showProduct(index: any) {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.productImage[index] = data;
-      //((this.productForm.get('product') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
   }
 
@@ -193,8 +193,8 @@ notification(content, time, type, from, align) {
     positionClass: 'toast-' + from + '-' + align
   });
 }
-redirectFair() {
 
+redirectFair() {
   localStorage.setItem('tokenFV', 'u001s34u23a'); 
   localStorage.setItem('idFV', '0001'); 
   

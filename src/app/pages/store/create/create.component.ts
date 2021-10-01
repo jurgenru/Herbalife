@@ -99,17 +99,17 @@ export class CreateComponent implements OnInit {
   }
 
   showIcon() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.iconImage = data;
     });
   }
   showPortrait() {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.portraitImage = data;
     });
   }
   showProduct(index: any) {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.productImage[index] = data;
       ((this.productForm.get('product') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });

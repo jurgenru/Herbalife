@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
 import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
 import { NgxUiLoaderService } from "ngx-ui-loader";
@@ -22,7 +23,8 @@ export class LoginModalComponent extends SimpleModalComponent<AlertModel, null> 
     private simpleModalService: SimpleModalService,
     private fb: FormBuilder,
     private userService: UserService,
-    private toastr: ToastrService,) {
+    private toastr: ToastrService,
+    private authService: SocialAuthService) {
     super();
   }
 
@@ -64,6 +66,30 @@ export class LoginModalComponent extends SimpleModalComponent<AlertModel, null> 
 
   get password() {
     return this.user.get('password');
+  }
+
+  logInWithGoogle() {
+    const start = new Date();
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
+      console.log(data);
+      const log = {
+        email: data.email,
+        password: data.id
+      }
+      this.userService.login(log).subscribe((log: any) => {
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.close();
+          this.result = log.token;
+          localStorage.setItem('herTok', log.token);
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha iniciado session correctamente', '5000', 'success', 'top', 'center');
+          location.reload;
+        }, elapsed);
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span>La cuenta no ha sido encontrada, intente con otro', '5000', 'danger', 'top', 'center');
+      });
+    });
   }
 
   notification(content, time, type, from, align) {
