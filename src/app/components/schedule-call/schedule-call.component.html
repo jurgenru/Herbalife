@@ -20,21 +20,19 @@
         <div class="row text-center">
           <div class="col text-left">
             <label>Escoge el día que prefieres la reunion</label>
-            <ngb-datepicker
-              #dp
-              formControlName="schedule"
-              (dateSelect)="date = $event.next"
-              (ngModelChange)="onModelChange($event)"
-            ></ngb-datepicker>
+            <div class="text-center">
+              <ngb-datepicker
+                #dp
+                formControlName="schedule"
+                (dateSelect)="date = $event.next"
+                (ngModelChange)="onModelChange($event)"
+              ></ngb-datepicker>
+            </div>
           </div>
           <div class="col text-left">
             <form [formGroup]="typeForm">
               <label> ¿ Sobre que servicio desea hacer su consulta ? </label>
-              <select
-                class="text-center"
-                id="mode"
-                class="form-control"
-              >
+              <select class="text-center" id="mode" class="form-control">
                 <option *ngFor="let c of types">{{ c }}</option>
               </select>
             </form>
