@@ -90,7 +90,6 @@ export class ScheduleCallComponent
   }
 
   generateDay(schedule) {
-    // (data) => `${data.year}-${data.month}-${data.day}`;
     this.newSchedule = schedule;
     this.newSchedule = this.calendar.getToday();
     let finalDate =
