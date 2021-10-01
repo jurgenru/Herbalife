@@ -23,8 +23,9 @@
             <ngb-datepicker
               #dp
               formControlName="schedule"
-              (navigate)="date = $event.next"
-              (click)="generateDay($event.next)"
+              (dateSelect)="date = $event.next"
+              (ngModelChange)="onModelChange($event)"
+              (click)="generateDay($event)"
             ></ngb-datepicker>
           </div>
           <div class="col text-left">

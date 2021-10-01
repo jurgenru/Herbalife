@@ -98,6 +98,11 @@ export class ScheduleCallComponent
       this.newSchedule.month +
       "-" +
       this.newSchedule.day;
+    console.log("Date", this.finalDate);
+  }
+
+  onModelChange($event) {
+    console.log("Model change", $event);
   }
 
   post() {
