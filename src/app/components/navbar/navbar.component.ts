@@ -46,10 +46,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
    var navbar = document.getElementsByClassName('navbar')[0];
      if (window.innerWidth < 993 && !this.isCollapsed) {
        navbar.classList.add('bg-white');
-       navbar.classList.remove('navbar-transparent');
+      // navbar.classList.remove('navbar-transparent');
      } else {
        navbar.classList.remove('bg-white');
-       navbar.classList.add('navbar-transparent');
+      // navbar.classList.add('navbar-transparent');
      }
    };
   ngOnInit() {
