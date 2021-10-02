@@ -79,7 +79,6 @@ export class DeliveryComponent implements OnInit {
     });
     this.order.value.productId = JSON.stringify(this.order.value.productId);
     this.orderService.post(this.order.value).subscribe((ord: any) => {
-      
       this.postNotification(ord.id, 'Se hizo un compra en tu tienda', 'order');
       JSON.parse(localStorage.getItem('cartList')).forEach(element => {
         this.productService.getById(element.id).subscribe((data: any) => {

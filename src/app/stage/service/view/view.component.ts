@@ -38,7 +38,7 @@ export class ViewComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      const filter = `{"fields": {"descriptionGratitude": false, "titleGratitude": false, "modified": false, ""}}`;
+      const filter = `{"fields": {"descriptionGratitude": false, "titleGratitude": false, "modified": false}}`;
       this.serviceService.getById(val.id, filter).subscribe(ser => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -70,11 +70,11 @@ export class ViewComponent implements OnInit {
         userId: user.id,
         serviceId: this.service.id
       }
-      // this.inscriptionService.post(ins).subscribe(sus => {
+      this.inscriptionService.post(ins).subscribe(sus => {
         this.router.navigate(['/customer/service/confirmation', this.service.id]);
-      // }, error => {
-      //   this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      // });
+      }, error => {
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+      });
     }, error => {
       this.showRegister();
     });
@@ -83,7 +83,7 @@ export class ViewComponent implements OnInit {
   registerServiceTest() {
     this.userService.me().subscribe((user: any) => {
       const ins = {
-        userId: user.id,
+        userId: (user.id).toString(),
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
@@ -99,7 +99,7 @@ export class ViewComponent implements OnInit {
   registerServiceAuto() {
     this.userService.me().subscribe((user: any) => {
       const ins = {
-        userId: user.id,
+        userId: (user.id).toString(),
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
