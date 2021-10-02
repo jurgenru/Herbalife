@@ -65,8 +65,7 @@ export class HomeComponent implements OnInit {
             this.setFutureDate();
         }
     },1000)
-
-
+    
     getContent() {
         const start = new Date();
         this.spinner.start();
