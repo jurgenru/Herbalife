@@ -66,24 +66,28 @@
             <!-- <div class="text-center col-12 col-md-12">
                           <strong>Total</strong> {{orderData.total}} Bs
                       </div> -->
-            <div class="t-body">
+            <div class="col-12">
               <div class="table-responsive ps p-1">
                 <table class="table table-bordered table-striped">
                   <thead class="text-primary">
                     <tr>
-                      <th class="text-center">#</th>
+                      <th class="text-center">Producto</th>
                       <th class="text-center">Cantidad</th>
+                      <th class="text-center">Precio (unidad)</th>
+                      <th class="text-center">Precio Adicional</th>
                       <th class="text-center">Precio Total</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let product of product">
-                      <td class="text-center">{{ product.id }}</td>
+                      <td class="text-center">{{ product.name }}</td>
                       <td class="text-center">{{ product.quantity }}</td>
+                      <td class="text-center">{{ product.price }}</td>
+                      <td class="text-center">{{ product.additionalPrice }}</td>
                       <td class="text-center">{{ product.total }}</td>
                     </tr>
                     <tr>
-                      <td class="text-center" colspan="4">
+                      <td class="text-right" colspan="5">
                         <strong>Total:</strong> {{ orderData.total }} Bs
                       </td>
                     </tr>
