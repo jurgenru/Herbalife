@@ -7,14 +7,14 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-delivery',
+  selector: 'app-store-delivery',
   templateUrl: './delivery.component.html',
   styleUrls: ['./delivery.component.css']
 })
 export class DeliveryComponent implements OnInit {
-  buy: boolean = false;
   order: FormGroup;
   orderData: any = {};
   userData: any = {};
@@ -32,6 +32,7 @@ export class DeliveryComponent implements OnInit {
     private notificationService: NotificationService,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
+    private router: Router
   ) {
 
   }
@@ -71,11 +72,11 @@ export class DeliveryComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.order.value.purcharseId = this.userData.userId;
-    this.order.value.userId = "1"
     this.order.value.names = this.userData.names;
     this.order.value.productId = [];
     JSON.parse(localStorage.getItem('cartList')).forEach(element => {
       this.order.value.productId.push({ "id": element.id, "quantity": element.quantity, "total": element.total });
+      this.order.value.userId = element.userId;
     });
     this.order.value.productId = JSON.stringify(this.order.value.productId);
     this.orderService.post(this.order.value).subscribe((ord: any) => {
@@ -95,19 +96,13 @@ export class DeliveryComponent implements OnInit {
       setTimeout(() => {
         this.spinner.stop();
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Compra realizada', '5000', 'success', 'top', 'center');
-        this.orderList(ord.id);
       }, elapsed);
-      this.buy = true;
       localStorage.removeItem('cartList');
+      console.log('order', ord)
+      this.router.navigate(['/customer/store/order', ord.id]);
     }, error => {
       this.spinner.stop();
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al comprar, intente nuevamente', '5000', 'danger', 'top', 'center');
-    });
-  }
-
-  orderList(id) {
-    this.orderService.getById(id).subscribe((res: any) => {
-      this.orderData = res;
     });
   }
 

@@ -6,6 +6,7 @@ import { DetailComponent } from "./detail/detail.component";
 import { ListComponent } from "./list/list.component";
 import { CartComponent } from "./cart/cart.component";
 import { DeliveryComponent } from './delivery/delivery.component';
+import { OrderComponent } from './order/order.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,10 @@ export const routes: Routes = [
             {
                 path: 'delivery',
                 component: DeliveryComponent
+            },
+            {
+                path: 'order/:id',
+                component: OrderComponent
             }
         ]
     }];
