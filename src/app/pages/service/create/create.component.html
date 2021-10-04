@@ -100,7 +100,7 @@
                 </div>
                 <div class="form-group">
                   <label> Descripción del servicio </label>
-                  <textarea class="form-control" placeholder="Añade una breve descripcion" type="text"
+                  <textarea class="form-control rounded pl-3 pr-3" placeholder="Añade una breve descripcion" type="text"
                     formControlName="description" required></textarea>
                   <div *ngIf="description.invalid && (description.dirty || description.touched)">
                     <small *ngIf="description.errors.required" class="text-danger">
@@ -161,7 +161,7 @@
                 </div>
                 <div class="form-group">
                   <label> Descripcion del agrecidimiento </label>
-                  <textarea class="form-control" type="text" placeholder="Añade un agradecimiento"
+                  <textarea class="form-control rounded pl-3 pr-3" type="text" placeholder="Añade un agradecimiento"
                     formControlName="descriptionGratitude" required></textarea>
                   <div
                     *ngIf="descriptionGratitude.invalid && (descriptionGratitude.dirty || descriptionGratitude.touched)">

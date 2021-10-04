@@ -43,3 +43,6 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+textarea{
+  border: solid 1px #32325d;
+}
