@@ -25,3 +25,15 @@
         height: 530px !important;
     }
 }
+
+.img-thumbnail {
+  height: 190px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  -image-promotion {
+    width: 100%;
+    height: 530px !important;
+  }
+}
