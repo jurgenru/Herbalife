@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "../schedule-call/schedule-call.component";
+import { ProfileService } from "src/app/services/profile.service";
 
 @Component({
   selector: "app-footer",
@@ -9,10 +10,16 @@ import { ScheduleCallComponent } from "../schedule-call/schedule-call.component"
 })
 export class FooterComponent implements OnInit {
   test: Date = new Date();
+  user: any = {};
 
-  constructor(private SimpleModalService: SimpleModalService) {}
+  constructor(
+    private SimpleModalService: SimpleModalService,
+    private profileService: ProfileService
+    ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.get();
+  }
 
   callSchedule() {
     this.SimpleModalService.addModal(
@@ -22,5 +29,12 @@ export class FooterComponent implements OnInit {
       },
       { closeOnClickOutside: true }
     );
+  }
+
+  get(){
+    this.profileService.getByuserId(1).subscribe(res=>{
+      this.user = res;
+      console.log(this.user);
+    })
   }
 }

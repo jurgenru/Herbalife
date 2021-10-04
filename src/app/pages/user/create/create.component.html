@@ -90,43 +90,43 @@
                                         <div class="input-social form-group">
                                             <i class="fab fa-whatsapp">
                                             </i>
-                                            <input class="form-control" placeholder="WhatsApp" type="url"
-                                                style="padding-left: 33px;" formControlName="whatsapp" />
+                                            <input class="form-control" placeholder="https://wa.me/tu_numero" type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="whatsapp" />
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-social form-group">
                                             <i class="fab fa-telegram-plane"> </i>
-                                            <input class="form-control" placeholder="Telegram" type="url"
-                                                style="padding-left: 33px;"  formControlName="telegram"/>
+                                            <input class="form-control" placeholder="https://t.me/nombre_usuario" type="url"
+                                                style="padding-left: 33px;"  [ngbTooltip]="tipContent" formControlName="telegram"/>
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-social form-group">
                                             <i class="fab fa-facebook"> </i>
-                                            <input class="form-control" placeholder="Facebook" type="url"
-                                                style="padding-left: 33px;" formControlName="facebook"/>
+                                            <input class="form-control" placeholder="https://www.facebook.com/..." type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="facebook"/>
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-social form-group">
                                             <i class="fab fa-instagram"> </i>
-                                            <input class="form-control" placeholder="Instagram" type="url"
-                                                style="padding-left: 33px;" formControlName="instagram"/>
+                                            <input class="form-control" placeholder="https://www.instagram.com/..." type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="instagram"/>
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-social form-group">
                                             <i class="fab fa-youtube"> </i>
-                                            <input class="form-control" placeholder="Youtube" type="url"
-                                                style="padding-left: 33px;" formControlName="youtube"/>
+                                            <input class="form-control" placeholder="https://www.youtube.com/..." type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="youtube"/>
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-social form-group">
                                             <i class="fab fa-tiktok"></i>
-                                            <input class="form-control" placeholder="TikTok" type="url"
-                                                style="padding-left: 33px;" formControlName="tiktok"/>
+                                            <input class="form-control" placeholder="https://www.tiktok.com/..." type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="tiktok"/>
                                         </div>
                                     </div>
                                 </div>
@@ -187,5 +187,5 @@
         </div>
     </div>
 </div>
-
+<ng-template #tipContent>Recuerde que debe tener un <b>formato de url</b> para que funcione correctamente</ng-template>
 <ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" text="Creando perfil ..."></ngx-ui-loader>
