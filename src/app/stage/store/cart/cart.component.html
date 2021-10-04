@@ -11,7 +11,7 @@
                     </div>
                     <div class="t-body">
                         <div class="table-responsive ps p-1">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped table-responsive-md">
                                 <thead class="text-primary">
                                     <tr>
                                         <th class="text-center">Nombre</th>
@@ -27,7 +27,7 @@
                                 <tbody>
                                     <tr *ngFor="let product of product;">
                                         <td class="text-center">{{product.name}}</td>
-                                        <td><img class="mx-auto d-block img-fuild" height="100" [src]="product.image" alt=""></td>
+                                        <td><img class="mx-auto d-block img-fuild" width="150" [src]="product.image" alt=""></td>
                                         <td class="text-center">{{product.description}}</td>
                                         <td class="text-center">{{product.price}}</td>
                                         <td class="text-center">{{product.additionalPrice}}</td>
