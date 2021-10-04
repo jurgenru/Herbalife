@@ -73,6 +73,7 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
+    AppointmentService,
     UploadFileService,
     InscriptionService,
     NotificationService,
