@@ -153,12 +153,125 @@
                         <br>
                     </form>
                     <hr color='red'>
-                    <div class=" button-container">
-                        <br>
-                        <button class="btn btn-primary btn-fab btn-icon btn-round float-right">
-                            <i class="tim-icons icon-simple-add"></i>
-                        </button>
+                    <div style="text-align: center">
+                        <h4>AÑADIR NUEVO PRODUCTO</h4>
                     </div>
+                    <br>
+                    <form [formGroup]="productForm">
+                        <div formArrayName="newProduct">
+                            <div *ngFor="let FormInputs of newProduct.controls; let j = index;">
+                                <br>
+                                <div [formGroupName]="j">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 col-md-3">
+                                            <div class="container-image">
+                                                <img src="../../../../assets/img/emilyz.jpg" alt="ProductImage"
+                                                    class="mx-auto d-block"
+                                                    *ngIf="!newProductImage[j]; else noProductImage">
+                                                <ng-template #noProductImage>
+                                                    <img [src]="newProductImage[j]" class="mx-auto d-block">
+                                                </ng-template>
+                                                <div class="overlay" (click)="showNewProduct(j)">
+                                                    <div class="text text-light">
+                                                        <i class="tim-icons icon-upload"> </i>
+                                                        Agregar imagen del producto
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <label> Nombre del producto </label>
+                                            <input class=" form-control" [attr.id]="'name' + j"
+                                                placeholder="Nombre del producto" type="text" formControlName="name">
+                                            <div *ngIf="newProduct.controls[j].get('name').invalid && 
+                                            newProduct.controls[j].get('name').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <label> Precio del producto </label>
+                                            <input class=" form-control" placeholder="Precio del producto" type="text"
+                                                formControlName="price">
+                                            <div *ngIf="newProduct.controls[j].get('price').invalid && 
+                                            newProduct.controls[j].get('price').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <label> Cantidad de productos disponible </label>
+                                            <input class=" form-control" placeholder="Cantidad de productos disponible"
+                                                type="number" formControlName="amount">
+                                            <div *ngIf="newProduct.controls[j].get('amount').invalid && 
+                                            newProduct.controls[j].get('amount').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                            </div>
+                                            <br>
+                                            <label> Descripcion del producto </label>
+                                            <textarea class=" form-control" cols="80"
+                                                placeholder="Coloca la descripcion del producto" rows="4"
+                                                formControlName="description"></textarea>
+                                            <div *ngIf="newProduct.controls[j].get('description').invalid && 
+                                            newProduct.controls[j].get('description').touched">
+                                                <small class="text-danger"> *Espacio <strong>requerido</strong></small>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="text-center">
+                                        <h5> Puedes añadir datos adicionales y hasta 3 caracteristicas del producto</h5>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="form-group col-md-4">
+                                            <label> Precio extra del producto </label>
+                                            <input class=" form-control" placeholder="Precio extra del producto"
+                                                type="text" value="" formControlName="additionalPrice">
+                                            <label> Descripción extra del producto </label>
+                                            <textarea class=" form-control" cols="80"
+                                                placeholder="Datos extra del producto" rows="20"
+                                                formControlName="addtionalDescription"></textarea>
+                                        </div>
+                                        <div class="col-md-6" formArrayName="additionalFeatures">
+                                            <div
+                                                *ngFor="let featuresData of FormInputs.get('additionalFeatures')['controls']; let k=index">
+                                                <label>Caracteristica {{k+1}}</label>
+                                                <input class="form-control" type="text" [formControlName]="k">
+                                                <button (click)="removeFeature(FormInputs.get('additionalFeatures'),k,j)"
+                                                    class="btn btn-warning btn-sm btn-fab btn-icon btn-round">
+                                                    <i class="tim-icons icon-simple-delete"></i>
+                                                </button>
+                                            </div>
+                                            <button (click)="addFeature(FormInputs.get('additionalFeatures'),j)"
+                                            [disabled]="btnAddFeature[j]" class="btn-primary btn-round float-right">
+                                                <i class="tim-icons icon-simple-add"></i> Agregar Caracteristica
+                                            </button>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                    <button (click)="removeProduct(j)"
+                                        class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                        <i class="tim-icons icon-simple-delete"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class=" button-container">
+                                <button (click)="addProduct()"
+                                    [disabled]="btnAddProduct" class="btn btn-primary btn-fab btn-icon btn-round float-right">
+                                    <i class="tim-icons icon-simple-add"></i>
+                                </button>
+                                <br>
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                    <button *ngIf="btnPostProduct" class="btn btn-success btn-sm pull-right" type="button" (click)="post()"
+                    [disabled]="newProduct.invalid">Agregar productos</button>
                 </div>
             </div>
         </div>

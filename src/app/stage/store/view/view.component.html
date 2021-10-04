@@ -30,7 +30,7 @@
             <p class="text-center">{{store.description}}</p>
             <br>
             <div class="d-flex justify-content-center">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-10 col-md-4" *ngFor="let product of products">
                         <div class="card">
                             <a [routerLink]="['/customer/store/detail', product.id]">

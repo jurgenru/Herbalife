@@ -9,35 +9,35 @@
           <br>
           <div class="form-group">
             <div class="row">
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <nav>
                   <ul>
                     <li><a>Elige una opcion</a>
                       <ul>
                         <li><a>SERVICIO</a>
                           <ul>
-                            <li *ngFor="let service of services" class="submenu"><a
+                            <li *ngFor="let service of services"><a
                                 (click)="content(service.id, 'service', service.title)">{{service.title| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>CATEGORIA</a>
                           <ul>
-                            <li *ngFor="let store of stores" class="submenu"><a
+                            <li *ngFor="let store of stores"><a
                                 (click)="content(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
                             </li>
                           </ul>
                         </li>
                         <li><a>ENTRENADOR</a>
                           <ul>
-                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                            <li *ngFor="let trainer of trainers"><a
                                 (click)="content(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>BLOG</a>
                           <ul>
-                            <li *ngFor="let blog of blogs" class="submenu"><a
+                            <li *ngFor="let blog of blogs"><a
                                 (click)="content(blog.id, 'blog', blog.name)">{{blog.name|
                                 slice:0:18}} ...</a></li>
                           </ul>
@@ -50,7 +50,7 @@
                 <br>
                 <p>Opcion elegida <strong>{{selectedOption}}</strong></p>
               </div>
-              <div class="col-8">
+              <div class="col-12 col-md-8">
                 <h1 class="text-center">Promoción 1</h1>
                 <div class="container-image">
                   <div [ngSwitch]="updateImage">
@@ -72,21 +72,21 @@
               </div>
               <hr color="purple" width="90%" />
               <br />
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <nav>
                   <ul>
                     <li><a>Elige una opcion</a>
                       <ul>
                         <li><a>SERVICIO</a>
                           <ul>
-                            <li *ngFor="let service of services" class="submenu"><a
+                            <li *ngFor="let service of services"><a
                                 (click)="content2(service.id, 'service', service.title)">{{service.title| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>CATEGORIA</a>
                           <ul>
-                            <li *ngFor="let store of stores" class="submenu"><a
+                            <li *ngFor="let store of stores"><a
                                 (click)="content2(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
                             </li>
                           </ul>
@@ -100,7 +100,7 @@
                         </li>
                         <li><a>BLOG</a>
                           <ul>
-                            <li *ngFor="let blog of blogs" class="submenu"><a
+                            <li *ngFor="let blog of blogs"><a
                                 (click)="content2(blog.id, 'blog', blog.name)">{{blog.name|
                                 slice:0:18}} ...</a></li>
                           </ul>
@@ -113,7 +113,7 @@
                 <br>
                 <p>Opcion elegida <strong>{{selectedOption2}}</strong></p>
               </div>
-              <div class="col-8">
+              <div class="col-12 col-md-8">
                 <h1 class="text-center">Promoción 2</h1>
                 <div class="container-image">
                   <div [ngSwitch]="updateImage2">
@@ -135,35 +135,35 @@
               </div>
               <hr color="purple" width="90%" />
               <br />
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <nav>
                   <ul>
                     <li><a>Elige una opcion</a>
                       <ul>
                         <li><a>SERVICIO</a>
                           <ul>
-                            <li *ngFor="let service of services" class="submenu"><a
+                            <li *ngFor="let service of services"><a
                                 (click)="content3(service.id, 'service', service.title)">{{service.title| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>CATEGORIA</a>
                           <ul>
-                            <li *ngFor="let store of stores" class="submenu"><a
+                            <li *ngFor="let store of stores"><a
                                 (click)="content3(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
                             </li>
                           </ul>
                         </li>
                         <li><a>ENTRENADOR</a>
                           <ul>
-                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                            <li *ngFor="let trainer of trainers"><a
                                 (click)="content3(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>BLOG</a>
                           <ul>
-                            <li *ngFor="let blog of blogs" class="submenu"><a
+                            <li *ngFor="let blog of blogs"><a
                                 (click)="content3(blog.id, 'blog', blog.name)">{{blog.name|
                                 slice:0:18}} ...</a></li>
                           </ul>
@@ -176,7 +176,7 @@
                 <br>
                 <p>Opcion elegida <strong>{{selectedOption3}}</strong></p>
               </div>
-              <div class="col-8">
+              <div class="col-12 col-md-8">
                 <h1 class="text-center">Promoción 3</h1>
                 <div class="container-image">
                   <div [ngSwitch]="updateImage3">
@@ -198,35 +198,35 @@
               </div>
               <hr color="purple" width="90%" />
               <br />
-              <div class="col-4">
+              <div class="col-12 col-md-4">
                 <nav>
                   <ul>
                     <li><a>Elige una opcion</a>
                       <ul>
                         <li><a>SERVICIO</a>
                           <ul>
-                            <li *ngFor="let service of services" class="submenu"><a
+                            <li *ngFor="let service of services"><a
                                 (click)="content4(service.id, 'service', service.title)">{{service.title| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>CATEGORIA</a>
                           <ul>
-                            <li *ngFor="let store of stores" class="submenu"><a
+                            <li *ngFor="let store of stores"><a
                                 (click)="content4(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
                             </li>
                           </ul>
                         </li>
                         <li><a>ENTRENADOR</a>
                           <ul>
-                            <li *ngFor="let trainer of trainers" class="submenu"><a
+                            <li *ngFor="let trainer of trainers"><a
                                 (click)="content4(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
                                 ...</a></li>
                           </ul>
                         </li>
                         <li><a>BLOG</a>
                           <ul>
-                            <li *ngFor="let blog of blogs" class="submenu"><a
+                            <li *ngFor="let blog of blogs"><a
                                 (click)="content4(blog.id, 'blog', blog.name)">{{blog.name|
                                 slice:0:18}} ...</a></li>
                           </ul>
@@ -239,7 +239,7 @@
                 <br>
                 <p>Opcion elegida <strong>{{selectedOption4}}</strong></p>
               </div>
-              <div class="col-8">
+              <div class="col-12 col-md-8">
                 <h1 class="text-center">Promoción 4</h1>
                 <div class="container-image">
                   <div [ngSwitch]="updateImage4">

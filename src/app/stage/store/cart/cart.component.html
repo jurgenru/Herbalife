@@ -11,14 +11,16 @@
                     </div>
                     <div class="t-body">
                         <div class="table-responsive ps p-1">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped table-responsive-md">
                                 <thead class="text-primary">
                                     <tr>
                                         <th class="text-center">Nombre</th>
                                         <th class="text-center">Imagen</th>
                                         <th class="text-center">Descripción</th>
-                                        <th class="text-center">Precio</th>
-                                        <th class="text-center">Precio Adicional</th>
+                                        <th class="text-center">Precio (Unidad)</th>
+                                        <th class="text-center">Monto Del Precio</th>
+                                        <th class="text-center">Precio Adicional (Unidad)</th>
+                                        <th class="text-center">Monto Del Precio Adicional</th>
                                         <th class="text-center">Cantidad</th>
                                         <th class="text-center">Total</th>
                                         <th class="text-right">Acciones</th>
@@ -27,10 +29,12 @@
                                 <tbody>
                                     <tr *ngFor="let product of product;">
                                         <td class="text-center">{{product.name}}</td>
-                                        <td><img class="mx-auto d-block img-fuild" height="100" [src]="product.image" alt=""></td>
+                                        <td><img class="mx-auto d-block img-fuild" width="150" [src]="product.image" alt=""></td>
                                         <td class="text-center">{{product.description}}</td>
                                         <td class="text-center">{{product.price}}</td>
+                                        <td class="text-center">{{product.priceAmount}}</td>
                                         <td class="text-center">{{product.additionalPrice}}</td>
+                                        <td class="text-center">{{product.additionalPriceAmount}}</td>
                                         <td class="text-center">
                                             <span class="d-flex justify-content-center">
                                                 <button (click)="removeQuantity(product)" class="btn btn-danger btn-sm">-</button>
@@ -46,7 +50,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="5">
+                                        <td colspan="7">
                                             <button class="btn btn-danger btn-sm m-1 pull-right" (click)="emptyCart()">Borrar Lista</button>
                                             <button class="btn btn-info btn-sm m-1 pull-right" routerLink="/customer/store/list" >Añadir más</button>
                                         </td>

@@ -21,31 +21,44 @@
           <div class="card-footer">
             <h5 class="title text-center">Redes Sociales</h5>
             <div class="button-container">
-              <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                <i class="fab fa-facebook"> </i>
+              <button *ngIf="socialMedia.facebook" placement="top" ngbTooltip="Facebook" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.facebook)">
+                <i class="fab fa-facebook-f"> </i>
               </button>
-              <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
+              <button *ngIf="socialMedia.twitter" placement="top" ngbTooltip="Twitter" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.twitter)">
                 <i class="fab fa-twitter"> </i>
               </button>
-              <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                <i class="fab fa-google-plus"> </i>
+              <button *ngIf="socialMedia.instagram" placement="top" ngbTooltip="Instagram" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.instagram)">
+                <i class="fab fa-instagram"> </i>
               </button>
-
+              <button *ngIf="socialMedia.whatsapp" placement="top" ngbTooltip="Whatsapp" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.whatsapp)">
+                <i class="fab fa-whatsapp"></i>
+              </button>
+              <button *ngIf="socialMedia.telegram" placement="top" ngbTooltip="Telegram" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.telegram)">
+                <i class="fab fa-telegram-plane"> </i>
+              </button>
+              <button *ngIf="socialMedia.youtube" placement="top" ngbTooltip="Youtube" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.youtube)">
+                <i class="fab fa-youtube"> </i>
+              </button>
+              <button *ngIf="socialMedia.tiktok" placement="top" ngbTooltip="Tiktok" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.tiktok)">
+                <i class="fab fa-tiktok"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 mx-auto">
+      <div class="col-12 col-md-6 mx-auto">
         <div class="card card-lock card-nav-tabs">
           <div class="card-body">
             <div class="row">
-              <div class="col">
+              <div class="col-12">
                 <h4 class="card-title text-center">{{lection.name}}</h4>
                 <p class="card-text text-center">{{lection.description}}</p>
               </div>
-              <div class="col text-right">
+              <br>
+              <br>
+              <div class="col-12 text-right mt-3">
                 <img [src]="lection.image" class="img-thumbnail" />
               </div>
             </div>
@@ -54,7 +67,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-6 mx-auto text-center">
+      <div class="col-md-6 mx-auto text-center">
         <button type="button" class="btn btn-success">
           Obtén una clase gratis
         </button>

@@ -1,104 +1,171 @@
 <div class="content">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <h2 class="pt-5 title text-center">{{article.title}}</h2>
-                <div class="col-12 col-md-12 text-center mb-5">
-                    <img [src]="article.image" class="img-fluid img-article">
-                    <div class="float-left">
-                        <br>
-                        <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
-                            <li [ngClass]="{'selected': (star <= rant)}">
-                                <i class="fa fa-star fa-5"></i>
-                            </li>
-                        </ul>
-                        <button class="btn btn-info btn-sm pull-left" (click)="sendRating(content)">calificar</button>
-                    </div>
-                    <div class="button-container pull-right">
-                        <button class="btn btn-icon btn-round btn-facebook" href="javascript:void(0)">
-                            <i class="fab fa-facebook fa-1"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-twitter" href="javascript:void(0)">
-                            <i class="fab fa-twitter fa-1"> </i>
-                        </button>
-                        <button class="btn btn-icon btn-round btn-google" href="javascript:void(0)">
-                            <i class="fab fa-google-plus fa-1"> </i>
-                        </button>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col">
+        <h2 class="pt-5 title text-center">{{ article.title }}</h2>
+        <div class="col-md col text-center">
+          <img [src]="article.image" class="img-fluid img-article" />
+          <div class="row text-center">
+            <div class="col-7 com-md">
+              <div class="text-left">
                 <br />
+                <ul
+                  class="list-inline rating-list"
+                  *ngFor="let star of stars"
+                  style="display: inline-block"
+                >
+                  <li [ngClass]="{ selected: star <= rant }">
+                    <i class="fa fa-star fa-5"></i>
+                  </li>
+                </ul>
+                <button
+                  class="btn btn-info btn-sm pull-left"
+                  (click)="sendRating(content)"
+                >
+                  calificar
+                </button>
+              </div>
+            </div>
+            <div class="col-5 com-md">
+              <div class="button-container pull-right">
                 <br />
-                <div class="col-12 col-md-12 text-justify">
-                    <p>{{article.description}}</p>
-                    <br />
-                    <br />
-                    <button class="btn btn-info pull-right btn-sm">Obtén un regalo</button>
-                </div>
+                <p>Compartir En:</p>
+                <button
+                  class="btn btn-icon btn-round btn-facebook"
+                  href="javascript:void(0)"
+                >
+                  <i class="fab fa-facebook fa-1"> </i>
+                </button>
+                <button
+                  class="btn btn-icon btn-round btn-twitter"
+                  href="javascript:void(0)"
+                >
+                  <i class="fab fa-twitter fa-1"> </i>
+                </button>
+                <button
+                  class="btn btn-icon btn-round btn-google"
+                  href="javascript:void(0)"
+                >
+                  <i class="fab fa-google-plus fa-1"> </i>
+                </button>
+              </div>
             </div>
+          </div>
         </div>
+        <br />
+        <br />
+      </div>
+      <div class="col-12 col-md-12 text-justify">
+        <p>{{ article.description }}</p>
+        <br />
+        <br />
+        <button class="btn btn-info pull-right btn-sm">Obtén un regalo</button>
+      </div>
     </div>
-    <br>
-    <hr color="purple" width="80%" />
-    <br>
-    <div class="container">
-        <h3>Comentarios</h3>
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <form [formGroup]="annotation" (ngSubmit)="postComment()">
-                    <div class="d-flex">
-                        <textarea class="form-control rounded" name="" id="" rows="6"
-                            placeholder="Escribe tu comentario" formControlName="comment"></textarea>
-                    </div>
-                    <div *ngIf="comment.invalid && (comment.dirty || comment.touched)">
-                        <small *ngIf="comment.errors.required" class="text-danger">
-                            *El comentario es <strong>requerido</strong>
-                        </small>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-sm pull-right" [disabled]="annotation.invalid">Enviar</button>
-                </form>
-            </div>
-            <div class="col-10" *ngFor="let comment of comments">
-                <br>
-                <br>
-                <div class="box-media d-flex">
-                    <img [src]="comment.userImage" class="rounded-circle" width="45" height="45" alt="">
-                    <div class="pl-3">
-                        <p class="box-name">{{comment.userName}} <span>{{comment.created | amTimeAgo}}</span></p>
-                        <div class="text-justify pl-3">{{comment.comment}}</div>
-                    </div>
-                </div>
-                <hr>
-            </div>
+  </div>
+  <br />
+  <hr color="purple" width="80%" />
+  <br />
+  <div class="container">
+    <h3>Comentarios</h3>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <form [formGroup]="annotation" (ngSubmit)="postComment()">
+          <div class="d-flex">
+            <textarea
+              class="form-control rounded"
+              name=""
+              id=""
+              rows="6"
+              placeholder="Escribe tu comentario"
+              formControlName="comment"
+            ></textarea>
+          </div>
+          <div *ngIf="comment.invalid && (comment.dirty || comment.touched)">
+            <small *ngIf="comment.errors.required" class="text-danger">
+              *El comentario es <strong>requerido</strong>
+            </small>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-info btn-sm pull-right"
+            [disabled]="annotation.invalid"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+      <div class="col-10" *ngFor="let comment of comments">
+        <br />
+        <br />
+        <div class="box-media d-flex">
+          <img
+            [src]="comment.userImage"
+            class="rounded-circle"
+            width="45"
+            height="45"
+            alt=""
+          />
+          <div class="pl-3">
+            <p class="box-name">
+              {{ comment.userName }}
+              <span>{{ comment.created | amTimeAgo }}</span>
+            </p>
+            <div class="text-justify pl-3">{{ comment.comment }}</div>
+          </div>
         </div>
+        <hr />
+      </div>
     </div>
+  </div>
 </div>
 
 <ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Calificar el Articulo</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('close')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="d-flex justify-content-center">
-                    <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
-                        <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}">
-                            <i class="fa fa-star icon-star"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Calificar el Articulo</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('close')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="d-flex justify-content-center">
+          <ul
+            class="list-inline rating-list"
+            *ngFor="let star of stars"
+            style="display: inline-block"
+          >
+            <li
+              (click)="countStar(star)"
+              [ngClass]="{ selected: star <= selectedValue }"
+            >
+              <i class="fa fa-star icon-star"></i>
+            </li>
+          </ul>
         </div>
+      </div>
     </div>
-    <hr>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark pull-right"
-            (click)="modal.close('Save click')">Enviar</button>
-    </div>
+  </div>
+  <hr />
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark pull-right"
+      (click)="modal.close('Save click')"
+    >
+      Enviar
+    </button>
+  </div>
 </ng-template>
 
-
-<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>
+<ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(24,31,46)"
+></ngx-ui-loader>
