@@ -1,138 +1,138 @@
 <div class="content">
-    <div class="header">
-        <ngb-carousel>
-            <ng-template ngbSlide *ngFor="let promotion of promotions">
-                <div class="picsum-img-wrapper">
-                    <a [routerLink]="promotion.content">
-                        <img [src]="promotion.image" class="img-fluid image-promotion">
-                    </a>
-                </div>
-            </ng-template>
-        </ngb-carousel>
-    </div>
-    <div class="main">
-        <div class="service">
-            <h3 class=" title mt-5 text-center">SERVICIOS</h3>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4" *ngFor="let service of services">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a [routerLink]="['/customer/service/view', service.id]">
-                                        <img [src]="service.image" class="img-thumbnail" alt="">
-                                        <br><br>
-                                        <h4 class=" title">{{service.title}}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <app-share-button [text]="['Ofrecemos servicios en '+service.title]" [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let promotion of promotions">
+            <div class="picsum-img-wrapper">
+                <a [routerLink]="promotion.content">
+                    <img [src]="promotion.image" class="img-fluid image-promotion">
+                </a>
             </div>
-        </div>
-        <div class="store">
-            <h3 class=" title mt-5 text-center">TIENDAS</h3>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4" *ngFor="let store of stores">
-                        <div class="card card-user">
-                            <div class="card-body">
-                                <div class="author">
-                                    <a [routerLink]="['/customer/store/view', store.id]">
-                                        <img [src]="store.image" class="img-thumbnail" alt="">
-                                        <br><br>
-                                        <h4 class="title">{{store.title}}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                   <app-share-button [text]="['Variedad de productos en nuestra tienda de '+store.title]" [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="trainer">
-            <h3 class=" title mt-5 text-center">ENTRENADORES</h3>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4" *ngFor="let trainer of trainers">
-                        <div class=" card card-user">
-                            <a [routerLink]="['/customer/trainer/view', trainer.id]">
-                                <img class="card-img img-fluid" [src]="trainer.imageLection">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-center">{{trainer.nameLection}}</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="author">
-                                        <img alt="..." class="avatar" [src]="trainer.icon" />
-                                        <h4 class=" title">{{trainer.names}}</h4>
-                                    </div>
-                                </div>
+        </ng-template>
+    </ngb-carousel>
+    <div class="container">
+        <h3 class=" title mt-5 text-center">SERVICIOS</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 d-flex" *ngFor="let service of services">
+                <div class="card flex-fill text-center">
+                    <div class="card-body">
+                        <div class="author">
+                            <a [routerLink]="['/customer/service/view', service.id]">
+                                <img [src]="service.image" class="img-thumbnail" alt="">
+                                <br><br>
+                                <h4 class=" title">{{service.title}}</h4>
                             </a>
-                            <div class=" card-footer">
-                                <div class=" button-container">
-                                    <app-share-button [text]="['Conoce al entrenador/a '+trainer.names]" [shareUrl]="['customer/trainer/view/'+trainer.id]"></app-share-button>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container">
+                            <app-share-button [text]="['Ofrecemos servicios en '+service.title]"
+                                [shareUrl]="['customer/service/view/'+service.id]"></app-share-button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="blog">
-            <h3 class=" title mt-5 text-center">BLOGS</h3>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-4" *ngFor="let blog of blogs">
-                        <div class="card card-user">
-                            <div class="card-body">
+        <h3 class=" title mt-5 text-center">TIENDAS</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 d-flex" *ngFor="let store of stores">
+                <div class="card flex-fill text-center">
+                    <div class="card-body">
+                        <div class="author">
+                            <a [routerLink]="['/customer/store/view', store.id]">
+                                <img [src]="store.image" class="img-thumbnail" alt="">
+                                <br><br>
+                                <h4 class="title">{{store.title}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container">
+                            <app-share-button [text]="['Variedad de productos en nuestra tienda de '+store.title]"
+                                [shareUrl]="['customer/store/view/'+store.id]"></app-share-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container text-center">
+            <h3>¡GRATIS POR TIEMPO LIMITADO!</h3>
+            <span>Elige a tu entrenador y aprovecha esta promocion</span>
+            <table class="countdown">
+                <tr class="time">
+                    <td id="day">{{days}}</td>
+                    <td id="hour">{{hours}}</td>
+                    <td id="minute">{{min}}</td>
+                    <td id="second">{{sec}}</td>
+                </tr>
+                <tr>
+                    <td>Días</td>
+                    <td>Horas</td>
+                    <td>Minutos</td>
+                    <td>Segundos</td>
+                </tr>
+            </table>
+        </div>
+        <h3 class=" title mt-5 text-center">ENTRENADORES</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 d-flex" *ngFor="let trainer of trainers">
+                <div class=" card card-user flex-fill">
+                    <a [routerLink]="['/customer/trainer/view', trainer.id]">
+                        <img class="card-img img-fluid" [src]="trainer.imageLection">
+                        <div class="card-img-overlay">
+                            <h3 class="card-title text-center">{{trainer.nameLection}}</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="author">
+                                <img alt="..." class="avatar" [src]="trainer.icon" />
+                                <h4 class=" title">{{trainer.names}}</h4>
+                            </div>
+                        </div>
+                    </a>
+                    <div class=" card-footer">
+                        <div class=" button-container">
+                            <app-share-button [text]="['Conoce al entrenador/a '+trainer.names]"
+                                [shareUrl]="['customer/trainer/view/'+trainer.id]"></app-share-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class=" title mt-5 text-center">BLOGS</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 d-flex" *ngFor="let blog of blogs">
+                <div class="card flex-fill text-center">
+                    <div class="card-body">
+                        <div class="author">
+                            <a [routerLink]="['/customer/blog/view', blog.id]">
+                                <img [src]="blog.banner" class="img-thumbnail" alt="">
+                                <br><br>
+                                <h4 class=" title">{{blog.name}}</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container">
+                            <app-share-button [text]="['Revisa nuestro blog '+blog.name]"
+                                [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class=" title mt-5 text-center">TESTIMONIOS</h3>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 d-flex" *ngFor="let statement of statements">
+                <div class="card card-stats flex-fill">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-5">
                                 <div class="author">
-                                    <a [routerLink]="['/customer/blog/view', blog.id]">
-                                        <img [src]="blog.banner" class="img-thumbnail" alt="">
-                                        <br><br>
-                                        <h4 class=" title">{{blog.name}}</h4>
-                                    </a>
+                                    <img [src]="statement.image" class="img-fluid" />
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <div class="button-container">
-                                    <app-share-button [text]="['Revisa nuestro blog '+blog.name]" [shareUrl]="['customer/blog/view/'+blog.id]"></app-share-button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonials">
-            <h3 class=" title mt-5 text-center">TESTIMONIOS</h3>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-4" *ngFor="let statement of statements">
-                        <div class="card card-stats">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <div class="author">
-                                            <img [src]="statement.image" />
-                                        </div>
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="numbers">
-                                            <p class="card-category">{{statement.name}}</p>
-                                            <h5 class="card-title">{{statement.description}}</h5>
-                                        </div>
-                                    </div>
+                            <div class="col-12 col-md-7">
+                                <div class="numbers">
+                                    <p class="card-category">{{statement.name}}</p>
+                                    <h5 class="card-title">{{statement.description}}</h5>
                                 </div>
                             </div>
                         </div>
@@ -143,4 +143,5 @@
     </div>
 </div>
 
-<ngx-ui-loader class="loading-page" fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>
+<ngx-ui-loader class="loading-page" fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)">
+</ngx-ui-loader>

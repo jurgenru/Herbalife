@@ -5,7 +5,7 @@ import { routedComponents, ServiceRoutingModule } from './service.routing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ComponentsModule } from 'src/app/components/components.module';
-
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   declarations: [...routedComponents],
@@ -15,7 +15,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     ServiceRoutingModule,
     CommonModule,
     NgbModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    NgxQRCodeModule
   ],
   exports: [
     ...routedComponents

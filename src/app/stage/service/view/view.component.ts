@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
 import { InscriptionService } from 'src/app/services/inscription-service';
+import { ManagerService } from 'src/app/services/manager.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -27,6 +28,7 @@ export class ViewComponent implements OnInit {
     private inscriptionService: InscriptionService,
     private router: Router,
     private toastr: ToastrService,
+    private managerService: ManagerService,
   ) {
     this.get();
     this.list();
@@ -38,7 +40,7 @@ export class ViewComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.route.params.subscribe(val => {
-      const filter = `{"fields": {"descriptionGratitude": false, "titleGratitude": false, "modified": false, ""}}`;
+      const filter = `{"fields": {"descriptionGratitude": false, "titleGratitude": false, "modified": false}}`;
       this.serviceService.getById(val.id, filter).subscribe(ser => {
         const end = new Date();
         const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -72,7 +74,6 @@ export class ViewComponent implements OnInit {
       }
       this.inscriptionService.post(ins).subscribe(sus => {
         this.router.navigate(['/customer/service/confirmation', this.service.id]);
-        console.log(this.service.id);
       }, error => {
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
       });
@@ -84,7 +85,7 @@ export class ViewComponent implements OnInit {
   registerServiceTest() {
     this.userService.me().subscribe((user: any) => {
       const ins = {
-        userId: user.id,
+        userId: (user.id).toString(),
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
@@ -100,11 +101,14 @@ export class ViewComponent implements OnInit {
   registerServiceAuto() {
     this.userService.me().subscribe((user: any) => {
       const ins = {
-        userId: user.id,
+        userId: (user.id).toString(),
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
-        // this.router.navigate(['/customer/test']);
+        // this.managerService.getByUserId(user.id).subscribe((admin: any) => {
+        //   const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+admin.id, "herbalife")
+        // });
+       const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId=123456789", "herbalife")
       }, error => {
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
       });

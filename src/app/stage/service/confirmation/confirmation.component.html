@@ -4,12 +4,18 @@
             <div class="col-12">
                 <br><br>
                 <div class="d-flex justify-content-center">
-                    <div class="card">
+                    <div class="card" *ngIf="service">
                         <div class="card-header">
-                            <h2 class="text-center">titulo de confirmacion</h2>
+                            <h2 class="text-center">{{service.titleGratitude}}</h2>
                         </div>
                         <div class="card-body">
-                            <p class="text-center">descripion de agradecimineto</p>
+                            <p class="text-center">{{service.descriptionGratitude}}</p>
+                            <br><br>
+                            <div class="text-center">
+                                <ngx-qrcode [elementType]="elementType" [value]="value" cssClass="aclass"
+                                    errorCorrectionLevel="L">
+                                </ngx-qrcode>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -17,3 +23,6 @@
         </div>
     </div>
 </div>
+
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" text="Cargando ...">
+</ngx-ui-loader>

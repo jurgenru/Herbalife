@@ -7,10 +7,12 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
-    ...routedComponents,],
+    ...routedComponents,
+    OrderComponent,],
   imports: [
     RouterModule,
     StoreRoutingModule,
