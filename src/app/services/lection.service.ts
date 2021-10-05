@@ -15,5 +15,7 @@ export class LectionService {
   edit(id, body) {
     return this.http.patch(`${environment.apiUrl}lections/${id}`, body).pipe();
 }
-  
+getById(id) {
+  return this.http.get(`${environment.apiUrl}Lection/${id}`).pipe();
+}
 }
