@@ -5,16 +5,16 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class InscriptionService {
+export class InscriptionLection {
 
   constructor(private http: HttpClient) { }
 
   post(body) {
-    return this.http.post(`${environment.apiUrl}inscription-services`, body).pipe();
+    return this.http.post(`${environment.apiUrl}inscription-lections`, body).pipe();
   }
 
   get() {
-    return this.http.get(`${environment.apiUrl}inscription-services`).pipe();
+    return this.http.get(`${environment.apiUrl}inscription-lections`).pipe();
   }
 
 }

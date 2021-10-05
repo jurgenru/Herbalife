@@ -226,7 +226,6 @@ export class EditComponent implements OnInit {
     this.newProduct.push(FormInputs);
     if ((this.countProduct + this.productData.length) > 11) {
       this.btnAddProduct = true;
-      console.log(this.productData.length);
     }
   }
   removeProduct(index: number) {
@@ -269,7 +268,6 @@ export class EditComponent implements OnInit {
           element.value.storeId = parseInt(val.id);
           element.value.additionalFeatures = JSON.stringify(element.value.additionalFeatures);
           this.productService.post(element.value).subscribe((productData: any) => {
-            console.log(productData);
             const end = new Date();
             const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
             setTimeout(() => {
@@ -285,7 +283,6 @@ export class EditComponent implements OnInit {
         });
       });
     });
-    console.log(this.newProduct.value);
   }
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {

@@ -8,6 +8,7 @@
               <button class="btn btn-info btn-sm pull-right">
                 <i class="far fa-file-pdf mr-1"></i>Descargar
               </button>
+            <br><br><br>
             </div>
             <div class="col-12 col-md-8 pl-5 pr-5">
               <ul class="list-group">
@@ -53,19 +54,19 @@
               </ul>
             </div>
             <div class="col-12 col-md-4">
-              <img
-                src="../../../../assets/img/angular.jpg"
-                class="d-block img-fluid"
-                alt=""
-              />
-              <div class="d-flex justify-content-between align-items-center">
+              <div class="text-center">
+                <ngx-qrcode 
+                [elementType]="elementType" 
+                [value]="value"
+                cssClass="aclass"
+                errorCorrectionLevel="L">
+              </ngx-qrcode>  
+              </div>
+              <div class="text-center">
                 Descarga tu QR para recibir el producto
                 <i class="fas fa-download mr-2"></i>
               </div>
             </div>
-            <!-- <div class="text-center col-12 col-md-12">
-                          <strong>Total</strong> {{orderData.total}} Bs
-                      </div> -->
             <div class="col-12">
               <div class="table-responsive ps p-1">
                 <table class="table table-bordered table-striped">
