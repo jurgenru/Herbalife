@@ -80,17 +80,18 @@ export class DeliveryComponent implements OnInit {
     });
     this.order.value.productId = JSON.stringify(this.order.value.productId);
     this.orderService.post(this.order.value).subscribe((ord: any) => {
-      this.postNotification(ord.id, 'Se hizo un compra en tu tienda', 'order');
-      JSON.parse(localStorage.getItem('cartList')).forEach(element => {
-        this.productService.getById(element.id).subscribe((data: any) => {
-          this.product = {
-            'amount': data.amount - element.quantity
-          }
-          this.productService.update(element.id, this.product).subscribe(data => {
-          }, error => {
-          });
-        })
-      });
+      this.postNotification(this.order.value.userId, ord.id, 'Se hizo un compra en tu tienda', 'order');
+      this.postNotification(this.userData.userId, ord.id, 'Hiciste una compra, espere hasta que le confirmen el pedido', 'order');
+      // JSON.parse(localStorage.getItem('cartList')).forEach(element => {
+      //   this.productService.getById(element.id).subscribe((data: any) => {
+      //     this.product = {
+      //       'amount': data.amount - element.quantity
+      //     }
+      //     this.productService.update(element.id, this.product).subscribe(data => {
+      //     }, error => {
+      //     });
+      //   });
+      // });
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
@@ -98,7 +99,6 @@ export class DeliveryComponent implements OnInit {
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Compra realizada', '5000', 'success', 'top', 'center');
       }, elapsed);
       localStorage.removeItem('cartList');
-      console.log('order', ord)
       this.router.navigate(['/customer/store/order', ord.id]);
     }, error => {
       this.spinner.stop();
@@ -106,9 +106,9 @@ export class DeliveryComponent implements OnInit {
     });
   }
 
-  postNotification(content, description, reason) {
+  postNotification(userId, content, description, reason) {
     const notif = {
-      userId: "1",
+      userId: userId,
       content: content.toString(),
       description: description,
       reason: reason

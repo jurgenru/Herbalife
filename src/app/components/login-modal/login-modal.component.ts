@@ -71,7 +71,6 @@ export class LoginModalComponent extends SimpleModalComponent<AlertModel, null> 
   logInWithGoogle() {
     const start = new Date();
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(data => {
-      console.log(data);
       const log = {
         email: data.email,
         password: data.id

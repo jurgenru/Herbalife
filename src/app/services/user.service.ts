@@ -81,4 +81,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}users/${id}/inscription-services`).pipe();    
     }
 
+    getInscriptionLectionById(id) {
+      return this.http.get(`${environment.apiUrl}users/${id}/inscription-lections`).pipe();    
+    }
+
 }

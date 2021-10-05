@@ -197,7 +197,6 @@ export class EditComponent implements OnInit {
         element.value.blogId = parseInt(val.id);
         element.value.rating = "[]";
         this.articleService.post(element.value).subscribe(newArticleData => {
-          console.log(newArticleData);
         }, error => {
           this.spinner.stop();
           this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear el articulo, intente nuevamente', '5000', 'danger', 'top', 'center');

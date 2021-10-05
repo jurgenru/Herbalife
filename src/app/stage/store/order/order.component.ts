@@ -12,6 +12,9 @@ export class OrderComponent implements OnInit {
   orderData: any = {};
   productId: any;
   product: any = [];
+  title = 'app';
+  elementType = 'url';
+  value = 'Techiediaries';
   
   constructor(
     private orderService: OrderService,

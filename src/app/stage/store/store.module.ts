@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { OrderComponent } from './order/order.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OrderComponent } from './order/order.component';
     NgbModule,
     NgxUiLoaderModule,
     SimpleModalModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxQRCodeModule
   ],
   exports: [
   ...routedComponents

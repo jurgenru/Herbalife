@@ -34,6 +34,7 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   icon: any;
   countNot: number;
   showNot: any;
+  profile: any;
 
   constructor(
     location: Location,
@@ -222,7 +223,7 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
   }
   changeButton(color) {
     var buttons = document.getElementsByClassName('btn-theme');
-       for (var i = 0; i < buttons.length; i++) {
+    for (var i = 0; i < buttons.length; i++) {
       buttons[i].setAttribute("data", color);
     }
     // if (buttons != undefined) {
@@ -342,14 +343,28 @@ export class NavbarHomeComponent implements OnInit, OnDestroy {
         event.path[3].style.backgroundColor = '#ffffff';
       });
     }
-
     switch (reason) {
       case 'article':
         this.router.navigate(['/customer/blog/detail/', content]);
         break;
       case 'order':
-        this.router.navigate(['/order/view/', content]);
+        switch (this.role) {
+          case 'customer':
+            this.router.navigate(['/customer/store/order', content]);
+            break;
+          case 'admin':
+            this.router.navigate(['/order/view/', content]);
+          default:
+            break;
+        }
         break;
+      case 'lection':
+        this.router.navigate(['/customer/trainer/view/', content]);
+        break;
+      case 'service':
+        this.router.navigate(['/customer/service/view/', content]);
+
+      break;
       default:
         break;
     }
