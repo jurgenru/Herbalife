@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="table-responsive-sm">
+          <div class="table-responsive ps">
             <table class="table table-bordered table-striped">
               <thead class="text-primary">
                 <tr>
@@ -32,7 +32,7 @@
                   <td>{{list.names}}</td>
                   <td>{{list.description | slice:0:40}}</td>
                   <td class="text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
-                  <td class=" text-center">
+                  <td class=" text-right">
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
                       ngbTooltip="ver" container="body" [routerLink]="['/trainer/view', list.id]"><i
                         class="tim-icons icon-paper"></i></button>
