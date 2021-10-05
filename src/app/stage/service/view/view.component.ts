@@ -6,6 +6,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { RegisterModalComponent } from 'src/app/components/register-modal/register-modal.component';
 import { InscriptionService } from 'src/app/services/inscription-service';
 import { ManagerService } from 'src/app/services/manager.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { ServiceService } from 'src/app/services/service.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -28,7 +29,7 @@ export class ViewComponent implements OnInit {
     private inscriptionService: InscriptionService,
     private router: Router,
     private toastr: ToastrService,
-    private managerService: ManagerService,
+    private notificationService: NotificationService
   ) {
     this.get();
     this.list();
@@ -73,6 +74,7 @@ export class ViewComponent implements OnInit {
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
+        this.postNotification(user.id, this.service.id,'te inscribiste el en servicio', 'service');
         this.router.navigate(['/customer/service/confirmation', this.service.id]);
       }, error => {
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
@@ -89,6 +91,7 @@ export class ViewComponent implements OnInit {
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
+        this.postNotification(user.id, this.service.id,'te inscribiste en el test', 'service');
         this.router.navigate(['/customer/test']);
       }, error => {
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
@@ -105,6 +108,7 @@ export class ViewComponent implements OnInit {
         serviceId: this.service.id
       }
       this.inscriptionService.post(ins).subscribe(sus => {
+        this.postNotification(user.id, this.service.id,'te inscribiste a la autoevaluacion', 'service');
         // this.managerService.getByUserId(user.id).subscribe((admin: any) => {
         //   const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+admin.id, "herbalife")
         // });
@@ -115,7 +119,6 @@ export class ViewComponent implements OnInit {
     }, error => {
       this.showRegister();
     });
-
   }
 
   showRegister() {
@@ -125,6 +128,18 @@ export class ViewComponent implements OnInit {
       }
     });
   }
+
+  postNotification(userId, content, description, reason) {
+    const notif = {
+      userId: userId,
+      content: content.toString(),
+      description: description,
+      reason: reason
+    }
+    this.notificationService.post(notif).subscribe(not => {
+    });
+  }
+
 
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {

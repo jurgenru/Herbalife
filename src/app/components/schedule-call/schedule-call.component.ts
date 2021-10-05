@@ -89,7 +89,6 @@ export class ScheduleCallComponent
   }
 
   onModelChange($event) {
-    console.log("Model change", $event);
     this.newSchedule = $event;
     this.finalDate =
       this.newSchedule.year +
@@ -97,7 +96,6 @@ export class ScheduleCallComponent
       this.newSchedule.month +
       "-" +
       this.newSchedule.day;
-    console.log("date: ", this.finalDate);
   }
 
   post() {
@@ -108,7 +106,6 @@ export class ScheduleCallComponent
 
     this.userService.me().subscribe((user: any) => {
       this.appointment.value.userId = user.id;
-      console.log(this.appointment.value);
       this.appointmentService.post(this.appointment.value).subscribe(
         (data) => {
           const end = new Date();

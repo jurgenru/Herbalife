@@ -38,6 +38,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-logi
 import { InscriptionService } from "./services/inscription-service";
 import { AppointmentService } from "./services/appointment.service";
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { InscriptionLection } from "./services/inscription-lection";
 moment.locale('es');
 
 @NgModule({
@@ -78,6 +79,7 @@ moment.locale('es');
     InscriptionService,
     NotificationService,
     AppointmentService,
+    InscriptionLection,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
