@@ -4,8 +4,17 @@
       <div class="col-12">
         <div class="t-header">
           <div class="row">
-            <div class="col-12">
-              <h3 class="t-title text-center">Lista de reuniones</h3>
+            <div class="col-12 col-md-8">
+              <h3 class="t-title">Lista de reuniones</h3>
+            </div>
+            <div class="col-12 col-md-4">
+              <input
+                class="form-control"
+                placeholder="Buscar reuniones ..."
+                type="text"
+                name="filterAppointment"
+                [(ngModel)]="filterAppointment"
+              />
             </div>
           </div>
         </div>
@@ -30,11 +39,11 @@
                       | paginate: { itemsPerPage: 100, currentPage: pageActual }
                   "
                 >
-                  <td class="text-center">{{list.names}}</td>
-                  <td class="text-center">{{list.phoneNumber}}</td>
-                  <td class="text-center">{{list.schedule}}</td>
-                  <td class="text-center">{{list.hour}}</td>
-                  <td class="text-center">{{list.status}}</td>
+                  <td class="text-center">{{ list.names }}</td>
+                  <td class="text-center">{{ list.phoneNumber }}</td>
+                  <td class="text-center">{{ list.schedule }}</td>
+                  <td class="text-center">{{ list.hour }}</td>
+                  <td class="text-center">{{ list.status }}</td>
                   <td class="text-right">
                     <button
                       class="btn btn-success btn-link btn-sm btn-icon"
@@ -42,7 +51,7 @@
                       placement="top"
                       ngbTooltip="ver"
                       container="body"
-                      [routerLink]="['/appointment/view', list.id]"
+                      [routerLink]="['/schedule/view', list.id]"
                     >
                       <i class="tim-icons icon-paper"></i>
                     </button>
@@ -52,7 +61,7 @@
                       placement="top"
                       ngbTooltip="editar"
                       container="body"
-                      [routerLink]="['/appointment/edit', list.id]"
+                      [routerLink]="['/schedule/edit', list.id]"
                     >
                       <i class="tim-icons icon-pencil"></i>
                     </button>

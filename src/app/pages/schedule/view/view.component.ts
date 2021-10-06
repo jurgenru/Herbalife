@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppointmentService } from 'src/app/services/appointment.service';
 
 @Component({
   selector: 'app-view',
@@ -6,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
+  date: any = {};
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private appointmentService: AppointmentService
+  ) {
+    this.route.params.subscribe((val) => {
+      this.appointmentService.getById(val.id).subscribe((data) => {
+        this.date = data;
+      })
+    });
+  }
 
   ngOnInit(): void {
   }
