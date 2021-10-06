@@ -10,11 +10,8 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { routedComponents, ScheduleRoutingModule } from './schedule.routing';
 import { FilterAppointmentPipe } from 'src/app/pipes/filter-appointment.pipe';
 
-
 @NgModule({
-  declarations: [
-    ...routedComponents, FilterAppointmentPipe
-  ],
+  declarations: [...routedComponents, FilterAppointmentPipe],
   imports: [
     RouterModule,
     ScheduleRoutingModule,
