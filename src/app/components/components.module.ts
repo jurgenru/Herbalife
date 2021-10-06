@@ -13,8 +13,6 @@ import { ImageCropperModule } from "ngx-image-cropper";
 import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { SimpleModalModule } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "./schedule-call/schedule-call.component";
-import { RegisterModalComponent } from "./register-modal/register-modal.component";
-import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { ShareButtonComponent } from "./share-button/share-button.component";
 import { FormUploadComponent } from './form-upload/form-upload.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -41,8 +39,6 @@ import { MomentModule } from "angular2-moment";
     FloatSocialComponent,
     ImageCropperComponent,
     ScheduleCallComponent,
-    RegisterModalComponent,
-    LoginModalComponent,
     ShareButtonComponent,
     FormUploadComponent
   ],
@@ -54,8 +50,6 @@ import { MomentModule } from "angular2-moment";
     FloatSocialComponent,
     ImageCropperComponent,
     ScheduleCallComponent,
-    RegisterModalComponent,
-    LoginModalComponent,
     ShareButtonComponent,
     FormUploadComponent
   ]

@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
 
     get() {
         const start = new Date();
-        this.spinner.start();
+        // this.spinner.start();
         const filter = `{"fields": {"id": true, "names": true, "icon": true}, "order":["id DESC"]}`;
         this.trainerService.get(filter).subscribe((data: any) => {
             data.forEach(element => {
@@ -30,13 +30,17 @@ export class ListComponent implements OnInit {
                     const end = new Date();
                     const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
                     setTimeout(() => {
-                    element.imageLection = lect.image;
-                    element.nameLection = lect.name;
-                    this.trainers.push(element);
-                    this.spinner.stop();
-                }, elapsed);
+                        element.imageLection = lect.image;
+                        element.nameLection = lect.name;
+                        this.trainers.push(element);
+                        // this.spinner.stop();
+                    }, elapsed);
+                }, error => {
+                    // this.spinner.stop();
                 });
             });
+        }, error => {
+            // this.spinner.stop();
         });
     }
 

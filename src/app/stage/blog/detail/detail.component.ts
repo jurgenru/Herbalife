@@ -78,6 +78,8 @@ export class DetailComponent implements OnInit {
         this.blogService.getById(data.blogId).subscribe((blg: any) => {
           this.userIdBlog = blg.userId;
         });
+      }, error => {
+        this.spinner.stop();
       });
     });
   }

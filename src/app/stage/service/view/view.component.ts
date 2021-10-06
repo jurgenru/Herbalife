@@ -51,6 +51,8 @@ export class ViewComponent implements OnInit {
           this.spinner.stop();
         }, elapsed);
       });
+    }, error => {
+      this.spinner.stop();
     });
   }
 

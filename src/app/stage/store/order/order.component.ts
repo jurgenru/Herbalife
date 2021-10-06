@@ -34,6 +34,7 @@ export class OrderComponent implements OnInit {
             this.product.push({"id": res.id, "idOrder": element.id, "name": res.name, "quantity": element.quantity, "price": res.price, "additionalPrice": parseFloat(res.additionalPrice)*parseInt(element.quantity), "total": element.total});
           })
         });
+      }, error => {
       });
     });
   }
