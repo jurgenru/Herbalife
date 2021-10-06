@@ -33,4 +33,7 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  openSocialMedia(navUrl){
+    window.open(navUrl, "_blank");
+  }
 }

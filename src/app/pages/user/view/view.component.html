@@ -61,31 +61,31 @@
                                         <h4 class="title"> Redes Sociales: </h4>
                                         <div class="button-container">
                                             <button *ngIf="socialMedia.facebook"
-                                                class="btn btn-icon btn-round btn-default" href="javascript:void(0)">
+                                                class="btn btn-icon btn-round btn-default" (click)="openSocialMedia(socialMedia.facebook)">
                                                 <i class="fab fa-facebook-f"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.twitter"
-                                                class="btn btn-icon btn-round btn-info" href="javascript:void(0)">
+                                                class="btn btn-icon btn-round btn-info" (click)="openSocialMedia(socialMedia.twitter)">
                                                 <i class=" fab fa-twitter"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.gmail"
-                                                class="btn btn-icon btn-round btn-danger" href="javascript:void(0)">
+                                                class="btn btn-icon btn-round btn-danger">
                                                 <i class="tim-icons icon-email-85"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.whatsapp"
-                                                class="btn btn-icon btn-round btn-success" href="javascript:void(0)">
+                                                class="btn btn-icon btn-round btn-success" (click)="openSocialMedia(socialMedia.whatsapp)">
                                                 <i class="fab fa-whatsapp"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.telegram"
-                                                class="btn btn-icon btn-round btn-info" href="javascript:void(0)">
-                                                <i class="fab fa-telegram"> </i>
+                                                class="btn btn-icon btn-round btn-info" (click)="openSocialMedia(socialMedia.telegram)">
+                                                <i class="fab fa-telegram-plane"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.youtube"
-                                                class="btn btn-icon btn-round btn-danger" href="javascript:void(0)">
+                                                class="btn btn-icon btn-round btn-danger" (click)="openSocialMedia(socialMedia.youtube)">
                                                 <i class="fab fa-youtube"> </i>
                                             </button>
                                             <button *ngIf="socialMedia.tiktok" class="btn btn-icon btn-round"
-                                                href="javascript:void(0)">
+                                                (click)="openSocialMedia(socialMedia.tiktok)">
                                                 <i class="fab fa-tiktok"> </i>
                                             </button>
                                         </div>

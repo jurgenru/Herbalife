@@ -32,4 +32,7 @@ export class ViewComponent implements OnInit {
     });
   }
 
+  openSocialMedia(navUrl){
+    window.open(navUrl, "_blank");
+  }
 }
