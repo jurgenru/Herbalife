@@ -8,7 +8,7 @@ import * as S3 from 'aws-sdk/clients/s3';
 @Injectable()
 export class UploadFileService {
 
-  FOLDER = 'jsa-s3/';
+  FOLDER = 'eduvirtual/';
 
   constructor() { }
 
@@ -16,8 +16,8 @@ export class UploadFileService {
     console.log('filef', file);
     const bucket = new S3(
       {
-        accessKeyId: 'YOUR-ACCESS-KEY-ID',
-        secretAccessKey: 'YOUR-SECRET-ACCESS-KEY',
+        accessKeyId: 'AKIA22CIVYVABDLRZG6M',
+        secretAccessKey: 'j5TGDwTXYy18uuE2rm5pXn51iIYs/Rs7DavJzHtX',
         region: 'us-east-1'
       }
     );
