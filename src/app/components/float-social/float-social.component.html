@@ -4,18 +4,72 @@
       <i class="fa fa-cog fa-2x"> </i>
     </a>
     <ul ngbDropdownMenu>
-      <div class="text-center">
-        <li class="header-title">Mis Redes Sociales</li>
+      <div class="text-center" *ngIf="socialMedia">
+        <li class="header-title">Nuestras Redes Sociales</li>
         <br />
         <br />
-        <button class="btn btn-icon btn-round">
-          <i class="fab fa-twitter center"></i>
+        <button
+        *ngIf="socialMedia.facebook"
+        (click)="openSocialMedia(socialMedia.facebook)"
+        placement="top"
+        ngbTooltip="Facebook"
+        class="btn btn-simple bt-lg m-1"
+        >
+        <i class="fab fa-facebook-f"> </i>
         </button>
-        <button class="btn btn-icon btn-round">
-          <i class="fab fa-facebook center"></i>
+        <button
+          *ngIf="socialMedia.instagram"
+          (click)="openSocialMedia(socialMedia.instagram)"
+          placement="top"
+          ngbTooltip="Instagram"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-instagram"> </i>
         </button>
-        <button class="btn btn-icon btn-round">
-          <i class="fab fa-google center"></i>
+        <button
+          *ngIf="socialMedia.youtube"
+          (click)="openSocialMedia(socialMedia.youtube)"
+          placement="top"
+          ngbTooltip="Youtube"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-youtube"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.twitter"
+          (click)="openSocialMedia(socialMedia.twitter)"
+          placement="top"
+          ngbTooltip="twitter"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-twitter"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.whatsapp"
+          (click)="openSocialMedia(socialMedia.whatsapp)"
+          placement="top"
+          ngbTooltip="Whatsapp"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-whatsapp"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.telegram"
+          (click)="openSocialMedia(socialMedia.telegram)"
+          placement="top"
+          ngbTooltip="Telegram"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-telegram-plane"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.tiktok"
+          (click)="openSocialMedia(socialMedia.tiktok)"
+          placement="top"
+          ngbTooltip="Tiktok"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-tiktok"> </i>
         </button>
       </div>
     </ul>
