@@ -11,7 +11,7 @@ export class UserService {
         return this.http.post(`${environment.apiUrl}users/login`, body).pipe();
     }
 
-    register(body){ 
+    register(body){
       return this.http.post(`${environment.apiUrl}users/signup`, body).pipe();
     }
 
@@ -48,41 +48,45 @@ export class UserService {
     }
 
     getProfileById(id) {
-      return this.http.get(`${environment.apiUrl}users/${id}/profile`).pipe();  
+      return this.http.get(`${environment.apiUrl}users/${id}/profile`).pipe();
     }
 
     getPromotionById(id) {
-      return this.http.get(`${environment.apiUrl}users/${id}/promotions`).pipe();  
+      return this.http.get(`${environment.apiUrl}users/${id}/promotions`).pipe();
     }
 
     getManagerById(id) {
-      return this.http.get(`${environment.apiUrl}users/${id}/manager`).pipe();    
+      return this.http.get(`${environment.apiUrl}users/${id}/manager`).pipe();
     }
 
     getNotificationById(id, filter) {
-      return this.http.get(`${environment.apiUrl}users/${id}/notifications?filter=${filter}`).pipe();    
+      return this.http.get(`${environment.apiUrl}users/${id}/notifications?filter=${filter}`).pipe();
     }
 
     getOrderById(id, filter) {
-      return this.http.get(`${environment.apiUrl}users/${id}/orders?filter=${filter}`).pipe();    
+      return this.http.get(`${environment.apiUrl}users/${id}/orders?filter=${filter}`).pipe();
     }
 
     registerWithGoogle(body) {
       return this.http.post(`${environment.apiUrl}users/signup-google`, body).pipe(
         );
     }
-  
+
     registerWithFacebook(body) {
       return this.http.post(`${environment.apiUrl}users/signup-facebook`, body).pipe(
         );
     }
 
     getInscriptionById(id) {
-      return this.http.get(`${environment.apiUrl}users/${id}/inscription-services`).pipe();    
+      return this.http.get(`${environment.apiUrl}users/${id}/inscription-services`).pipe();
     }
 
     getInscriptionLectionById(id) {
-      return this.http.get(`${environment.apiUrl}users/${id}/inscription-lections`).pipe();    
+      return this.http.get(`${environment.apiUrl}users/${id}/inscription-lections`).pipe();
+    }
+
+    getAppointmentById(id, filter) {
+      return this.http.get(`${environment.apiUrl}users/${id}/appointments?filter=${filter}`).pipe();
     }
 
 }

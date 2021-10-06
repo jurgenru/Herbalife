@@ -19,16 +19,83 @@
                   <th class="text-center">Fecha</th>
                   <th class="text-center">Hora</th>
                   <th class="text-center">Estado</th>
+                  <th class="text-right">Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <tr
+                  *ngFor="
+                    let list of lists
+                      | filterAppointment: filterAppointment
+                      | paginate: { itemsPerPage: 100, currentPage: pageActual }
+                  "
+                >
+                  <td>{{list.names}}</td>
+                  <td class="text-center">{{list.phoneNumber}}</td>
+                  <td class="text-center">{{list.schedule}}</td>
+                  <td class="text-center">{{list.hour}}</td>
+                  <td class="text-center">{{list.status}}</td>
+                  <td class="text-right">
+                    <button
+                      class="btn btn-success btn-link btn-sm btn-icon"
+                      type="button"
+                      placement="top"
+                      ngbTooltip="ver"
+                      container="body"
+                      [routerLink]="['/appointment/view', list.id]"
+                    >
+                      <i class="tim-icons icon-paper"></i>
+                    </button>
+                    <button
+                      class="btn btn-warning btn-link btn-sm"
+                      type="button"
+                      placement="top"
+                      ngbTooltip="editar"
+                      container="body"
+                      [routerLink]="['/appointment/edit', list.id]"
+                    >
+                      <i class="tim-icons icon-pencil"></i>
+                    </button>
+                    <button
+                      class="btn btn-danger btn-link btn-sm"
+                      (click)="showDelete(content)"
+                      type="button"
+                      placement="top"
+                      ngbTooltip="eliminar"
+                      container="body"
+                    >
+                      <i class="tim-icons icon-trash-simple"></i>
+                    </button>
+                  </td>
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">
+                        Eliminar la Cita
+                      </h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>¿ Esta seguro de eliminar la cita ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-outline-danger"
+                        (click)="modal.close(list.id)"
+                      >
+                        Eliminar
+                      </button>
+                    </div>
+                  </ng-template>
+                </tr>
               </tbody>
-              <tfoot></tfoot>
             </table>
           </div>
         </div>
