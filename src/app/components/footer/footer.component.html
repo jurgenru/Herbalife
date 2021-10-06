@@ -1,19 +1,38 @@
   <footer class="footer">
   <hr color="purple" width="100%" class="mb-5">
       <div class="row col-12">
-        <div class="col-12 col-md-4 text-center">
+        <div class="col-12 col-md-4 pl-4" *ngIf="socialMedia">
           <!-- <p class="info-title">Redes Sociales</p> -->
-            <button placement="top" ngbTooltip="Facebook" class="btn btn-icon btn-simple bt-lg btn-twitter">
+            <button *ngIf="socialMedia.facebook" (click)="openSocialMedia(socialMedia.facebook)" placement="top" ngbTooltip="Facebook" class="btn btn-simple bt-lg m-1">
               <i class="fab fa-facebook-f"> </i>
+              Facebook
             </button>
-            <button placement="top" ngbTooltip="Instagram" class="btn btn-icon btn-simple bt-lg btn-instagram">
+            <button *ngIf="socialMedia.instagram"(click)="openSocialMedia(socialMedia.instagram)" placement="top" ngbTooltip="Instagram" class="btn btn-simple bt-lg m-1">
               <i class="fab fa-instagram"> </i>
+              Instagram
             </button>
-            <button placement="top" ngbTooltip="Youtube" class="btn btn-icon btn-simple bt-lg btn-youtube">
+            <button *ngIf="socialMedia.youtube" (click)="openSocialMedia(socialMedia.youtube)" placement="top" ngbTooltip="Youtube" class="btn btn-simple bt-lg m-1">
               <i class="fab fa-youtube"> </i>
+              Youtube
+            </button>
+            <button *ngIf="socialMedia.twitter" (click)="openSocialMedia(socialMedia.twitter)" placement="top" ngbTooltip="twitter" class="btn btn-simple bt-lg m-1">
+               <i class=" fab fa-twitter"> </i>
+               Twitter
+            </button>
+            <button *ngIf="socialMedia.whatsapp"(click)="openSocialMedia(socialMedia.whatsapp)" placement="top" ngbTooltip="Whatsapp" class="btn btn-simple bt-lg m-1">
+              <i class="fab fa-whatsapp"> </i>
+              Whatsapp
+            </button>
+            <button *ngIf="socialMedia.telegram" (click)="openSocialMedia(socialMedia.telegram)" placement="top" ngbTooltip="Telegram" class="btn btn-simple bt-lg m-1">
+              <i class="fab fa-telegram-plane"> </i>
+              Telegram
+            </button>
+            <button *ngIf="socialMedia.tiktok" (click)="openSocialMedia(socialMedia.tiktok)" placement="top" ngbTooltip="Tiktok" class="btn btn-simple bt-lg m-1">
+              <i class="fab fa-tiktok"> </i>
+              Tiktok
             </button>
         </div>
-        <div class="col-12 col-md-4 text-center">
+        <div class="col-12 col-md-4 text-center pt-2">
           <p class="info-title">¿ Alguna Consulta ?</p>
           <button class="btn btn-theme btn-twitter" (click)="callSchedule()">
             <i class="fab fa-discord"></i>

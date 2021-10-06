@@ -47,6 +47,8 @@ export class CreateComponent implements OnInit {
       this.trainer.value.userId = user.id;
       this.trainer.value.icon = this.icon;
       this.trainer.value.banner = this.banner;
+      this.social.whatsapp = 'https://wa.me/' + this.social.whatsapp;
+      this.social.telegram = 'https://t.me/' + this.social.telegram;
       this.trainer.value.socialMedia = JSON.stringify(this.social.value);
       this.lection.value.image = this.image;
       this.trainerService.post(this.trainer.value).subscribe((data: any) => {

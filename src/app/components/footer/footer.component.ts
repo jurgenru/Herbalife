@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "../schedule-call/schedule-call.component";
-import { ProfileService } from "src/app/services/profile.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-footer",
@@ -10,11 +10,12 @@ import { ProfileService } from "src/app/services/profile.service";
 })
 export class FooterComponent implements OnInit {
   test: Date = new Date();
-  user: any = {};
+  user: any;
+  socialMedia: any;
 
   constructor(
     private SimpleModalService: SimpleModalService,
-    private profileService: ProfileService
+    private userService: UserService
     ) {}
 
   ngOnInit() {
@@ -32,9 +33,16 @@ export class FooterComponent implements OnInit {
   }
 
   get(){
-    this.profileService.getByuserId(1).subscribe(res=>{
-      this.user = res;
-      console.log(this.user);
+    this.userService.getManagerById(1).subscribe((data:any)=>{
+      [data].map(element => {
+        this.user = element;
+        if(this.user.socialMedia){
+          this.socialMedia = JSON.parse(element.socialMedia);
+        }
+      });
     })
+  }
+  openSocialMedia(navUrl){
+    window.open(navUrl, "_blank");
   }
 }

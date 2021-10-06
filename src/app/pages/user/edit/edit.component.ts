@@ -19,7 +19,6 @@ export class EditComponent implements OnInit {
   image: any;
   icon: any;
   socialMedia: any = {};
-  socialMediaData: any = {};
   manager: any = {};
   updateImage: number = 2;
   updateIcon: number = 2;
@@ -53,7 +52,7 @@ export class EditComponent implements OnInit {
               this.updateIcon = 0;
             }
             this.userData = element;
-              this.socialMediaData = JSON.parse(element.socialMedia);
+              this.socialMedia = JSON.parse(element.socialMedia);
             this.spinner.stop();
           });
         }, elapsed);
