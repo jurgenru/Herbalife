@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ViewComponent implements OnInit {
 
   user: any;
-  socialMedia: any = {}
+  socialMedia: any = []
 
   constructor(
     private userService: UserService,
@@ -25,13 +25,14 @@ export class ViewComponent implements OnInit {
     this.userService.me().subscribe((me: any) => {
       this.managerService.getByUserId(me.id).subscribe((man: any) => {
         man.forEach(element => {
-          if (man.socialMedia) {
-            this.socialMedia = JSON.parse(this.user.socialMedia);
-          }
           this.user = element;
+          this.socialMedia = JSON.parse(element.socialMedia);
         });
       });
     });
   }
 
+  openSocialMedia(navUrl){
+    window.open(navUrl, "_blank");
+  }
 }

@@ -5,6 +5,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [...routedComponents],
@@ -12,6 +13,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
     CommonModule,
     ReactiveFormsModule,
     UserRoutingModule,
+    NgbModule,
     FormsModule,
     ImageCropperModule,
     SimpleModalModule,

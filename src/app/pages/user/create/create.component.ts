@@ -71,6 +71,9 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    this.user.value.socialMedia.whatsapp = 'https://wa.me/' + this.user.value.socialMedia.whatsapp;
+    this.user.value.socialMedia.telegram = 'https://t.me/' + this.user.value.socialMedia.telegram;
+    this.user
     this.user.value.socialMedia = JSON.stringify(this.user.value.socialMedia);
     const start = new Date();
     this.spinner.start();
