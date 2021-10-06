@@ -23,7 +23,7 @@ export class ViewComponent implements OnInit {
       const filter = `{"fields": {"id": true, "image": true, "phoneNumber": true}}`;
       this.userService.getById(user.id, filter).subscribe((us: any) => {
         this.userService.getProfileById(user.id).subscribe((prof: any) => {
-          this.profile = prof;
+        this.profile = prof;
         this.profile.email = us.email;
         this.profile.phoneNumber = us.phoneNumber;
       });

@@ -16,7 +16,16 @@ export class AppointmentService {
   getById(id) {
     return this.http.get(`${environment.apiUrl}appointments/${id}`).pipe();
   }
+  getAppointmentsById(id) {
+    return this.http.get(`${environment.apiUrl}users/${id}/appointments`).pipe();
+  }
   update(id, body) {
     return this.http.patch(`${environment.apiUrl}appointments/${id}`, body).pipe();
+  }
+  delete(id){
+    return this.http.delete(`${environment.apiUrl}appointments/${id}`).pipe();
+  }
+  deleteAppointmentById(id) {
+    return this.http.delete(`${environment.apiUrl}users/${id}/appointments`).pipe();
   }
 }

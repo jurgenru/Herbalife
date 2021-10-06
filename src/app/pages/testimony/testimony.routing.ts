@@ -16,10 +16,6 @@ const routes: Routes = [
         component: CreateComponent,
       },
       {
-        path: "edit",
-        component: EditComponent,
-      },
-      {
         path: "list",
         component: ListComponent,
       },
