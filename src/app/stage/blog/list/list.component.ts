@@ -31,6 +31,8 @@ export class ListComponent implements OnInit {
                 this.blogs = data;
                 this.spinner.stop();
             }, elapsed);
+        }, error => {
+            this.spinner.stop();
         });
     }
 

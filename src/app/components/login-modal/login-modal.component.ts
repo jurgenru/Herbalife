@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
 import { GoogleLoginProvider, SocialAuthService } from "angularx-social-login";
 import { SimpleModalComponent, SimpleModalService } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
-import { NgxUiLoaderService } from "ngx-ui-loader";
 import { UserService } from "src/app/services/user.service";
 import { RegisterModalComponent } from "../register-modal/register-modal.component";
 

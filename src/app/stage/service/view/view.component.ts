@@ -19,6 +19,7 @@ export class ViewComponent implements OnInit {
 
   service: any = {};
   services: any;
+  validate: any = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +51,8 @@ export class ViewComponent implements OnInit {
           this.spinner.stop();
         }, elapsed);
       });
+    }, error => {
+      this.spinner.stop();
     });
   }
 
@@ -67,55 +70,48 @@ export class ViewComponent implements OnInit {
     }, 50);
   }
 
-  registerServiceNormal() {
+  registerService(type){
     this.userService.me().subscribe((user: any) => {
       const ins = {
         userId: user.id,
         serviceId: this.service.id
       }
-      this.inscriptionService.post(ins).subscribe(sus => {
-        this.postNotification(user.id, this.service.id,'te inscribiste el en servicio', 'service');
-        this.router.navigate(['/customer/service/confirmation', this.service.id]);
-      }, error => {
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      });
-    }, error => {
-      this.showRegister();
-    });
-  }
-
-  registerServiceTest() {
-    this.userService.me().subscribe((user: any) => {
-      const ins = {
-        userId: (user.id).toString(),
-        serviceId: this.service.id
-      }
-      this.inscriptionService.post(ins).subscribe(sus => {
-        this.postNotification(user.id, this.service.id,'te inscribiste en el test', 'service');
-        this.router.navigate(['/customer/test']);
-      }, error => {
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      });
-    }, error => {
-      this.showRegister();
-    });
-  }
-
-  registerServiceAuto() {
-    this.userService.me().subscribe((user: any) => {
-      const ins = {
-        userId: (user.id).toString(),
-        serviceId: this.service.id
-      }
-      this.inscriptionService.post(ins).subscribe(sus => {
-        this.postNotification(user.id, this.service.id,'te inscribiste a la autoevaluacion', 'service');
-        // this.managerService.getByUserId(user.id).subscribe((admin: any) => {
-        //   const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+admin.id, "herbalife")
-        // });
-       const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId=123456789", "herbalife")
-      }, error => {
-        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder al servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
-      });
+      let value = false;
+      this.userService.getInscriptionById(ins.userId).subscribe(res => {
+        this.validate = res;
+        this.validate.map((a:any)=>{
+          if(a.serviceId === ins.serviceId){
+            return value = true;
+          }
+        })
+        if(value){
+          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Usted cuenta con una inscripción en el servicio', '5000', 'warning', 'top', 'center');
+        }else{
+          this.inscriptionService.post(ins).subscribe(sus => {
+            switch (type) {
+              case 'normal':
+                this.postNotification(user.id, this.service.id,'te inscribiste en el servicio', 'service');
+                this.router.navigate(['/customer/service/confirmation', this.service.id]);
+                break;
+              case 'auto':
+                this.postNotification(user.id, this.service.id,'te inscribiste a la autoevaluacion', 'service');
+                // this.managerService.getByUserId(user.id).subscribe((admin: any) => {
+                //   const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+admin.id, "herbalife")
+                // });
+                const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId=123456789", "herbalife")
+                break;
+              case 'test':
+                this.postNotification(user.id, this.service.id,'te inscribiste en el test', 'service');
+                this.router.navigate(['/customer/test']);
+                break;
+              default:
+                break;
+            }
+          }, error => {
+            this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder en el servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
+          });
+        }
+      })
     }, error => {
       this.showRegister();
     });

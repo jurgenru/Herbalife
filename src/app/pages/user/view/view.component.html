@@ -1,44 +1,44 @@
 <div class="content">
-    <div class="row">
-        <div class="col-12">
-            <div class="card" *ngIf="user">
-                <div class="card-header">
-                    <h2 class="text-center title">Perfil de Administraod</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="card" *ngIf="user">
+        <div class="card-header">
+          <h2 class="text-center title">Perfil de Administrador</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre completo</h4>
+                    <p>{{ user.names }} {{ user.lastName }}</p>
+                  </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-9">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Dirección</h4>
+                    <p>{{ user.address }}</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nivel de Herbalife</h4>
+                    <p>{{ user.levelHerbalife }}</p>
+                  </div>
+                </div>
+              </div>
+              <br />
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col">
                                     <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nombre completo</h4>
-                                        <p>{{user.names}} {{user.lastName}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Dirección</h4>
-                                        <p>{{user.address}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nivel de Herbalife</h4>
-                                        <p>{{user.levelHerbalife}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
+                                        <div class="form-group">
                                             <h4 class="title">País</h4>
                                             <p>{{user.country}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col">
                                     <div class="mb-2 pr-md-1">
                                         <div class=" form-group">
                                             <h4 class="title">Ciudad</h4>
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4">
+                                <div class="col">
                                     <div class="mb-2 pr-md-1">
                                         <div class=" form-group">
                                             <h4 class="title">Codigo Postal</h4>
@@ -93,21 +93,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <a routerLink="/user/edit" class="pull-right">
-                                <i class="fas fa-pencil-alt"></i> Editar
-                            </a>
-                            <br />
-                            <br />
-                            <img class="ml-2 mr-2 mr-auto pull-right img-thumbnail" *ngIf="user.image; else noImage"
-                                [src]="user.image">
-                            <ng-template #noImage>
-                                <img src="assets/img/anime3.png">
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-            </div>
+              <div class="col">
+                <a routerLink="/user/edit" class="pull-right">
+                  <i class="fas fa-pencil-alt"></i> Editar
+                </a>
+                <br />
+                <br />
+                <img
+                  class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
+                  *ngIf="user.image; else noImage"
+                  [src]="user.image"
+                />
+                <ng-template #noImage>
+                  <img src="assets/img/anime3.png" />
+                </ng-template>
+              </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

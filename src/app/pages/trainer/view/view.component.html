@@ -1,9 +1,25 @@
 <div class="content">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="title">Detalles del Entrenador</h2>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Detalles del Entrenador</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-8">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre</h4>
+                    <p>{{ trainer.names }}</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Descripcion</h4>
+                    <p>{{ trainer.description }}</p>
+                  </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -75,46 +91,66 @@
                         </div>
                     </div>
                 </div>
+              </div>
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="title">Detalles del Curso</h2>
+            <div class="col-12 col-md-4">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Icono</h4>
+                    <img [src]="trainer.icon" />
+                  </div>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-9">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nombre del Curso</h4>
-                                        <p>{{lection.name}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Descripcion</h4>
-                                        <p>{{lection.description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Modo</h4>
-                                        <p>{{lection.mode}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <div class="mb-2 pr-md-1">
-                                <h4 class="title text-center">Imagen</h4>
-                                <img [src]="lection.image" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-8">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Banner</h4>
+                    <img [src]="trainer.banner" />
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Detalles del Curso</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-9">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre del Curso</h4>
+                    <p>{{ lection.name }}</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Descripcion</h4>
+                    <p>{{ lection.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Modo</h4>
+                    <p>{{ lection.mode }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="mb-2 pr-md-1">
+                <h4 class="title text-center">Imagen</h4>
+                <img [src]="lection.image" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

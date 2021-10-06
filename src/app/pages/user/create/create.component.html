@@ -1,16 +1,16 @@
 <div class="content">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center title">Crear Perfil</h2>
-                </div>
-                <form [formGroup]="user" (ngSubmit)="post()">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="text-center title">Crear Perfil</h2>
+        </div>
+        <form [formGroup]="user" (ngSubmit)="post()">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2">
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md">
                                 <div class="container-image">
                                     <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
                                         *ngIf="!imageProfile; else noImage">
@@ -23,7 +23,7 @@
                                 </div>
                                 <p class="text-center">imagen de perfil</p>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md">
                                 <div class="container-image">
                                     <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
                                         *ngIf="!imageProfile; else noIcon">
@@ -177,15 +177,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-info pull-right" [disabled]="!user.valid">Crear</button>
-                    </div>
-                    <br>
-                    <br>
-                </form>
-            </div>
-        </div>
+          <div class="card-footer">
+            <button
+              type="submit"
+              class="btn btn-info pull-right"
+              [disabled]="!user.valid"
+            >
+              Crear
+            </button>
+          </div>
+          <br />
+          <br />
+        </form>
+      </div>
     </div>
+  </div>
 </div>
 <ng-template #tipContent>Recuerde que debe tener un <b>formato de url.</b> Para que funcione correctamente copie su url</ng-template>
 <ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" text="Creando perfil ..."></ngx-ui-loader>

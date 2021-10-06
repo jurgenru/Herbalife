@@ -101,7 +101,11 @@ export class HomeComponent implements OnInit {
                         });
                     });
                 });
+            }, error => {
+                this.spinner.start();
             });
+        }, error => {
+            this.spinner.start();
         });
     }
 

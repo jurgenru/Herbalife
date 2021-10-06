@@ -7,6 +7,8 @@ import { InscriptionLection } from 'src/app/services/inscription-lection';
 import { NotificationService } from 'src/app/services/notification.service';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-trainer-view',
@@ -17,6 +19,7 @@ export class ViewComponent implements OnInit {
 
   trainer: any = {};
   lection: any = {};
+  validate: any = {};
   socialMedia: any = { };
 
   constructor(
@@ -27,7 +30,8 @@ export class ViewComponent implements OnInit {
     private inscriptionLectionService: InscriptionLection,
     private userService: UserService,
     private simpleModalService: SimpleModalService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private toastr: ToastrService,
   ) {
     this.get();
   }
@@ -62,21 +66,31 @@ export class ViewComponent implements OnInit {
       lectionId: this.trainer.id,
       userId: (user.id).toString(),
     }
-    this.inscriptionLectionService.post(ins).subscribe(inscrip => {
-      this.postNotification(user.id, this.trainer.id, 'Te inscribiste en una clase', 'lection');
-      switch (this.lection.mode) {
-        case 'presencial':
-          this.router.navigate(['/customer/trainer/information']);
-          
-          break;
-        case 'virtual':
-  
-        break;
+    let value = false;
+    this.userService.getInscriptionLectionById(ins.userId).subscribe(res => {
+      this.validate = res;
+      this.validate.map((a:any)=>{
+        if(a.lectionId === ins.lectionId){
+          return  value = true;
+        }
+      })
+      if(value){
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Usted cuenta con una inscripción de la clase', '5000', 'warning', 'top', 'center');
+      }else{
+        this.inscriptionLectionService.post(ins).subscribe(inscrip => {
+          this.postNotification(user.id, this.trainer.id, 'Te inscribiste en una clase', 'lection');
+          switch (this.lection.mode) {
+            case 'presencial':
+              this.router.navigate(['/customer/trainer/information']);
+              
+              break;
+            case 'virtual':
       
-        default:
-          break;
+            break;
+          }
+        });
       }
-    });
+    })
   }, error => {
     this.showRegister();
   });
@@ -94,6 +108,17 @@ export class ViewComponent implements OnInit {
       reason: reason
     }
     this.notificationService.post(notif).subscribe(not => {
+    });
+  }
+
+
+  notification(content, time, type, from, align) {
+    this.toastr.error(content, '', {
+      timeOut: time,
+      closeButton: true,
+      enableHtml: true,
+      toastClass: `alert alert-${type} alert-with-icon`,
+      positionClass: 'toast-' + from + '-' + align
     });
   }
 

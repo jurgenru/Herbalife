@@ -1,15 +1,15 @@
 <div class=" content">
-    <div class=" row">
-        <div class=" col-md-12">
-            <div class="card">
-                <form (ngSubmit)="post()">
-                    <div class="card-body">
-                        <div class="card-header text-center">
-                            <h2>ENTRENADOR</h2>
-                            <h5>Puedes añadir hasta 12 entrenadores</h5>
-                        </div>
-                        <br>
-                        <form [formGroup]="trainer">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class="card">
+        <form (ngSubmit)="post()">
+            <div class="card-body">
+              <div class="card-header text-center">
+                <h2>ENTRENADOR</h2>
+                <h5>Puedes añadir hasta 12 entrenadores</h5>
+              </div>
+              <br>
+              <form [formGroup]="trainer">
                             <div class="row">
                                 <div class="col-12 col-md-3">
                                     <div class="container-image">
@@ -42,9 +42,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
-                            <hr>
-                            <br>
+                            <br />
+                            <hr />
+                            <br />
                             <div class="text-center">
                                 <h5>Datos del entrenador</h5>
                             </div>
@@ -125,8 +125,8 @@
                             <br>
                             <hr>
                             <br>
-                        </form>
-                        <form [formGroup]="lection">
+              </form>
+              <form [formGroup]="lection">
                             <div class="text-center">
                                 <h5>Clase del entrenador</h5>
                             </div>
@@ -185,20 +185,23 @@
                                         class="text-danger"> *El mensaje es <strong>requerido</strong><br></small>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <div class=" button-container pull-right">
-                            <button type="submit" class="btn btn-info" [disabled]="trainer.invalid || lection.invalid">
-                                Guardar
-                            </button>
-                        </div>
-                    </div>
-                </form>
+              </form>
             </div>
-        </div>
+            <div class="card-footer">
+              <div class="button-container pull-right">
+                <button
+                  type="submit"
+                  class="btn btn-info"
+                  [disabled]="trainer.invalid || lection.invalid"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </form>
+      </div>
     </div>
+  </div>
 </div>
 <ng-template #tipContent>Recuerde que debe tener un <b>formato de url.</b> Para que funcione correctamente copie su url</ng-template>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(24,31,46)" text="Creando entrenador ...">
-</ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(24,31,46)" text="Creando entrenador ..."></ngx-ui-loader>
