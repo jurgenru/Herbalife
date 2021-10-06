@@ -56,6 +56,8 @@ export class ViewComponent implements OnInit {
             });
           });
         });
+      }, error => {
+        this.spinner.stop();
       });
     });
   }

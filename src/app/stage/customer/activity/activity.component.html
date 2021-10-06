@@ -2,62 +2,41 @@
   <h3 class="title mt-5 text-center">MIS ACTIVIDADES</h3>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-3">
+      <h6>Servicios que has tomado</h6>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-3" *ngFor="let inscription of inscriptions">
         <div class="card card-user">
           <div class="card-body">
             <div class="author">
               <img
-                src="../../../../assets/img/img_3115.jpg"
+                [src]="inscription.image"
                 class="img-fluid"
-                alt=""
+                alt="serviceImage"
               />
               <br /><br />
-              <h4 class="title">Titulo</h4>
+              <h4 class="title">{{inscription.title}}</h4>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-3">
+    </div>
+    <hr color="purple">
+    <div class="row">
+      <h6>Clases que has tomado</h6>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-3" *ngFor="let lection of lections">
         <div class="card card-user">
           <div class="card-body">
             <div class="author">
               <img
-                src="../../../../assets/img/img_3115.jpg"
+                [src]="lection.image"
                 class="img-fluid"
-                alt=""
+                alt="lecionImage"
               />
               <br /><br />
-              <h4 class="title">Titulo</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="card card-user">
-          <div class="card-body">
-            <div class="author">
-              <img
-                src="../../../../assets/img/img_3115.jpg"
-                class="img-fluid"
-                alt=""
-              />
-              <br /><br />
-              <h4 class="title">Titulo</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="card card-user">
-          <div class="card-body">
-            <div class="author">
-              <img
-                src="../../../../assets/img/img_3115.jpg"
-                class="img-fluid"
-                alt=""
-              />
-              <br /><br />
-              <h4 class="title">Titulo</h4>
+              <h4 class="title">{{lection.name}}</h4>
             </div>
           </div>
         </div>
@@ -65,3 +44,4 @@
     </div>
   </div>
 </div>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>

@@ -1,121 +1,142 @@
 <div class="content">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="title">Detalles del Entrenador</h2>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-8">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nombre</h4>
-                                        <p>{{trainer.names}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Descripcion</h4>
-                                        <p>{{trainer.description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <h4 class="title"> Redes Sociales: </h4>
-                                    <div class="button-container">
-                                        <button *ngIf="socialMedia.facebook" class="btn btn-icon btn-round btn-default"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-facebook"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.twitter" class="btn btn-icon btn-round btn-info"
-                                            href="javascript:void(0)">
-                                            <i class=" fab fa-twitter"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.gmail" class="btn btn-icon btn-round btn-danger"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-google-plus"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.whatsapp" class="btn btn-icon btn-round btn-successs"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-whatsapp"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.telegram" class="btn btn-icon btn-round btn-info"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-telegram"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.youtube" class="btn btn-icon btn-round btn-danger"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-youtube"> </i>
-                                        </button>
-                                        <button *ngIf="socialMedia.tiktok" class="btn btn-icon btn-round"
-                                            href="javascript:void(0)">
-                                            <i class="fab fa-tiktok"> </i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title text-center">Icono</h4>
-                                        <img [src]="trainer.icon">
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title text-center">Banner</h4>
-                                        <img [src]="trainer.banner">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="title">Detalles del Curso</h2>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-9">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nombre del Curso</h4>
-                                        <p>{{lection.name}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Descripcion</h4>
-                                        <p>{{lection.description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-2">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Modo</h4>
-                                        <p>{{lection.mode}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-3">
-                            <div class="mb-2 pr-md-1">
-                                <h4 class="title text-center">Imagen</h4>
-                                <img [src]="lection.image" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Detalles del Entrenador</h2>
         </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-8">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre</h4>
+                    <p>{{ trainer.names }}</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Descripcion</h4>
+                    <p>{{ trainer.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <h4 class="title">Redes Sociales:</h4>
+                  <div class="button-container">
+                    <button
+                      *ngIf="socialMedia.facebook"
+                      class="btn btn-icon btn-round btn-default"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-facebook"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.twitter"
+                      class="btn btn-icon btn-round btn-info"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-twitter"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.gmail"
+                      class="btn btn-icon btn-round btn-danger"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-google-plus"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.whatsapp"
+                      class="btn btn-icon btn-round btn-successs"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-whatsapp"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.telegram"
+                      class="btn btn-icon btn-round btn-info"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-telegram"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.youtube"
+                      class="btn btn-icon btn-round btn-danger"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-youtube"> </i>
+                    </button>
+                    <button
+                      *ngIf="socialMedia.tiktok"
+                      class="btn btn-icon btn-round"
+                      href="javascript:void(0)"
+                    >
+                      <i class="fab fa-tiktok"> </i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Icono</h4>
+                    <img [src]="trainer.icon" />
+                  </div>
+                </div>
+                <div class="col-8">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title text-center">Banner</h4>
+                    <img [src]="trainer.banner" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="title">Detalles del Curso</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-9">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre del Curso</h4>
+                    <p>{{ lection.name }}</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Descripcion</h4>
+                    <p>{{ lection.description }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Modo</h4>
+                    <p>{{ lection.mode }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="mb-2 pr-md-1">
+                <h4 class="title text-center">Imagen</h4>
+                <img [src]="lection.image" class="img-fluid" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -137,12 +137,12 @@
                                 administrar
                             </a>
                         </li>
-                        <li class="nav-link">
+                        <li class="nav-link" *ngIf="role !== 'admin'">
                             <a class="nav-item text-dark" routerLink="/customer/activity" ngbDropdownItem>
                                 Actividades
                             </a>
                         </li>
-                        <li class="nav-link">
+                        <li class="nav-link" *ngIf="role !== 'admin'">
                             <a class="nav-item text-dark" routerLink="/customer/shopping" ngbDropdownItem>
                                 Compras
                             </a>

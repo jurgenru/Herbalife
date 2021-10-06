@@ -41,6 +41,8 @@ export class DetailComponent implements OnInit {
           this.product = data;
           this.spinner.stop();
         }, elapsed);
+      }, error => {
+        this.spinner.stop();
       });
     })
   }

@@ -1,113 +1,137 @@
 <div class="content">
-    <div class="row">
-        <div class="col-12">
-            <div class="card" *ngIf="user">
-                <div class="card-header">
-                    <h2 class="text-center title">Perfil de Administraod</h2>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nombre completo</h4>
-                                        <p>{{user.names}} {{user.lastName}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Dirección</h4>
-                                        <p>{{user.address}}</p>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <h4 class="title">Nivel de Herbalife</h4>
-                                        <p>{{user.levelHerbalife}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
-                                            <h4 class="title">País</h4>
-                                            <p>{{user.country}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
-                                            <h4 class="title">Ciudad</h4>
-                                            <p>{{user.city}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
-                                            <h4 class="title">Codigo Postal</h4>
-                                            <p>{{user.postalCode}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <h4 class="title"> Redes Sociales: </h4>
-                                        <div class="button-container">
-                                            <button *ngIf="socialMedia.facebook"
-                                                class="btn btn-icon btn-round btn-default" href="javascript:void(0)">
-                                                <i class="fab fa-facebook"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.twitter"
-                                                class="btn btn-icon btn-round btn-info" href="javascript:void(0)">
-                                                <i class=" fab fa-twitter"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.gmail"
-                                                class="btn btn-icon btn-round btn-danger" href="javascript:void(0)">
-                                                <i class="fab fa-google-plus"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.whatsapp"
-                                                class="btn btn-icon btn-round btn-success" href="javascript:void(0)">
-                                                <i class="fab fa-whatsapp"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.telegram"
-                                                class="btn btn-icon btn-round btn-info" href="javascript:void(0)">
-                                                <i class="fab fa-telegram"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.youtube"
-                                                class="btn btn-icon btn-round btn-danger" href="javascript:void(0)">
-                                                <i class="fab fa-youtube"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.tiktok" class="btn btn-icon btn-round"
-                                                href="javascript:void(0)">
-                                                <i class="fab fa-tiktok"> </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <a routerLink="/user/edit" class="pull-right">
-                                <i class="fas fa-pencil-alt"></i> Editar
-                            </a>
-                            <br />
-                            <br />
-                            <img class="ml-2 mr-2 mr-auto pull-right img-thumbnail" *ngIf="user.image; else noImage"
-                                [src]="user.image">
-                            <ng-template #noImage>
-                                <img src="assets/img/anime3.png">
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card" *ngIf="user">
+        <div class="card-header">
+          <h2 class="text-center title">Perfil de Administrador</h2>
         </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-9">
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nombre completo</h4>
+                    <p>{{ user.names }} {{ user.lastName }}</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Dirección</h4>
+                    <p>{{ user.address }}</p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <h4 class="title">Nivel de Herbalife</h4>
+                    <p>{{ user.levelHerbalife }}</p>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class="form-group">
+                      <h4 class="title">País</h4>
+                      <p>{{ user.country }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class="form-group">
+                      <h4 class="title">Ciudad</h4>
+                      <p>{{ user.city }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class="form-group">
+                      <h4 class="title">Codigo Postal</h4>
+                      <p>{{ user.postalCode }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <h4 class="title">Redes Sociales:</h4>
+                    <div class="button-container">
+                      <button
+                        *ngIf="socialMedia.facebook"
+                        class="btn btn-icon btn-round btn-default"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-facebook"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.twitter"
+                        class="btn btn-icon btn-round btn-info"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-twitter"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.gmail"
+                        class="btn btn-icon btn-round btn-danger"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-google-plus"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.whatsapp"
+                        class="btn btn-icon btn-round btn-success"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-whatsapp"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.telegram"
+                        class="btn btn-icon btn-round btn-info"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-telegram"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.youtube"
+                        class="btn btn-icon btn-round btn-danger"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-youtube"> </i>
+                      </button>
+                      <button
+                        *ngIf="socialMedia.tiktok"
+                        class="btn btn-icon btn-round"
+                        href="javascript:void(0)"
+                      >
+                        <i class="fab fa-tiktok"> </i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <a routerLink="/user/edit" class="pull-right">
+                <i class="fas fa-pencil-alt"></i> Editar
+              </a>
+              <br />
+              <br />
+              <img
+                class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
+                *ngIf="user.image; else noImage"
+                [src]="user.image"
+              />
+              <ng-template #noImage>
+                <img src="assets/img/anime3.png" />
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

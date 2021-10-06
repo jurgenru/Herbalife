@@ -38,6 +38,8 @@ export class ConfirmationComponent implements OnInit {
           this.service = ser;
           this.spinner.stop();
         }, elapsed);
+      }, error => {
+        this.spinner.stop();
       });
     });
   }
