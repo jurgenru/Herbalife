@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ProductService } from 'src/app/services/product.service';
+import {CustomerService} from 'src/app/services/customer.service';
+
 @Component({
   selector: 'app-shopping',
   templateUrl: './shopping.component.html',
@@ -11,6 +13,7 @@ export class ShoppingComponent implements OnInit {
   product: any = [];
   constructor( 
     private userService: UserService,
+    private customerService: CustomerService,
     private productService: ProductService
   ) {}
 
@@ -18,8 +21,9 @@ export class ShoppingComponent implements OnInit {
 
   get(){
     this.userService.me().subscribe((user:any)=>{
-      const filter = `{"fields": {"id": true, "total": true, "productId": true}, "order":["id DESC"]}`;
-      this.userService.getOrderById(user.id, filter).subscribe((res:any) =>{
+      // const filter = `{"fields": {"id": true, "total": true, "productId": true}, "order":["id DESC"]}`;
+      this.customerService.getOrderById(user.id).subscribe((res:any) =>{
+        console.log('customer', res);
         res.forEach(element => {
           this.order = element;
           JSON.parse(this.order.productId).forEach(prod => {

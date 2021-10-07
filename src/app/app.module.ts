@@ -24,6 +24,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
+import { CustomerService } from "./services/customer.service";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
@@ -73,6 +74,7 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
+    CustomerService,
     AppointmentService,
     InscriptionService,
     NotificationService,
