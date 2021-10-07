@@ -14,55 +14,25 @@
             <table class="table col-lg">
               <thead>
                 <tr>
-                  <th class="text-center">Nombre</th>
                   <th class="text-center">Producto</th>
-                  <th class="text-center">Sabor</th>
+                  <th class="text-center">Imagen</th>
                   <th class="text-center">Cantidad</th>
-                  <th class="text-center">Precio</th>
+                  <th class="text-center">Total</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="text-center">
-                  <td>Producto 1</td>
+                <tr *ngFor="let product of product" class="text-center">
+                  <td>{{ product.name }}</td>
                   <td>
                     <img
                       class="mx-auto d-block"
                       height="100"
-                      src="../../../../assets/img/img_3115.jpg"
+                      [src]="product.image"
                       alt=""
                     />
                   </td>
-                  <td>Chocolate</td>
-                  <td>1</td>
-                  <td>50Bs</td>
-                </tr>
-                <tr class="text-center">
-                  <td>Producto 2</td>
-                  <td>
-                    <img
-                      class="mx-auto d-block"
-                      height="100"
-                      src="../../../../assets/img/bg5.jpg"
-                      alt=""
-                    />
-                  </td>
-                  <td>Vainilla</td>
-                  <td>2</td>
-                  <td>100Bs</td>
-                </tr>
-                <tr class="text-center">
-                  <td>Producto 3</td>
-                  <td>
-                    <img
-                      class="mx-auto d-block"
-                      height="100"
-                      src="../../../../assets/img/bg5.jpg"
-                      alt=""
-                    />
-                  </td>
-                  <td>Frutilla</td>
-                  <td>5</td>
-                  <td>80Bs</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.total }}</td>
                 </tr>
               </tbody>
               <tfoot></tfoot>
