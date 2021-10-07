@@ -71,6 +71,7 @@
               <button
                 type="button"
                 class="btn btn-success"
+                [hidden]="validateAdmin"
                 (click)="registerService('test')"
               >
                 COMENZAR DIAGNOSTICO
@@ -81,6 +82,7 @@
               <button
                 type="button"
                 class="btn btn-success"
+                [hidden]="validateAdmin"
                 (click)="registerService('auto')"
               >
                 AUTO EVALUACIÓN
@@ -90,6 +92,7 @@
               <button
                 type="button"
                 class="btn btn-success"
+                [hidden]="validateAdmin"
                 (click)="registerService('normal')"
               >
                 Registrarse al servicio
