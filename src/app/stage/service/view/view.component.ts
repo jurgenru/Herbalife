@@ -20,6 +20,7 @@ export class ViewComponent implements OnInit {
   service: any = {};
   services: any;
   validate: any = {};
+  validateAdmin: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +37,20 @@ export class ViewComponent implements OnInit {
     this.list();
   }
 
-  ngOnInit() { }
+  ngOnInit() {this.initValidate();  }
+  
+  initValidate(){
+    this.userService.me().subscribe((user:any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        if(admin.role == 'admin'){
+          this.validateAdmin = true;
+        }else{
+          this.validateAdmin = false;
+        }
+      });
+    })
+  }
 
   get() {
     const start = new Date();

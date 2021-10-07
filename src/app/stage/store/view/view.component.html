@@ -1,6 +1,6 @@
 <div class="content" *ngIf="store">
     <div class="header">
-        <img [src]="store.image" class="img-store">
+        <img [src]="store.image" class="img-fluid img-store">
     </div>
     <div class="card">
         <div class="card-body">
@@ -40,7 +40,7 @@
                                     <p class="card-text text-center"><strong>Precio : </strong>{{product.price}} Bs</p>
                                 </div>
                             </a>
-                            <button (click)="addToCart(product)" class="btn btn-sm btn-info pull-right"><i class="tim-icons icon-cart"></i>añadir</button>
+                            <button (click)="addToCart(product)" [hidden]="validate" class="btn btn-sm btn-info pull-right"><i class="tim-icons icon-cart"></i>añadir</button>
                         </div>
                     </div>
                 </div>
