@@ -1,6 +1,9 @@
 <div class="content">
   <h3 class="title mt-5 text-center">MIS ACTIVIDADES</h3>
   <div class="container">
+    <div class="row justify-content-end">
+      <button class="btn btn-primary" (click)="generatePdf()"> Resultados de mi Test</button>
+    </div>
     <div class="row">
       <h6>Servicios que has tomado</h6>
     </div>
@@ -44,7 +47,7 @@
     </div>
   </div>
 </div>
-<button class="btn btn-primary" (click)="generatePdf()"> Resultados Test</button>
+
 <div class="container"[hidden]="true">
   <div class="main white-content" id="bodytest">
       <div class="container-fluid">
@@ -162,10 +165,10 @@
                       <h6>Litros de agua recomendados</h6>
                       <P>{{bodyTest.recommendedWater}}</P>
                     </div>
-                    <div class="col-3 text-center">
+                    <!-- <div class="col-3 text-center">
                       <h6>Peso Recomendado (Kg)</h6>
                       <P>56</P>
-                    </div>
+                    </div> -->
                   </div>  
                   <br>
                   <br>
