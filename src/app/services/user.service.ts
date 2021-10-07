@@ -84,5 +84,8 @@ export class UserService {
     getInscriptionLectionById(id) {
       return this.http.get(`${environment.apiUrl}users/${id}/inscription-lections`).pipe();    
     }
+    getBodyCompositionById(id){
+      return this.http.get(`${environment.apiUrl}users/${id}/body-compositions`).pipe(); 
+    }
 
 }
