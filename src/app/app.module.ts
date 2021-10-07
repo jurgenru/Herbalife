@@ -91,7 +91,7 @@ moment.locale('es');
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1475148492847466')
+            provider: new FacebookLoginProvider('649187186107658')
           }
         ]
       } as SocialAuthServiceConfig,

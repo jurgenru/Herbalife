@@ -41,6 +41,8 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
     ImageCropperComponent,
     ScheduleCallComponent,
     ShareButtonComponent,
+    LoginModalComponent,
+    RegisterModalComponent
   ],
   exports: [
     FooterComponent,
@@ -51,6 +53,8 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
     ImageCropperComponent,
     ScheduleCallComponent,
     ShareButtonComponent,
+    LoginModalComponent,
+    RegisterModalComponent
   ]
 })
 export class ComponentsModule {}
