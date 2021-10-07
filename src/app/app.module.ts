@@ -31,7 +31,6 @@ import { OrderService } from "./services/order.service";
 import { CommentaryService } from "./services/commentary.service";
 import { MomentModule } from 'angular2-moment';
 import * as moment  from 'moment';
-import { UploadFileService } from "./services/upload-file.service";
 import { NotificationService } from "./services/notification.service";
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
@@ -75,7 +74,6 @@ moment.locale('es');
     OrderService,
     CommentaryService,
     AppointmentService,
-    UploadFileService,
     InscriptionService,
     NotificationService,
     AppointmentService,
