@@ -8,6 +8,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { ServiceService } from 'src/app/services/service.service';
 
 
 @Component({
@@ -23,6 +24,9 @@ export class ViewComponent implements OnInit {
   socialMedia: any = { };
   validateAdmin: boolean = false;
   
+  randomService: any;
+  showRandomService: any;
+
   constructor(
     private route: ActivatedRoute,
     private trainerService: TrainerService,
@@ -33,8 +37,10 @@ export class ViewComponent implements OnInit {
     private simpleModalService: SimpleModalService,
     private notificationService: NotificationService,
     private toastr: ToastrService,
+    private serviceService: ServiceService,
   ) {
     this.get();
+    this.getRandomService();
   }
 
   ngOnInit() {this.initValidate();  }
@@ -72,7 +78,19 @@ export class ViewComponent implements OnInit {
       });
     });
   }
-
+  getRandomService(){
+    const filter = `{"fields": {"image": true}, "order":["created DESC"]}`
+    this.serviceService.get(filter).subscribe((data:any) => {
+      if(data.length >0){
+        this.showRandomService=true;
+        var randomNumber = Math.round(Math.random() * (data.length));
+        this.randomService=data[randomNumber].image;
+      }
+      else{
+        this.showRandomService=false;
+      }
+    });
+  }
   registerClass() {
     this.userService.me().subscribe((user: any) => {
     const ins = {

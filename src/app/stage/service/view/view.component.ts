@@ -22,6 +22,8 @@ export class ViewComponent implements OnInit {
   validate: any = {};
   validateAdmin: boolean = false;
 
+  randomService: any;
+  showRandomService: any;
   constructor(
     private route: ActivatedRoute,
     private serviceService: ServiceService,
@@ -35,6 +37,7 @@ export class ViewComponent implements OnInit {
   ) {
     this.get();
     this.list();
+    this.getRandomService();
   }
 
   ngOnInit() {this.initValidate();  }
@@ -76,6 +79,19 @@ export class ViewComponent implements OnInit {
       this.services = data;
     });
   }
+  getRandomService(){
+    const filter = `{"fields": {"image": true}, "order":["created DESC"]}`
+    this.serviceService.get(filter).subscribe((data:any) => {
+      if(data.length >0){
+        this.showRandomService=true;
+        var randomNumber = Math.round(Math.random() * (data.length));
+        this.randomService=data[randomNumber].image;
+      }
+      else{
+        this.showRandomService=false;
+      }
+    });
+  }
 
   viewService(id) {
     this.router.navigate(['/customer/service/view', id]);
@@ -112,7 +128,7 @@ export class ViewComponent implements OnInit {
                 // this.managerService.getByUserId(user.id).subscribe((admin: any) => {
                 //   const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+admin.id, "herbalife")
                 // });
-                const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId=123456789", "herbalife")
+                const redirect = window.open("http://54.91.163.221/?userId="+user.id+"&adminId="+this.service.userId, "herbalife")
                 break;
               case 'test':
                 this.postNotification(user.id, this.service.id,'te inscribiste en el test', 'service');
