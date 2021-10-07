@@ -21,7 +21,8 @@ export class ViewComponent implements OnInit {
   lection: any = {};
   validate: any = {};
   socialMedia: any = { };
-
+  validateAdmin: boolean = false;
+  
   constructor(
     private route: ActivatedRoute,
     private trainerService: TrainerService,
@@ -36,7 +37,19 @@ export class ViewComponent implements OnInit {
     this.get();
   }
 
-  ngOnInit() {
+  ngOnInit() {this.initValidate();  }
+  
+  initValidate(){
+    this.userService.me().subscribe((user:any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        if(admin.role == 'admin'){
+          this.validateAdmin = true;
+        }else{
+          this.validateAdmin = false;
+        }
+      });
+    })
   }
 
   get() {
