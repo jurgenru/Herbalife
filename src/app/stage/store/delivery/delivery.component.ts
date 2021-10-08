@@ -22,6 +22,7 @@ export class DeliveryComponent implements OnInit {
   product: any = {};
   payment: string[] = ['efectivo', 'tarjeta'];
   delivery: string[] = ['envio', 'presencial'];
+  validate: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -58,6 +59,14 @@ export class DeliveryComponent implements OnInit {
 
   get() {
     this.userService.me().subscribe((user: any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        if(admin.role == 'admin'){
+          this.validate = true;
+        }else{
+          this.validate = false;
+        }
+      });
       this.userService.getProfileById(user.id).subscribe((data: any) => {
         this.userData = data;
         this.order.get('email').setValue(user.email);

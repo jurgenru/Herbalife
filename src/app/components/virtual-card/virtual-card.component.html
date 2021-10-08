@@ -1,0 +1,166 @@
+<div class="container col-12 col-md-6">
+  <div class="card white-content text-center" *ngIf="type === 1">
+    <img
+      class="card-img-top"
+      src="../../../../assets/img/img_3115.jpg"
+      alt="Card image cap"
+    />
+    <div class="card-body text-center">
+      <hr class="top-line" />
+      <div class="user-img-container">
+        <img
+          class="rounded-circle mx-auto d-block"
+          width="120"
+          [src]="data.image"
+        />
+      </div>
+      <h3 class="admin-name text-center">{{ data.names }}</h3>
+      <!-- <p class="text-center">Administrador</p> -->
+      <div class="row justify-content-center">
+        <div class="col-6 text-center" *ngFor="let option of data.options">
+          <button class="btn btn-round btn-option">{{ option.name }}</button>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row justify-content-center">
+        <div class="button-container">
+          <button
+            ngbTooltip="Facebook"
+            *ngIf="data.socialMedia.facebook"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-facebook-f"> </i>
+          </button>
+          <button
+            ngbTooltip="Twitter"
+            *ngIf="data.socialMedia.twitter"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-twitter"> </i>
+          </button>
+          <button
+            ngbTooltip="Instagram"
+            *ngIf="data.socialMedia.instagram"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-instagram"> </i>
+          </button>
+          <button
+            ngbTooltip="Whatsapp"
+            *ngIf="data.socialMedia.whatsapp"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </button>
+          <button
+            ngbTooltip="Telegram"
+            *ngIf="data.socialMedia.telegram"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-telegram-plane"> </i>
+          </button>
+          <button
+            ngbTooltip="Youtube"
+            *ngIf="data.socialMedia.youtube"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-youtube"> </i>
+          </button>
+          <button
+            ngbTooltip="Tiktok"
+            *ngIf="data.socialMedia.tiktok"
+            class="btn btn-icon btn-simple btn-round bt-lg"
+          >
+            <i class="fab fa-tiktok"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <hr class="bottom-line" />
+      </div>
+      <div class="footer">
+        <p class="text-center tc">www.herbalife.com.bo./aaaa/aaa</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container col-12 col-md text-center" *ngIf="type === 2">
+  <div class="card text-center">
+    <div class="card-header ch">
+      <div class="row">
+        <div class="col-md col-11">
+          <h3 class="text-left title cw">Batidos.com</h3>
+        </div>
+        <div class="col-md col-1">
+          <h3 class="text-right">
+            <i class="fa fa-address-card" aria-hidden="true"></i>
+          </h3>
+        </div>
+      </div>
+    </div>
+    <img class="card-img-top" src="../../../../assets/img/bg5.jpg" />
+    <div class="card-body cb text-center col col-md">
+      <img [src]="data.image" class="avatar" />
+      <h3 class="card-title">{{ data.names }}</h3>
+      <div class="col" *ngFor="let option of data.options">
+        <button class="btn btn-round btns">{{ option.name }}</button>
+      </div>
+      <div class="button-container">
+        <button
+          ngbTooltip="Facebook"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.facebook"
+        >
+          <i class="fab fa-facebook-f"> </i>
+        </button>
+        <button
+          ngbTooltip="Twitter"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.twitter"
+        >
+          <i class="fab fa-twitter"> </i>
+        </button>
+        <button
+          ngbTooltip="Instagram"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.instagram"
+        >
+          <i class="fab fa-instagram"> </i>
+        </button>
+        <button
+          ngbTooltip="Whatsapp"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.whatsapp"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </button>
+        <button
+          ngbTooltip="Telegram"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.telegram"
+        >
+          <i class="fab fa-telegram-plane"> </i>
+        </button>
+        <button
+          ngbTooltip="Youtube"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.youtube"
+        >
+          <i class="fab fa-youtube"> </i>
+        </button>
+        <button
+          ngbTooltip="Tiktok"
+          class="btn btn-icon btn-round bt-lg btns"
+          *ngIf="data.socialMedia.tiktok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </button>
+      </div>
+    </div>
+    <div class="footer ft text-center">
+      <p class="card-text cw"><i class="fas fa-link"></i>www.batidos.com</p>
+    </div>
+  </div>
+</div>
