@@ -57,7 +57,7 @@ export class CreateComponent implements OnInit {
       description: ['', Validators.required],
       image: [''],
       blogId: [],
-      ranting: ['']
+      rating: ['']
     });
     this.article.push(FormInputs);
     if (this.countArticle > 11) {
@@ -102,7 +102,7 @@ export class CreateComponent implements OnInit {
       this.blogService.post(this.blog.value).subscribe((data: any) => {
         this.article.controls.forEach((element) => {
           element.value.blogId = data.id;
-          element.value.ranting = "[]";
+          element.value.rating = "[]";
           this.articleService.post(element.value).subscribe((articleData: any) => {
           }, error => {
             this.spinner.stop();

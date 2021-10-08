@@ -107,9 +107,11 @@
         </div>
       </div>
     </div>
-    <img class="card-img-top" src="../../../../assets/img/bg5.jpg" />
+    <div class="containerImg">
+      <img class="card-img-top background" src="../../../../assets/img/bg5.jpg" />
+      <img [src]="data.image" class="avatar logo" />
+    </div>
     <div class="card-body cb text-center col col-md">
-      <img [src]="data.image" class="avatar" />
       <h3 class="card-title">{{ data.names }}</h3>
       <div class="col" *ngFor="let option of data.options">
         <button class="btn btn-round btns">{{ option.name }}</button>

@@ -1,40 +1,73 @@
-.card{
-    background: white;
+.cardW {
+  background: white;
 }
-.card-img-top{
-    position: relative;
+.card-img-top {
+  position: relative;
 }
-.admin-name{
-    margin-bottom: 10px;
+.admin-name {
+  margin-bottom: 10px;
 }
-.user-img-container img{
-    position: absolute;
-    margin-top: -120px;
-    left: 39%;
-    border: 10px solid #f7be06;
+.containerImg .imgP {
+  border: 8px solid #f7be06;
 }
-.top-line{
-    border: 10px solid #f7be06;
-    width: 102%;
-    margin-top: -15px;
-    margin-left: -15px;
+.top-line {
+  border: 10px solid #f7be06;
+  width: 102%;
+  margin-top: -15px;
+  margin-left: -15px;
 }
-.bottom-line{
-    border: 5px solid #f7be06;
-   width: 100%;
+.bottom-line {
+  border: 5px solid #f7be06;
+  width: 100%;
 }
-.btn-option{
-    width: 99%;
+.btn-option {
+  width: 99%;
 }
-.btn{
-   background:  #f7be06;
-   color: whitesmoke;
+.btn {
+  background: #f7be06;
+  color: whitesmoke;
 }
-.card-footer{
-    background:  #f7be06;
-    color:whitesmoke;
-    width: 105%;
-    margin-left: -15px;
-
-    
+.card-footer {
+  background: #f7be06;
+  color: whitesmoke;
+  width: 100% !important;
+}
+.cb {
+  background: rgb(204, 186, 186);
+}
+.btns {
+  background: #2b944e;
+}
+.ft {
+  background: #2b944e;
+}
+.ch {
+  background: #2b944e !important;
+}
+.avatar {
+  height: 20%;
+  width: 20%;
+}
+.cw {
+  color: whitesmoke;
+}
+.containerImg {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerImg .logo {
+  position: absolute;
+  width: 30%;
+  height: 40%;
+  display: flex;
+  bottom: 0px;
+  align-items: center;
+}
+.containerImg .logo > img {
+  width: 100px;
+}
+.containerImg .background {
+  width: 100%;
 }
