@@ -139,7 +139,7 @@ export class CardComponent implements OnInit {
     const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
     setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(["user/card-view"]);
+        this.router.navigate(["virtual-card/view/", this.card.value.userId]);
         this.notification(
           '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
           "5000",
