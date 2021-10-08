@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-card-view',
+  selector: 'app-user-card-view',
   templateUrl: './card-view.component.html',
   styleUrls: ['./card-view.component.scss']
 })
@@ -15,7 +15,7 @@ export class CardViewComponent implements OnInit {
     this.get()
   }
   get(){
-    this.data = JSON.parse(localStorage.getItem('cardData'));
+    this.data = JSON.parse(localStorage.getItem('virtual-card'));
     this.data.socialMedia = JSON.parse(this.data.socialMedia)
     console.log(this.data);
   }

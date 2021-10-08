@@ -110,7 +110,7 @@ export class CardComponent implements OnInit {
 
   addOption(item){
     if(this.card.value.options.length < 3) {
-      this.card.value.options.push({"id": item.id, "name": item.title, "icon":item.icon, "type": item.type});
+      this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
     }
   }
 
