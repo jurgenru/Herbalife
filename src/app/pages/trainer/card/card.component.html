@@ -52,9 +52,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-12">
+                <div class="row col-12 col-md-12">
                   <h4 class="text-center">Clases</h4>
-                    <button class="btn btn-warning" ngbTooltip="Añadir"><i class="tim-icons icon-simple-add"></i>{{ card.value.options.name }}</button>
+                  <br/>
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-warning" *ngFor="let item of card.value.options" ngbTooltip="Añadir"><i class="tim-icons icon-simple-add"></i>{{ item.name }}</button>
+                  </div>
                 </div>
                 <div class="col-12 col-md-12">
                   <div class="button-container">

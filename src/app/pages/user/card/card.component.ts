@@ -38,6 +38,7 @@ export class CardComponent implements OnInit {
 
   createForm(){
     this.card = this.formBuilder.group({
+      userId: ['', Validators.required],
       names: ['', Validators.required],
       image: [''],
       banner: [''],
@@ -51,6 +52,7 @@ export class CardComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.userService.me().subscribe((me:any)=>{
+      this.card.get('userId').setValue(me.id);
       const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
       const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;  
       this.userService.getManagerById(me.id).subscribe((data:any) =>{
