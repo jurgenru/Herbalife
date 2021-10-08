@@ -26,15 +26,34 @@
 .btn-option{
     width: 99%;
 }
+.tc{
+  color: whitesmoke;
+}
 .btn{
    background:  #f7be06;
    color: whitesmoke;
 }
-.card-footer{
+.footer{
     background:  #f7be06;
     color:whitesmoke;
-    width: 108%;
-    margin-left: -15px;
-
-    
+    text-align: center !important;
+}
+.cb{
+  background: rgb(204,186,186);
+}
+.btns{
+  background: #2b944e;
+}
+.ft{
+  background: #2b944e;
+}
+.ch{
+  background: #2b944e !important;
+}
+.avatar{
+  height: 20%;
+  width: 20%;
+}
+.cw{
+  color: whitesmoke;
 }
