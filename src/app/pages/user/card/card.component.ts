@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
@@ -32,18 +32,50 @@ export class CardComponent implements OnInit {
       names: ['', Validators.required],
       image: [''],
       banner: [''],
-      blog: [''],
-      cardType: ['', Validators.required]
+      socialMedia:[''],
+      cardType: ['', Validators.required],
+      options: this.formBuilder.array([])
     })
   }
 
   get(){
-    this.userService.me().subscribe((user:any)=>{
-      // const filter = `{"fields": {"id": true, "names": true, "icon": true}, "order":["id DESC"]}`;
-      // this.userService.getProfileById(user.id).subscribe((data:any) =>{
-      //   console.log(data);
-      //   this.card.get('names').setValue(data.names);
-      // })
+    const start = new Date();
+    this.spinner.start();
+    this.userService.me().subscribe((me:any)=>{
+      const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
+      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;  
+      this.userService.getManagerById(me.id).subscribe((data:any) =>{
+        this.card.get('names').setValue(data.names+ ' '+ data.lastName);
+        this.card.get('image').setValue(data.image);
+        this.card.get('socialMedia').setValue(data.socialMedia);
+        this.userService.getBlogById(me.id, filter).subscribe((blog:any) => {
+          if(blog.length > 0){
+            blog.map(element => {
+              this.card.value.options.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "blog"});
+            });
+          }
+        }, error=>console.log(error))
+        this.userService.getServicesById(me.id, filter).subscribe((serv:any)=>{
+          if(serv.length > 0){
+            serv.map(element => {
+              this.card.value.options.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "service"});
+            });
+          }
+        }, error => console.log(error))
+          this.userService.getStoreById(me.id, filters).subscribe((store:any)=>{
+            if(store.length > 0){
+              store.map(element => {
+                this.card.value.options.push({"id": element.id, "name": element.title, "icon":element.icon, "type": "store"});
+              });
+            }
+            const end = new Date();
+            const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+            setTimeout(() => {
+                this.spinner.stop();
+            }, elapsed);
+          console.log('card3', this.card.value);
+          }, error => console.log(error))
+      })
     })
   }
 
