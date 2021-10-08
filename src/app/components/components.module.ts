@@ -17,6 +17,7 @@ import { ShareButtonComponent } from "./share-button/share-button.component";
 import { FormUploadComponent } from './form-upload/form-upload.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MomentModule } from "angular2-moment";
+import { VirtualCardComponent } from './virtual-card/virtual-card.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { MomentModule } from "angular2-moment";
     ImageCropperComponent,
     ScheduleCallComponent,
     ShareButtonComponent,
-    FormUploadComponent
+    FormUploadComponent,
+    VirtualCardComponent
   ],
   exports: [
     FooterComponent,
@@ -51,7 +53,8 @@ import { MomentModule } from "angular2-moment";
     ImageCropperComponent,
     ScheduleCallComponent,
     ShareButtonComponent,
-    FormUploadComponent
+    FormUploadComponent,
+    VirtualCardComponent
   ]
 })
 export class ComponentsModule {}

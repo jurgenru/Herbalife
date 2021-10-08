@@ -6,6 +6,7 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { ComponentsModule } from 'src/app/components/components.module';
 
 @NgModule({
   declarations: [...routedComponents],
@@ -17,7 +18,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     ImageCropperModule,
     SimpleModalModule,
-    NgxUiLoaderModule
+    NgxUiLoaderModule,
+    ComponentsModule
   ],
   exports: [
     ...routedComponents
