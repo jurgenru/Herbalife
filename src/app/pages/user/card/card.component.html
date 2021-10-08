@@ -25,26 +25,6 @@
             />
           </div>
         </div>
-        <form [formGroup]="card" (ngSubmit)="post()" *ngIf="cardSelect">
-          <div class="card-body text-center">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label>Nombre</label>
-                  <input
-                    formControlName="names"
-                    class="form-control"
-                    type="text"
-                    require
-                  />
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <img [src]="imagen" alt="" />
-                </div>
-              </div>
-            </div>
             <form [formGroup]="card" *ngIf="cardSelect">
               <div class="card-body">
                 <div class="row">
@@ -95,17 +75,6 @@
               <div class="card-footer">
                 <button (click)="post()" class="btn btn-info pull-right" [disabled]="!card.valid">Crear</button>
               </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <button
-              type="submit"
-              class="btn btn-info pull-right"
-              [disabled]="!card.valid"
-            >
-              Crear
-            </button>
-          </div>
         </form>
       </div>
     </div>

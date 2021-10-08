@@ -52,5 +52,5 @@ export const routedComponents = [
     EditComponent,
     ViewComponent,
     CardComponent,
-    CardViewComponent
+    CardViewComponent,
 ];
