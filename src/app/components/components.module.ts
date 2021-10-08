@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MomentModule } from "angular2-moment";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
+import { VirtualCardComponent } from './virtual-card/virtual-card.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
     ScheduleCallComponent,
     ShareButtonComponent,
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    VirtualCardComponent
   ],
   exports: [
     FooterComponent,
@@ -54,7 +56,8 @@ import { RegisterModalComponent } from "./register-modal/register-modal.componen
     ScheduleCallComponent,
     ShareButtonComponent,
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    VirtualCardComponent
   ]
 })
 export class ComponentsModule {}

@@ -8,7 +8,8 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SimpleModalModule } from 'ngx-simple-modal';
 import { SaleComponent } from '../../pages/sale/sale.component';
-import { ComponentsModule } from "src/app/components/components.module";
+import { ComponentsModule } from "../../components/components.module";
+
 @NgModule({
   imports: [
     CommonModule,
