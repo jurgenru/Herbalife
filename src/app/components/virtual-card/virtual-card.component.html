@@ -9,7 +9,6 @@
                 <img
                   class="card-img-top background"
                   [src]="data.banner"
-                  alt="Card image cap"
                 />
                 <img [src]="data.image" class="avatar logo imgP" />
               </div>
@@ -18,11 +17,8 @@
                 <h3 class="admin-name text-center">{{ data.names }}</h3>
                 <!-- <p class="text-center">Administrador</p> -->
                 <div class="row justify-content-center">
-                  <div
-                    class="col-6 text-center"
-                    *ngFor="let option of data.options"
-                  >
-                    <button class="btn btn-round btn-option">
+                  <div class="text-center" *ngFor="let option of data.options">
+                    <button class="btn btn-round btns btn-sm">
                       {{ option.name }}
                     </button>
                   </div>
@@ -113,18 +109,17 @@
                 </div>
               </div>
               <div class="containerImg">
-                <img
-                  class="card-img-top background"
-                  [src]="data.banner"
-                />
+                <img class="card-img-top background" [src]="data.banner" />
                 <img [src]="data.image" class="avatar logo" />
               </div>
               <div class="card-body cb text-center col col-md">
                 <h3 class="card-title">{{ data.names }}</h3>
-                <div class="col" *ngFor="let option of data.options">
-                  <button class="btn btn-round btns">
-                    {{ option.name }}
-                  </button>
+                <div class="row justify-content-center">
+                  <div class="text-center" *ngFor="let option of data.options">
+                    <button class="btn btn-round btns btn-sm">
+                      {{ option.name }}
+                    </button>
+                  </div>
                 </div>
                 <div class="button-container">
                   <button
