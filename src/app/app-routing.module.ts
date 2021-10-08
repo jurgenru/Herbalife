@@ -9,6 +9,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
 
 
+
 const routes: Routes = [
   {
     path: "",
@@ -18,6 +19,9 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: "virtual-card/view/:id", component: VirtualCardComponent
   },
   {
     path: "",
@@ -40,9 +44,6 @@ const routes: Routes = [
   }, {
     path: "**",
     redirectTo: "home"
-  },
-  {
-    path: 'virtual-card/view/:id', component: VirtualCardComponent
   },
 ];
 

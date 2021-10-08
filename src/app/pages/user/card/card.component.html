@@ -9,13 +9,13 @@
           <div class="text-center col-12 col-md-6" (click)="selectCardType(1)">
             <img
               src="../../../../assets/img/card/card_1.jpeg"
-              class="img-fluid img-card"
+              class="img-fluid img-card imgH"
             />
           </div>
           <div class="text-center col-12 col-md-6" (click)="selectCardType(2)">
             <img
               src="../../../../assets/img/card/card_2.jpeg"
-              class="img-fluid img-card"
+              class="img-fluid img-card imgH2"
             />
           </div>
         </div>
@@ -159,66 +159,6 @@
                       [(ngModel)]="card.value.socialMedia.tiktok"
                       [ngModelOptions]="{ standalone: true }"
                     />
-                  </div>
-                </div>
-                <div class="col-12 col-md-12">
-                  <div class="button-container">
-                    <button
-                      ngbTooltip="Facebook"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.facebook"
-                      (click)="socialUrl(card.value.socialMedia.facebook)"
-                    >
-                      <i class="fab fa-facebook-f"> </i>
-                    </button>
-                    <button
-                      ngbTooltip="Twitter"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.twitter"
-                      (click)="socialUrl(card.value.socialMedia.twitter)"
-                    >
-                      <i class="fab fa-twitter"> </i>
-                    </button>
-                    <button
-                      ngbTooltip="Instagram"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.instagram"
-                      (click)="socialUrl(card.value.socialMedia.instagram)"
-                    >
-                      <i class="fab fa-instagram"> </i>
-                    </button>
-                    <button
-                      ngbTooltip="Whatsapp"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.whatsapp"
-                      (click)="socialUrl(card.value.socialMedia.whatsapp)"
-                    >
-                      <i class="fab fa-whatsapp"></i>
-                    </button>
-                    <button
-                      ngbTooltip="Telegram"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.telegram"
-                      (click)="socialUrl(card.value.socialMedia.telegram)"
-                    >
-                      <i class="fab fa-telegram-plane"> </i>
-                    </button>
-                    <button
-                      ngbTooltip="Youtube"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.youtube"
-                      (click)="socialUrl(card.value.socialMedia.youtube)"
-                    >
-                      <i class="fab fa-youtube"> </i>
-                    </button>
-                    <button
-                      ngbTooltip="Tiktok"
-                      class="btn btn-icon btn-round bt-lg btns"
-                      *ngIf="card.value.socialMedia.tiktok"
-                      (click)="socialUrl(card.value.socialMedia.tiktok)"
-                    >
-                      <i class="fab fa-tiktok"></i>
-                    </button>
                   </div>
                 </div>
               </div>

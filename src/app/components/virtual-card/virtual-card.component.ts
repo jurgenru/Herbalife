@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-virtual-card',
+  selector: 'app-virtual-card-component',
   templateUrl: './virtual-card.component.html',
   styleUrls: ['./virtual-card.component.css']
 })

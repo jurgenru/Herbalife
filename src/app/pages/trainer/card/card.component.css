@@ -54,3 +54,7 @@
 .fa-youtube {
   color: #ff0000;
 }
+.input-social i{
+  position: absolute;
+  margin: 13px;
+}
