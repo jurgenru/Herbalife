@@ -100,9 +100,17 @@ export class CardComponent implements OnInit {
   }
 
   addOption(item){
-    if(this.card.value.options.length < 3) {
+    if(this.card.value.options.length < 4) {
       this.card.value.options.push({"id": item.id, "name": item.name});
     }
+  }
+
+  removeOption(item){
+    this.card.value.options.map((a:any, index:any) =>{
+      if(item.id == a.id){
+        this.card.value.options.splice(index, 1);
+      }
+    })
   }
 
   post(){
