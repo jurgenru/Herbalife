@@ -1,3 +1,4 @@
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
@@ -5,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { UploadFileService } from 'src/app/services/upload-file.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -32,6 +34,9 @@ export class CreateComponent implements OnInit {
   selectedOption3: any;
   selectedOption4: any;
   promotion: any = [];
+  // selectedFiles: FileList;
+  // currentFileUpload: File;
+  // progress: { percentage: number } = { percentage: 0 };
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -39,7 +44,8 @@ export class CreateComponent implements OnInit {
     private promotionService: PromotionService,
     private spinner: NgxUiLoaderService,
     private router: Router,
-    private toastr: ToastrService) { 
+    private toastr: ToastrService,
+    private uploadService: UploadFileService) { 
     this.getContent();
     }
 
@@ -318,5 +324,25 @@ export class CreateComponent implements OnInit {
       });
     });
   }
+
+  // selectFile(event) {
+  //   this.selectedFiles = event.target.files;
+  // }
+
+  // upload() {
+  //   this.progress.percentage = 0;
+
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe((event: any) => {
+  //     if (event.type === HttpEventType.UploadProgress) {
+  //       this.progress.percentage = Math.round(100 * event.loaded / event.total);
+  //     } else if (event instanceof HttpResponse) {
+  //       console.log('File is completely uploaded!');
+  //     console.log(JSON.parse(event.body)[0].Location);
+  //     }
+  //   });
+
+  //   this.selectedFiles = undefined;
+  // }
   
 }

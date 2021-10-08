@@ -61,71 +61,10 @@
                             <strong>Total</strong> {{order.value.total}} Bs
                         </div>
                         <div class="col-12 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-info btn-sm" [disabled]="order.invalid">Confirmar Compra</button>
+                            <button type="submit" class="btn btn-info btn-sm" [hidden]="validate" [disabled]="order.invalid">Confirmar Compra</button>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="card-body">
-                <h3 class="card-header text-center mb-3">¡GRACIAS POR SU COMPRA!</h3>
-                <div class="row">
-                    <div class="col-12 col-md-12">
-                        <button class="btn btn-info btn-sm pull-right"><i class="far fa-file-pdf mr-1"></i>Descargar</button>
-                    </div>
-                    <div class="col-12 col-md-8 pl-5 pr-5">
-                        <ul class="list-group">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Cliente: </strong>
-                                <h5>{{orderData.names}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>CI/NIT: </strong>
-                                <h5>{{orderData.nit}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Celular: </strong>
-                                <h5>{{orderData.phoneNumber}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Email: </strong>
-                                <h5>{{orderData.email}}</h5>
-                            </li>
-                        </ul>
-                        <strong>DETALLE</strong>
-                        <ul class="list-group">
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Método de Pago: </strong>
-                                <h5>{{orderData.paymentMethod}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Método de Entrega: </strong>
-                                <h5>{{orderData.deliveryMethod}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Ciudad: </strong>
-                                <h5>{{orderData.city}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Fecha: </strong>
-                                <h5>{{orderData.created | date: 'yyyy-MM-dd'}}</h5>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center">
-                                <strong>Hora: </strong>
-                                <h5>Descript</h5>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-4 text-center">
-                        <img src="../../../../assets/img/angular.jpg" class="img-fluid" alt="">
-                        <div class="text-center mt-3">
-                            Descarga tu QR para recibir el producto
-                            <i class="fas fa-download mr-2"></i>
-                        </div>
-                    </div>
-                    <div class="text-center col-12 col-md-12">
-                        <strong>Total</strong> {{orderData.total}} Bs
-                    </div>
-                </div>
             </div>
         </div>
     </div>

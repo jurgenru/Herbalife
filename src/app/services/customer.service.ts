@@ -9,6 +9,9 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
+  getOrderById(id){
+    return this.http.get(`${environment.apiUrl}orders/purchase/${id}`).pipe(); 
+  }
 //   post(body) {
 //     return this.http.post(`${environment.apiUrl}products`, body).pipe();
 //   }

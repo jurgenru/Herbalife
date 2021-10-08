@@ -24,6 +24,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
+import { CustomerService } from "./services/customer.service";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
@@ -31,7 +32,6 @@ import { OrderService } from "./services/order.service";
 import { CommentaryService } from "./services/commentary.service";
 import { MomentModule } from 'angular2-moment';
 import * as moment  from 'moment';
-import { UploadFileService } from "./services/upload-file.service";
 import { NotificationService } from "./services/notification.service";
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
@@ -74,8 +74,8 @@ moment.locale('es');
     CartService,
     OrderService,
     CommentaryService,
+    CustomerService,
     AppointmentService,
-    UploadFileService,
     InscriptionService,
     NotificationService,
     AppointmentService,
@@ -93,7 +93,7 @@ moment.locale('es');
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('1475148492847466')
+            provider: new FacebookLoginProvider('649187186107658')
           }
         ]
       } as SocialAuthServiceConfig,

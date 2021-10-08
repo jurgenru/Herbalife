@@ -88,5 +88,8 @@ export class UserService {
     getAppointmentById(id, filter) {
       return this.http.get(`${environment.apiUrl}users/${id}/appointments?filter=${filter}`).pipe();
     }
+    getBodyCompositionById(id){
+      return this.http.get(`${environment.apiUrl}users/${id}/body-compositions`).pipe(); 
+    }
 
 }

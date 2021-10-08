@@ -15,6 +15,8 @@ import { RegisterModalComponent } from 'src/app/components/register-modal/regist
 export class DetailComponent implements OnInit {
 
   product: any = {};
+  userData: any = {};
+  validate: boolean = false;
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -27,7 +29,20 @@ export class DetailComponent implements OnInit {
     this.get();
   }
 
-  ngOnInit() {
+  ngOnInit() {this.initValidate(); }
+
+  initValidate(){
+    this.userService.me().subscribe((user:any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        this.userData = admin;
+        if(admin.role == 'admin'){
+          this.validate = true;
+        }else{
+          this.validate = false;
+        }
+      });
+    })
   }
 
   get() {
@@ -48,13 +63,11 @@ export class DetailComponent implements OnInit {
   }
 
   addToCart(item: any){
-    this.userService.me().subscribe(user => {
-      if (user) {
+      if (this.userData) {
         this.cartService.addToCart(item);
+      }else{
+        this.showRegister();
       }
-    }, error => {
-      this.showRegister();
-    });
   }
 
   showRegister() {

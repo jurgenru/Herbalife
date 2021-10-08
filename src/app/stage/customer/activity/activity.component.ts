@@ -4,6 +4,9 @@ import { ServiceService } from 'src/app/services/service.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { LectionService } from 'src/app/services/lection.service';
 import { ToastrService } from 'ngx-toastr';
+import { ManagerService } from 'src/app/services/manager.service';
+import * as html2pdf from 'html2pdf.js';
+
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -14,17 +17,23 @@ export class ActivityComponent implements OnInit {
   lections: any = [];
   index: number = 0;
   indexlec: number = 0;
-
+  bodyTest: any={};
+  profile: any={};
+  socialMedia: any;
   constructor(
     private userService: UserService,
     private serviceService: ServiceService,
     private spinner: NgxUiLoaderService,
     private lectionService: LectionService,
     private toastr: ToastrService,
-  ) { }
+    private managerService: ManagerService,
+  ) { 
+    this.getBodyComposition();
+  }
 
   ngOnInit(): void {
    this.get();
+  // this.getBodyComposition();
   }
   
   get(){
@@ -62,7 +71,36 @@ export class ActivityComponent implements OnInit {
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al ver las actividades', '5000', 'danger', 'top', 'center');
     });
   }
-
+  getBodyComposition(){
+    this.userService.me().subscribe((user: any) => {
+      const filter = `{"fields": {"id": true, "image": true, "phoneNumber": true}}`;
+      this.userService.getById(user.id, filter).subscribe((us: any) => {
+        this.userService.getProfileById(user.id).subscribe((prof: any) => {
+        this.userService.getBodyCompositionById(33).subscribe( body=>{
+          this.profile = prof;
+          this.profile.email = us.email;
+          this.profile.phoneNumber = us.phoneNumber;
+          this.bodyTest=body[0];
+        }); 
+      });
+      });
+    });
+  }
+  generatePdf() {
+    const options = {
+        filename: 'test-corporal.pdf',
+        image: { type: 'jpeg',quality:0.98  },
+        html2canvas: {
+            scale: 2
+        },
+        jsPDF: { orientation: 'portrait' }
+    };
+    const content: Element = document.getElementById('bodytest')
+    html2pdf()
+        .from(content)
+        .set(options)
+        .save();
+}
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
       timeOut: time,
