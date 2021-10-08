@@ -117,7 +117,13 @@ export class CardComponent implements OnInit {
       this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
     }
   }
-
+  removeOption(item){
+    this.card.value.options.map((a:any, index:any) =>{
+      if(item.id == a.id){
+        this.card.value.options.splice(index, 1);
+      }
+    })
+  }
   post(){
     const start = new Date();
     this.spinner.start();
