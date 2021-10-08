@@ -29,91 +29,87 @@
                 </div>
               </div>
               <br />
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class="form-group">
-                                            <h4 class="title">País</h4>
-                                            <p>{{user.country}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
-                                            <h4 class="title">Ciudad</h4>
-                                            <p>{{user.city}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-2 pr-md-1">
-                                        <div class=" form-group">
-                                            <h4 class="title">Codigo Postal</h4>
-                                            <p>{{user.postalCode}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <h4 class="title"> Redes Sociales: </h4>
-                                        <div class="button-container">
-                                            <button *ngIf="socialMedia.facebook"
-                                                class="btn btn-icon btn-round btn-default" (click)="openSocialMedia(socialMedia.facebook)">
-                                                <i class="fab fa-facebook-f"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.twitter"
-                                                class="btn btn-icon btn-round btn-info" (click)="openSocialMedia(socialMedia.twitter)">
-                                                <i class=" fab fa-twitter"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.gmail"
-                                                class="btn btn-icon btn-round btn-danger">
-                                                <i class="tim-icons icon-email-85"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.whatsapp"
-                                                class="btn btn-icon btn-round btn-success" (click)="openSocialMedia(socialMedia.whatsapp)">
-                                                <i class="fab fa-whatsapp"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.telegram"
-                                                class="btn btn-icon btn-round btn-info" (click)="openSocialMedia(socialMedia.telegram)">
-                                                <i class="fab fa-telegram-plane"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.youtube"
-                                                class="btn btn-icon btn-round btn-danger" (click)="openSocialMedia(socialMedia.youtube)">
-                                                <i class="fab fa-youtube"> </i>
-                                            </button>
-                                            <button *ngIf="socialMedia.tiktok" class="btn btn-icon btn-round"
-                                                (click)="openSocialMedia(socialMedia.tiktok)">
-                                                <i class="fab fa-tiktok"> </i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-              <div class="col-12 col-md-3">
-                <div class="row">
-                  <a routerLink="/user/virtual-card" class="btn btn-info pull-right">
-                    <i class="tim-icons icon-simple-add"></i> Crear Tarjeta Virtual
-                  </a>
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class="form-group">
+                      <h4 class="title">País</h4>
+                      <p>{{user.country}}</p>
+                    </div>
+                  </div>
                 </div>
-                <br/>
-                <div class="row">
-                  <a routerLink="/user/edit" class="pull-right">
-                    <i class="fas fa-pencil-alt"></i> Editar
-                  </a>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class=" form-group">
+                      <h4 class="title">Ciudad</h4>
+                      <p>{{user.city}}</p>
+                    </div>
+                  </div>
                 </div>
-                <img
-                  class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
-                  *ngIf="user.image; else noImage"
-                  [src]="user.image"
-                />
-                <ng-template #noImage>
-                  <img src="assets/img/anime3.png" />
-                </ng-template>
+                <div class="col">
+                  <div class="mb-2 pr-md-1">
+                    <div class=" form-group">
+                      <h4 class="title">Codigo Postal</h4>
+                      <p>{{user.postalCode}}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <h4 class="title"> Redes Sociales: </h4>
+                    <div class="button-container">
+                      <button *ngIf="socialMedia.facebook" class="btn btn-icon btn-round btn-default"
+                        (click)="openSocialMedia(socialMedia.facebook)">
+                        <i class="fab fa-facebook-f"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.twitter" class="btn btn-icon btn-round btn-info"
+                        (click)="openSocialMedia(socialMedia.twitter)">
+                        <i class=" fab fa-twitter"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.gmail" class="btn btn-icon btn-round btn-danger">
+                        <i class="tim-icons icon-email-85"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.whatsapp" class="btn btn-icon btn-round btn-success"
+                        (click)="openSocialMedia(socialMedia.whatsapp)">
+                        <i class="fab fa-whatsapp"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.telegram" class="btn btn-icon btn-round btn-info"
+                        (click)="openSocialMedia(socialMedia.telegram)">
+                        <i class="fab fa-telegram-plane"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.youtube" class="btn btn-icon btn-round btn-danger"
+                        (click)="openSocialMedia(socialMedia.youtube)">
+                        <i class="fab fa-youtube"> </i>
+                      </button>
+                      <button *ngIf="socialMedia.tiktok" class="btn btn-icon btn-round"
+                        (click)="openSocialMedia(socialMedia.tiktok)">
+                        <i class="fab fa-tiktok"> </i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="row">
+                <a routerLink="/user/virtual-card" class="btn btn-info pull-right">
+                  <i class="tim-icons icon-simple-add"></i> Crear Tarjeta Virtual
+                </a>
+              </div>
+              <br />
+              <div class="row">
+                <a routerLink="/user/edit" class="pull-right">
+                  <i class="fas fa-pencil-alt"></i> Editar
+                </a>
+              </div>
+              <img class="ml-2 mr-2 mr-auto pull-right img-thumbnail" *ngIf="user.image; else noImage"
+                [src]="user.image" />
+              <ng-template #noImage>
+                <img src="assets/img/anime3.png" />
+              </ng-template>
+            </div>
           </div>
         </div>
       </div>

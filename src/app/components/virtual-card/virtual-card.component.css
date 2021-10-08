@@ -1,60 +1,54 @@
-.card{
-    background: white;
+.cardW {
+  background: white;
 }
-.card-img-top{
-    position: relative;
+.card-img-top {
+  position: relative;
 }
-.admin-name{
-    margin-bottom: 10px;
+.admin-name {
+  margin-bottom: 10px;
 }
-.user-img-container img{
-    position: absolute;
-    margin-top: -120px;
-    left: 35%;
-    border: 10px solid #f7be06;
+.containerImg .imgP {
+  border: 8px solid #f7be06;
 }
-.top-line{
-    border: 10px solid #f7be06;
-    width: 103%;
-    margin-top: -15px;
-    margin-left: -15px;
+.top-line {
+  border: 10px solid #f7be06;
+  width: 102%;
+  margin-top: -15px;
+  margin-left: -15px;
 }
-.bottom-line{
-    border: 5px solid #f7be06;
-   width: 100%;
+.bottom-line {
+  border: 5px solid #f7be06;
+  width: 100%;
 }
-.btn-option{
-    width: 99%;
+.btn-option {
+  width: 99%;
 }
-.tc{
+.btn {
+  background: #f7be06;
   color: whitesmoke;
 }
-.btn{
-   background:  #f7be06;
-   color: whitesmoke;
+.card-footer {
+  background: #f7be06;
+  color: whitesmoke;
+  width: 100% !important;
 }
-.footer{
-    background:  #f7be06;
-    color:whitesmoke;
-    text-align: center !important;
+.cb {
+  background: rgb(204, 186, 186);
 }
-.cb{
-  background: rgb(204,186,186);
-}
-.btns{
+.btns {
   background: #2b944e;
 }
-.ft{
+.ft {
   background: #2b944e;
 }
-.ch{
+.ch {
   background: #2b944e !important;
 }
-.avatar{
+.avatar {
   height: 20%;
   width: 20%;
 }
-.cw{
+.cw {
   color: whitesmoke;
 }
 .containerImg {
@@ -63,22 +57,17 @@
   justify-content: center;
   align-items: center;
 }
-
 .containerImg .logo {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 30%;
+  height: 40%;
   display: flex;
-  justify-content: center;
+  bottom: -50px;
   align-items: center;
 }
-
-
-/* size of second image */
-.containerImg .logo>img {
+.containerImg .logo > img {
   width: 100px;
 }
-
 .containerImg .background {
   width: 100%;
 }

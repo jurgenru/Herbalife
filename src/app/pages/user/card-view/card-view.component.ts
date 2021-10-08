@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardViewComponent implements OnInit {
   data: any = {};
-  type: number=2;
+  type: number=1;
 
   constructor() { }
 
