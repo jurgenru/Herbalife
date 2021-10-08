@@ -113,6 +113,7 @@ export class RegisterComponent implements OnInit {
 
   signInWithFB() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(data => {
+      console.log(data);
     });
   }
 

@@ -17,6 +17,8 @@ export class ViewComponent implements OnInit {
   store: any = {};
   products: any;
   stores: any;
+  validate: boolean = false;
+  userData: any = {};
 
   constructor(
     private simpleModalService: SimpleModalService,
@@ -31,7 +33,21 @@ export class ViewComponent implements OnInit {
     this.list();
   }
 
-  ngOnInit() {
+  ngOnInit() { this.initValidate(); }
+
+  
+  initValidate(){
+    this.userService.me().subscribe((user:any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        this.userData = admin;
+        if(admin.role == 'admin'){
+          this.validate = true;
+        }else{
+          this.validate = false;
+        }
+      });
+    })
   }
 
   get() {
@@ -55,13 +71,11 @@ export class ViewComponent implements OnInit {
   }
 
   addToCart(item) {
-    this.userService.me().subscribe(user => {
-      if (user) {
+      if (this.userData) {
         this.cartService.addToCart(item);
+      }else{
+        this.showRegister();
       }
-    }, error => {
-      this.showRegister();
-    });
   }
 
   list() {

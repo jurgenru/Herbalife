@@ -68,10 +68,23 @@
     </div>
     <div class="row">
       <div class="col-md-6 mx-auto text-center">
-        <button type="button" class="btn btn-success" (click)="registerClass()">
+        <button type="button" class="btn btn-success" [hidden]="validateAdmin" (click)="registerClass()">
           inscribiste a la clase
         </button>
       </div>
+    </div>
+  </div>
+</div>
+<hr color="purple">
+<div class="container">
+  <div class="row justify-content-center" *ngIf="showRandomService">
+    <div class="col-6 col-md-3 ">
+      <div class="card text-center">
+        <div class="card-body">
+          <img [src]="randomService" class="card-img" alt="moreServicesImg">
+          <a href="#" class="btn btn-success d-block">Pruebalo ahora</a>   
+        </div>        
+        </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +15,9 @@ export class CartComponent implements OnInit {
   quantity : number = 1;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,5 +56,18 @@ export class CartComponent implements OnInit {
   emptyCart(){
     this.cartService.removeAllCart();
     this.getTotal();
+  }
+
+  buy(){
+    this.userService.me().subscribe((user: any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        if(admin.role == 'admin'){
+          return this.cartService.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> No dispone con los permisos necesarios para realizar una compra.', '5000', 'warning', 'top', 'center');
+        }else{
+          this.router.navigate(['/customer/store/delivery']);
+        }
+      });
+    })
   }
 }
