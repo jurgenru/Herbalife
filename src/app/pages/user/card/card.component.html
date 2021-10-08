@@ -66,8 +66,11 @@
                   </div>
                   <div class="col-12 col-md-12">
                     <h4 class="text-center">Seleccione 4 Opciones que desea presentar</h4>
-                    <div>
+                    <div class="col-12 col-md-6">
                       <button class="btn btn-warning" *ngFor="let item of optionsAll" (click)="addOption(item)">{{ item.name }}</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <button *ngFor="let item of this.card.value.options">{{item.name}}</button>
                     </div>
                   </div>
                 </div>
