@@ -38,12 +38,12 @@
                     <h4 class="text-center">Banner</h4>
                     <div class="container-image">
                       <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                        *ngIf="!banner; else noBanner" />
+                        *ngIf="!userBanner; else noBanner" />
                       <ng-template #noBanner>
-                        <img [src]="banner" alt="" class="mx-auto d-block" />
+                        <img [src]="userBanner" alt="" class="mx-auto d-block" />
                       </ng-template>
-                      <div class="overlay">
-                        <p class="text text-light" (click)="showBanner()">
+                      <div class="overlay" (click)="showBanner()">
+                        <p class="text text-light">
                           cargar banner
                         </p>
                       </div>
@@ -53,12 +53,12 @@
                     <h4 class="text-center">Imagen de Perfil</h4>
                     <div class="container-image">
                       <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                        *ngIf="!image; else noImage" />
+                        *ngIf="!userImage; else noImage" />
                       <ng-template #noImage>
-                        <img [src]="image" alt="" />
+                        <img [src]="userImage" alt="" />
                       </ng-template>
-                      <div class="overlay">
-                        <p class="text text-light" (click)="showImage()">
+                      <div class="overlay"  (click)="showImage()">
+                        <p class="text text-light">
                           cargar imagen
                         </p>
                       </div>

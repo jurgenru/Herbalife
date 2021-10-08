@@ -19,6 +19,9 @@ export class CardComponent implements OnInit {
   cardSelect: boolean = false;
   btnOptions: boolean = false;
 
+  userImage: any;
+  userBanner: any;
+
   constructor(
     private SimpleModalService: SimpleModalService,
     private spinner: NgxUiLoaderService,
@@ -92,9 +95,10 @@ export class CardComponent implements OnInit {
   }
   
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
         this.card.value.image = data;
+        this.userImage= data;
       }
     );
   }
@@ -103,6 +107,7 @@ export class CardComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
       (data) => {
         this.card.value.banner = data;
+        this.userBanner =data;
       }
     );
   }
