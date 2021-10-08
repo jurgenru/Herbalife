@@ -19,6 +19,9 @@ export class CardComponent implements OnInit {
   cardSelect: boolean = false;
   btnOptions: boolean = false;
 
+  userImage: any;
+  userBanner: any;
+
   constructor(
     private SimpleModalService: SimpleModalService,
     private spinner: NgxUiLoaderService,
@@ -81,7 +84,6 @@ export class CardComponent implements OnInit {
             }, elapsed);
           console.log('card3', this.card.value);
           console.log('optionsAll', this.optionsAll);
-          localStorage.setItem('cardData', JSON.stringify(this.card.value));
           }, error => console.log(error))
       })
     })
@@ -93,9 +95,10 @@ export class CardComponent implements OnInit {
   }
   
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
         this.card.value.image = data;
+        this.userImage= data;
       }
     );
   }
@@ -104,16 +107,23 @@ export class CardComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
       (data) => {
         this.card.value.banner = data;
+        this.userBanner =data;
       }
     );
   }
 
   addOption(item){
-    if(this.card.value.options.length < 3) {
+    if(this.card.value.options.length < 4) {
       this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
     }
   }
-
+  removeOption(item){
+    this.card.value.options.map((a:any, index:any) =>{
+      if(item.id == a.id){
+        this.card.value.options.splice(index, 1);
+      }
+    })
+  }
   post(){
     const start = new Date();
     this.spinner.start();

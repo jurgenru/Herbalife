@@ -9,6 +9,7 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FilterTrainerPipe } from 'src/app/pipes/filter-trainer.pipe';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FilterTrainerPipe } from 'src/app/pipes/filter-trainer.pipe';
     NgbModule,
     NgxPaginationModule,
     NgxUiLoaderModule,
+    ComponentsModule,
   ],
   exports: [
     ...routedComponents

@@ -28,7 +28,7 @@
                     <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
                       *ngIf="!banner; else noBanner" />
                     <ng-template #noBanner>
-                      <img [src]="banner" alt="" class="mx-auto d-block" />
+                      <img [src]="banner" alt="BannerImage" class="mx-auto d-block" />
                     </ng-template>
                     <div class="overlay">
                       <p class="text text-light" (click)="showBanner()">
@@ -41,21 +41,25 @@
                   <h4 class="text-center">Imagen de Perfil</h4>
                   <div class="container-image">
                     <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!image; else noImage" />
+                      *ngIf="!profileImage; else noImage" />
                     <ng-template #noImage>
-                      <img [src]="image" alt="" />
+                      <img [src]="profileImage" alt="ProfileImage" />
                     </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="showImage()">
+                    <div class="overlay" (click)="showImage()">
+                      <p class="text text-light">
                         cargar imagen
                       </p>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-12">
+                <div class="row col-12">
                   <h4 class="text-center">Seleccione 4 Opciones que desea presentar</h4>
-                  <div>
-                    <button class="btn btn-warning" *ngFor="let item of optionsAll" (click)="addOption(item)">{{ item.name }}</button>
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-warning" *ngFor="let item of optionsAll" ngbTooltip="Añadir" (click)="addOption(item)"><i class="tim-icons icon-simple-add"></i>{{ item.name }}</button>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <button class="btn btn-warning" *ngFor="let item of this.card.value.options"><i
+                      class="fas fa-times-circle fa-lg" (click)="removeOption(item)" ngbTooltip="Quitar"></i>{{item.name}}</button>
                   </div>
                 </div>
               </div>
