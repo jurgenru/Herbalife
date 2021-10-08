@@ -6,6 +6,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from "@angular/router";
 import { UserService } from 'src/app/services/user.service';
+import { VirtualCardService } from 'src/app/services/virtual-card.service';
 
 @Component({
   selector: 'app-user-card',
@@ -18,6 +19,7 @@ export class CardComponent implements OnInit {
   optionsAll: any[] = [];
   cardSelect: boolean = false;
   btnOptions: boolean = false;
+  btnValidate: boolean = false;
 
   userImage: any;
   userBanner: any;
@@ -28,6 +30,7 @@ export class CardComponent implements OnInit {
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private virtualCardService: VirtualCardService,
     private router: Router,
   ) { }
 
@@ -36,108 +39,124 @@ export class CardComponent implements OnInit {
     this.get();
   }
 
-  createForm(){
+  createForm() {
     this.card = this.formBuilder.group({
       userId: ['', Validators.required],
       names: ['', Validators.required],
       image: [''],
       banner: [''],
-      socialMedia:['', Validators.required],
+      socialMedia: ['', Validators.required],
       cardType: ['', Validators.required],
       options: this.formBuilder.array([])
     })
   }
 
-  get(){
+  get() {
     const start = new Date();
     this.spinner.start();
-    this.userService.me().subscribe((me:any)=>{
+    this.userService.me().subscribe((me: any) => {
       this.card.get('userId').setValue(me.id);
       const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
-      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;  
-      this.userService.getManagerById(me.id).subscribe((data:any) =>{
-        this.card.get('names').setValue(data.names+ ' '+ data.lastName);
+      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;
+      this.userService.getManagerById(me.id).subscribe((data: any) => {
+      if(localStorage.getItem('virtual-card')){
+        let response = JSON.parse(localStorage.getItem('virtual-card'));
+        this.card.get('names').setValue(response.names);
+        this.card.get('image').setValue(response.image);
+        this.card.get('socialMedia').setValue(response.socialMedia);
+        this.card.get('userId').setValue(response.userId);
+        this.card.get('banner').setValue(response.banner);
+        this.card.get('cardType').setValue(response.cardType);
+        response.options.map((opt:any)=>{
+          console.log('res', response.options);
+          this.card.value.options.push({ "id": opt.id, "name": opt.name, "type": opt.type });
+        })
+        this.btnValidate = true;
+        this.cardSelect = true; 
+      }else{
+        this.card.get('names').setValue(data.names + ' ' + data.lastName);
         this.card.get('image').setValue(data.image);
         this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
-        this.userService.getBlogById(me.id, filter).subscribe((blog:any) => {
-          if(blog.length > 0){
+      }
+        this.userService.getBlogById(me.id, filter).subscribe((blog: any) => {
+          if (blog.length > 0) {
             blog.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name, "type": "blog"});
-            });
-          }
-        }, error=>console.log(error))
-        this.userService.getServicesById(me.id, filter).subscribe((serv:any)=>{
-          if(serv.length > 0){
-            serv.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name, "type": "service"});
+              this.optionsAll.push({ "id": element.id, "name": element.name, "type": "blog" });
             });
           }
         }, error => console.log(error))
-          this.userService.getStoreById(me.id, filters).subscribe((store:any)=>{
-            if(store.length > 0){
-              store.map(element => {
-                this.optionsAll.push({"id": element.id, "name": element.title, "type": "store"});
-              });
-            }
-            const end = new Date();
-            const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-            setTimeout(() => {
-                this.spinner.stop();
-            }, elapsed);
+        this.userService.getServicesById(me.id, filter).subscribe((serv: any) => {
+          if (serv.length > 0) {
+            serv.map(element => {
+              this.optionsAll.push({ "id": element.id, "name": element.name, "type": "service" });
+            });
+          }
+        }, error => console.log(error))
+        this.userService.getStoreById(me.id, filters).subscribe((store: any) => {
+          if (store.length > 0) {
+            store.map(element => {
+              this.optionsAll.push({ "id": element.id, "name": element.title, "type": "store" });
+            });
+          }
+          const end = new Date();
+          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+          setTimeout(() => {
+            this.spinner.stop();
+          }, elapsed);
           console.log('card3', this.card.value);
-          console.log('optionsAll', this.optionsAll);
-          }, error => console.log(error))
+        }, error => console.log(error))
       })
     })
   }
 
-  selectCardType(type){
+  selectCardType(type) {
     this.cardSelect = true;
     this.card.get('cardType').setValue(type);
   }
-  
+
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, { format: 1 / 1 }).subscribe(
       (data) => {
         this.card.value.image = data;
-        this.userImage= data;
+        this.userImage = data;
       }
     );
   }
 
   showBanner() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, { format: 16 / 9 }).subscribe(
       (data) => {
         this.card.value.banner = data;
-        this.userBanner =data;
+        this.userBanner = data;
       }
     );
   }
 
-  addOption(item){
-    if(this.card.value.options.length < 4) {
-      this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
+  addOption(item) {
+    if (this.card.value.options.length < 4) {
+      this.card.value.options.push({ "id": item.id, "name": item.name, "icon": item.icon, "type": item.type });
     }
   }
 
-  removeOption(item){
-    this.card.value.options.map((a:any, index:any) =>{
-      if(item.id == a.id && item.type == a.type){
+  removeOption(item) {
+    this.card.value.options.map((a: any, index: any) => {
+      if (item.id == a.id && item.type == a.type) {
         this.card.value.options.splice(index, 1);
         console.log('remove', this.card.value.options);
       }
     })
   }
 
-  post(){
+  post() {
     const start = new Date();
     this.spinner.start();
     // this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
     localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
-    console.log('card',this.card.value);
-    const end = new Date();
-    const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-    setTimeout(() => {
+    this.virtualCardService.post(this.card.value).subscribe(data => {
+      console.log('post', data);
+      const end = new Date();
+      const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+      setTimeout(() => {
         this.spinner.stop();
         this.router.navigate(["virtual-card/view/", this.card.value.userId]);
         this.notification(
@@ -147,10 +166,15 @@ export class CardComponent implements OnInit {
           "top",
           "center"
         );
-    }, elapsed);
+      }, elapsed);
+    })
   }
 
-  socialUrl(data){
+  edit() {
+    console.log('edit');
+  }
+
+  socialUrl(data) {
     return window.open(data, "_blank");
   }
 

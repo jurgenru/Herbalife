@@ -257,11 +257,20 @@
           </div>
           <div class="card-footer">
             <button
+              *ngIf="!btnValidate"
               (click)="post()"
               class="btn btn-info pull-right"
               [disabled]="!card.valid"
             >
               Crear
+            </button>
+            <button
+              *ngIf="btnValidate"
+              (click)="edit()"
+              class="btn btn-info pull-right"
+              [disabled]="!card.valid"
+            >
+              Editar
             </button>
           </div>
         </form>
