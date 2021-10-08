@@ -114,10 +114,12 @@
               </div>
               <div class="card-body cb text-center col col-md">
                 <h3 class="card-title">{{ data.names }}</h3>
-                <div class="col" *ngFor="let option of data.options">
-                  <button class="btn btn-round btns">
-                    {{ option.name }}
-                  </button>
+                <div class="row justify-content-center">
+                  <div class="col-6 text-center" *ngFor="let option of data.options">
+                    <button class="btn btn-round btns btn-option2">
+                      {{ option.name }}
+                    </button>
+                  </div>
                 </div>
                 <div class="button-container">
                   <button
