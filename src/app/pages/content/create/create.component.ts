@@ -34,9 +34,9 @@ export class CreateComponent implements OnInit {
   selectedOption3: any;
   selectedOption4: any;
   promotion: any = [];
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  progress: { percentage: number } = { percentage: 0 };
+  // selectedFiles: FileList;
+  // currentFileUpload: File;
+  // progress: { percentage: number } = { percentage: 0 };
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -325,24 +325,24 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-  }
+  // selectFile(event) {
+  //   this.selectedFiles = event.target.files;
+  // }
 
-  upload() {
-    this.progress.percentage = 0;
+  // upload() {
+  //   this.progress.percentage = 0;
 
-    this.currentFileUpload = this.selectedFiles.item(0);
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe((event: any) => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if (event instanceof HttpResponse) {
-        console.log('File is completely uploaded!');
-      console.log(JSON.parse(event.body)[0].Location);
-      }
-    });
+  //   this.currentFileUpload = this.selectedFiles.item(0);
+  //   this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe((event: any) => {
+  //     if (event.type === HttpEventType.UploadProgress) {
+  //       this.progress.percentage = Math.round(100 * event.loaded / event.total);
+  //     } else if (event instanceof HttpResponse) {
+  //       console.log('File is completely uploaded!');
+  //     console.log(JSON.parse(event.body)[0].Location);
+  //     }
+  //   });
 
-    this.selectedFiles = undefined;
-  }
+  //   this.selectedFiles = undefined;
+  // }
   
 }
