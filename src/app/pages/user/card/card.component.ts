@@ -54,7 +54,7 @@ export class CardComponent implements OnInit {
     this.userService.me().subscribe((me:any)=>{
       this.card.get('userId').setValue(me.id);
       const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
-      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;  
+      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;
       this.userService.getManagerById(me.id).subscribe((data:any) =>{
         this.card.get('names').setValue(data.names+ ' '+ data.lastName);
         this.card.get('image').setValue(data.image);
@@ -95,7 +95,7 @@ export class CardComponent implements OnInit {
     this.cardSelect = true;
     this.card.get('cardType').setValue(type);
   }
-  
+
   showImage() {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
