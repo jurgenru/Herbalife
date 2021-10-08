@@ -15,10 +15,14 @@ import { TrainerService } from 'src/app/services/trainer.service';
 export class CardComponent implements OnInit {
   card: FormGroup;
   selected: FormGroup;
+
+  profileImage: any;
+  banner: any;
+  
   optionsAll: any[] = [];
   cardSelect: boolean = false;
   btnOptions: boolean = false;
-
+  
   constructor(
     private trainerService: TrainerService,
     private route: ActivatedRoute,
@@ -51,6 +55,7 @@ export class CardComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.card.get('trainerId').setValue(val.id);
       this.trainerService.getById(val.id).subscribe((data: any) => {
+
         this.card.get('names').setValue(data.names);
         this.card.get('image').setValue(data.icon);
         this.card.get('banner').setValue(data.banner);
@@ -77,9 +82,10 @@ export class CardComponent implements OnInit {
   }
   
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
       (data) => {
         this.card.value.image = data;
+        this.profileImage = data;
       }
     );
   }
@@ -88,6 +94,7 @@ export class CardComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
       (data) => {
         this.card.value.banner = data;
+        this.banner = data;
       }
     );
   }
@@ -107,7 +114,7 @@ export class CardComponent implements OnInit {
     const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
     setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(["user/card-view", this.card.value.trainerId]);
+        this.router.navigate(["trainer/card-view", this.card.value.trainerId]);
         this.notification(
           '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
           "5000",
