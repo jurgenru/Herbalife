@@ -15,6 +15,7 @@ import { TrainerService } from 'src/app/services/trainer.service';
 export class CardComponent implements OnInit {
   card: FormGroup;
   selected: FormGroup;
+  optionsAll: any[] = [];
 
   profileImage: any;
   banner: any;
@@ -61,7 +62,7 @@ export class CardComponent implements OnInit {
         this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
         this.trainerService.getLectionById(data.id).subscribe((lec:any=[]) => {
           console.log('lec', lec);
-          this.card.value.options.push({"id": lec.id, "name": lec.name, "type": "lection"});
+          this.optionsAll.push({"id": lec.id, "name": lec.name, "type": "lection"});
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
@@ -96,6 +97,9 @@ export class CardComponent implements OnInit {
   }
 
   post(){
+    this.optionsAll.map((element:any)=>{
+      this.card.value.options.push({"id": element.id, "name": element.name, "type": "lection"});
+    })
     const start = new Date();
     this.spinner.start();
     localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
