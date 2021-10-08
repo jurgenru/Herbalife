@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-12 col-md-7">
       <div class="col-12 col-md">
-        <div class="cardW white-content text-center" *ngIf="type === 1">
+        <div class=" card cardW white-content text-center" *ngIf="type === 1">
           <div class="containerImg">
             <img class="card-img-top background" [src]="data.banner" />
             <img [src]="data.image" class="avatar logo imgP" />
@@ -13,7 +13,7 @@
             <!-- <p class="text-center">Administrador</p> -->
             <div class="row justify-content-center">
               <div class="text-center" *ngFor="let option of data.options">
-                <button class="btn btn-round btns btn-sm">
+                <button class="btn btn-round btn-sm">
                   {{ option.name }}
                 </button>
               </div>
