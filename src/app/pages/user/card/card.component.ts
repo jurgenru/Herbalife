@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
