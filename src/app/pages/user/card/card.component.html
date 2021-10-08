@@ -13,33 +13,55 @@
                   <img src="../../../../assets/img/card/card_2.jpeg" class="img-fluid img-card">
               </div>
             </div>
-            <form [formGroup]="card" (ngSubmit)="post()" *ngIf="cardSelect">
+            <form [formGroup]="card" *ngIf="cardSelect">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-12">
-                      <div class="form-group">
-                          <label>Nombre</label>
-                          <input formControlName="names" class="form-control" type="text" require />
-                      </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                        <img [src]="imagen" alt="">
-                    </div>
-                  </div>
-                  <div class="col-md-12">
+                  <div class="col-12 col-md-4">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input class="form-control" type="text" require />
+                        <input formControlName="names" class="form-control" type="text" require />
                     </div>
                   </div>
-                  <div class="col-12">
-                    <app-virtual-card [type]="card.value.cardType" [data]="card.value" ></app-virtual-card>
+                  <div class="col-12 col-md-4">
+                    <h4 class="text-center">Banner</h4>
+                    <div class="container-image">
+                      <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                        *ngIf="!banner; else noBanner" />
+                      <ng-template #noBanner>
+                        <img [src]="banner" alt="" class="mx-auto d-block" />
+                      </ng-template>
+                      <div class="overlay">
+                        <p class="text text-light" (click)="showBanner()">
+                          cargar banner
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <h4 class="text-center">Imagen de Perfil</h4>
+                    <div class="container-image">
+                      <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                        *ngIf="!image; else noImage" />
+                      <ng-template #noImage>
+                        <img [src]="image" alt="" />
+                      </ng-template>
+                      <div class="overlay">
+                        <p class="text text-light" (click)="showImage()">
+                          cargar imagen
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-12">
+                    <h4 class="text-center">Seleccione 4 Opciones que desea presentar</h4>
+                    <div>
+                      <button class="btn btn-warning" *ngFor="let item of optionsAll" (click)="addOption(item)">{{ item.name }}</button>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-info pull-right" [disabled]="!card.valid">Crear</button>
+                <button (click)="post()" class="btn btn-info pull-right" [disabled]="!card.valid">Crear</button>
               </div>
             </form>
         </div>

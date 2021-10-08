@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { SimpleModalService } from 'ngx-simple-modal';
+import { ImageCropperComponent } from "src/app/components/image-cropper/image-cropper.component";
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from "@angular/router";
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,14 +14,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CardComponent implements OnInit {
   card: FormGroup;
+  selected: FormGroup;
+  optionsAll: any[] = [];
   cardSelect: boolean = false;
-  userData: any = {};
+  btnOptions: boolean = false;
+
   constructor(
     private SimpleModalService: SimpleModalService,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +38,7 @@ export class CardComponent implements OnInit {
       names: ['', Validators.required],
       image: [''],
       banner: [''],
-      socialMedia:[''],
+      socialMedia:['', Validators.required],
       cardType: ['', Validators.required],
       options: this.formBuilder.array([])
     })
@@ -51,21 +57,21 @@ export class CardComponent implements OnInit {
         this.userService.getBlogById(me.id, filter).subscribe((blog:any) => {
           if(blog.length > 0){
             blog.map(element => {
-              this.card.value.options.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "blog"});
+              this.optionsAll.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "blog"});
             });
           }
         }, error=>console.log(error))
         this.userService.getServicesById(me.id, filter).subscribe((serv:any)=>{
           if(serv.length > 0){
             serv.map(element => {
-              this.card.value.options.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "service"});
+              this.optionsAll.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "service"});
             });
           }
         }, error => console.log(error))
           this.userService.getStoreById(me.id, filters).subscribe((store:any)=>{
             if(store.length > 0){
               store.map(element => {
-                this.card.value.options.push({"id": element.id, "name": element.title, "icon":element.icon, "type": "store"});
+                this.optionsAll.push({"id": element.id, "name": element.title, "icon":element.icon, "type": "store"});
               });
             }
             const end = new Date();
@@ -74,6 +80,7 @@ export class CardComponent implements OnInit {
                 this.spinner.stop();
             }, elapsed);
           console.log('card3', this.card.value);
+          console.log('optionsAll', this.optionsAll);
           }, error => console.log(error))
       })
     })
@@ -83,11 +90,47 @@ export class CardComponent implements OnInit {
     this.cardSelect = true;
     this.card.get('cardType').setValue(type);
   }
+  
+  showImage() {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+      (data) => {
+        this.card.value.image = data;
+      }
+    );
+  }
+
+  showBanner() {
+    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+      (data) => {
+        this.card.value.banner = data;
+      }
+    );
+  }
+
+  addOption(item){
+    if(this.card.value.options.length < 3) {
+      this.card.value.options.push({"id": item.id, "name": item.title, "icon":item.icon, "type": item.type});
+    }
+  }
 
   post(){
-    //const start = new Date();
-    //this.spinner.start();
+    const start = new Date();
+    this.spinner.start();
+    localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
     console.log('card',this.card.value);
+    const end = new Date();
+    const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+    setTimeout(() => {
+        this.spinner.stop();
+        this.router.navigate(["user/card-view"]);
+        this.notification(
+          '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
+          "5000",
+          "success",
+          "top",
+          "center"
+        );
+    }, elapsed);
   }
 
   notification(content, time, type, from, align) {
