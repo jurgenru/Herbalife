@@ -16,6 +16,6 @@ export class VirtualCardComponent implements OnInit {
   }
   get(){
     this.data.socialMedia = JSON.parse(this.data.socialMedia);
-    console.log(this.data.socialMedia);
+    console.log(this.data.socialMedia, this.type);
   }
 }

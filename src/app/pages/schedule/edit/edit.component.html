@@ -1,0 +1,79 @@
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-body">
+          <div class="author">
+            <div class="card-header text-center">
+              <h2 class="card-title"><b>Editar Cita</b></h2>
+            </div>
+          </div>
+          <hr color="purple" width="90%" />
+          <br />
+          <form #form="ngForm" (ngSubmit)="edit()">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> Nombre de la persona que requirio la cita </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="appointment.names"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="appointmentData.names"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label> Hora de la Cita </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="appointment.hour"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="appointmentData.hour"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> Fecha de la cita </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="appointment.schedule"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="appointmentData.schedule"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label> Status de la cita </label>
+                    <input
+                      class="form-control"
+                      type="text"
+                      [(ngModel)]="appointment.status"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="appointmentData.status"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="button-container pull-right">
+                <button type="submit" class="btn btn-warning">Editar</button>
+              </div>
+              <br /><br />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(24,31,46)"
+  [text]="content"
+></ngx-ui-loader>

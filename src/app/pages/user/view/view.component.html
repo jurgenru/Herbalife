@@ -94,15 +94,17 @@
                             </div>
                         </div>
               <div class="col-12 col-md-3">
-                <a routerLink="/user/virtual-card" class="btn btn-info pull-right">
-                  <i class="tim-icons icon-simple-add"></i> Crear Tarjeta Virtual
-                </a>
+                <div class="row">
+                  <a routerLink="/user/virtual-card" class="btn btn-info pull-right">
+                    <i class="tim-icons icon-simple-add"></i> Crear Tarjeta Virtual
+                  </a>
+                </div>
                 <br/>
-                <a routerLink="/user/edit" class="pull-right">
-                  <i class="fas fa-pencil-alt"></i> Editar
-                </a>
-                <br />
-                <br />
+                <div class="row">
+                  <a routerLink="/user/edit" class="pull-right">
+                    <i class="fas fa-pencil-alt"></i> Editar
+                  </a>
+                </div>
                 <img
                   class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
                   *ngIf="user.image; else noImage"

@@ -8,12 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { routedComponents, ScheduleRoutingModule } from './schedule.routing';
-
+import { FilterAppointmentPipe } from 'src/app/pipes/filter-appointment.pipe';
 
 @NgModule({
-  declarations: [
-    ...routedComponents
-  ],
+  declarations: [...routedComponents, FilterAppointmentPipe],
   imports: [
     RouterModule,
     ScheduleRoutingModule,
