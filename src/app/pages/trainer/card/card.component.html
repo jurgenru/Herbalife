@@ -16,203 +16,144 @@
           <form [formGroup]="card" *ngIf="cardSelect">
             <div class="card-body">
               <div class="row">
-                <div class="col-12 col-md-4">
-                  <div class="form-group">
-                      <label>Nombre</label>
-                      <input formControlName="names" class="form-control" type="text" require />
-                  </div>
-                </div>
-                <div class="col-12 col-md-4">
-                  <h4 class="text-center">Banner</h4>
+                <div class="col-12 col-md-8">
                   <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!banner; else noBanner" />
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!userBanner; else noBanner"
+                    />
                     <ng-template #noBanner>
-                      <img [src]="banner" alt="BannerImage" class="mx-auto d-block" />
+                      <img [src]="userBanner" alt="" class="mx-auto d-block" />
                     </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="showBanner()">
-                        cargar banner
-                      </p>
+                    <div class="overlay" (click)="showBanner()">
+                      <p class="text text-light">Sube tu banner</p>
                     </div>
                   </div>
+                  <h4 class="text-center">Banner</h4>
                 </div>
                 <div class="col-12 col-md-4">
-                  <h4 class="text-center">Imagen de Perfil</h4>
                   <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!profileImage; else noImage" />
+                    <img
+                      src="../../../../assets/img/anime3.png"
+                      alt="Avatar"
+                      class="mx-auto d-block"
+                      *ngIf="!userImage; else noImage"
+                    />
                     <ng-template #noImage>
-                      <img [src]="profileImage" alt="ProfileImage" />
+                      <img [src]="userImage" alt="" />
                     </ng-template>
                     <div class="overlay" (click)="showImage()">
-                      <p class="text text-light">
-                        cargar imagen
-                      </p>
+                      <p class="text text-light">Sube tu foto</p>
                     </div>
                   </div>
+                  <h4 class="text-center">Imagen de Perfil</h4>
                 </div>
-                <div class="row">
-                  <div class="col-12">
-                    <label>Redes Sociales</label>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-whatsapp"> </i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://wa.me/tu_numero"
-                          type="url"
-                          style="padding-left: 33px"
-                          [(ngModel)]="card.value.socialMedia.whatsapp"
-                          [ngModelOptions]="{ standalone: true }"
-                          [value]="card.value.socialMedia.whatsapp"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-telegram-plane"> </i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://t.me/nombre_usuario"
-                          type="url"
-                          style="padding-left: 33px"
-                          [value]="card.value.socialMedia.telegram"
-                          [(ngModel)]="card.value.socialMedia.telegram"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-facebook-f"> </i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://www.facebook.com/..."
-                          type="url"
-                          style="padding-left: 33px"
-                          [value]="card.value.socialMedia.facebook"
-                          [(ngModel)]="card.value.socialMedia.facebook"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-instagram"> </i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://www.instagram.com/..."
-                          type="url"
-                          style="padding-left: 33px"
-                          [value]="card.value.socialMedia.instagram"
-                          [(ngModel)]="card.value.socialMedia.instagram"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-youtube"> </i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://www.youtube.com/..."
-                          type="url"
-                          style="padding-left: 33px"
-                          [value]="card.value.socialMedia.youtube"
-                          [(ngModel)]="card.value.socialMedia.youtube"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 md-1">
-                      <div class="input-social form-group">
-                        <i class="fab fa-tiktok"></i>
-                        <input
-                          class="form-control"
-                          [ngbTooltip]="tipContent"
-                          placeholder="https://www.tiktok.com/..."
-                          type="url"
-                          style="padding-left: 33px"
-                          [value]="card.value.socialMedia.tiktok"
-                          [(ngModel)]="card.value.socialMedia.tiktok"
-                          [ngModelOptions]="{ standalone: true }"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-12">
-                      <div class="button-container">
-                        <button
-                          ngbTooltip="Facebook"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.facebook"
-                          (click)="socialUrl(card.value.socialMedia.facebook)"
-                        >
-                          <i class="fab fa-facebook-f"> </i>
-                        </button>
-                        <button
-                          ngbTooltip="Twitter"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.twitter"
-                          (click)="socialUrl(card.value.socialMedia.twitter)"
-                        >
-                          <i class="fab fa-twitter"> </i>
-                        </button>
-                        <button
-                          ngbTooltip="Instagram"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.instagram"
-                          (click)="socialUrl(card.value.socialMedia.instagram)"
-                        >
-                          <i class="fab fa-instagram"> </i>
-                        </button>
-                        <button
-                          ngbTooltip="Whatsapp"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.whatsapp"
-                          (click)="socialUrl(card.value.socialMedia.whatsapp)"
-                        >
-                          <i class="fab fa-whatsapp"></i>
-                        </button>
-                        <button
-                          ngbTooltip="Telegram"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.telegram"
-                          (click)="socialUrl(card.value.socialMedia.telegram)"
-                        >
-                          <i class="fab fa-telegram-plane"> </i>
-                        </button>
-                        <button
-                          ngbTooltip="Youtube"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.youtube"
-                          (click)="socialUrl(card.value.socialMedia.youtube)"
-                        >
-                          <i class="fab fa-youtube"> </i>
-                        </button>
-                        <button
-                          ngbTooltip="Tiktok"
-                          class="btn btn-icon btn-round bt-lg btns"
-                          *ngIf="card.value.socialMedia.tiktok"
-                          (click)="socialUrl(card.value.socialMedia.tiktok)"
-                        >
-                          <i class="fab fa-tiktok"></i>
-                        </button>
-                      </div>
-                    </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="form-group">
+                    <label>Nombre</label>
+                    <input
+                      formControlName="names"
+                      class="form-control"
+                      type="text"
+                      require
+                    />
                   </div>
                 </div>
-                <br />
-                <div class="row col-12 col-md-12">
-                  <h4 class="text-center">Clases</h4>
-                  <br/>
-                  <div class="col-12 col-md-6">
-                    <button class="btn btn-warning" *ngFor="let item of optionsAll" ngbTooltip="Añadir"><i class="tim-icons icon-simple-add"></i>{{ item.name }}</button>
+                <div class="col-12 col-md-6">
+                  <label>Redes Sociales</label>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-whatsapp"> </i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://wa.me/tu_numero"
+                        type="url"
+                        style="padding-left: 33px"
+                        [(ngModel)]="card.value.socialMedia.whatsapp"
+                        [ngModelOptions]="{ standalone: true }"
+                        [value]="card.value.socialMedia.whatsapp"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-telegram-plane"> </i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://t.me/nombre_usuario"
+                        type="url"
+                        style="padding-left: 33px"
+                        [value]="card.value.socialMedia.telegram"
+                        [(ngModel)]="card.value.socialMedia.telegram"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-facebook-f"> </i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://www.facebook.com/..."
+                        type="url"
+                        style="padding-left: 33px"
+                        [value]="card.value.socialMedia.facebook"
+                        [(ngModel)]="card.value.socialMedia.facebook"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-instagram"> </i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://www.instagram.com/..."
+                        type="url"
+                        style="padding-left: 33px"
+                        [value]="card.value.socialMedia.instagram"
+                        [(ngModel)]="card.value.socialMedia.instagram"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-youtube"> </i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://www.youtube.com/..."
+                        type="url"
+                        style="padding-left: 33px"
+                        [value]="card.value.socialMedia.youtube"
+                        [(ngModel)]="card.value.socialMedia.youtube"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 md-1">
+                    <div class="input-social form-group">
+                      <i class="fab fa-tiktok"></i>
+                      <input
+                        class="form-control"
+                        [ngbTooltip]="tipContent"
+                        placeholder="https://www.tiktok.com/..."
+                        type="url"
+                        style="padding-left: 33px"
+                        [value]="card.value.socialMedia.tiktok"
+                        [(ngModel)]="card.value.socialMedia.tiktok"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
