@@ -39,6 +39,8 @@ import { InscriptionService } from "./services/inscription-service";
 import { AppointmentService } from "./services/appointment.service";
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { InscriptionLection } from "./services/inscription-lection";
+import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
+
 
 moment.locale('es');
 
@@ -60,7 +62,7 @@ moment.locale('es');
     NgxQRCodeModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent,VirtualCardComponent],
   providers: [
     AuthGuard,
     StoreService,
