@@ -18,4 +18,8 @@ export class VirtualCardComponent implements OnInit {
     this.data.socialMedia = JSON.parse(this.data.socialMedia);
     console.log(this.data.socialMedia, this.type);
   }
+  
+  socialUrl(data){
+    return window.open(data, "_blank");
+  }
 }

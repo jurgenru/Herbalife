@@ -1,5 +1,5 @@
-<div class="container col-12 col-md-6">
-  <div class="card white-content text-center" *ngIf="type === 1">
+<div class="container col-12 col-md-6" *ngIf="type === 1">
+  <div class="card white-content text-center">
     <img
       class="card-img-top"
       src="../../../../assets/img/img_3115.jpg"
@@ -29,6 +29,7 @@
             ngbTooltip="Facebook"
             *ngIf="data.socialMedia.facebook"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.facebook)"
           >
             <i class="fab fa-facebook-f"> </i>
           </button>
@@ -36,6 +37,7 @@
             ngbTooltip="Twitter"
             *ngIf="data.socialMedia.twitter"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.twitter)"
           >
             <i class="fab fa-twitter"> </i>
           </button>
@@ -43,6 +45,7 @@
             ngbTooltip="Instagram"
             *ngIf="data.socialMedia.instagram"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.instagram)"
           >
             <i class="fab fa-instagram"> </i>
           </button>
@@ -50,6 +53,7 @@
             ngbTooltip="Whatsapp"
             *ngIf="data.socialMedia.whatsapp"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.whatsapp)"
           >
             <i class="fab fa-whatsapp"></i>
           </button>
@@ -57,6 +61,7 @@
             ngbTooltip="Telegram"
             *ngIf="data.socialMedia.telegram"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.telegram)"
           >
             <i class="fab fa-telegram-plane"> </i>
           </button>
@@ -64,6 +69,7 @@
             ngbTooltip="Youtube"
             *ngIf="data.socialMedia.youtube"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.youtube)"
           >
             <i class="fab fa-youtube"> </i>
           </button>
@@ -71,6 +77,7 @@
             ngbTooltip="Tiktok"
             *ngIf="data.socialMedia.tiktok"
             class="btn btn-icon btn-simple btn-round bt-lg"
+            (click)="socialUrl(data.socialMedia.tiktok)"
           >
             <i class="fab fa-tiktok"></i>
           </button>
@@ -112,6 +119,7 @@
           ngbTooltip="Facebook"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.facebook"
+          (click)="socialUrl(data.socialMedia.facebook)"
         >
           <i class="fab fa-facebook-f"> </i>
         </button>
@@ -119,6 +127,7 @@
           ngbTooltip="Twitter"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.twitter"
+          (click)="socialUrl(data.socialMedia.twitter)"
         >
           <i class="fab fa-twitter"> </i>
         </button>
@@ -126,6 +135,7 @@
           ngbTooltip="Instagram"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.instagram"
+          (click)="socialUrl(data.socialMedia.instagram)"
         >
           <i class="fab fa-instagram"> </i>
         </button>
@@ -133,6 +143,7 @@
           ngbTooltip="Whatsapp"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.whatsapp"
+          (click)="socialUrl(data.socialMedia.whatsapp)"
         >
           <i class="fab fa-whatsapp"></i>
         </button>
@@ -140,6 +151,7 @@
           ngbTooltip="Telegram"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.telegram"
+          (click)="socialUrl(data.socialMedia.telegram)"
         >
           <i class="fab fa-telegram-plane"> </i>
         </button>
@@ -147,6 +159,7 @@
           ngbTooltip="Youtube"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.youtube"
+          (click)="socialUrl(data.socialMedia.youtube)"
         >
           <i class="fab fa-youtube"> </i>
         </button>
@@ -154,6 +167,7 @@
           ngbTooltip="Tiktok"
           class="btn btn-icon btn-round bt-lg btns"
           *ngIf="data.socialMedia.tiktok"
+          (click)="socialUrl(data.socialMedia.tiktok)"
         >
           <i class="fab fa-tiktok"></i>
         </button>
