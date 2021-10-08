@@ -81,6 +81,7 @@ export class CardComponent implements OnInit {
             }, elapsed);
           console.log('card3', this.card.value);
           console.log('optionsAll', this.optionsAll);
+          localStorage.setItem('cardData', JSON.stringify(this.card.value));
           }, error => console.log(error))
       })
     })
