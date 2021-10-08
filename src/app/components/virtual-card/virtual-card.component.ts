@@ -12,5 +12,10 @@ export class VirtualCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.get();
+  }
+  get(){
+    this.data.socialMedia = JSON.parse(this.data.socialMedia);
+    console.log(this.data.socialMedia);
   }
 }

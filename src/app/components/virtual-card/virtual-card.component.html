@@ -4,47 +4,38 @@
         <div class="card-body">
             <hr class="top-line">
             <div class="user-img-container">
-                <img class="rounded-circle mx-auto d-block" width="120" src="../../../../assets/img/james.jpg" />
+                <img class="rounded-circle mx-auto d-block" width="120" [src]="data.image" />
             </div>
-            <h3 class="admin-name text-center">Edson Marquez</h3>
-            <p class="text-center">Administrador</p>
-            <div class="row justify-content-center">
-                <div class="col-6 text-center">
-                    <button class="btn btn-round btn-option">Boton1</button>     
-                </div>
-                <div class="col-6 text-center">
-                    <button class="btn btn-round btn-option">Boton2</button>     
-                </div>
-                <div class="col-6 text-center btn-round">
-                    <button class="btn btn-round btn-option">Boton3</button>     
-                </div>
-                <div class="col-6 text-center btn-round">
-                    <button class="btn btn-round btn-option">Boton4</button>     
+            <h3 class="admin-name text-center">{{data.names}}</h3>
+            <!-- <p class="text-center">Administrador</p> -->
+            <div class="row justify-content-center" >
+                <div class="col-6 text-center" *ngFor="let option of data.options">
+                    <button class="btn btn-round btn-option">{{option.name}}</button>     
                 </div>
             </div>
             <br>
             <br>
             <div class="row justify-content-center">
                 <div class="button-container">
-                    <button  ngbTooltip="Facebook" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button  ngbTooltip="Facebook" *ngIf="data.socialMedia.facebook" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-facebook-f"> </i>
                     </button>
-                    <button ngbTooltip="Twitter" class="btn btn-icon btn-simple btn-round bt-lg" >
+                    <button ngbTooltip="Twitter" *ngIf="data.socialMedia.twitter" class="btn btn-icon btn-simple btn-round bt-lg" >
                       <i class="fab fa-twitter"> </i>
                     </button>
-                    <button ngbTooltip="Instagram" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button ngbTooltip="Instagram" *ngIf="data.socialMedia.instagram" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-instagram"> </i>
                     </button>
-                    <button ngbTooltip="Whatsapp" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button ngbTooltip="Whatsapp" *ngIf="data.socialMedia.whatsapp" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-whatsapp"></i>
                     </button>
-                    <button ngbTooltip="Telegram" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button ngbTooltip="Telegram" *ngIf="data.socialMedia.telegram" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-telegram-plane"> </i>
                     </button>
-                    <button ngbTooltip="Youtube" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button ngbTooltip="Youtube"  *ngIf="data.socialMedia.youtube" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-youtube"> </i>
                     </button>
-                    <button ngbTooltip="Tiktok" class="btn btn-icon btn-simple btn-round bt-lg">
+                    <button ngbTooltip="Tiktok" *ngIf="data.socialMedia.tiktok" class="btn btn-icon btn-simple btn-round bt-lg">
                       <i class="fab fa-tiktok"></i>
                     </button>
                   </div>
