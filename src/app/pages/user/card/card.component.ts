@@ -38,6 +38,7 @@ export class CardComponent implements OnInit {
 
   createForm(){
     this.card = this.formBuilder.group({
+      userId: ['', Validators.required],
       names: ['', Validators.required],
       image: [''],
       banner: [''],
@@ -51,6 +52,7 @@ export class CardComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.userService.me().subscribe((me:any)=>{
+      this.card.get('userId').setValue(me.id);
       const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
       const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;  
       this.userService.getManagerById(me.id).subscribe((data:any) =>{
@@ -137,7 +139,7 @@ export class CardComponent implements OnInit {
     const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
     setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(["user/card-view"]);
+        this.router.navigate(["virtual-card/view/", this.card.value.userId]);
         this.notification(
           '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
           "5000",

@@ -5,7 +5,6 @@ import { CreateComponent } from "./create/create.component";
 import { EditComponent } from "./edit/edit.component";
 import { ViewComponent } from "./view/view.component";
 import { CardComponent } from './card/card.component';
-import { CardViewComponent } from "./card-view/card-view.component";
 
 export const routes: Routes = [
     {
@@ -32,10 +31,6 @@ export const routes: Routes = [
                 path: 'virtual-card',
                 component: CardComponent
             },
-            {
-                path: 'card-view',
-                component: CardViewComponent
-            }
         ],
     }
 ];
@@ -52,5 +47,4 @@ export const routedComponents = [
     EditComponent,
     ViewComponent,
     CardComponent,
-    CardViewComponent,
 ];

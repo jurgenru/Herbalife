@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user-card-view',
+  selector: 'app-card-view',
   templateUrl: './card-view.component.html',
-  styleUrls: ['./card-view.component.scss']
+  styleUrls: ['./card-view.component.css']
 })
 export class CardViewComponent implements OnInit {
+
   data: any = {};
-  type: number=1;
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class CardViewComponent implements OnInit {
   }
   get(){
     this.data = JSON.parse(localStorage.getItem('virtual-card'));
-    this.data.socialMedia = JSON.parse(this.data.socialMedia)
     console.log(this.data);
   }
+
 }
