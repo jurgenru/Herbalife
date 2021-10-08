@@ -22,10 +22,9 @@
                           <input formControlName="names" class="form-control" type="text" require />
                       </div>
                   </div>
-                  <div class="col-md-12">
+                  <div class="col-md-4">
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <input class="form-control" type="text" require />
+                        <img [src]="imagen" alt="">
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -35,7 +34,7 @@
                     </div>
                   </div>
                   <div class="col-12">
-                    <app-virtual-card [type]="card.value.cardType"></app-virtual-card>
+                    <app-virtual-card [type]="card.value.cardType" [data]="card.value" ></app-virtual-card>
                   </div>
                 </div>
               </div>
