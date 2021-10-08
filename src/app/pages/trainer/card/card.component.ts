@@ -19,7 +19,6 @@ export class CardComponent implements OnInit {
   profileImage: any;
   banner: any;
   
-  optionsAll: any[] = [];
   cardSelect: boolean = false;
   btnOptions: boolean = false;
   
@@ -62,17 +61,13 @@ export class CardComponent implements OnInit {
         this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
         this.trainerService.getLectionById(data.id).subscribe((lec:any=[]) => {
           console.log('lec', lec);
-          if(lec.length > 0){
-            lec.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name, "type": "lection"});
-            })
-          }
-          console.log('optionsAll', this.optionsAll);
+          this.card.value.options.push({"id": lec.id, "name": lec.name, "type": "lection"});
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
               this.spinner.stop();
           }, elapsed);
+          console.log('card.options', this.card.value.options);
         });
       });
     });
@@ -98,21 +93,6 @@ export class CardComponent implements OnInit {
         this.banner = data;
       }
     );
-  }
-
-  addOption(item){
-    if(this.card.value.options.length < 4) {
-      this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
-    }
-  }
-
-  removeOption(item){
-    this.card.value.options.map((a:any, index:any) =>{
-      if(item.id == a.id){
-        this.card.value.options.splice(index, 1);
-        console.log('remove', this.card.value.options);
-      }
-    })
   }
 
   post(){

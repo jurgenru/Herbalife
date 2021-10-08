@@ -120,7 +120,7 @@ export class CardComponent implements OnInit {
 
   removeOption(item){
     this.card.value.options.map((a:any, index:any) =>{
-      if(item.id == a.id){
+      if(item.id == a.id && item.type == a.type){
         this.card.value.options.splice(index, 1);
         console.log('remove', this.card.value.options);
       }
