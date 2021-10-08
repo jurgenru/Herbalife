@@ -6,6 +6,7 @@ import { ListComponent } from "./list/list.component";
 import { ViewComponent } from "./view/view.component";
 import { EditComponent } from "./edit/edit.component";
 import { CardComponent } from "./card/card.component";
+import { CardViewComponent } from './card-view/card-view.component';
 
 export const routes: Routes = [
     {
@@ -29,8 +30,10 @@ export const routes: Routes = [
             },{
                 path: 'card/:id',
                 component: CardComponent
+            },{
+                path: 'card-view/:id',
+                component: CardViewComponent
             }
-
         ],
     }
 ];
@@ -46,5 +49,7 @@ export const routedComponents = [
     CreateComponent,
     ListComponent,
     ViewComponent,
-    EditComponent
+    EditComponent,
+    CardComponent,
+    CardViewComponent
 ];
