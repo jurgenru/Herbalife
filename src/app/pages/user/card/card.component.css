@@ -41,3 +41,31 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.fa-facebook-f {
+  color: #3b5998;
+}
+.fa-twitter {
+  color: #00aced;
+}
+.fa-telegram-plane {
+  color: #0088cc;
+}
+.fa-linkedin-in {
+  color: #2867b2;
+}
+.fa-whatsapp {
+  color: #25d366;
+}
+.fa-envelope {
+  color: #fff;
+}
+.fa-instagram {
+  color: #e1306c;
+}
+.fa-tiktok {
+  color: #000;
+}
+.fa-youtube {
+  color: #ff0000;
+}

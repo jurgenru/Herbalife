@@ -59,14 +59,15 @@ export class CardComponent implements OnInit {
         this.card.get('names').setValue(data.names);
         this.card.get('image').setValue(data.icon);
         this.card.get('banner').setValue(data.banner);
-        this.card.get('socialMedia').setValue(data.socialMedia);
-        this.trainerService.getLectionById(data.id).subscribe((lec:any) => {
-          console.log(lec);
+        this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
+        this.trainerService.getLectionById(data.id).subscribe((lec:any=[]) => {
+          console.log('lec', lec);
           if(lec.length > 0){
             lec.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name});
+              this.optionsAll.push({"id": element.id, "name": element.name, "type": "lection"});
             })
           }
+          console.log('optionsAll', this.optionsAll);
           const end = new Date();
           const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
           setTimeout(() => {
@@ -101,7 +102,7 @@ export class CardComponent implements OnInit {
 
   addOption(item){
     if(this.card.value.options.length < 4) {
-      this.card.value.options.push({"id": item.id, "name": item.name});
+      this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
     }
   }
 
@@ -109,6 +110,7 @@ export class CardComponent implements OnInit {
     this.card.value.options.map((a:any, index:any) =>{
       if(item.id == a.id){
         this.card.value.options.splice(index, 1);
+        console.log('remove', this.card.value.options);
       }
     })
   }

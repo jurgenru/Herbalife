@@ -56,25 +56,25 @@ export class CardComponent implements OnInit {
       this.userService.getManagerById(me.id).subscribe((data:any) =>{
         this.card.get('names').setValue(data.names+ ' '+ data.lastName);
         this.card.get('image').setValue(data.image);
-        this.card.get('socialMedia').setValue(data.socialMedia);
+        this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
         this.userService.getBlogById(me.id, filter).subscribe((blog:any) => {
           if(blog.length > 0){
             blog.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "blog"});
+              this.optionsAll.push({"id": element.id, "name": element.name, "type": "blog"});
             });
           }
         }, error=>console.log(error))
         this.userService.getServicesById(me.id, filter).subscribe((serv:any)=>{
           if(serv.length > 0){
             serv.map(element => {
-              this.optionsAll.push({"id": element.id, "name": element.name, "icon":element.icon, "type": "service"});
+              this.optionsAll.push({"id": element.id, "name": element.name, "type": "service"});
             });
           }
         }, error => console.log(error))
           this.userService.getStoreById(me.id, filters).subscribe((store:any)=>{
             if(store.length > 0){
               store.map(element => {
-                this.optionsAll.push({"id": element.id, "name": element.title, "icon":element.icon, "type": "store"});
+                this.optionsAll.push({"id": element.id, "name": element.title, "type": "store"});
               });
             }
             const end = new Date();
@@ -117,16 +117,20 @@ export class CardComponent implements OnInit {
       this.card.value.options.push({"id": item.id, "name": item.name, "icon":item.icon, "type": item.type});
     }
   }
+
   removeOption(item){
     this.card.value.options.map((a:any, index:any) =>{
       if(item.id == a.id){
         this.card.value.options.splice(index, 1);
+        console.log('remove', this.card.value.options);
       }
     })
   }
+
   post(){
     const start = new Date();
     this.spinner.start();
+    // this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
     localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
     console.log('card',this.card.value);
     const end = new Date();
@@ -142,6 +146,10 @@ export class CardComponent implements OnInit {
           "center"
         );
     }, elapsed);
+  }
+
+  socialUrl(data){
+    return window.open(data, "_blank");
   }
 
   notification(content, time, type, from, align) {

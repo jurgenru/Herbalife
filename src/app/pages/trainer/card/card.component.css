@@ -1,28 +1,56 @@
 .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #008CBA;
-  }
-  
-  .container-image:hover .overlay {
-    opacity: 1;
-  }
-  .text {
-    cursor: pointer;
-    color: black;
-    font-size: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #008cba;
+}
+
+.container-image:hover .overlay {
+  opacity: 1;
+}
+.text {
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.fa-facebook-f {
+  color: #3b5998;
+}
+.fa-twitter {
+  color: #00aced;
+}
+.fa-telegram-plane {
+  color: #0088cc;
+}
+.fa-linkedin-in {
+  color: #2867b2;
+}
+.fa-whatsapp {
+  color: #25d366;
+}
+.fa-envelope {
+  color: #fff;
+}
+.fa-instagram {
+  color: #e1306c;
+}
+.fa-tiktok {
+  color: #000;
+}
+.fa-youtube {
+  color: #ff0000;
+}

@@ -8,7 +8,7 @@
               <div class="containerImg">
                 <img
                   class="card-img-top background"
-                  src="../../../../assets/img/img_3115.jpg"
+                  [src]="data.banner"
                   alt="Card image cap"
                 />
                 <img [src]="data.image" class="avatar logo imgP" />
@@ -33,6 +33,7 @@
                   <div class="button-container">
                     <button
                       ngbTooltip="Facebook"
+                      (click)="socialUrl(data.socialMedia.facebook)"
                       *ngIf="data.socialMedia.facebook"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -40,6 +41,7 @@
                     </button>
                     <button
                       ngbTooltip="Twitter"
+                      (click)="socialUrl(data.socialMedia.twitter)"
                       *ngIf="data.socialMedia.twitter"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -47,6 +49,7 @@
                     </button>
                     <button
                       ngbTooltip="Instagram"
+                      (click)="socialUrl(data.socialMedia.instagram)"
                       *ngIf="data.socialMedia.instagram"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -54,6 +57,7 @@
                     </button>
                     <button
                       ngbTooltip="Whatsapp"
+                      (click)="socialUrl(data.socialMedia.whatsapp)"
                       *ngIf="data.socialMedia.whatsapp"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -61,6 +65,7 @@
                     </button>
                     <button
                       ngbTooltip="Telegram"
+                      (click)="socialUrl(data.socialMedia.telegram)"
                       *ngIf="data.socialMedia.telegram"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -68,6 +73,7 @@
                     </button>
                     <button
                       ngbTooltip="Youtube"
+                      (click)="socialUrl(data.socialMedia.youtube)"
                       *ngIf="data.socialMedia.youtube"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -75,6 +81,7 @@
                     </button>
                     <button
                       ngbTooltip="Tiktok"
+                      (click)="socialUrl(data.socialMedia.tiktok)"
                       *ngIf="data.socialMedia.tiktok"
                       class="btn btn-icon btn-simple btn-round bt-lg"
                     >
@@ -108,7 +115,7 @@
               <div class="containerImg">
                 <img
                   class="card-img-top background"
-                  src="../../../../assets/img/bg5.jpg"
+                  [src]="data.banner"
                 />
                 <img [src]="data.image" class="avatar logo" />
               </div>
