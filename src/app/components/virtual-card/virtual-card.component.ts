@@ -13,5 +13,4 @@ export class VirtualCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -1,6 +1,61 @@
-<div class="card col-12 col-md-4">
-    <div class="card body" *ngIf="type === 1">
-        Tarjeta 1
+<div class="container col-12 col-md-6">
+    <div class="card white-content text-center" *ngIf="type === 1">
+        <img class="card-img-top" src="../../../../assets/img/img_3115.jpg" alt="Card image cap">
+        <div class="card-body">
+            <hr class="top-line">
+            <div class="user-img-container">
+                <img class="rounded-circle mx-auto d-block" width="120" src="../../../../assets/img/james.jpg" />
+            </div>
+            <h3 class="admin-name text-center">Edson Marquez</h3>
+            <p class="text-center">Administrador</p>
+            <div class="row justify-content-center">
+                <div class="col-6 text-center">
+                    <button class="btn btn-round btn-option">Boton1</button>     
+                </div>
+                <div class="col-6 text-center">
+                    <button class="btn btn-round btn-option">Boton2</button>     
+                </div>
+                <div class="col-6 text-center btn-round">
+                    <button class="btn btn-round btn-option">Boton3</button>     
+                </div>
+                <div class="col-6 text-center btn-round">
+                    <button class="btn btn-round btn-option">Boton4</button>     
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row justify-content-center">
+                <div class="button-container">
+                    <button  ngbTooltip="Facebook" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-facebook-f"> </i>
+                    </button>
+                    <button ngbTooltip="Twitter" class="btn btn-icon btn-simple btn-round bt-lg" >
+                      <i class="fab fa-twitter"> </i>
+                    </button>
+                    <button ngbTooltip="Instagram" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-instagram"> </i>
+                    </button>
+                    <button ngbTooltip="Whatsapp" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button ngbTooltip="Telegram" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-telegram-plane"> </i>
+                    </button>
+                    <button ngbTooltip="Youtube" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-youtube"> </i>
+                    </button>
+                    <button ngbTooltip="Tiktok" class="btn btn-icon btn-simple btn-round bt-lg">
+                      <i class="fab fa-tiktok"></i>
+                    </button>
+                  </div>
+            </div>
+            <div class="row">
+                <hr class="bottom-line">
+            </div>
+            <div class="card-footer">
+                <p class="text-center"> www.herbalife.com.bo./aaaa/aaa</p>
+            </div>
+
     </div>
     <div class="card body" *ngIf="type === 2">
         Tarjeta 2
