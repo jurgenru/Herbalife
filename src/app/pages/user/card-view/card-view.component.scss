@@ -1,0 +1,40 @@
+.card{
+    background: white;
+}
+.card-img-top{
+    position: relative;
+}
+.admin-name{
+    margin-bottom: 10px;
+}
+.user-img-container img{
+    position: absolute;
+    margin-top: -120px;
+    left: 39%;
+    border: 10px solid #f7be06;
+}
+.top-line{
+    border: 10px solid #f7be06;
+    width: 102%;
+    margin-top: -15px;
+    margin-left: -15px;
+}
+.bottom-line{
+    border: 5px solid #f7be06;
+   width: 100%;
+}
+.btn-option{
+    width: 99%;
+}
+.btn{
+   background:  #f7be06;
+   color: whitesmoke;
+}
+.card-footer{
+    background:  #f7be06;
+    color:whitesmoke;
+    width: 105%;
+    margin-left: -15px;
+
+    
+}

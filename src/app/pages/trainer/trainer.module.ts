@@ -9,10 +9,11 @@ import { SimpleModalModule } from 'ngx-simple-modal';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FilterTrainerPipe } from 'src/app/pipes/filter-trainer.pipe';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
-  declarations: [...routedComponents, FilterTrainerPipe],
+  declarations: [...routedComponents, FilterTrainerPipe, CardComponent],
   imports: [
     RouterModule,
     TrainerRoutingModule,

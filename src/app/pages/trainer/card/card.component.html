@@ -1,0 +1,34 @@
+<div class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card p-5">
+          <div class="card-header">
+            <h2 class="text-center title">Crear Tarjeta Virtual</h2>
+          </div>
+          <div class="row" *ngIf="!cardSelect">
+            <div class="text-center col-12 col-md-6 p-2" (click)="selectCardType(1)">
+                <img src="../../../../assets/img/card/card_1.jpeg" class="img-fluid img-card">
+            </div>
+            <div class="text-center col-12 col-md-6 p-2"  (click)="selectCardType(2)">
+                <img src="../../../../assets/img/card/card_2.jpeg" class="img-fluid img-card">
+            </div>
+          </div>
+          <form [formGroup]="card" (ngSubmit)="post()" *ngIf="cardSelect">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" type="text" required />
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-info pull-right" [disabled]="!card.valid">Crear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
