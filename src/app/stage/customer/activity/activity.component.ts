@@ -44,14 +44,11 @@ export class ActivityComponent implements OnInit {
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
         this.userService.getInscriptionById(data.id).subscribe((ins: any) => {
-          console.log(ins);
           if(ins.length>0){
             ins.forEach(element => {
-              
               this.serviceService.getById(element.serviceId, filter).subscribe(serviceData => {
                 this.inscriptions[this.index] = serviceData;
                 this.index++;
-                console.log(serviceData);
               });
             });
           }

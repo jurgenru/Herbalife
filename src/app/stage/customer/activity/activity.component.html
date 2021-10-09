@@ -35,11 +35,13 @@
         <div class="card card-user">
           <div class="card-body">
             <div class="author">
-              <img
+              <a [routerLink]="['/customer/trainer/view', lection.trainerId]">
+                <img
                 [src]="lection.image"
                 class="img-fluid"
                 alt="lecionImage"
               />
+              </a>
               <br /><br />
               <h4 class="title">{{lection.name}}</h4>
             </div>
