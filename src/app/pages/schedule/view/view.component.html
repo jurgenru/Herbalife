@@ -7,25 +7,40 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-6 col-md">
+            <div class="col-4">
               <h4 class="title text-center">Nombre</h4>
               <p class="text-center">{{ date.names }}</p>
             </div>
-            <div class="col-6 col-md">
+            <div class="col-4">
               <h4 class="title text-center">Numero de Celular</h4>
               <p class="text-center">{{ date.phoneNumber }}</p>
             </div>
-            <div class="col-6 col-md">
+            <div class="col-4">
               <h4 class="title text-center">Hora de la Cita</h4>
               <p class="text-center">{{ date.hour }}</p>
             </div>
-            <div class="col-6 col-md">
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-4">
               <h4 class="title text-center">Fecha de la Cita</h4>
               <p class="text-center">{{ date.schedule }}</p>
             </div>
-            <div class="col-6 col-md">
+            <div class="col-4">
               <h4 class="title text-center">Email</h4>
               <p class="text-center">{{ date.email }}</p>
+            </div>
+            <div class="col-4">
+              <h4 class="title text-center">Estado</h4>
+              <div [ngSwitch]="date.status">
+                <div *ngSwitchCase="true">                  
+              <p class="text-center">cita atendida</p>
+                </div>
+                <div *ngSwitchCase="false">
+                  <p class="text-center">cita en espera</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -208,6 +208,7 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    this.text = 'Creando ...';
     const start = new Date();
     this.spinner.start();
     this.userService.me().subscribe((us: any) => {
