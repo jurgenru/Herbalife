@@ -17,5 +17,5 @@ export class VirtualCardService {
     }
     update(id, body) {
       return this.http.patch(`${environment.apiUrl}virtual-cards/${id}`, body).pipe();
-  }
+    }
 }

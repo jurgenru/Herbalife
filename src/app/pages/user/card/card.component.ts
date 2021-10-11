@@ -5,6 +5,7 @@ import { ImageCropperComponent } from "src/app/components/image-cropper/image-cr
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from "@angular/router";
+import { BehaviorSubject } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { VirtualCardService } from 'src/app/services/virtual-card.service';
 
@@ -17,7 +18,7 @@ export class CardComponent implements OnInit {
   card: FormGroup;
   content = 'Cargando...';
   selected: FormGroup;
-  optionsAll: any[] = [];
+  optionsAll: any = [];
   cardSelect: boolean = false;
   btnOptions: boolean = false;
   btnValidate: boolean = false;
@@ -45,10 +46,12 @@ export class CardComponent implements OnInit {
       userId: ['', Validators.required],
       names: ['', Validators.required],
       image: [''],
+      trainerId: [0],
+      url: ['htttps://'],
       banner: [''],
       socialMedia: ['', Validators.required],
       cardType: ['', Validators.required],
-      options: [[]]
+      options: [[]],
     })
   }
 
@@ -63,8 +66,7 @@ export class CardComponent implements OnInit {
       this.userService.getVirtualCardById(me.id).subscribe((data: any)=>{
         virtualCard = data;
       })
-      if(!virtualCard){
-        virtualCard = JSON.parse(localStorage.getItem('virtual-card'));
+      if(virtualCard){
         this.card.get('names').setValue(virtualCard.names);
         this.card.get('image').setValue(virtualCard.image);
         this.card.get('socialMedia').setValue(virtualCard.socialMedia);
@@ -140,7 +142,7 @@ export class CardComponent implements OnInit {
 
   addOption(item) {
     if (this.card.value.options.length < 4) {
-      this.card.value.options.push({ "id": item.id, "name": item.name, "icon": item.icon, "type": item.type });
+      this.card.value.options.push({ "id": item.id, "name": item.name, "type": item.type });
     }
   }
 
@@ -154,19 +156,31 @@ export class CardComponent implements OnInit {
   }
 
   post() {
+    const myFormData = new FormData();
+    myFormData.append('userId', JSON.stringify(this.card.get('userId').value));
+    myFormData.append('trainerId', this.card.get('trainerId').value)
+    myFormData.append('names', this.card.get('names').value)
+    myFormData.append('image', this.card.get('image').value)
+    myFormData.append('banner', this.card.get('banner').value)
+    myFormData.append('socialMedia', JSON.stringify(this.card.get('socialMedia').value))
+    myFormData.append('cardType', JSON.stringify(this.card.get('cardType').value))
+    myFormData.append('options', JSON.stringify(this.card.get('options').value))
+    myFormData.append('url', this.card.get('url').value)
     this.content = 'Creando Tarjeta Virtual';
     const start = new Date();
     this.spinner.start();
+    
     // this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
+    // this.card.value.userId = JSON.stringify(this.card.value.userId);
     // this.card.value.options = JSON.stringify(this.card.value.options);
-    localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
-    this.virtualCardService.post(this.card.value).subscribe(data => {
+    // this.card.value.cardType = JSON.stringify(this.card.value.cardType);
+    this.virtualCardService.post(myFormData).subscribe((data:any) => {
       console.log('post', data);
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(["virtual-card/view/", this.card.value.id]);
+        this.router.navigate(["virtual-card/view/", data.id]);
         this.notification(
           '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
           "5000",
@@ -175,6 +189,11 @@ export class CardComponent implements OnInit {
           "center"
         );
       }, elapsed);
+    }, error => {
+      this.spinner.stop();
+      this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
+      this.card.value.options = JSON.stringify(this.card.value.options);
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error, intente nuevamente', '5000', 'danger', 'top', 'center');
     })
   }
 
