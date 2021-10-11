@@ -15,6 +15,7 @@ import { VirtualCardService } from 'src/app/services/virtual-card.service';
 })
 export class CardComponent implements OnInit {
   card: FormGroup;
+  content = 'Cargando...';
   selected: FormGroup;
   optionsAll: any[] = [];
   cardSelect: boolean = false;
@@ -47,7 +48,7 @@ export class CardComponent implements OnInit {
       banner: [''],
       socialMedia: ['', Validators.required],
       cardType: ['', Validators.required],
-      options: this.formBuilder.array([])
+      options: [[]]
     })
   }
 
@@ -56,56 +57,61 @@ export class CardComponent implements OnInit {
     this.spinner.start();
     this.userService.me().subscribe((me: any) => {
       this.card.get('userId').setValue(me.id);
-      const filter = `{"fields": {"id": true, "name": true, "icon": true}, "order":["id DESC"]}`;
-      const filters = `{"fields": {"id": true, "title": true, "icon": true}, "order":["id DESC"]}`;
-      this.userService.getManagerById(me.id).subscribe((data: any) => {
-      if(localStorage.getItem('virtual-card')){
-        let response = JSON.parse(localStorage.getItem('virtual-card'));
-        this.card.get('names').setValue(response.names);
-        this.card.get('image').setValue(response.image);
-        this.card.get('socialMedia').setValue(response.socialMedia);
-        this.card.get('userId').setValue(response.userId);
-        this.card.get('banner').setValue(response.banner);
-        this.card.get('cardType').setValue(response.cardType);
-        response.options.map((opt:any)=>{
-          console.log('res', response.options);
+      const filter = `{"fields": {"id": true, "name": true}, "order":["id DESC"]}`;
+      const filters = `{"fields": {"id": true, "title": true}, "order":["id DESC"]}`;
+      let virtualCard: any = null;
+      this.userService.getVirtualCardById(me.id).subscribe((data: any)=>{
+        virtualCard = data;
+      })
+      if(!virtualCard){
+        virtualCard = JSON.parse(localStorage.getItem('virtual-card'));
+        this.card.get('names').setValue(virtualCard.names);
+        this.card.get('image').setValue(virtualCard.image);
+        this.card.get('socialMedia').setValue(virtualCard.socialMedia);
+        this.card.get('userId').setValue(virtualCard.userId);
+        this.card.get('banner').setValue(virtualCard.banner);
+        this.card.get('cardType').setValue(virtualCard.cardType);
+        virtualCard.options.map((opt:any)=>{
+          console.log('res', virtualCard.options);
           this.card.value.options.push({ "id": opt.id, "name": opt.name, "type": opt.type });
         })
         this.btnValidate = true;
         this.cardSelect = true; 
       }else{
-        this.card.get('names').setValue(data.names + ' ' + data.lastName);
-        this.card.get('image').setValue(data.image);
-        this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
+        this.userService.getManagerById(me.id).subscribe((data: any) => {
+          this.card.get('names').setValue(data.names + ' ' + data.lastName);
+          this.card.get('image').setValue(data.image);
+          this.card.get('socialMedia').setValue(JSON.parse(data.socialMedia));
+        })
       }
-        this.userService.getBlogById(me.id, filter).subscribe((blog: any) => {
-          if (blog.length > 0) {
-            blog.map(element => {
-              this.optionsAll.push({ "id": element.id, "name": element.name, "type": "blog" });
-            });
-          }
-        }, error => console.log(error))
-        this.userService.getServicesById(me.id, filter).subscribe((serv: any) => {
-          if (serv.length > 0) {
-            serv.map(element => {
-              this.optionsAll.push({ "id": element.id, "name": element.name, "type": "service" });
-            });
-          }
-        }, error => console.log(error))
-        this.userService.getStoreById(me.id, filters).subscribe((store: any) => {
-          if (store.length > 0) {
-            store.map(element => {
-              this.optionsAll.push({ "id": element.id, "name": element.title, "type": "store" });
-            });
-          }
-          const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
-            this.spinner.stop();
-          }, elapsed);
-          console.log('card3', this.card.value);
-        }, error => console.log(error))
-      })
+
+      this.userService.getBlogById(me.id, filter).subscribe((blog: any) => {
+        if (blog.length > 0) {
+          blog.map(element => {
+          this.optionsAll.push({ "id": element.id, "name": element.name, "type": "blog" });
+          });
+        }
+      }, error => console.log(error))
+      this.userService.getServicesById(me.id, filter).subscribe((serv: any) => {
+        if (serv.length > 0) {
+          serv.map(element => {
+            this.optionsAll.push({ "id": element.id, "name": element.name, "type": "service" });
+          });
+        }
+      }, error => console.log(error))
+      this.userService.getStoreById(me.id, filters).subscribe((store: any) => {
+        if (store.length > 0) {
+          store.map(element => {
+          this.optionsAll.push({ "id": element.id, "name": element.title, "type": "store" });
+          });
+        }
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.spinner.stop();
+        }, elapsed);
+        console.log('card3', this.card.value);
+      }, error => console.log(error))
     })
   }
 
@@ -148,9 +154,11 @@ export class CardComponent implements OnInit {
   }
 
   post() {
+    this.content = 'Creando Tarjeta Virtual';
     const start = new Date();
     this.spinner.start();
     // this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
+    // this.card.value.options = JSON.stringify(this.card.value.options);
     localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
     this.virtualCardService.post(this.card.value).subscribe(data => {
       console.log('post', data);
@@ -158,7 +166,7 @@ export class CardComponent implements OnInit {
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(["virtual-card/view/", this.card.value.userId]);
+        this.router.navigate(["virtual-card/view/", this.card.value.id]);
         this.notification(
           '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su tarjeta virtual exitosamente',
           "5000",
@@ -171,7 +179,27 @@ export class CardComponent implements OnInit {
   }
 
   edit() {
-    console.log('edit');
+    this.content = 'Editando...';
+    const start = new Date();
+    this.spinner.start();
+    this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
+    // this.card.value.options = JSON.stringify(this.card.value.options);
+    console.log(this.card.value);
+    this.virtualCardService.update(this.card.value.id, this.card.value).subscribe(data => {
+      console.log('edit', data);
+      const end = new Date();
+      const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
+      setTimeout(() => {
+        this.spinner.stop();
+        this.router.navigate(['user/view']);
+        this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado sus datos exitosamente', '5000', 'success', 'top', 'center');
+      }, elapsed);
+    }, error => {
+      this.spinner.stop();
+      this.card.value.socialMedia = JSON.parse(this.card.value.socialMedia);
+      // this.card.value.options =JSON.parse(this.card.value.options);
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al editar sus datos, intente nuevamente', '5000', 'danger', 'top', 'center');
+    })
   }
 
   socialUrl(data) {
