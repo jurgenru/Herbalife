@@ -185,7 +185,7 @@
                   >
                 </h4>
                 <button
-                  class="btn btn-warning"
+                  class="btn btn-primary"
                   ngbTooltip="Quitar"
                   (click)="removeOption(item)"
                   *ngFor="let item of card.value.options"
@@ -222,5 +222,5 @@
   fgsColor="gray"
   fgsType="three-strings"
   overlayColor="rgba(24,31,46)"
-  text="Creando tarjeta virtual ..."
+  [text]="content"
 ></ngx-ui-loader>
