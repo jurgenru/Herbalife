@@ -46,6 +46,7 @@ export class CardComponent implements OnInit {
   }
   createForm(){
     this.card = this.formBuilder.group({
+      id: [''],
       userId: ['0'],
       names: ['', Validators.required],
       image: [''],
@@ -69,18 +70,18 @@ export class CardComponent implements OnInit {
       })
       this.trainerService.getById(val.id).subscribe((data: any) => {
         if(virtualCard){
-          // virtualCard = JSON.parse(localStorage.getItem('virtual-card'));
+          this.card.get('id').setValue(virtualCard.id);
           this.card.get('names').setValue(virtualCard.names);
           this.card.get('image').setValue(virtualCard.image);
           this.card.get('socialMedia').setValue(JSON.parse(virtualCard.socialMedia));
-          this.card.get('userId').setValue(virtualCard.userId);
           this.card.get('banner').setValue(virtualCard.banner);
           this.card.get('cardType').setValue(virtualCard.cardType);
           this.card.get('trainer').setValue(virtualCard.trainerId);
-          // JSON.parse(virtualCard.options).map((opt:any)=>{
-          //   console.log('res', virtualCard.options);
-          //   this.card.value.options.push({ "id": opt.id, "name": opt.name, "type": opt.type });
-          // })
+          this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+            opt.forEach(element => {
+              this.card.value.options.push(JSON.parse(element.content));
+            });
+          })
           this.btnValidate = true;
           this.cardSelect = true; 
         }else{

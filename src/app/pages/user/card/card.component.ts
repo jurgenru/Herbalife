@@ -79,11 +79,11 @@ export class CardComponent implements OnInit {
           this.card.get('userId').setValue(virtualCard.userId);
           this.card.get('banner').setValue(virtualCard.banner);
           this.card.get('cardType').setValue(virtualCard.cardType);
-          // this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
-          //   opt.forEach(element => {
-          //     this.card.value.options.push(element.content);
-          //   });
-          // })
+          this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+            opt.forEach(element => {
+              this.card.value.options.push(element.content);
+            });
+          })
           this.btnValidate = true;
           this.cardSelect = true;
         } else {
@@ -229,7 +229,7 @@ export class CardComponent implements OnInit {
       const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
       setTimeout(() => {
         this.spinner.stop();
-        this.router.navigate(['virtual-card/view/', this.card.value.id]);
+        this.router.navigate(['user/view']);
         this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Ha editado sus datos exitosamente', '5000', 'success', 'top', 'center');
       }, elapsed);
     }, error => {
