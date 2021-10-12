@@ -48,10 +48,10 @@ export class CardComponent implements OnInit {
       id: [''],
       userId: ['', Validators.required],
       names: ['', Validators.required],
-      image: [''],
+      image: ['', Validators.required],
       trainerId: [0],
       url: ['htttps://'],
-      banner: [''],
+      banner: ['', Validators.required],
       socialMedia: ['', Validators.required],
       cardType: ['', Validators.required],
       options: [[]],
@@ -75,9 +75,11 @@ export class CardComponent implements OnInit {
           this.card.get('id').setValue(virtualCard.id);
           this.card.get('names').setValue(virtualCard.names);
           this.card.get('image').setValue(virtualCard.image);
+          this.userImage = virtualCard.image;
           this.card.get('socialMedia').setValue(JSON.parse(virtualCard.socialMedia));
           this.card.get('userId').setValue(virtualCard.userId);
           this.card.get('banner').setValue(virtualCard.banner);
+          this.userBanner = virtualCard.banner;
           this.card.get('cardType').setValue(virtualCard.cardType);
           this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
             opt.forEach(element => {
@@ -158,12 +160,8 @@ export class CardComponent implements OnInit {
   removeOption(item) {
     this.card.value.options.map((a: any, index: any) => {
       if (item.id == a.id && item.type == a.type) {
-        if(this.btnValidate){
-
-        }else{
           this.card.value.options.splice(index, 1);
           console.log('remove', this.card.value.options);
-        }
       }
     })
   }
@@ -225,6 +223,12 @@ export class CardComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.virtualCardService.update(this.card.value.id, cardPost).subscribe(data => {
+      // this.card.value.options.forEach(element => {
+      //   const options = {
+      //     virtualcardId: this.card.value.id,
+      //     content: JSON.stringify(element)
+      //   }
+      // });
       const end = new Date();
       const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
       setTimeout(() => {
