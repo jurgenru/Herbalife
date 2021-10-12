@@ -175,6 +175,9 @@ export class CardComponent implements OnInit {
 
   edit() {
     this.content = 'Editando...';
+    this.virtualCardService.delOptionsCardById(this.card.value.id).subscribe(optDel=>{
+      console.log('delete', optDel);
+    })
     const cardPost = {
       userId: this.card.value.userId,
       socialMedia: JSON.stringify(this.card.value.socialMedia),
@@ -188,14 +191,12 @@ export class CardComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.virtualCardService.update(this.card.value.id, cardPost).subscribe((data:any) => {
-      // this.optionsAll.forEach(element => {
-      //   const options = {
-      //     virtualCardId: data.id,
-      //     content: JSON.stringify(element)
-      //   }
-      //   this.optionsCardService.update(data.id,options).subscribe(opt => {
-      //   })
-      // })
+      const options = {
+        virtualcardId: data.id,
+        content: JSON.stringify(this.optionsAll)
+      }
+      this.optionsCardService.post(options).subscribe(opt => {
+      });
       const end = new Date();
       const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
       setTimeout(() => {
