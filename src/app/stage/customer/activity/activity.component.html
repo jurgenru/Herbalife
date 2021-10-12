@@ -1,9 +1,6 @@
 <div class="content">
   <h3 class="title mt-5 text-center">MIS ACTIVIDADES</h3>
   <div class="container">
-    <div class="row justify-content-end">
-      <button class="btn btn-primary" (click)="generatePdf()"> Resultados de mi Test</button>
-    </div>
     <div class="row">
       <h6>Servicios que has tomado</h6>
     </div>
@@ -12,13 +9,18 @@
         <div class="card card-user">
           <div class="card-body">
             <div class="author">
-              <img
+              <a [routerLink]="['/customer/service/view', inscription.id]">
+                <img 
                 [src]="inscription.image"
                 class="img-fluid"
                 alt="serviceImage"
               />
+              </a>
               <br /><br />
               <h4 class="title">{{inscription.title}}</h4>
+              <div *ngIf="inscription.type =='auto'" (click)="generatePdf()">
+                <button class=" btn btn-sm btn-primary btn-block">Ve los resultados!</button>
+              </div>
             </div>
           </div>
         </div>
@@ -33,11 +35,13 @@
         <div class="card card-user">
           <div class="card-body">
             <div class="author">
-              <img
+              <a [routerLink]="['/customer/trainer/view', lection.trainerId]">
+                <img
                 [src]="lection.image"
                 class="img-fluid"
                 alt="lecionImage"
               />
+              </a>
               <br /><br />
               <h4 class="title">{{lection.name}}</h4>
             </div>

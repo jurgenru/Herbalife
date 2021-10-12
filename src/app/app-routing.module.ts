@@ -6,6 +6,9 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from "./auth/register/register.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component";
+import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
+
+
 
 const routes: Routes = [
   {
@@ -16,6 +19,9 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   }, {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: "virtual-card/view/:id", component: VirtualCardComponent
   },
   {
     path: "",
@@ -38,7 +44,7 @@ const routes: Routes = [
   }, {
     path: "**",
     redirectTo: "home"
-  }
+  },
 ];
 
 @NgModule({

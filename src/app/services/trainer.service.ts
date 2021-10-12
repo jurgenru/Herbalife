@@ -31,4 +31,8 @@ export class TrainerService {
   getLectionById(id) {
     return this.http.get(`${environment.apiUrl}trainers/${id}/lection`).pipe();
   }
+
+  getVirtualCardById(id){
+    return this.http.get(`${environment.apiUrl}trainers/${id}/virtual-cards`).pipe(); 
+  }
 }

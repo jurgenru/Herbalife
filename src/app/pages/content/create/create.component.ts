@@ -172,7 +172,7 @@ export class CreateComponent implements OnInit {
         this.selectedOption3 = `entrenador : ${name}`;
         break;
       case 'blog':
-        this.contentLink3 = `//customer/blog/view/${id}`;
+        this.contentLink3 = `/customer/blog/view/${id}`;
         this.selectedOption3 = `blog : ${name}`;
         break;
       case 'store':
@@ -208,6 +208,7 @@ export class CreateComponent implements OnInit {
   }
 
   post() {
+    this.text = 'Creando ...';
     const start = new Date();
     this.spinner.start();
     this.userService.me().subscribe((us: any) => {

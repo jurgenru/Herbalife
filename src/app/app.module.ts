@@ -24,6 +24,7 @@ import { UserLayoutComponent } from "./layouts/user-layout/user-layout.component
 import { ProfileService } from "./services/profile.service";
 import { PromotionService } from "./services/promotion.service";
 import { CartService } from "./services/cart.service";
+import { VirtualCardService } from "./services/virtual-card.service";
 import { CustomerService } from "./services/customer.service";
 import { AuthGuard } from "./auth/auth.guard";
 import { LoginComponent } from "./auth/login/login.component";
@@ -39,6 +40,10 @@ import { InscriptionService } from "./services/inscription-service";
 import { AppointmentService } from "./services/appointment.service";
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { InscriptionLection } from "./services/inscription-lection";
+import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
+import { OptionsCardService } from "./services/options-card.service";
+
+
 moment.locale('es');
 
 @NgModule({
@@ -59,7 +64,7 @@ moment.locale('es');
     NgxQRCodeModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent,VirtualCardComponent],
   providers: [
     AuthGuard,
     StoreService,
@@ -73,12 +78,14 @@ moment.locale('es');
     PromotionService,
     CartService,
     OrderService,
+    VirtualCardService,
     CommentaryService,
     CustomerService,
     AppointmentService,
     InscriptionService,
     NotificationService,
     AppointmentService,
+    OptionsCardService,
     InscriptionLection,
     {
       provide: 'SocialAuthServiceConfig',

@@ -126,7 +126,7 @@
                     </div>
                   </div>
                   <div class="col-md-4">
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" *ngIf="!statusTest">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="test" (click)="uncheck2()" id="test" />
                         Encuesta de emprendedores
@@ -134,8 +134,8 @@
                       </label>
                     </div>
                   </div>
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline">
+                  <div class="col-md-4" >
+                    <div class="form-check form-check-inline" *ngIf="!statusAuto">
                       <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="auto" (click)="uncheck3()" id="auto" />
                         Autoevaluacion

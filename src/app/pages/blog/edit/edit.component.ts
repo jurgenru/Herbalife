@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
     });
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.createArticleForm();
   }
 
@@ -100,7 +100,7 @@ export class EditComponent implements OnInit {
   }
 
   showNewArticle(index: any){
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.newArticleImage[index] = data;
       ((this.articleForm.get('newArticle') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
@@ -210,7 +210,7 @@ export class EditComponent implements OnInit {
         }, elapsed);
       });
     });
-    
+
   }
   get newArticle(): FormArray {
     return this.articleForm.get('newArticle') as FormArray;
