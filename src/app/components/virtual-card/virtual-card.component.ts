@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class VirtualCardComponent implements OnInit {
   @Input() type: 1 | 2;
   @Input() data: any = {};
+  @Input() options: any = [];
 
   constructor() { }
 

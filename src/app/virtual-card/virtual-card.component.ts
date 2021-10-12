@@ -10,13 +10,13 @@ import { VirtualCardService } from '../services/virtual-card.service';
 })
 export class VirtualCardComponent implements OnInit {
   data: any = {};
-  type: number=1;
+  options: any = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private spinner: NgxUiLoaderService,
-    private virtualCardService: VirtualCardService
+    private virtualCardService: VirtualCardService,
   ) { }
 
   ngOnInit(): void {
@@ -29,12 +29,17 @@ export class VirtualCardComponent implements OnInit {
       this.virtualCardService.getById(val.id).subscribe((data:any)=>{
         this.data = data;
         this.data.socialMedia = JSON.parse(this.data.socialMedia);
-        this.data.options = JSON.parse(this.data.options);
+        this.virtualCardService.getOptionsCardById(data.id).subscribe((res:any) =>{
+          res.forEach(element => {
+            this.options.push(JSON.parse(element.content));
+          });
+        })
       })
     })
     // this.data = JSON.parse(localStorage.getItem('virtual-card'));
     // this.data.socialMedia = JSON.parse(this.data.socialMedia)
     console.log(this.data);
+    console.log(this.options)
   }
 }
 

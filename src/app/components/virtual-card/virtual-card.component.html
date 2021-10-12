@@ -12,7 +12,7 @@
             <h3 class="admin-name text-center">{{ data.names }}</h3>
             <!-- <p class="text-center">Administrador</p> -->
             <div class="row justify-content-center">
-              <div class="text-center" *ngFor="let option of data.options">
+              <div class="text-center" *ngFor="let option of options">
                 <button class="btn btn-round btn-sm">
                   {{ option.name }}
                 </button>
@@ -110,7 +110,7 @@
           <div class="card-body cb text-center col col-md">
             <h3 class="card-title">{{ data.names }}</h3>
             <div class="row justify-content-center">
-              <div class="text-center" *ngFor="let option of data.options">
+              <div class="text-center" *ngFor="let option of options">
                 <button class="btn btn-round btns btn-sm">
                   {{ option.name }}
                 </button>

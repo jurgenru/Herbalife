@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TrainerService } from 'src/app/services/trainer.service';
 import { VirtualCardService } from 'src/app/services/virtual-card.service';
 import { UserService } from 'src/app/services/user.service';
+import { OptionsCardService } from 'src/app/services/options-card.service';
 
 @Component({
   selector: 'app-trainer-card',
@@ -18,7 +19,7 @@ export class CardComponent implements OnInit {
   card: FormGroup;
   selected: FormGroup;
   optionsAll: any[] = [];
-  content = 'Creando Tarjeta Virtual';
+  content = 'Cargando...';
   profileImage: any;
   banner: any;
   
@@ -36,6 +37,7 @@ export class CardComponent implements OnInit {
     private formBuilder: FormBuilder,
     private virtualCardService: VirtualCardService,
     private userService: UserService,
+    private optionsCardService: OptionsCardService
   ) { }
 
   ngOnInit(): void {
@@ -44,13 +46,15 @@ export class CardComponent implements OnInit {
   }
   createForm(){
     this.card = this.formBuilder.group({
-      userId: ['', Validators.required],
+      userId: ['0'],
       names: ['', Validators.required],
       image: [''],
+      trainerId: ['', Validators.required],
+      url: ['htttps://'],
       banner: [''],
-      socialMedia:['', Validators.required],
+      socialMedia: ['', Validators.required],
       cardType: ['', Validators.required],
-      options: [[]]
+      options: [[]],
     })
   }
 
@@ -72,13 +76,15 @@ export class CardComponent implements OnInit {
           this.card.get('userId').setValue(virtualCard.userId);
           this.card.get('banner').setValue(virtualCard.banner);
           this.card.get('cardType').setValue(virtualCard.cardType);
-          JSON.parse(virtualCard.options).map((opt:any)=>{
-            console.log('res', virtualCard.options);
-            this.card.value.options.push({ "id": opt.id, "name": opt.name, "type": opt.type });
-          })
+          this.card.get('trainer').setValue(virtualCard.trainerId);
+          // JSON.parse(virtualCard.options).map((opt:any)=>{
+          //   console.log('res', virtualCard.options);
+          //   this.card.value.options.push({ "id": opt.id, "name": opt.name, "type": opt.type });
+          // })
           this.btnValidate = true;
           this.cardSelect = true; 
         }else{
+          this.card.get('trainerId').setValue(data.id);
           this.card.get('names').setValue(data.names);
           this.card.get('image').setValue(data.icon);
           this.card.get('banner').setValue(data.banner);
@@ -121,19 +127,30 @@ export class CardComponent implements OnInit {
   }
 
   post(){
-    this.optionsAll.map((element:any)=>{
-      this.card.value.options.push({"id": element.id, "name": element.name, "type": "lection"});
-    })
-    this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
-    this.card.value.userId = JSON.stringify(this.card.value.userId);
-    this.card.value.options = JSON.stringify(this.card.value.options);
-    this.card.value.cardType = JSON.stringify(this.card.value.cardType);
+    this.content = 'Creando Tarjeta Virtual';
     const start = new Date();
     this.spinner.start();
-    // localStorage.setItem('virtual-card', JSON.stringify(this.card.value));
-    console.log('card',this.card.value);
-    this.virtualCardService.post(this.card.value).subscribe((data:any) => {
+    const cardPost = {
+      userId: this.card.value.userId,
+      socialMedia: JSON.stringify(this.card.value.socialMedia),
+      names: this.card.value.names,
+      image: this.card.value.image,
+      banner: this.card.value.banner,
+      cardType: this.card.value.cardType,
+      trainerId: this.card.value.trainerId,
+      url: this.card.value.url
+    }
+  
+    this.virtualCardService.post(cardPost).subscribe((data:any) => {
       console.log('post', data);
+      this.optionsAll.forEach(element => {
+        const options = {
+          virtualCardId: data.id,
+          content: JSON.stringify(element)
+        }
+        this.optionsCardService.post(options).subscribe(opt => {
+        })
+      })
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
       setTimeout(() => {
@@ -149,21 +166,34 @@ export class CardComponent implements OnInit {
       }, elapsed);
     }, error => {
       this.spinner.stop();
-      this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
-      this.card.value.options = JSON.stringify(this.card.value.options);
       this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error, intente nuevamente', '5000', 'danger', 'top', 'center');
     })
   }
 
   edit() {
     this.content = 'Editando...';
+    const cardPost = {
+      userId: this.card.value.userId,
+      socialMedia: JSON.stringify(this.card.value.socialMedia),
+      names: this.card.value.names,
+      image: this.card.value.image,
+      banner: this.card.value.banner,
+      cardType: this.card.value.cardType,
+      trainerId: this.card.value.trainerId,
+      url: this.card.value.url
+    }
     const start = new Date();
     this.spinner.start();
-    this.card.value.socialMedia = JSON.stringify(this.card.value.socialMedia);
-    // this.card.value.options = JSON.stringify(this.card.value.options);
-    console.log(this.card.value);
-    this.virtualCardService.update(this.card.value.id, this.card.value).subscribe(data => {
+    this.virtualCardService.update(this.card.value.id, cardPost).subscribe((data:any) => {
       console.log('edit', data);
+      // this.optionsAll.forEach(element => {
+      //   const options = {
+      //     virtualCardId: data.id,
+      //     content: JSON.stringify(element)
+      //   }
+      //   this.optionsCardService.update(data.id,options).subscribe(opt => {
+      //   })
+      // })
       const end = new Date();
       const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
       setTimeout(() => {
