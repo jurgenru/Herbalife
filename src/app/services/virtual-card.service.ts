@@ -22,4 +22,8 @@ export class VirtualCardService {
     getOptionsCardById(id){
       return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-card`).pipe();
     }
+
+    delOptionsCardById(id){
+      return this.http.delete(`${environment.apiUrl}/virtual-cards/${id}/options-card`).pipe();
+    }
 }
