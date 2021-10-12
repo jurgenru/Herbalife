@@ -28,18 +28,21 @@ export class VirtualCardComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.virtualCardService.getById(val.id).subscribe((data:any)=>{
         this.data = data;
+        console.log('data', this.data);
         this.data.socialMedia = JSON.parse(this.data.socialMedia);
         this.virtualCardService.getOptionsCardById(data.id).subscribe((res:any) =>{
           res.forEach(element => {
-            this.options.push(JSON.parse(element.content));
+            this.options.push(element.content);
           });
+          console.log('options', this.options)
         })
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
+          this.spinner.stop();
+        }, elapsed);
       })
     })
-    // this.data = JSON.parse(localStorage.getItem('virtual-card'));
-    // this.data.socialMedia = JSON.parse(this.data.socialMedia)
-    console.log(this.data);
-    console.log(this.options)
   }
 }
 

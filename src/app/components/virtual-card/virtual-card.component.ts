@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-virtual-card-component',
@@ -8,18 +9,32 @@ import { Component, OnInit, Input } from '@angular/core';
 export class VirtualCardComponent implements OnInit {
   @Input() type: 1 | 2;
   @Input() data: any = {};
-  @Input() options: any = [];
+  @Input() options: any = {};
 
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit(): void {
-    this.get();
-  }
-  get(){
-    this.data.socialMedia = JSON.parse(this.data.socialMedia);
   }
   
   socialUrl(data){
     return window.open(data, "_blank");
+  }
+  optionOpen(option){
+    switch (option.type){
+      case 'store':
+        this.router.navigate(['customer/store/view/' + option.id])
+      break;
+      case 'blog':
+        this.router.navigate(['customer/blog/view/' + option.id]);
+      break;
+      case 'service':
+        this.router.navigate(['customer/service/view/' + option.id])
+      break;
+      case 'lection':
+        this.router.navigate(['customer/trainer/view/' + option.id])
+      break;
+      default:
+      break;
+    }
   }
 }
