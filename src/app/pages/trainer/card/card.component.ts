@@ -80,11 +80,11 @@ export class CardComponent implements OnInit {
             this.banner = virtualCard.banner;
             this.card.get('cardType').setValue(virtualCard.cardType);
             this.card.get('trainerId').setValue(virtualCard.trainerId);
-            // this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
-            //   opt.forEach(element => {
-            //     this.card.value.options.push(JSON.parse(element.content));
-            //   });
-            // })
+            this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+              opt.forEach(element => {
+                this.card.value.options.push(element.content);
+              });
+            })
             this.btnValidate = true;
             this.cardSelect = true; 
           }else{
