@@ -166,14 +166,19 @@
             <br />
             <div class="row">
               <div class="col-12 col-md">
-                <h4>Escoge hasta 4 servicios</h4>
+                <h4>Añade hasta 4
+                  <br/>
+                  <small class="text-muted"
+                    >*Haga click sobre el que quiera añadir</small
+                  >
+                </h4>
                 <button
-                  class="btn btn-warning"
+                  class="btn btn-warning btn-sm"
                   *ngFor="let item of optionsAll"
                   ngbTooltip="Añadir"
                   (click)="addOption(item)"
                 >
-                  <i class="tim-icons icon-simple-add"></i>{{ item.name }}
+                  <i class="tim-icons icon-simple-add"></i> {{ item.name }}
                 </button>
               </div>
               <div class="col-12 col-md">
@@ -185,12 +190,12 @@
                   >
                 </h4>
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary btn-sm"
                   ngbTooltip="Quitar"
                   (click)="removeOption(item)"
                   *ngFor="let item of card.value.options"
                 >
-                  <i class="tim-icons icon-simple-delete"></i>{{ item.name }}
+                  <i class="tim-icons icon-simple-delete"></i> {{ item.name }}
                 </button>
               </div>
             </div>
