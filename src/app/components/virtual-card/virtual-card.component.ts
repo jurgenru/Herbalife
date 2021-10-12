@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-virtual-card',
+  selector: 'app-virtual-card-component',
   templateUrl: './virtual-card.component.html',
   styleUrls: ['./virtual-card.component.css']
 })
@@ -16,6 +16,9 @@ export class VirtualCardComponent implements OnInit {
   }
   get(){
     this.data.socialMedia = JSON.parse(this.data.socialMedia);
-    console.log(this.data.socialMedia, this.type);
+  }
+  
+  socialUrl(data){
+    return window.open(data, "_blank");
   }
 }

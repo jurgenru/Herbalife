@@ -25,6 +25,9 @@ export class CreateComponent implements OnInit {
   modes: string[] = ['presencial', 'virtual'];
   default: string = 'presencial';
   type: any = 'normal';
+  user: any;
+  statusAuto: boolean = false;
+  statusTest: boolean = false;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -35,13 +38,14 @@ export class CreateComponent implements OnInit {
     private toastr: ToastrService,
     private userService: UserService
   ) {
+    this.showUser();
     this.modeForm = new FormGroup({
       mode: new FormControl(null)
     });
     this.modeForm.controls['mode'].setValue(this.default, { onlySelf: true });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.createServiceForm();
   }
 
@@ -56,7 +60,7 @@ export class CreateComponent implements OnInit {
   }
 
   showIcon() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, { format: 1 / 1 }).subscribe(
       (data) => {
         this.icon = data;
       }
@@ -64,7 +68,7 @@ export class CreateComponent implements OnInit {
   }
 
   showImage() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, { format: 16 / 9 }).subscribe(
       (data) => {
         this.image = data;
       }
@@ -72,11 +76,19 @@ export class CreateComponent implements OnInit {
   }
 
   showBanner() {
-    this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe(
+    this.SimpleModalService.addModal(ImageCropperComponent, { format: 16 / 9 }).subscribe(
       (data) => {
         this.banner = data;
       }
     );
+  }
+
+
+  showUser() {
+    this.userService.me().subscribe((user: any) => {
+      this.user = user;
+      this.existService();
+    });
   }
 
   post() {
@@ -84,38 +96,55 @@ export class CreateComponent implements OnInit {
     this.service.value.mode = this.modeForm.value.mode
     const start = new Date();
     this.spinner.start();
-    this.userService.me().subscribe((user: any) => {
-      this.service.value.userId = user.id;
-      this.service.value.icon = this.icon;
-      this.service.value.banner = this.banner;
-      this.service.value.image = this.image;
-      this.serviceService.post(this.service.value).subscribe(
-        (data) => {
-          const end = new Date();
-          const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
-          setTimeout(() => {
-            this.spinner.stop();
-            this.router.navigate(["service/list"]);
-            this.notification(
-              '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su servicio exitosamente',
-              "5000",
-              "success",
-              "top",
-              "center"
-            );
-          }, elapsed);
-        },
-        (error) => {
+
+    this.service.value.userId = this.user.id;
+    this.service.value.icon = this.icon;
+    this.service.value.banner = this.banner;
+    this.service.value.image = this.image;
+    this.serviceService.post(this.service.value).subscribe(
+      (data) => {
+        const end = new Date();
+        const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
+        setTimeout(() => {
           this.spinner.stop();
+          this.router.navigate(["service/list"]);
           this.notification(
-            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su servicio, intente nuevamente',
+            '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Se creo su servicio exitosamente',
             "5000",
-            "danger",
+            "success",
             "top",
             "center"
           );
-        }
-      );
+        }, elapsed);
+      },
+      (error) => {
+        this.spinner.stop();
+        this.notification(
+          '<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al crear su servicio, intente nuevamente',
+          "5000",
+          "danger",
+          "top",
+          "center"
+        );
+      }
+    );
+  }
+
+  existService() {
+    const filter = `{"fields": {"id": true, "type": true}}`;
+    this.userService.getServicesById(this.user.id, filter).subscribe((ser: any) => {
+      const auto = ser.find(service => service.type === 'auto');
+      const test = ser.find(service => service.type === 'test');
+      if (auto) {
+        this.statusAuto = true;
+      }
+      if (test) {
+        this.statusTest = true;
+      }
+      if(auto && test) {
+        var checkbox1 = document.getElementById("normal") as HTMLInputElement;
+        checkbox1.disabled = true;
+      }
     });
   }
 

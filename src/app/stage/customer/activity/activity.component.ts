@@ -33,13 +33,12 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit(): void {
    this.get();
-  // this.getBodyComposition();
   }
   
   get(){
     const start = new Date();
     this.spinner.start();
-    const filter = `{"fields": {"id": true, "title": true, "image": true}}`;
+    const filter = `{"fields": {"id": true, "title": true, "image": true, "created": true}, "limit": 4 , "order":["created DESC"]}`;
     this.userService.me().subscribe((data: any) => {
       const end = new Date();
       const elapsed = (end.getSeconds() - start.getSeconds()) * 1000;
@@ -72,15 +71,18 @@ export class ActivityComponent implements OnInit {
     });
   }
   getBodyComposition(){
-      this.userService.me().subscribe((user: any) => {
-        const filter = `{"fields": {"id": true, "image": true, "phoneNumber": true}}`;
-        this.userService.getById(user.id, filter).subscribe((us: any) => {
-          this.userService.getProfileById(user.id).subscribe((prof: any) => {
-          this.userService.getBodyCompositionById(33).subscribe( body=>{
-            this.profile = prof;
-            this.profile.email = us.email;
-            this.profile.phoneNumber = us.phoneNumber;
-          this.bodyTest=body[0];
+    this.userService.me().subscribe((user: any) => {
+      const filter = `{"fields": {"id": true, "image": true, "phoneNumber": true}}`;
+      this.userService.getById(user.id, filter).subscribe((us: any) => {
+        this.userService.getProfileById(user.id).subscribe((prof: any) => {
+        this.userService.getBodyCompositionById(user.id).subscribe( (body: any)=>{
+          this.profile = prof;
+          this.profile.email = us.email;
+          this.profile.phoneNumber = us.phoneNumber;
+          body.forEach(element => {
+            this.bodyTest=element;
+            console.log(this.bodyTest);
+          });
         }); 
       });
       });

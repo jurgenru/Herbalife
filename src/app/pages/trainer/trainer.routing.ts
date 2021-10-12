@@ -5,6 +5,7 @@ import { CreateComponent } from "./create/create.component";
 import { ListComponent } from "./list/list.component";
 import { ViewComponent } from "./view/view.component";
 import { EditComponent } from "./edit/edit.component";
+import { CardComponent } from "./card/card.component";
 
 export const routes: Routes = [
     {
@@ -25,7 +26,9 @@ export const routes: Routes = [
             }, {
                 path: 'edit/:id',
                 component: EditComponent
-
+            },{
+                path: 'card/:id',
+                component: CardComponent
             }
         ],
     }
@@ -42,5 +45,6 @@ export const routedComponents = [
     CreateComponent,
     ListComponent,
     ViewComponent,
-    EditComponent
+    EditComponent,
+    CardComponent
 ];

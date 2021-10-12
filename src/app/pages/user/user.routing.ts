@@ -30,7 +30,7 @@ export const routes: Routes = [
             {
                 path: 'virtual-card',
                 component: CardComponent
-            }
+            },
         ],
     }
 ];
@@ -46,5 +46,5 @@ export const routedComponents = [
     CreateComponent,
     EditComponent,
     ViewComponent,
-    CardComponent
+    CardComponent,
 ];

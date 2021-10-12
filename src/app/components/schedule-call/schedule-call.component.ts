@@ -99,10 +99,8 @@ export class ScheduleCallComponent
   }
 
   post() {
-    // this.appointment.value.type = this.typeForm.value.type;
     this.appointment.value.hour = this.newTime;
     this.appointment.value.schedule = this.finalDate;
-    console.log(this.appointment.value);
     const start = new Date();
 
     this.userService.me().subscribe((user: any) => {
