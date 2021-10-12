@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import * as html2pdf from 'html2pdf.js';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-result',
@@ -16,6 +17,7 @@ export class ResultComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private toastr: ToastrService,
+    private spinner: NgxUiLoaderService,
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class ResultComponent implements OnInit {
             body.forEach(element => {
               this.bodyTest = element;
               console.log(this.bodyTest);
-            },error=>{
+            }, error => {
               this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al cargar los resultados', '5000', 'danger', 'top', 'center');
             });
           });
@@ -43,19 +45,27 @@ export class ResultComponent implements OnInit {
     });
   }
   generatePdf() {
-    const options = {
-      filename: 'test-corporal.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2
-      },
-      jsPDF: { orientation: 'portrait' }
-    };
-    const content: Element = document.getElementById('bodytest')
-    html2pdf()
-      .from(content)
-      .set(options)
-      .save();
+    this.spinner.start();
+    setTimeout(()=>{
+      const options = {
+        filename: 'test-corporal.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2
+        },
+        jsPDF: { orientation: 'portrait' }
+      };
+      const content: Element = document.getElementById('bodytest')
+      html2pdf()
+        .from(content)
+        .set(options)
+        .save();
+        this.spinner.stop()
+        setTimeout(()=>{
+          window.close();
+        },5000);
+    },3500);
+  
   }
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
