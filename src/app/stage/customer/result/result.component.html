@@ -1,0 +1,285 @@
+<div class="container">
+    <div class="main">
+        <br><br>
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2 class="text-center mt-5">Auto-evaluacion Corporal</h2>
+                    <button class="btn btn-primary btn-sm pull-right" (click)="generatePdf()"> Descargar PDF</button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>Nombre: </strong>{{profile.names}} </p>
+                      </div>
+                      <div class="col-3 text-center">
+                        <p> <strong>Teléfono: </strong> {{profile.phoneNumber}} </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>País: </strong>{{profile.country}}</p>
+                      </div>
+                      <div class="col-3 text-center">
+                        <p> <strong>Nivel de actividad: </strong> {{profile.codeHerbalife}} </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>Corrreo Electrónico: </strong>{{profile.email}} </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <table class="table col-lg">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Edad</th>
+                            <th class="text-center">Peso</th>
+                            <th class="text-center">Altura</th>
+                            <th class="text-center">Complexion Física</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center">
+                            <td>{{bodyTest.age}}</td>
+                            <td>{{bodyTest.width}}</td>
+                            <td>{{bodyTest.height}}</td>
+                            <td>{{bodyTest.physicalComplexion}}</td>
+                      </table>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-2 text-center">
+                        <h6>IMC</h6>
+                        <P>{{bodyTest.imc}}</P>
+                      </div>
+                      <div class="col-4 justify">
+                        <p>El Indice de Masa Corporal (IMC) es la relación
+                          estatura-peso actual, y determina por tanto si el peso 
+                          está dentro del rango normal, o por el contrario si
+                          tiene sobrepeso o delgadez.&nbsp;&nbsp;&nbsp;
+                          *Si eres atleta o culturista este dato carece de valor
+                         </p>
+                      </div>
+                      <div class="col-2 text-center">
+                        <h6>Edad Metabólica</h6>
+                        <P>{{bodyTest.metabolicAge}}</P>
+                      </div>
+                      <div class="col-4">
+                        <p>La edad metabólica es un dato para describir el estado
+                          físico y la actividad metabólica que te dara información 
+                          sobre tu estado, tu nivel de salud y bienestar.
+                          Lo correcto es tener 10 años menos que la edad cronológica 
+                         </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="col-2 text-center">
+                        <h6>Nivel de agua (Litros)</h6>
+                        <P>{{bodyTest.waterLevel}}</P>
+                      </div>
+                      <div class="col-10">
+                        <p>Beber agua es esencial para tener una buena salud. La cantidad
+                          varía según cada persona, pero se pueden establecer una serie 
+                          de pautas para estimar la ingesta necesaria para que nuestro
+                          organismo funcione a la perfección. 
+                         </p>
+                      </div>
+                      <br>
+                      <br>
+                      <div class="col-2 text-center">
+                        <h6>% Grasa Corporal</h6>
+                        <P>{{bodyTest.averageFat}}</P>
+                      </div>
+                      <div class="col-10">
+                        <p>¿Te pesas cada día y cada día te decepcionas con el resultado?.
+                          Tranquil@ tu peso puede sufrir múltiples variaciones a lo largo del día.
+                          Incluso aunque estes adelgazando puede que el resultado se vea antes en tu 
+                          cuerpo que en la báscula. "La báscula nunca refleja lo que en realidad somos".
+                          Según muchos especialistas: "Podemos ver personas con el mismo peso y ser 
+                          totalmente opuestos en el aspecto físico y en el estado de salud".
+                          "Si de verdad queremos preocuparnos por algo, deberíamos hacerlo por el exceso
+                          de grasa, comparado con el porcentaje de masa muscular y no el peso"
+                         </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-3 text-center">
+                        <h6>Calorias Recomendadas (ca.)</h6>
+                        <P>{{bodyTest.recommendedCalories}}</P>
+                      </div>
+                      <div class="col-3 text-center">
+                        <h6>Litros de agua recomendados</h6>
+                        <P>{{bodyTest.recommendedWater}}</P>
+                      </div>
+                      <!-- <div class="col-3 text-center">
+                        <h6>Peso Recomendado (Kg)</h6>
+                        <P>56</P>
+                      </div> -->
+                    </div>  
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <p>Para mas información y un asesoramiento personalizado comunicate
+                        con tu entrenador.
+                      </p>
+                      <small>*En ningun caso se debe tomar este estudio de composición corporal
+                        como información médica. Recomendamos contactar a un profesional de 
+                        nutrición para la lectura e interpretación del estudio.
+                      </small>
+                      <small>**Los datos mostrados como resultado del estudio corporal se han suminstrado
+                        en baso a la información suministrada por ti, y corresponden a estimaciones
+                        realizadas con algoritmos y fórmulas matemáticas.
+                      </small>
+                    </div>          
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="container"[hidden]="true">
+    <div class="main white-content" id="bodytest">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Auto-evaluacion Corporal</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>Nombre: </strong>{{profile.names}} </p>
+                      </div>
+                      <div class="col-3 text-center">
+                        <p> <strong>Teléfono: </strong> {{profile.phoneNumber}} </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>País: </strong>{{profile.country}}</p>
+                      </div>
+                      <div class="col-3 text-center">
+                        <p> <strong>Nivel de actividad: </strong> {{profile.codeHerbalife}} </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6">
+                        <p> <strong>Corrreo Electrónico: </strong>{{profile.email}} </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <table class="table col-lg">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Edad</th>
+                            <th class="text-center">Peso</th>
+                            <th class="text-center">Altura</th>
+                            <th class="text-center">Complexion Física</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center">
+                            <td>{{bodyTest.age}}</td>
+                            <td>{{bodyTest.width}}</td>
+                            <td>{{bodyTest.height}}</td>
+                            <td>{{bodyTest.physicalComplexion}}</td>
+                      </table>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="col-2 text-center">
+                        <h6>IMC</h6>
+                        <P>{{bodyTest.imc}}</P>
+                      </div>
+                      <div class="col-4 justify">
+                        <p>El Indice de Masa Corporal (IMC) es la relación
+                          estatura-peso actual, y determina por tanto si el peso 
+                          está dentro del rango normal, o por el contrario si
+                          tiene sobrepeso o delgadez.&nbsp;&nbsp;&nbsp;
+                          *Si eres atleta o culturista este dato carece de valor
+                         </p>
+                      </div>
+                      <div class="col-2 text-center">
+                        <h6>Edad Metabólica</h6>
+                        <P>{{bodyTest.metabolicAge}}</P>
+                      </div>
+                      <div class="col-4">
+                        <p>La edad metabólica es un dato para describir el estado
+                          físico y la actividad metabólica que te dara información 
+                          sobre tu estado, tu nivel de salud y bienestar.
+                          Lo correcto es tener 10 años menos que la edad cronológica 
+                         </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="col-2 text-center">
+                        <h6>Nivel de agua (Litros)</h6>
+                        <P>{{bodyTest.waterLevel}}</P>
+                      </div>
+                      <div class="col-10">
+                        <p>Beber agua es esencial para tener una buena salud. La cantidad
+                          varía según cada persona, pero se pueden establecer una serie 
+                          de pautas para estimar la ingesta necesaria para que nuestro
+                          organismo funcione a la perfección. 
+                         </p>
+                      </div>
+                      <br>
+                      <br>
+                      <div class="col-2 text-center">
+                        <h6>% Grasa Corporal</h6>
+                        <P>{{bodyTest.averageFat}}</P>
+                      </div>
+                      <div class="col-10">
+                        <p>¿Te pesas cada día y cada día te decepcionas con el resultado?.
+                          Tranquil@ tu peso puede sufrir múltiples variaciones a lo largo del día.
+                          Incluso aunque estes adelgazando puede que el resultado se vea antes en tu 
+                          cuerpo que en la báscula. "La báscula nunca refleja lo que en realidad somos".
+                          Según muchos especialistas: "Podemos ver personas con el mismo peso y ser 
+                          totalmente opuestos en el aspecto físico y en el estado de salud".
+                          "Si de verdad queremos preocuparnos por algo, deberíamos hacerlo por el exceso
+                          de grasa, comparado con el porcentaje de masa muscular y no el peso"
+                         </p>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <div class="col-3 text-center">
+                        <h6>Calorias Recomendadas (ca.)</h6>
+                        <P>{{bodyTest.recommendedCalories}}</P>
+                      </div>
+                      <div class="col-3 text-center">
+                        <h6>Litros de agua recomendados</h6>
+                        <P>{{bodyTest.recommendedWater}}</P>
+                      </div>
+                      <!-- <div class="col-3 text-center">
+                        <h6>Peso Recomendado (Kg)</h6>
+                        <P>56</P>
+                      </div> -->
+                    </div>  
+                    <br>
+                    <br>
+                    <div class="row justify-content-center">
+                      <p>Para mas información y un asesoramiento personalizado comunicate
+                        con tu entrenador.
+                      </p>
+                      <small>*En ningun caso se debe tomar este estudio de composición corporal
+                        como información médica. Recomendamos contactar a un profesional de 
+                        nutrición para la lectura e interpretación del estudio.
+                      </small>
+                      <small>**Los datos mostrados como resultado del estudio corporal se han suminstrado
+                        en baso a la información suministrada por ti, y corresponden a estimaciones
+                        realizadas con algoritmos y fórmulas matemáticas.
+                      </small>
+                    </div>          
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
