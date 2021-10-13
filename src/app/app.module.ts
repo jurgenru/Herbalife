@@ -42,6 +42,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { InscriptionLection } from "./services/inscription-lection";
 import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
 import { OptionsCardService } from "./services/options-card.service";
+import { ComplaintService } from "./services/complaint.service";
 
 
 moment.locale('es');
@@ -87,6 +88,7 @@ moment.locale('es');
     AppointmentService,
     OptionsCardService,
     InscriptionLection,
+    ComplaintService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

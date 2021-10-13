@@ -4,6 +4,7 @@ import { ActivityComponent } from "./activity/activity.component";
 import { CreateComponent } from "./create/create.component";
 import { CustomerComponent } from "./customer.component";
 import { EditComponent } from "./edit/edit.component";
+import { ResultComponent } from "./result/result.component";
 import { ShoppingComponent } from "./shopping/shopping.component";
 import { ViewComponent } from "./view/view.component";
 
@@ -27,6 +28,10 @@ export const routes: Routes = [
         ,{
             path: 'shopping',
             component: ShoppingComponent
+        },
+        {
+            path: 'result/:id',
+            component: ResultComponent
         }
     ]
     }];
