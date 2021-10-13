@@ -165,6 +165,9 @@ export class EditComponent implements OnInit {
       .subscribe((data) => {
         this.icon = data;
         this.updateIcon = 1;
+        if(data == null){
+          this.updateIcon = 0;
+        }
       });
   }
 
@@ -174,6 +177,9 @@ export class EditComponent implements OnInit {
       .subscribe((data) => {
         this.image = data;
         this.updateImage = 1;
+        if(data == null){
+          this.updateImage = 0;
+        }
       });
   }
 
@@ -183,6 +189,9 @@ export class EditComponent implements OnInit {
       .subscribe((data) => {
         this.banner = data;
         this.updateBanner = 1;
+        if(data == null){
+          this.updateBanner = 0;
+        }
       });
   }
 }

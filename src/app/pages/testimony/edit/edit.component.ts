@@ -103,6 +103,9 @@ export class EditComponent implements OnInit {
       .subscribe((data) => {
         this.image = data;
         this.updateImage = 1;
+        if(data == null){
+          this.updateImage = 0;
+        }
       });
   }
 }

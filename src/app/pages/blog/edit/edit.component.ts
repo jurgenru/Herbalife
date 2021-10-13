@@ -83,6 +83,9 @@ export class EditComponent implements OnInit {
     this.simpleModalService.addModal(ImageCropperComponent, {format: 1/1}).subscribe((data) => {
       this.icon = data;
       this.updateIcon = 1;
+      if(data == null){
+        this.updateIcon = 0;
+      }
     });
   }
 
@@ -90,6 +93,9 @@ export class EditComponent implements OnInit {
     this.simpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.banner = data;
       this.updateBanner = 1;
+      if(data == null){
+        this.updateBanner = 0;
+      }
     });
   }
 
