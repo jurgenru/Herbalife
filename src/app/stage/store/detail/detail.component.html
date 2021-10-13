@@ -11,26 +11,33 @@
                             <div class="container-image">
                                 <img [src]="product.image" class="img-thumbnail">
                             </div>
-                            <div class="button-container pull-right">
-                                <app-share-button [text]="['Conoce sobre nuestro producto de '+product.name]" [shareUrl]="['customer/store/detail/'+product.id]"></app-share-button>
+                            <br>
+                            <div class="button-container ">
+                                <app-share-button [text]="['Conoce sobre nuestro producto de '+product.name]"
+                                    [shareUrl]="['customer/store/detail/'+product.id]"></app-share-button>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
-                            <h4><b>Descripción</b></h4>
-                            <p>{{product.description}}</p>
-                            <br>
-                            <p> <strong>Precio : </strong><i class="tim-icons icon-coins"></i> {{product.price}} Bs</p>
-                            <p><strong>Cantidad: </strong> {{product.amount}} U.</p>
+                            <div class="row">
+                                <div class="col-12 col-md-10">
+                                    <h4><b>Descripción</b></h4>
+                                    <p>{{product.description}}</p>
+                                    <br>
+                                    <p> <strong>Precio : </strong><i class="tim-icons icon-coins"></i> {{product.price}}
+                                        Bs</p>
+                                    <p><strong>Cantidad: </strong> {{product.amount}} U.</p>
+
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <div class="text-center">
+                                        <button #complaintButton class="btn btn-round btn-sm btn-info"
+                                            (click)="open(content)">denunciar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <br>
-                    <!-- <br>
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-8">
-                            <textarea class=" form-control" placeholder="Agregar algúna nota"></textarea>
-                        </div>
-                    </div>
-                    <br> -->
                     <div class="row justify-content-center">
                         <div class="button-container">
                             <button (click)="addToCart(product)" [hidden]="validate" class="btn btn-round btn-primary">
@@ -43,5 +50,36 @@
         </div>
     </div>
 </div>
+
+<ng-template #content let-modal id="holaaaaaa">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Denunciar</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="complaint" (ngSubmit)="post()">
+            <div class="container">
+                <div *ngFor="let data of Data; let i=index">
+                    <label>
+                        <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+                        {{data.name}}
+                    </label>
+                </div>
+                <hr>
+                <textarea class="form-control rounded pl-2 pr-2" formControlName="commentary"
+                    placeholder="Coloca el comentario de la denuncia" rows="2"></textarea>
+                <div *ngIf="commentary.invalid && (commentary.dirty || commentary.touched)">
+                    <small *ngIf="commentary.errors.required" class="text-danger">
+                        *El comentario es <strong>requerido</strong>
+                    </small>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-dark pull-right" [disabled]="!complaint.valid">enviar</button>
+        </form>
+    </div>
+</ng-template>
 
 <ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)"></ngx-ui-loader>
