@@ -218,9 +218,6 @@ export class EditComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent = data;
       this.updateImage = 1;
-      if(data == null){
-        this.updateImage = 0;
-      }
     });
   }
 
@@ -228,9 +225,6 @@ export class EditComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent2 = data;
       this.updateImage2 = 1;
-      if(data == null){
-        this.updateImage2 = 0;
-      }
     });
   }
 
@@ -238,9 +232,6 @@ export class EditComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent3 = data;
       this.updateImage3 = 1;
-      if(data == null){
-        this.updateImage3 = 0;
-      }
     });
   }
 
@@ -248,9 +239,6 @@ export class EditComponent implements OnInit {
     this.SimpleModalService.addModal(ImageCropperComponent, {format: 16/9}).subscribe((data) => {
       this.imageContent4 = data;
       this.updateImage4 = 1;
-      if(data == null){
-        this.updateImage4 = 0;
-      }
     });
   }
 
