@@ -9,12 +9,14 @@ import { NgxUiLoaderModule } from "ngx-ui-loader";
 import { CustomerRoutingModule, routedComponents } from "./customer.routing";
 import { ActivityComponent } from './activity/activity.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
     declarations: [
         ...routedComponents,
         ActivityComponent,
         ShoppingComponent,
+        ResultComponent,
     ],
     imports: [
         RouterModule,
