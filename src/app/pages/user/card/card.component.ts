@@ -81,7 +81,9 @@ export class CardComponent implements OnInit {
           this.card.get('banner').setValue(virtualCard.banner);
           this.userBanner = virtualCard.banner;
           this.card.get('cardType').setValue(virtualCard.cardType);
-          this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+          const filterOpt = `{"fields": {"id": true, "content": true}, "order":["id DESC"]}`;
+          this.virtualCardService.getOptionsCardById(virtualCard.id, filterOpt).subscribe((opt:any)=>{
+            console.log('opt', opt);
             opt.forEach(element => {
               this.card.value.options.push(element.content);
             });

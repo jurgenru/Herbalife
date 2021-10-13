@@ -64,7 +64,7 @@ export class CardComponent implements OnInit {
     this.spinner.start();
     this.route.params.subscribe(val => {
       let virtualCard: any = null;
-      const filter = `{"fields": {"id": true, "names": true, "image": true, "banner": true, "socialMedia": true, "userId": true, "cardType": true}, "order":["id DESC"]}`;
+      const filter = `{"fields": {"id": true, "names": true, "image": true, "banner": true, "socialMedia": true, "trainerId": true, "cardType": true}, "order":["id DESC"]}`;
       this.trainerService.getVirtualCardById(val.id, filter).subscribe((data: any)=>{
         data.forEach(element => {
           virtualCard = element;
@@ -80,7 +80,8 @@ export class CardComponent implements OnInit {
             this.banner = virtualCard.banner;
             this.card.get('cardType').setValue(virtualCard.cardType);
             this.card.get('trainerId').setValue(virtualCard.trainerId);
-            this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+            const filterOpt = `{"fields": {"content": true}, "order":["id DESC"]}`;
+            this.virtualCardService.getOptionsCardById(virtualCard.id, filterOpt).subscribe((opt:any)=>{
               opt.forEach(element => {
                 this.card.value.options.push(element.content);
               });
