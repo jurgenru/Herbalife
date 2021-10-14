@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from "ngx-toastr";
 import { TrainerService } from 'src/app/services/trainer.service';
 import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-trainer-list',
@@ -19,7 +20,8 @@ export class ListComponent implements OnInit {
     private trainerService: TrainerService,
     private userService: UserService,
     private toastr: ToastrService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -45,6 +47,12 @@ export class ListComponent implements OnInit {
     });
   }
 
+  showVirtualCard(id){
+    const filter = `{"fields": {"id": true}, "order":["id DESC"]}`;
+    this.trainerService.getVirtualCardById(id, filter).subscribe(res => {
+      this.router.navigate(["virtual-card/view/", res[0].id]);
+    })
+  }
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {
       timeOut: time,
