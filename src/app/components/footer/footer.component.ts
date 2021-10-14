@@ -46,7 +46,6 @@ export class FooterComponent implements OnInit {
 
   get(){
     this.userService.getManagerById(1).subscribe((data:any)=>{
-      console.log(data);
       [data].map(element => {
         this.user = element;
         if(this.user.socialMedia){
@@ -54,7 +53,6 @@ export class FooterComponent implements OnInit {
         }
       });
       this.numberPhone = this.socialMedia.whatsapp.split('/')
-      console.log(this.numberPhone[3])
     })
   }
   openSocialMedia(navUrl){

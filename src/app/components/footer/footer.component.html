@@ -5,12 +5,12 @@
     <div class="col-12 col-md-8 mt-4">
       <div class="col-12 col-md-12 row">
         <div class="col text-center">
-          <img [src]="user.icon" class="mx-auto rounded-circle d-block mt-2" alt="">
+          <img *ngIf="user.icon" [src]="this.user.icon" class="mx-auto img-rounded d-block mt-2" alt="">
         </div>
         <div class="col-md-9 col-12 mt-3">
-          <p class="h4 text-left p-1"><i class="pull-left far fa-envelope fa-2x pr-2"></i> <b class="actionB" (click)="contactForm()">{{  socialMedia.gmail}}</b></p>
-          <p class="h4 text-left p-1"><i class="pull-left fas fa-map-marker-alt fa-2x pr-2"></i> <b>{{  user.address}}</b></p>
-          <p class="h4 text-left p-1"><i class="pull-left fab fa-whatsapp fa-2x pr-2"> </i> <b class="actionB" (click)="openSocialMedia(socialMedia.whatsapp)" > + {{  numberPhone[3] }}</b></p>
+          <p *ngIf="socialMedia.gmail" class="h4 text-left p-1"><i class="pull-left far fa-envelope fa-2x pr-2"></i> <b class="actionB" (click)="contactForm()">{{  socialMedia.gmail}}</b></p>
+          <p *ngIf="user.address" class="h4 text-left p-1"><i class="pull-left fas fa-map-marker-alt fa-2x pr-2"></i> <b>{{  user.address}}</b></p>
+          <p *ngIf="numberPhone" class="h4 text-left p-1"><i class="pull-left fab fa-whatsapp fa-2x pr-2"> </i> <b class="actionB" (click)="openSocialMedia(socialMedia.whatsapp)" > + {{   numberPhone[3]}}</b></p>
         </div>
       </div>
       <div class="col-12 col-md-12 text-center mt-5 mb-3" *ngIf="socialMedia">
