@@ -22,6 +22,10 @@ export class ShareButtonComponent implements OnInit {
         searchParams.set('u', url + this.shareUrl);
         this.navUrl = 'https://www.facebook.com/sharer/sharer.php?' + searchParams;
         break;
+      case 'messenger':
+        searchParams.set('u', url + this.shareUrl);
+        this.navUrl = 'https://m.me/' + searchParams;
+        break;
       case 'telegram':
         searchParams.set('url', url + this.shareUrl);
         this.navUrl = 'https://t.me/share?text='+this.text+'&'+searchParams;
