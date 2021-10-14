@@ -128,7 +128,7 @@ export class EditComponent implements OnInit {
     });
   }
   showNewProduct(index: any) {
-    this.simpleModalService.addModal(ImageCropperComponent).subscribe((data) => {
+    this.simpleModalService.addModal(ImageCropperComponent, { format: 16 / 9 }).subscribe((data) => {
       this.newProductImage[index] = data;
       ((this.productForm.get('newProduct') as FormArray).at(index) as FormGroup).get('image').patchValue(data);
     });
