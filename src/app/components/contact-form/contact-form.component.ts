@@ -7,11 +7,11 @@ import {
 import { SimpleModalComponent } from "ngx-simple-modal";
 import { ToastrService } from "ngx-toastr";
 import { UserService } from "src/app/services/user.service";
-import { Router } from "@angular/router";
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 export interface AlertModel {
   title: string;
+  toEmail: any;
 }
 @Component({
   selector: "app-contact-form",
@@ -24,12 +24,12 @@ export class ContactFormComponent
 {
   typeForm: FormGroup;
   title: string;
+  toEmail: any;
   formData: any = {};
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private userService: UserService,
-    private router: Router
   ) {
     super();
   }
@@ -40,6 +40,7 @@ export class ContactFormComponent
 
   createForm(){
     this.formData = this.formBuilder.group({
+      toEmail: [''],
       email: ['', Validators.required],
       issue: ['', Validators.required],
       message: ['', Validators.required]
@@ -47,6 +48,7 @@ export class ContactFormComponent
   }
 
   send(){
+    this.formData.get('toEmail').setValue(this.toEmail);
     console.log('contact', this.formData.value);
     emailjs.send('service_0pkzh6h', 'template_gbpktuf', this.formData.value, 'user_MfFadQtzejSZwASPeldba')
     .then((result: EmailJSResponseStatus) => {

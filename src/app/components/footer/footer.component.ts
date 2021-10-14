@@ -39,6 +39,7 @@ export class FooterComponent implements OnInit {
       ContactFormComponent,
       {
         title: "Enviar Correo Electrónico",
+        toEmail: this.socialMedia.gmail,
       },
       { closeOnClickOutside: true }
     );
