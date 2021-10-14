@@ -3,7 +3,8 @@
     <div class="col col-md">
       <div class="card">
         <div class="card-header">
-          <h2 class="text-center title">Crear Tarjeta Virtual</h2>
+          <h2 class="text-center title" *ngIf="!btnValidate">Crear Tarjeta Virtual</h2>
+            <h2 class="text-center title" *ngIf="btnValidate">Editar Tarjeta Virtual</h2>
         </div>
         <div class="row" *ngIf="!cardSelect">
           <div class="text-center col-12 col-md-6" (click)="selectCardType(1)">
@@ -76,7 +77,7 @@
                     <i class="fab fa-whatsapp"> </i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://wa.me/tu_numero"
                       placeholder="https://wa.me/tu_numero"
                       type="url"
                       style="padding-left: 33px"
@@ -91,7 +92,7 @@
                     <i class="fab fa-telegram-plane"> </i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://t.me/nombre_usuario"
                       placeholder="https://t.me/nombre_usuario"
                       type="url"
                       style="padding-left: 33px"
@@ -106,7 +107,7 @@
                     <i class="fab fa-facebook-f"> </i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://www.facebook.com/..."
                       placeholder="https://www.facebook.com/..."
                       type="url"
                       style="padding-left: 33px"
@@ -121,7 +122,7 @@
                     <i class="fab fa-instagram"> </i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://www.instagram.com/..."
                       placeholder="https://www.instagram.com/..."
                       type="url"
                       style="padding-left: 33px"
@@ -136,7 +137,7 @@
                     <i class="fab fa-youtube"> </i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://www.youtube.com/..."
                       placeholder="https://www.youtube.com/..."
                       type="url"
                       style="padding-left: 33px"
@@ -151,7 +152,7 @@
                     <i class="fab fa-tiktok"></i>
                     <input
                       class="form-control"
-                      [ngbTooltip]="tipContent"
+                      placement="top" ngbTooltip="https://www.tiktok.com/..."
                       placeholder="https://www.tiktok.com/..."
                       type="url"
                       style="padding-left: 33px"
