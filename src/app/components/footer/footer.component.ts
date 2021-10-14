@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SimpleModalService } from "ngx-simple-modal";
 import { ScheduleCallComponent } from "../schedule-call/schedule-call.component";
 import { UserService } from "src/app/services/user.service";
+import { ContactFormComponent } from "../contact-form/contact-form.component";
 
 @Component({
   selector: "app-footer",
@@ -12,6 +13,7 @@ export class FooterComponent implements OnInit {
   test: Date = new Date();
   user: any;
   socialMedia: any;
+  numberPhone: any;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -32,14 +34,27 @@ export class FooterComponent implements OnInit {
     );
   }
 
+  contactForm(){
+    this.SimpleModalService.addModal(
+      ContactFormComponent,
+      {
+        title: "Enviar Correo Electrónico",
+      },
+      { closeOnClickOutside: true }
+    );
+  }
+
   get(){
     this.userService.getManagerById(1).subscribe((data:any)=>{
+      console.log(data);
       [data].map(element => {
         this.user = element;
         if(this.user.socialMedia){
           this.socialMedia = JSON.parse(element.socialMedia);
         }
       });
+      this.numberPhone = this.socialMedia.whatsapp.split('/')
+      console.log(this.numberPhone[3])
     })
   }
   openSocialMedia(navUrl){

@@ -32,3 +32,10 @@ footer {
 .fa-youtube {
   color: #ff0000;
 }
+.fa-map-marker-alt {
+  color: #eef8a7;
+}
+
+.actionB {
+  cursor: pointer !important;
+}
