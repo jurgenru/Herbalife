@@ -11,7 +11,7 @@
                         <div class="col-12 col-md-4">
                             <h4 class="text-center">Icono</h4>
                             <br>
-                            <div class="container-image p-2">
+                            <div class="container-image p-2 text-center">
                                 <div [ngSwitch]="updateIcon">
                                     <div *ngSwitchCase="0">
                                         <img [src]="trainerData.icon" class="img-thumbnail mx-auto d-block">
@@ -34,7 +34,7 @@
                         <div class="col-12 col-md-8">
                             <h4 class="text-center">Portada</h4>
                             <br>
-                            <div class="container-image p-2">
+                            <div class="container-image p-2 text-center">
                                 <div [ngSwitch]="updateBanner">
                                     <div *ngSwitchCase="0">
                                         <img [src]="trainerData.banner" class="img-thumbnail mx-auto d-block">

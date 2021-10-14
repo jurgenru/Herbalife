@@ -33,7 +33,7 @@
                             </div>
                             <div class="col-12 col-md-3">
                                 <h5 class="text-center">Icono</h5>
-                                <div class="container-image">
+                                <div class="container-image text-center">
                                     <img src="../../../../assets/img/img_3115.jpg" alt="IconStore"
                                         class="mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
                                     <ng-template #noImageIcon>
@@ -48,7 +48,7 @@
                                 </div>
                                 <br>
                                 <h5 class="text-center">Portada</h5>
-                                <div class="container-image">
+                                <div class="container-image text-center">
                                     <img src="../../../../assets/img/img_3115.jpg" alt="PortraitStore"
                                         class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
                                     <ng-template #noPortraitImage>
@@ -104,7 +104,7 @@
                                             <label> Nombre del producto </label>
                                             <input class=" form-control" [attr.id]="'name' + i"
                                                 placeholder="Nombre del producto" type="text" formControlName="name">
-                                            <div *ngIf="product.controls[i].get('name').invalid && 
+                                            <div *ngIf="product.controls[i].get('name').invalid &&
                                                 product.controls[i].get('name').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -113,7 +113,7 @@
                                             <label> Precio del producto </label>
                                             <input class=" form-control" placeholder="Precio del producto" type="text"
                                                 formControlName="price">
-                                            <div *ngIf="product.controls[i].get('price').invalid && 
+                                            <div *ngIf="product.controls[i].get('price').invalid &&
                                                 product.controls[i].get('price').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -122,7 +122,7 @@
                                             <label> Cantidad de productos disponible </label>
                                             <input class=" form-control" placeholder="Cantidad de productos disponible"
                                                 type="number" formControlName="amount">
-                                            <div *ngIf="product.controls[i].get('amount').invalid && 
+                                            <div *ngIf="product.controls[i].get('amount').invalid &&
                                                 product.controls[i].get('amount').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -132,7 +132,7 @@
                                             <textarea class=" form-control" cols="80"
                                                 placeholder="Coloca la descripcion del producto" rows="4"
                                                 formControlName="description"></textarea>
-                                            <div *ngIf="product.controls[i].get('description').invalid && 
+                                            <div *ngIf="product.controls[i].get('description').invalid &&
                                                 product.controls[i].get('description').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>

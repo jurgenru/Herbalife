@@ -12,7 +12,8 @@
               <form [formGroup]="trainer">
                             <div class="row">
                                 <div class="col-12 col-md-3">
-                                    <div class="container-image">
+                                  <h4 class="text-center">Icono</h4>
+                                    <div class="container-image text-center">
                                         <img src="../../../../assets/img/anime6.png" class="mx-auto d-block"
                                             *ngIf="!icon; else noIcon">
                                         <ng-template #noIcon>
@@ -27,7 +28,8 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-9 text-center">
-                                    <div class="container-image">
+                                  <h4 class="text-center">Banner</h4>
+                                    <div class="container-image text-center">
                                         <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
                                             class="mx-auto d-block" *ngIf="!banner; else noBanner">
                                         <ng-template #noBanner>
@@ -155,7 +157,7 @@
                                     <br>
                                 </div>
                                 <div class="col-12 col-md-3">
-                                    <div class="container-image">
+                                    <div class="container-image text-center">
                                         <img src="../../../../assets/img/angular2-logo-red.png" class="mx-auto d-block"
                                             *ngIf="!image; else noImage">
                                         <ng-template #noImage>
@@ -204,4 +206,4 @@
   </div>
 </div>
 <ng-template #tipContent>Recuerde que debe tener un <b>formato de url.</b> Para que funcione correctamente copie su url</ng-template>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(24,31,46)" text="Creando entrenador ..."></ngx-ui-loader>
+<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" text="Creando entrenador ..."></ngx-ui-loader>
