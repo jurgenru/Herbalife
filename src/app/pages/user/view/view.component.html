@@ -114,11 +114,10 @@
               </div>
             </div>
             <div class="col-12 col-md-3">
-              <div class="row">
-                <a routerLink="/user/edit" class="pull-right">
+                 <button routerLink="/user/edit" class="btn btn-warning pull-right btn-sm">
                   <i class="fas fa-pencil-alt"></i> Editar
-                </a>
-              </div>
+                </button>
+              <br>
               <img
                 class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
                 *ngIf="user.image; else noImage"

@@ -174,7 +174,7 @@ export class CardComponent implements OnInit {
     this.virtualCardService.post(cardPost).subscribe((data: any) => {
       this.card.value.options.forEach(element => {
         const options = {
-          virtualcardId: data.id,
+          virtualCardId: data.id,
           content: JSON.stringify(element)
         }
         this.optionsCardService.post(options).subscribe(opt => {

@@ -2,16 +2,7 @@
     <div class="content">
         <div class="container">
             <div class="col-12">
-                <div class="modal-header">
-                    <span class="text-center">Iniciar Sesion</span>
-                </div>
                 <div class="modal-body">
-                    <p>o inicia sesion con :</p>
-                    <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="logInWithGoogle()"><i
-                            class="tim-icons icon-email-85"></i>
-                        Google</button>
-                    <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
-                        Facebook</button>
                     <form [formGroup]="user" (ngSubmit)="login()">
                         <h4 class="text-center">Formulario</h4>
                         <div class="input-group">
@@ -43,10 +34,16 @@
                         <button type="submit" class="btn btn-info btn-block mb-3" [disabled]="!user.valid">Iniciar
                             Session</button>
                     </form>
+                    <h4>o inicia sesion con :</h4>
+                    <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="logInWithGoogle()"><i
+                            class="tim-icons icon-email-85"></i>
+                        Google</button>
+                    <button class="btn btn-info btn-simple btn-sm btn-block"><i class="fab fa-facebook"> </i>
+                        Facebook</button>
                     <div class=" pull-left">
                         <span><a class="link footer-link" (click)="register()">Registrarse</a></span>
                     </div>
-                    <br>
+                    <br><br>
                 </div>
             </div>
         </div>
