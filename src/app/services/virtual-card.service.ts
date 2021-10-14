@@ -20,10 +20,10 @@ export class VirtualCardService {
     }
 
     getOptionsCardById(id, filter){
-      return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-card?filter=${filter}`).pipe();
+      return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-cards?filter=${filter}`).pipe();
     }
 
     delOptionsCardById(id){
-      return this.http.delete(`${environment.apiUrl}/virtual-cards/${id}/options-card`).pipe();
+      return this.http.delete(`${environment.apiUrl}/virtual-cards/${id}/options-cards`).pipe();
     }
 }
