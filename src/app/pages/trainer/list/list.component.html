@@ -34,6 +34,8 @@
                   <td>{{list.description | slice:0:40}}</td>
                   <td class="text-center">{{list.created | date: 'yyyy-MM-dd'}}</td>
                   <td class=" text-right">
+                    <button class="btn btn-info btn-link btn-sm" (click)="showVirtualCard(list.id)" type="button"
+                      placement="top" ngbTooltip="Ver Tarjeta Virtual" container="body"><i class="far fa-id-card"></i></button>
                     <button class=" btn btn-success btn-link btn-sm btn-icon" type="button" placement="top"
                       ngbTooltip="ver" container="body" [routerLink]="['/trainer/view', list.id]"><i
                         class="tim-icons icon-paper"></i></button>

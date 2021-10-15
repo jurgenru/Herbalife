@@ -29,9 +29,10 @@ export class VirtualCardComponent implements OnInit {
       this.virtualCardService.getById(val.id).subscribe((data:any)=>{
         this.data = data;
         this.data.socialMedia = JSON.parse(this.data.socialMedia);
-        this.virtualCardService.getOptionsCardById(data.id).subscribe((res:any) =>{
+        const filter = `{"fields": {"content": true}, "order":["id DESC"]}`;
+        this.virtualCardService.getOptionsCardById(data.id, filter).subscribe((res:any) =>{
           res.forEach(element => {
-            this.options.push(element.content);
+            this.options.push(JSON.parse(element.content));
           });
           console.log('options', this.options)
         })

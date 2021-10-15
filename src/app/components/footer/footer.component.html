@@ -1,94 +1,92 @@
 <footer class="footer">
-  <hr color="purple" width="100%" />
   <div class="container">
-  <div class="row">
-    <div class="col-12 col-md-12 text-center">
+  <hr width="100%" color="purple" class="mb-5" />
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 mt-4">
+      <div class="col-12 col-md-12 row">
+        <div class="col text-center">
+          <img *ngIf="user.icon" [src]="this.user.icon" class="mx-auto img-rounded d-block mt-2" alt="">
+        </div>
+        <div class="col-md-9 col-12 mt-3">
+          <p *ngIf="socialMedia.gmail" class="h4 text-left p-1"><i class="pull-left far fa-envelope fa-2x pr-2"></i> <b class="actionB" (click)="contactForm()">{{  socialMedia.gmail}}</b></p>
+          <p *ngIf="user.address" class="h4 text-left p-1"><i class="pull-left fas fa-map-marker-alt fa-2x pr-2"></i> <b>{{  user.address}}</b></p>
+          <p *ngIf="numberPhone" class="h4 text-left p-1"><i class="pull-left fab fa-whatsapp fa-2x pr-2"> </i> <b class="actionB" (click)="openSocialMedia(socialMedia.whatsapp)" > + {{   numberPhone[3]}}</b></p>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 text-center mt-5 mb-3" *ngIf="socialMedia">
+        <button
+          *ngIf="socialMedia.facebook"
+          (click)="openSocialMedia(socialMedia.facebook)"
+          placement="top"
+          ngbTooltip="Facebook"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-facebook-f"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.instagram"
+          (click)="openSocialMedia(socialMedia.instagram)"
+          placement="top"
+          ngbTooltip="Instagram"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-instagram"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.youtube"
+          (click)="openSocialMedia(socialMedia.youtube)"
+          placement="top"
+          ngbTooltip="Youtube"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-youtube"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.twitter"
+          (click)="openSocialMedia(socialMedia.twitter)"
+          placement="top"
+          ngbTooltip="twitter"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-twitter"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.whatsapp"
+          (click)="openSocialMedia(socialMedia.whatsapp)"
+          placement="top"
+          ngbTooltip="Whatsapp"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-whatsapp"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.telegram"
+          (click)="openSocialMedia(socialMedia.telegram)"
+          placement="top"
+          ngbTooltip="Telegram"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-telegram-plane"> </i>
+        </button>
+        <button
+          *ngIf="socialMedia.tiktok"
+          (click)="openSocialMedia(socialMedia.tiktok)"
+          placement="top"
+          ngbTooltip="Tiktok"
+          class="btn btn-simple bt-lg m-1"
+        >
+          <i class="fab fa-tiktok"> </i>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 text-center">
       <p class="title">¿ Alguna Consulta ?</p>
       <button class="btn btn-theme btn-twitter" (click)="callSchedule()">
         <i class="fab fa-discord"></i>
         Agenda tu llamada
       </button>
-    </div>
-  </div>
-  <hr width="100%" class="mb-5" />
-  <div class="row col-12">
-    <div class="col-12 col-md-4">
-      <p class="title text-center">Herbalife</p>
-      <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet hic magni asperiores adipisci tempora deserunt, mollitia illo, repellendus inventore earum natus non veniam cumque, cupiditate incidunt aut totam ab? Impedit!</p>
-    </div>
-    <div class="col-12 col-md-4 text-center" *ngIf="socialMedia">
-      <p class="title">Síguenos</p>
-      <button
-        *ngIf="socialMedia.facebook"
-        (click)="openSocialMedia(socialMedia.facebook)"
-        placement="top"
-        ngbTooltip="Facebook"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-facebook-f"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.instagram"
-        (click)="openSocialMedia(socialMedia.instagram)"
-        placement="top"
-        ngbTooltip="Instagram"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-instagram"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.youtube"
-        (click)="openSocialMedia(socialMedia.youtube)"
-        placement="top"
-        ngbTooltip="Youtube"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-youtube"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.twitter"
-        (click)="openSocialMedia(socialMedia.twitter)"
-        placement="top"
-        ngbTooltip="twitter"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-twitter"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.whatsapp"
-        (click)="openSocialMedia(socialMedia.whatsapp)"
-        placement="top"
-        ngbTooltip="Whatsapp"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-whatsapp"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.telegram"
-        (click)="openSocialMedia(socialMedia.telegram)"
-        placement="top"
-        ngbTooltip="Telegram"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-telegram-plane"> </i>
-      </button>
-      <button
-        *ngIf="socialMedia.tiktok"
-        (click)="openSocialMedia(socialMedia.tiktok)"
-        placement="top"
-        ngbTooltip="Tiktok"
-        class="btn btn-simple bt-lg m-1"
-      >
-        <i class="fab fa-tiktok"> </i>
-      </button>
-    </div>
-    <!-- <div class="col-12 col-md-4" *ngIf="user">
-      <p class="title text-center">Contacto</p>
-      <p class="text-left">{{user.address}}</p>
-      <p class="text-left"><i class="tim-icons icon-email-85"> {{ socialMedia.gmail}}</p>
-      <p class="text-left">{{user.postalCode }} 000000</p>
-    </div> -->
-    <div class="col-12 col-md-4 mx-auto">
+      <br/>
+      <br/>
       <p class="title">¿ Cómo llegar ?</p>
       <img
         src="../../../assets/img/maps.jpg"
@@ -97,8 +95,7 @@
       />
     </div>
   </div>
-  <div class="col-12 text-center">
-    <br/>
+  <div class="col-12 text-center mt-4">
     &copy; {{ test | date: "yyyy" }} made with
     <i class="tim-icons icon-heart-2"> </i> by
     <a href="https://www.creative-tim.com?ref=bda-footer" target="_blank">

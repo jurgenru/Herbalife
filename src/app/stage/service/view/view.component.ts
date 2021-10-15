@@ -19,7 +19,6 @@ export class ViewComponent implements OnInit {
 
   service: any = {};
   services: any;
-  validate: any = {};
   validateAdmin: boolean = false;
 
   randomService: any;
@@ -106,17 +105,6 @@ export class ViewComponent implements OnInit {
         userId: user.id,
         serviceId: this.service.id
       }
-      let value = false;
-      this.userService.getInscriptionById(ins.userId).subscribe(res => {
-        this.validate = res;
-        this.validate.map((a:any)=>{
-          if(a.serviceId === ins.serviceId){
-            return value = true;
-          }
-        })
-        if(value){
-          this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Usted cuenta con una inscripción en el servicio', '5000', 'warning', 'top', 'center');
-        }else{
           this.inscriptionService.post(ins).subscribe(sus => {
             switch (type) {
               case 'normal':
@@ -140,8 +128,6 @@ export class ViewComponent implements OnInit {
           }, error => {
             this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Hubo un error al acceder en el servicio, intente nuevamente', '5000', 'danger', 'top', 'center');
           });
-        }
-      })
     }, error => {
       this.showRegister();
     });

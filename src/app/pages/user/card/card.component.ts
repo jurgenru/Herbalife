@@ -51,8 +51,8 @@ export class CardComponent implements OnInit {
       image: ['', Validators.required],
       trainerId: [0],
       url: ['htttps://'],
-      banner: ['', Validators.required],
-      socialMedia: ['', Validators.required],
+      banner: [''],
+      socialMedia: [''],
       cardType: ['', Validators.required],
       options: [[]],
     })
@@ -69,21 +69,20 @@ export class CardComponent implements OnInit {
         data.forEach(element => {
           virtualCard = element;
         });
-        //virtualCard = data;
-        console.log('data', data);
         if (virtualCard) {
           this.card.get('id').setValue(virtualCard.id);
           this.card.get('names').setValue(virtualCard.names);
           this.card.get('image').setValue(virtualCard.image);
           this.userImage = virtualCard.image;
+          this.userBanner = virtualCard.banner;
           this.card.get('socialMedia').setValue(JSON.parse(virtualCard.socialMedia));
           this.card.get('userId').setValue(virtualCard.userId);
           this.card.get('banner').setValue(virtualCard.banner);
-          this.userBanner = virtualCard.banner;
           this.card.get('cardType').setValue(virtualCard.cardType);
-          this.virtualCardService.getOptionsCardById(virtualCard.id).subscribe((opt:any)=>{
+          const filterOpt = `{"fields": {"id": true, "content": true}, "order":["id DESC"]}`;
+          this.virtualCardService.getOptionsCardById(virtualCard.id, filterOpt).subscribe((opt:any)=>{
             opt.forEach(element => {
-              this.card.value.options.push(element.content);
+              this.card.value.options.push(JSON.parse(element.content));
             });
           })
           this.btnValidate = true;
@@ -93,6 +92,8 @@ export class CardComponent implements OnInit {
             this.card.get('names').setValue(man.names + ' ' + man.lastName);
             this.card.get('image').setValue(man.image);
             this.card.get('socialMedia').setValue(JSON.parse(man.socialMedia));
+            this.userImage = man.image;
+            this.userBanner = man.banner;
           })
         }
         const filter = `{"fields": {"id": true, "name": true}, "order":["id DESC"]}`;
@@ -122,7 +123,6 @@ export class CardComponent implements OnInit {
           setTimeout(() => {
             this.spinner.stop();
           }, elapsed);
-          console.log('card3', this.card.value);
         }, error => console.log(error))
       })
     }, error => console.log(error))
@@ -161,7 +161,6 @@ export class CardComponent implements OnInit {
     this.card.value.options.map((a: any, index: any) => {
       if (item.id == a.id && item.type == a.type) {
           this.card.value.options.splice(index, 1);
-          console.log('remove', this.card.value.options);
       }
     })
   }
@@ -210,6 +209,8 @@ export class CardComponent implements OnInit {
 
   edit() {
     this.content = 'Editando...';
+    this.virtualCardService.delOptionsCardById(this.card.value.id).subscribe(optDel=>{
+    })
     const cardPost = {
       userId: this.card.value.userId,
       socialMedia: JSON.stringify(this.card.value.socialMedia),
@@ -223,12 +224,13 @@ export class CardComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.virtualCardService.update(this.card.value.id, cardPost).subscribe(data => {
-      // this.card.value.options.forEach(element => {
-      //   const options = {
-      //     virtualcardId: this.card.value.id,
-      //     content: JSON.stringify(element)
-      //   }
-      // });
+      this.card.value.options.forEach(element => {
+        const options = {
+          virtualCardId: this.card.value.id,
+          content: JSON.stringify(element)
+        }
+        this.optionsCardService.post(options).subscribe(opt =>{});
+      });
       const end = new Date();
       const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000) + 2000;
       setTimeout(() => {
