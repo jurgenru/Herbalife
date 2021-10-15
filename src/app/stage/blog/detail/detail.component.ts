@@ -26,6 +26,7 @@ export class DetailComponent implements OnInit {
   selectedValue: number;
   rant: any;
   userIdBlog: any;
+  validateAdmin: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,6 +45,7 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.initValidate();
     this.createCommentForm();
   }
 
@@ -55,6 +57,19 @@ export class DetailComponent implements OnInit {
 
   get comment() {
     return this.annotation.get("comment");
+  }
+
+  initValidate(){
+    this.userService.me().subscribe((user:any) => {
+      const filter = `{"fields": {"id": true}}`;
+      this.userService.getById(user.id, filter).subscribe((admin: any) => {
+        if(admin.role == 'admin'){
+          this.validateAdmin = true;
+        }else{
+          this.validateAdmin = false;
+        }
+      });
+    })
   }
 
   get() {

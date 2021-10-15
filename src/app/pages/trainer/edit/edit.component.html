@@ -9,31 +9,34 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <h4 class="text-center">Icono</h4>
-                            <br>
+                            <h5 class="text-center">ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                            </h5>
                             <div class="container-image p-2">
                                 <div [ngSwitch]="updateIcon">
                                     <div *ngSwitchCase="0">
-                                        <img [src]="trainerData.icon" class="img-thumbnail mx-auto d-block">
+                                        <img [src]="trainerData.icon" class="mx-auto d-block">
                                     </div>
                                     <div *ngSwitchCase="1">
-                                        <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                                        <img [src]="icon" class="mx-auto d-block">
                                     </div>
                                     <div *ngSwitchCase="2">
-                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                        <img src="/../../../../assets/img/img_3115.jpg" class="mx-auto d-block">
                                     </div>
                                 </div>
                                 <div class="overlay" (click)="showIcon()">
-                                    <div class="text text-light">
-                                        <i class="tim-icons icon-upload"> </i>
-                                        Editar icono
+                                    <div class="text-icon text-light">
+                                        <span>
+                                            <i class="tim-icons icon-upload"> </i>
+                                            ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong>  
+                                        </span>
+                                        <p>¡ haga click aqui !</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-8">
-                            <h4 class="text-center">Portada</h4>
-                            <br>
+                        <div class="col-12 col-md-7">
+                            <h5 class="text-center">POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                px")</strong></h5>
                             <div class="container-image p-2">
                                 <div [ngSwitch]="updateBanner">
                                     <div *ngSwitchCase="0">
@@ -43,13 +46,17 @@
                                         <img [src]="banner" class="img-thumbnail mx-auto d-block">
                                     </div>
                                     <div *ngSwitchCase="2">
-                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                        <img src="/../../../../assets/img/banner.png" alt="">
                                     </div>
                                 </div>
                                 <div class="overlay" (click)="showBanner()">
                                     <div class="text text-light">
-                                        <i class="tim-icons icon-upload"> </i>
-                                        Editar portada
+                                        <div>
+                                            <i class="tim-icons icon-upload"> </i>
+                                            POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                                px")</strong>
+                                        </div>
+                                        <p>¡ haga click aqui !</p>
                                     </div>
                                 </div>
                             </div>
@@ -65,51 +72,51 @@
                             </div>
                             <div class="input-icon form-group">
                                 <label>Presentación</label>
-                                <textarea class="form-control" id="trainerTextArea" [(ngModel)]="trainer.description" [ngModelOptions]="{standalone: true}" [value]="trainerData.description"></textarea>
+                                <textarea class="form-control" id="trainerTextArea" rows="8" [(ngModel)]="trainer.description" [ngModelOptions]="{standalone: true}" [value]="trainerData.description"></textarea>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="tim-icons icon-email-85"></i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.email" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.email">
+                                    <input class="form-control" ngbTooltip="El correo proporcionado debe ser valido" placeholder="correo@correo.com" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.email" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.email">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-whatsapp">
                                     </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.whatsapp" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.whatsapp">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://wa.me/tu_numero" placeholder="https://wa.me/tu_numero" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.whatsapp" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.whatsapp">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-telegram-plane"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.telegram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.telegram">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://t.me/nombre_usuario" placeholder="https://t.me/nombre_usuario" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.telegram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.telegram">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-facebook-f"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.facebook" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.facebook">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://www.facebook.com/..." placeholder="https://www.facebook.com/..." type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.facebook" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.facebook">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-instagram"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.instagram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.instagram">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://www.instagram.com/..." placeholder="https://www.instagram.com/..." type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.instagram" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.instagram">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-youtube"> </i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.youtube" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.youtube">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://www.youtube.com/..." placeholder="https://www.youtube.com/..." type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.youtube" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.youtube">
                                 </div>
                             </div>
                             <div class=" col-md-12 md-1">
                                 <div class="input-icon form-group">
                                     <i class="fab fa-tiktok"></i>
-                                    <input class="form-control" type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.tiktok" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.tiktok">
+                                    <input class="form-control" ngbTooltip="Debe cumplir formato de url, Ejemplo: https://www.tiktok.com/..." placeholder="https://www.tiktok.com/..." type="url" style="padding-left: 33px;" [(ngModel)]="socialMedia.tiktok" [ngModelOptions]="{standalone: true}" [value]="socialMediaData.tiktok">
                                 </div>
                             </div>
                         </div>
@@ -145,27 +152,29 @@
                             </select>
                             <br>
                             <label> Descripción de la clase </label>
-                            <textarea class="form-control" [(ngModel)]="lection.description" [ngModelOptions]="{standalone: true}" [value]="lectionData.description"></textarea>
+                            <textarea class="form-control" rows="7" [(ngModel)]="lection.description" [ngModelOptions]="{standalone: true}" [value]="lectionData.description"></textarea>
                         </div>
                         <div class="col-12 col-md-4">
-                            <h4 class="text-center">Imagen de la Clase</h4>
-                            <br>
+                            <h5 class="text-center">IMAGEN DE LA CLASE <strong>(dimensiones recomendadas 900px x 900px)</strong></h5>
                             <div class="container-image p-2">
                                 <div [ngSwitch]="updateImage">
                                     <div *ngSwitchCase="0">
-                                        <img [src]="lectionData.image" class="img-thumbnail mx-auto d-block">
+                                        <img [src]="lectionData.image" class="mx-auto d-block">
                                     </div>
                                     <div *ngSwitchCase="1">
-                                        <img [src]="image" class="img-thumbnail mx-auto d-block">
+                                        <img [src]="image" class="mx-auto d-block">
                                     </div>
                                     <div *ngSwitchCase="2">
-                                        <img src="/../../../../assets/img/anime3.png" alt="">
+                                        <img src="/../../../../assets/img/image-class.jpg" class="mx-auto d-block">
                                     </div>
                                 </div>
                                 <div class="overlay" (click)="showImage()">
-                                    <div class="text text-light">
-                                        <i class="tim-icons icon-upload"> </i>
-                                        Editar icono para tu blog (opcional)
+                                    <div class="text-icon text-light">
+                                        <span>
+                                            <i class="tim-icons icon-upload"> </i>
+                                            CLASE <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                                        </span>
+                                        <p>¡ haga click aqui !</p>
                                     </div>
                                 </div>
                             </div>

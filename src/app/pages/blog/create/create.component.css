@@ -2,16 +2,14 @@ textarea{
     border: solid 1px #32325d;
     min-height: 4cm;
 }
-
 .form-control.ng-touched.ng-invalid{
   /* border: 1px solid #fd5d93; */
   margin-bottom: 0%;
 }
-
 .container-image{
     position: relative;
 }
-
+  
 .overlay {
     position: absolute;
     top: 0;
@@ -28,7 +26,6 @@ textarea{
   .container-image:hover .overlay {
     opacity: 1;
   }
-
   .text {
     cursor: pointer;
     color: black;
@@ -42,6 +39,15 @@ textarea{
     text-align: center;
   }
 
-  .img-banner {
-    width: 100%;
+  .text-icon {
+    cursor: pointer;
+    color: black;
+    font-size: 13px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
   }

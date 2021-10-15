@@ -15,41 +15,48 @@
           </div>
           <hr color="purple" width="90%" />
           <br />
-            <div class="form-group">
-              <div class="row">
-                <div class="col-12 col-md-4">
-                  <nav>
-                    <ul>
-                      <li><a>Elige una opcion</a>
-                        <ul>
-                          <li><a>SERVICIO</a>
-                            <ul>
-                              <li *ngFor="let service of services"><a (click)="content(service.id, 'service', service.title)">{{service.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>CATEGORIA</a>
-                            <ul>
-                              <li *ngFor="let store of stores"><a (click)="content(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>ENTRENADOR</a>
-                            <ul>
-                              <li *ngFor="let trainer of trainers"><a (click)="content(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>BLOG</a>
-                            <ul>
-                              <li *ngFor="let blog of blogs"><a (click)="content(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                  <br>
-                  <br>
-                  <p>Opcion elegida <strong>{{selectedOption}}</strong></p>
-                  <!-- <div *ngIf="currentFileUpload" class="progress">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-12 col-md-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services"><a
+                                (click)="content(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores"><a
+                                (click)="content(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers"><a
+                                (click)="content(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs"><a (click)="content(blog.id, 'blog', blog.name)">{{blog.name|
+                                slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida <strong>{{selectedOption}}</strong></p>
+                <!-- <div *ngIf="currentFileUpload" class="progress">
                     <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
                       aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
                       {{progress.percentage}}%</div>
@@ -60,173 +67,222 @@
                   </label>
                   
                   <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
-                </div>
-                <div class="col-12 col-md-8">
-                  <h1 class="text-center">Promoción 1</h1>
-                  <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!imageContent; else noImage" />
-                    <ng-template #noImage>
-                      <img [src]="imageContent" class="mx-auto d-block" />
-                    </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-4">
-                  <nav>
-                    <ul>
-                      <li><a>Elige una opcion</a>
-                        <ul>
-                          <li><a>SERVICIO</a>
-                            <ul>
-                              <li *ngFor="let service of services"><a (click)="content2(service.id, 'service', service.title)">{{service.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>CATEGORIA</a>
-                            <ul>
-                              <li *ngFor="let store of stores"><a (click)="content2(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>ENTRENADOR</a>
-                            <ul>
-                              <li *ngFor="let trainer of trainers"><a (click)="content2(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>BLOG</a>
-                            <ul>
-                              <li *ngFor="let blog of blogs"><a (click)="content2(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                  <br>
-                  <br>
-                  <p>Opcion elegida : <strong>{{selectedOption2}}</strong></p>
-                </div>
-                <div class="col-12 col-md-8">
-                  <h1 class="display-4">Promoción 2</h1>
-                  <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!imageContent2; else noImage2" />
-                    <ng-template #noImage2>
-                      <img [src]="imageContent2" class="mx-auto d-block" />
-                    </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="imageCropper2()">cargar imagen</p>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-4">
-                  <nav>
-                    <ul>
-                      <li><a>Elige una opcion</a>
-                        <ul>
-                          <li><a>SERVICIO</a>
-                            <ul>
-                              <li *ngFor="let service of services"><a (click)="content3(service.id, 'service', service.title)">{{service.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>CATEGORIA</a>
-                            <ul>
-                              <li *ngFor="let store of stores"><a (click)="content3(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>ENTRENADOR</a>
-                            <ul>
-                              <li *ngFor="let trainer of trainers"><a (click)="content3(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>BLOG</a>
-                            <ul>
-                              <li *ngFor="let blog of blogs"><a (click)="content3(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                  <br>
-                  <br>
-                  <p>Opcion elegida : <strong>{{selectedOption3}}</strong></p>
-                </div>
-                <div class="col-12 col-md-8">
-                  <h1 class="display-4">Promoción 3</h1>
-                  <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!imageContent3; else noImage3" />
-                    <ng-template #noImage3>
-                      <img [src]="imageContent3" class="mx-auto d-block" />
-                    </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="imageCropper3()">cargar imagen</p>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-                <hr color="purple" width="90%" />
-                <br />
-                <div class="col-12 col-md-4">
-                  <nav>
-                    <ul>
-                      <li><a>Elige una opcion</a>
-                        <ul>
-                          <li><a>SERVICIO</a>
-                            <ul>
-                              <li *ngFor="let service of services"><a (click)="content4(service.id, 'service', service.title)">{{service.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>CATEGORIA</a>
-                            <ul>
-                              <li *ngFor="let store of stores"><a (click)="content4(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>ENTRENADOR</a>
-                            <ul>
-                              <li *ngFor="let trainer of trainers"><a (click)="content4(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                          <li><a>BLOG</a>
-                            <ul>
-                              <li *ngFor="let blog of blogs"><a (click)="content4(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
-                  <br>
-                  <br>
-                  <p>Opcion elegida : <strong>{{selectedOption4}}</strong></p>
-                </div>
-                <div class="col-12 col-md-8">
-                  <h1 class="display-4">Promoción 4</h1>
-                  <div class="container-image">
-                    <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                      *ngIf="!imageContent4; else noImage4" />
-                    <ng-template #noImage4>
-                      <img [src]="imageContent4" class="mx-auto d-block" />
-                    </ng-template>
-                    <div class="overlay">
-                      <p class="text text-light" (click)="imageCropper4()">cargar imagen</p>
-                    </div>
-                  </div>
-                  <br>
-                </div>
               </div>
-              <div class="text-right">
-                <button class="btn btn-info" (click)="post()">Guardar</button>
+              <div class="col-12 col-md-8">
+                <h2 class="text-center">PROMOCION 1<strong>(dimensiones recomendadas 1920px x
+                    1080px)</strong></h2>
+                <div class="container-image">
+                  <img src="/../../../../assets/img/banner.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!imageContent; else noImage" />
+                  <ng-template #noImage>
+                    <img [src]="imageContent" class="mx-auto d-block" />
+                  </ng-template>
+                  <div class="overlay" (click)="imageCropper()">
+                    <div class="text text-light">
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        IMAGEN DE LA PROMOCION <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-12 col-md-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services"><a
+                                (click)="content2(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores"><a
+                                (click)="content2(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers"><a
+                                (click)="content2(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs"><a
+                                (click)="content2(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida : <strong>{{selectedOption2}}</strong></p>
+              </div>
+              <div class="col-12 col-md-8">
+                <h2 class="text-center">PROMOCION 2<strong>(dimensiones recomendadas 1920px x
+                    1080px)</strong></h2>
+                <div class="container-image">
+                  <img src="../../../../assets/img/banner.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!imageContent2; else noImage2" />
+                  <ng-template #noImage2>
+                    <img [src]="imageContent2" class="mx-auto d-block" />
+                  </ng-template>
+                  <div class="overlay" (click)="imageCropper2()">
+                    <div class="text text-light">
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        IMAGEN DE LA PROMOCION <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-12 col-md-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services"><a
+                                (click)="content3(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores"><a
+                                (click)="content3(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers"><a
+                                (click)="content3(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs"><a
+                                (click)="content3(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida : <strong>{{selectedOption3}}</strong></p>
+              </div>
+              <div class="col-12 col-md-8">
+                <h2 class="text-center">PROMOCION 3<strong>(dimensiones recomendadas 1920px x
+                    1080px)</strong></h2>
+                <div class="container-image">
+                  <img src="../../../../assets/img/banner.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!imageContent3; else noImage3" />
+                  <ng-template #noImage3>
+                    <img [src]="imageContent3" class="mx-auto d-block" />
+                  </ng-template>
+                  <div class="overlay" (click)="imageCropper3()">
+                    <div class="text text-light">
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        IMAGEN DE LA PROMOCION <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <hr color="purple" width="90%" />
+              <br />
+              <div class="col-12 col-md-4">
+                <nav>
+                  <ul>
+                    <li><a>Elige una opcion</a>
+                      <ul>
+                        <li><a>SERVICIO</a>
+                          <ul>
+                            <li *ngFor="let service of services"><a
+                                (click)="content4(service.id, 'service', service.title)">{{service.title| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>CATEGORIA</a>
+                          <ul>
+                            <li *ngFor="let store of stores"><a
+                                (click)="content4(store.id, 'store', store.title)">{{store.title| slice:0:18}} ...</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a>ENTRENADOR</a>
+                          <ul>
+                            <li *ngFor="let trainer of trainers"><a
+                                (click)="content4(trainer.id, 'trainer', trainer.names)">{{trainer.names| slice:0:18}}
+                                ...</a></li>
+                          </ul>
+                        </li>
+                        <li><a>BLOG</a>
+                          <ul>
+                            <li *ngFor="let blog of blogs"><a
+                                (click)="content4(blog.id, 'blog', blog.name)">{{blog.name| slice:0:18}} ...</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+                <br>
+                <br>
+                <p>Opcion elegida : <strong>{{selectedOption4}}</strong></p>
+              </div>
+              <div class="col-12 col-md-8">
+                <h2 class="text-center">PROMOCION 4<strong>(dimensiones recomendadas 1920px x
+                    1080px)</strong></h2>
+                <div class="container-image">
+                  <img src="../../../../assets/img/banner.png" alt="Avatar" class="mx-auto d-block"
+                    *ngIf="!imageContent4; else noImage4" />
+                  <ng-template #noImage4>
+                    <img [src]="imageContent4" class="mx-auto d-block" />
+                  </ng-template>
+                  <div class="overlay" (click)="imageCropper4()">
+                    <div class="text text-light">
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        IMAGEN DE LA PROMOCION <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
+                    </div>
+                  </div>
+                </div>
+                <br>
               </div>
             </div>
+            <div class="text-right">
+              <button class="btn btn-info" (click)="post()">Guardar</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

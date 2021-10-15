@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-share-button',
@@ -16,11 +17,15 @@ export class ShareButtonComponent implements OnInit {
 
   public share(type) {
     let searchParams = new URLSearchParams();
-    let url = 'http://localhost:4200/#/';
+    let url = environment.apiUrl;
     switch(type) {
       case 'facebook':
         searchParams.set('u', url + this.shareUrl);
         this.navUrl = 'https://www.facebook.com/sharer/sharer.php?' + searchParams;
+        break;
+      case 'messenger':
+        searchParams.set('u', url + this.shareUrl);
+        this.navUrl = 'https://m.me/' + searchParams;
         break;
       case 'telegram':
         searchParams.set('url', url + this.shareUrl);

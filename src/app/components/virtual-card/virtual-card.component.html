@@ -1,8 +1,5 @@
-<div class="content">
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-7">
-      <div class="col-12 col-md">
-        <div class=" card cardW white-content text-center" *ngIf="type === 1">
+      <div class="col-12 col-md"  *ngIf="type === 1">
+        <div class=" card cardW white-content text-center">
           <div class="containerImg">
             <img class="card-img-top background" [src]="data.banner" />
             <img [src]="data.image" class="avatar logo imgP" />
@@ -11,9 +8,9 @@
             <hr class="top-line" />
             <h3 class="admin-name text-center">{{ data.names }}</h3>
             <!-- <p class="text-center">Administrador</p> -->
-            <div class="row justify-content-center">
-              <div class="text-center" *ngFor="let option of data.options">
-                <button class="btn btn-round btn-sm">
+            <div *ngIf="options" class="row justify-content-center">
+              <div class="text-center" *ngFor="let option of options">
+                <button class="btn btn-round btn-sm" (click)="optionOpen(option)">
                   {{ option.name }}
                 </button>
               </div>
@@ -29,6 +26,14 @@
                   class="btn btn-icon btn-simple btn-round bt-lg"
                 >
                   <i class="fab fa-facebook-f"> </i>
+                </button>
+                <button
+                  *ngIf="data.socialMedia.email"
+                  placement="top" ngbTooltip="Correo"
+                  class="btn btn-icon btn-round btn-simple bt-lg"
+                  (click)="openContactForm(data.socialMedia.email)"
+                  >
+                  <i class="tim-icons icon-email-85"> </i>
                 </button>
                 <button
                   ngbTooltip="Twitter"
@@ -107,11 +112,11 @@
             <img class="card-img-top background" [src]="data.banner" />
             <img [src]="data.image" class="avatar logo" />
           </div>
-          <div class="card-body cb text-center col col-md">
+          <div class="card-body cb text-center col col-md pt-5">
             <h3 class="card-title">{{ data.names }}</h3>
-            <div class="row justify-content-center">
-              <div class="text-center" *ngFor="let option of data.options">
-                <button class="btn btn-round btns btn-sm">
+            <div *ngIf="options" class="row justify-content-center">
+              <div class="text-center" *ngFor="let option of options">
+                <button class="btn btn-round btns btn-sm" (click)="optionOpen(option)">
                   {{ option.name }}
                 </button>
               </div>
@@ -125,6 +130,14 @@
               >
                 <i class="fab fa-facebook-f"> </i>
               </button>
+              <button
+                  *ngIf="data.socialMedia.email"
+                  ngbTooltip="Correo"
+                  class="btn btn-icon btn-round bt-lg btns"
+                  (click)="openContactForm(data.socialMedia.email)"
+                  >
+                  <i class="tim-icons icon-email-85"> </i>
+                </button>
               <button
                 ngbTooltip="Twitter"
                 class="btn btn-icon btn-round bt-lg btns"
@@ -182,6 +195,3 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>

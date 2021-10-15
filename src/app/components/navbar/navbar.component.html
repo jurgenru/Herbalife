@@ -25,7 +25,6 @@
             <p class="d-lg-none">Temas</p>
           </a>
           <ul class="dropdown-menu-right dropdown-navbar" ngbDropdownMenu>
-
             <li class="nav-link">
               <a class="nav-item" href="javascript:void(0)" (click)="changeDashboardColor('black-content', 'red')"
                 ngbDropdownItem>
@@ -76,7 +75,7 @@
               <i class=" tim-icons icon-bell-55"> </i>
               <p class=" d-lg-none">Notifications</p>
           </a>
-          <ul class=" dropdown-menu-right dropdown-navbar" ngbDropdownMenu *ngIf="showNot > 0; else noNot">
+          <ul class=" dropdown-menu-right dropdown-navbar notif" ngbDropdownMenu *ngIf="showNot > 0; else noNot">
               <h4 class="text-dark text-center">Notificaciones</h4>
               <hr>
               <li class=" nav-link" *ngFor="let notification of notifications" [ngClass]="{'notificationItem': !notification.status}">

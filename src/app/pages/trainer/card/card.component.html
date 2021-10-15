@@ -1,9 +1,10 @@
 <div class="content">
     <div class="row">
-      <div class="col-12">
-        <div class="card p-5">
+      <div class="col col-md">
+        <div class="card">
           <div class="card-header">
-            <h2 class="text-center title">Crear Tarjeta Virtual</h2>
+            <h2 class="text-center title" *ngIf="!btnValidate">Crear Tarjeta Virtual</h2>
+            <h2 class="text-center title" *ngIf="btnValidate">Editar Tarjeta Virtual</h2>
           </div>
           <div class="row" *ngIf="!cardSelect">
             <div class="text-center col-12 col-md-6 p-2" (click)="selectCardType(1)">
@@ -22,10 +23,10 @@
                       src="../../../../assets/img/anime3.png"
                       alt="Avatar"
                       class="mx-auto d-block"
-                      *ngIf="!userBanner; else noBanner"
+                      *ngIf="!banner; else noBanner"
                     />
                     <ng-template #noBanner>
-                      <img [src]="userBanner" alt="" class="mx-auto d-block" />
+                      <img [src]="banner" alt="" class="mx-auto d-block" />
                     </ng-template>
                     <div class="overlay" (click)="showBanner()">
                       <p class="text text-light">Sube tu banner</p>
@@ -39,10 +40,10 @@
                       src="../../../../assets/img/anime3.png"
                       alt="Avatar"
                       class="mx-auto d-block"
-                      *ngIf="!userImage; else noImage"
+                      *ngIf="!profileImage; else noImage"
                     />
                     <ng-template #noImage>
-                      <img [src]="userImage" alt="" />
+                      <img [src]="profileImage" alt="" />
                     </ng-template>
                     <div class="overlay" (click)="showImage()">
                       <p class="text text-light">Sube tu foto</p>
@@ -70,7 +71,7 @@
                       <i class="fab fa-whatsapp"> </i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://wa.me/tu_numero"
                         placeholder="https://wa.me/tu_numero"
                         type="url"
                         style="padding-left: 33px"
@@ -85,7 +86,7 @@
                       <i class="fab fa-telegram-plane"> </i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://t.me/nombre_usuario"
                         placeholder="https://t.me/nombre_usuario"
                         type="url"
                         style="padding-left: 33px"
@@ -100,7 +101,7 @@
                       <i class="fab fa-facebook-f"> </i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://www.facebook.com/..."
                         placeholder="https://www.facebook.com/..."
                         type="url"
                         style="padding-left: 33px"
@@ -115,7 +116,7 @@
                       <i class="fab fa-instagram"> </i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://www.instagram.com/..."
                         placeholder="https://www.instagram.com/..."
                         type="url"
                         style="padding-left: 33px"
@@ -130,7 +131,7 @@
                       <i class="fab fa-youtube"> </i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://www.youtube.com/..."
                         placeholder="https://www.youtube.com/..."
                         type="url"
                         style="padding-left: 33px"
@@ -145,7 +146,7 @@
                       <i class="fab fa-tiktok"></i>
                       <input
                         class="form-control"
-                        [ngbTooltip]="tipContent"
+                        placement="top" ngbTooltip="https://www.tiktok.com/..."
                         placeholder="https://www.tiktok.com/..."
                         type="url"
                         style="padding-left: 33px"

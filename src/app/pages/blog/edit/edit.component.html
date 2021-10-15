@@ -16,47 +16,55 @@
                                     [ngModelOptions]="{standalone: true}" [value]="dataBlog.name">
                             </div>
                             <br>
-                            <div class="col-12 col-md-5">
-                                <h4 class="text-center">Icono del blog</h4>
-                                <br>
+                            <div class="col-12 col-md-4">
+                                <h5 class="text-center">ICONO <strong>(dimensiones recomendadas 500px x
+                                        500px)</strong>
+                                </h5>
                                 <div class="container-image p-2">
                                     <div [ngSwitch]="updateIcon">
                                         <div *ngSwitchCase="0">
-                                            <img [src]="dataBlog.icon" class="img-thumbnail mx-auto d-block">
+                                            <img [src]="dataBlog.icon" class="mx-auto d-block">
                                         </div>
                                         <div *ngSwitchCase="1">
-                                            <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                                            <img [src]="icon" class="mx-auto d-block">
                                         </div>
                                         <div *ngSwitchCase="2">
-                                            <img src="/../../../../assets/img/anime3.png" alt="">
+                                            <img src="/../../../../assets/img/img_3115.jpg" class="mx-auto d-block">
                                         </div>
                                     </div>
                                     <div class="overlay" (click)="showIcon()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Editar icono para tu blog (opcional)
+                                        <div class="text-icon text-light">
+                                            <span>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                                            </span>
+                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-7">
-                                <h4 class="text-center">Portada del blog</h4>
+                            <div class="col-12 col-md-8">
+                                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas 1920px x
+                                        1080px)</strong></h5>
                                 <div class="container-image p-2">
                                     <div [ngSwitch]="updateBanner">
                                         <div *ngSwitchCase="0">
-                                            <img [src]="dataBlog.banner" class="img-thumbnail mx-auto d-block">
+                                            <img [src]="dataBlog.banner" class="mx-auto d-block">
                                         </div>
                                         <div *ngSwitchCase="1">
-                                            <img [src]="banner" class="img-thumbnail mx-auto d-block">
+                                            <img [src]="banner" class="mx-auto d-block">
                                         </div>
                                         <div *ngSwitchCase="2">
-                                            <img src="/../../../../assets/img/anime3.png" alt="">
+                                            <img src="/../../../../assets/img/banner.png" class="mx-auto d-block">
                                         </div>
                                     </div>
                                     <div class="overlay" (click)="showBanner()">
                                         <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Editar imagen o video a la portada
+                                            <div>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                POSTER <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                                            </div>
+                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
@@ -100,17 +108,23 @@
                                         [ngModelOptions]="{standalone: true}"
                                         [value]="DataArticle.description"></textarea>
                                 </div>
-                                <div class="col-12 col-md-5 mt-4 mb-4">
+                                <div class="col-12 col-md-4 mt-4 mb-4">
+                                    <h5 class="text-center">IMAGEN DEL ARTICULO<strong>(dimensiones
+                                            recomendadas 900px x 900px)</strong></h5>
                                     <div class="container-image">
-                                        <img [src]="DataArticle.image" class="img-thumbnail mx-auto d-block"
+                                        <img [src]="DataArticle.image" class="mx-auto d-block"
                                             *ngIf="!articleImage[i]; else noArticleImage">
                                         <ng-template #noArticleImage>
-                                            <img [src]="articleImage[i]" class="mx-auto d-block img-thumbnail">
+                                            <img [src]="articleImage[i]" class="mx-auto d-block">
                                         </ng-template>
                                         <div class="overlay" (click)="showBlog(i)">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Editar imagen o video al artículo
+                                            <div class="text-icon text-light">
+                                                <span>
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    ARTICULO <strong>(dimensiones recomendadas 900px x
+                                                        900px)</strong>
+                                                </span>
+                                                <p>¡ haga click aqui !</p>
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +137,7 @@
                     </div>
                 </div>
                 <form [formGroup]="articleForm">
-                    <div class= "card-body" formArrayName="newArticle">
+                    <div class="card-body" formArrayName="newArticle">
                         <div *ngFor="let FormInputs of newArticle.controls; let j = index;">
                             <div [formGroupName]="j">
                                 <div class="text-center">
@@ -132,7 +146,7 @@
                                 <br />
                                 <br />
                                 <div class="row">
-                                    <div class="col-12 col-md-7">
+                                    <div class="col-12 col-md-8">
                                         <label> Titulo </label>
                                         <input class=" form-control" placeholder="Coloca el titulo del artículo"
                                             formControlName="title" type="text">
@@ -173,25 +187,23 @@
                                 <br>
                                 <hr color="red" />
                                 <button (click)="removeArticle(j)"
-                                class="btn btn-danger btn-fab btn-icon btn-round float-left">
-                                <i class="tim-icons icon-simple-delete"></i>
-                            </button>
+                                    class="btn btn-danger btn-fab btn-icon btn-round float-left">
+                                    <i class="tim-icons icon-simple-delete"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-            
-                <div class=" button-container pull-right">
-                    <button (click)="addArticle()" class="btn btn-primary btn-fab btn-icon btn-round float-right"
-                        [disabled]="btnAddArticle">
-                        <i class="tim-icons icon-simple-add"></i>
-                    </button>
-                    <br>
-                    <button *ngIf="add" class="btn btn-success btn-sm pull-right" type="button" (click)="post()"
-                        [disabled]="newArticle.invalid">Agregar articulos</button>
-                </div>
-            
+            <div class=" button-container pull-right">
+                <button (click)="addArticle()" class="btn btn-primary btn-fab btn-icon btn-round float-right"
+                    [disabled]="btnAddArticle">
+                    <i class="tim-icons icon-simple-add"></i>
+                </button>
+                <br>
+                <button *ngIf="add" class="btn btn-success btn-sm pull-right" type="button" (click)="post()"
+                    [disabled]="newArticle.invalid">Agregar articulos</button>
+            </div>
         </div>
     </div>
 </div>

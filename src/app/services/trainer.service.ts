@@ -32,7 +32,11 @@ export class TrainerService {
     return this.http.get(`${environment.apiUrl}trainers/${id}/lection`).pipe();
   }
 
-  getVirtualCardById(id){
-    return this.http.get(`${environment.apiUrl}trainers/${id}/virtual-cards`).pipe(); 
+  getVirtualCardById(id, filter){
+    return this.http.get(`${environment.apiUrl}trainers/${id}/virtual-cards?filter=${filter}`).pipe(); 
+  }
+
+  editVirtualCardById(id, body){
+    return this.http.patch(`${environment.apiUrl}trainers/${id}/virtual-cards`, body).pipe(); 
   }
 }

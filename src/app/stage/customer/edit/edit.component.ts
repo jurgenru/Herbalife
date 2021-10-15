@@ -86,11 +86,14 @@ export class EditComponent implements OnInit {
 
   showImage() {
     this.simpleModalService
-      .addModal(ImageCropperComponent, {format: 1/1})
+      .addModal(ImageCropperComponent, {format: 16/9})
       .subscribe((data) => {
         this.image = data;
         this.updateImage = 1;
         this.profile.image = data;
+        if(data == null){
+          this.updateImage = 0;
+        }
       });
   }
 

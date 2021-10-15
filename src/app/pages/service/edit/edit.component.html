@@ -25,45 +25,53 @@
             <br />
             <div class="row">
               <div class="col-12 col-md-3">
-                <h4 class="text-center">Icono</h4>
+                <h5 class="text-center">ICONO <strong>(dimensiones recomendadas 500 x 500px)</strong>
+                </h5>
                 <div class="container-image p-2">
                   <div [ngSwitch]="updateIcon">
                     <div *ngSwitchCase="0">
-                      <img [src]="serviceData.icon" class="img-thumbnail mx-auto d-block">
+                      <img [src]="serviceData.icon" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                      <img [src]="icon" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
-                      <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                      <img src="/../../../../assets/img/img_3115.jpg" alt="" class="mx-auto d-block">
                     </div>
                   </div>
                   <div class="overlay" (click)="showIcon()">
-                    <div class="text text-light">
-                      <i class="tim-icons icon-upload"> </i>
-                      Editar icono
+                    <div class="text-icon text-light">
+                      <span>
+                        <i class="tim-icons icon-upload"> </i>
+                        ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                      </span>
+                      <p>¡ haga click aqui !</p>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-9">
-                <h4 class="text-center">Portada</h4>
+                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                  px")</strong></h5>
                 <div class="container-image p-2">
                   <div [ngSwitch]="updateBanner">
                     <div *ngSwitchCase="0">
-                      <img [src]="serviceData.banner" class="img-thumbnail mx-auto d-block">
+                      <img [src]="serviceData.banner" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="banner" class="img-thumbnail mx-auto d-block">
+                      <img [src]="banner" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
-                      <img src="/../../../../assets/img/image.jpg" alt="" class="img-thumbnail mx-auto d-block">
+                      <img src="/../../../../assets/img/imagen.jpg" alt="" class="mx-auto d-block">
                     </div>
                   </div>
                   <div class="overlay" (click)="showBanner()">
                     <div class="text text-light">
-                      <i class="tim-icons icon-upload"> </i>
-                      Editar portada
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        POSTER <strong>(dimensiones recomendadas 1920px x 1080px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
                     </div>
                   </div>
                 </div>
@@ -74,23 +82,27 @@
             <br />
             <div class="row">
               <div class="col-12 col-md-3">
-                <h4 class="text-center">Imagen</h4>
+                <h5 class="text-center">IMAGEN DEL SERVICO <strong>(dimensiones recomendadas "900 x 900
+                  px")</strong></h5>
                 <div class="container-image p-2">
                   <div [ngSwitch]="updateImage">
                     <div *ngSwitchCase="0">
-                      <img [src]="serviceData.image" class="img-thumbnail mx-auto d-block">
+                      <img [src]="serviceData.image" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="1">
-                      <img [src]="image" class="img-thumbnail mx-auto d-block">
+                      <img [src]="image" class="mx-auto d-block">
                     </div>
                     <div *ngSwitchCase="2">
-                      <img src="../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                      <img src="../../../../assets/img/image-service.jpg" alt="" class="mx-auto d-block">
                     </div>
                   </div>
                   <div class="overlay" (click)="showPortrait()">
-                    <div class="text text-light">
-                      <i class="tim-icons icon-upload"> </i>
-                      Editar imagen
+                    <div class="text-icon text-light">
+                      <span>
+                        <i class="tim-icons icon-upload"> </i>
+                        SERVICIO <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                      </span>
+                      <p>¡ haga click aqui !</p>
                     </div>
                   </div>
                 </div>
@@ -108,7 +120,7 @@
                 </div>
                 <div class="form-group">
                   <label> Descripción del servicio </label>
-                  <textarea class="form-control rounded pl-3 pr-3" type="text" [ngModelOptions]="{standalone: true}"
+                  <textarea class="form-control rounded pl-3 pr-3" type="text" rows="5" [ngModelOptions]="{standalone: true}"
                     [(ngModel)]="service.description" [value]="serviceData.description"></textarea>
                 </div>
               </div>

@@ -10,6 +10,11 @@
   transition: 0.5s ease;
   background-color: #008cba;
 }
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 .container-image:hover .overlay {
   opacity: 1;
@@ -54,13 +59,13 @@
 .fa-youtube {
   color: #ff0000;
 }
-.input-social i{
+.input-social i {
   position: absolute;
   margin: 13px;
 }
-.imgH{
+.imgH {
   height: 60%;
 }
-.imgH2{
+.imgH2 {
   height: 60%;
 }

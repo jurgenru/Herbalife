@@ -19,7 +19,8 @@
   z-index: -1;
 }
 .img-blog {
-  width: 100% !important;
+  width: 100%;
+  height: 530px;
 }
 .icon {
   width: 30px;
@@ -51,4 +52,11 @@
 
 .icon-star {
   font-size: 50px;
+}
+
+@media (max-width: 668px) {
+  .img-blog {
+    width: 100%;
+    height: 300px;
+  }
 }

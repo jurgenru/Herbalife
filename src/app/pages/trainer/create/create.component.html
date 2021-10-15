@@ -1,42 +1,56 @@
 <div class=" content">
-  <div class=" row">
-    <div class=" col-md-12">
-      <div class="card">
-        <form (ngSubmit)="post()">
-            <div class="card-body">
-              <div class="card-header text-center">
-                <h2>ENTRENADOR</h2>
-                <h5>Puedes añadir hasta 12 entrenadores</h5>
-              </div>
-              <br>
-              <form [formGroup]="trainer">
+    <div class=" row">
+        <div class=" col-md-12">
+            <div class="card">
+                <form (ngSubmit)="post()">
+                    <div class="card-body">
+                        <div class="card-header text-center">
+                            <h2>ENTRENADOR</h2>
+                            <h5>Puedes añadir hasta 12 entrenadores</h5>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <form [formGroup]="trainer">
                             <div class="row">
                                 <div class="col-12 col-md-3">
+                                    <h5 class="text-center">ICONO <strong>(dimensiones recomendadas "500 x 500
+                                            px")</strong>
+                                    </h5>
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/anime6.png" class="mx-auto d-block"
+                                        <img src="../../../../assets/img/img_3115.jpg" class="mx-auto d-block"
                                             *ngIf="!icon; else noIcon">
                                         <ng-template #noIcon>
                                             <img [src]="icon" alt="">
                                         </ng-template>
                                         <div class="overlay" (click)="showIcon()">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Agregar icono a la categoria (opcional)
+                                            <div class="text-icon text-light">
+                                                <span>
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong>
+                                                </span>
+                                                <p>¡ haga click aqui !</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-9 text-center">
+                                    <h5 class="text-center">POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                            px")</strong></h5>
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/anime6.png" alt="trainerPortrait"
+                                        <img src="../../../../assets/img/banner.png" alt="trainerPortrait"
                                             class="mx-auto d-block" *ngIf="!banner; else noBanner">
                                         <ng-template #noBanner>
                                             <img [src]="banner" alt="">
                                         </ng-template>
                                         <div class="overlay" (click)="showBanner()">
                                             <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Agregar imagen para la portada
+                                                <div>
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                                        px")</strong>
+                                                </div>
+                                                <p>¡ haga click aqui !</p>
                                             </div>
                                         </div>
                                     </div>
@@ -81,43 +95,55 @@
                                         <div class="input-icon form-group">
                                             <i class="fab fa-whatsapp">
                                             </i>
-                                            <input class="form-control" placeholder="Número Internacional (sólo números)" type="url"
-                                                formControlName="whatsapp" ngbTooltip="Ejemplo: 59177777777" style="padding-left: 33px;">
+                                            <input class="form-control"
+                                                placeholder="Número Internacional (sólo números)" type="url"
+                                                formControlName="whatsapp" ngbTooltip="Ejemplo: 59177777777"
+                                                style="padding-left: 33px;">
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-icon form-group">
                                             <i class="fab fa-telegram-plane"> </i>
                                             <input class="form-control" placeholder="nombre usuario" type="url"
-                                                style="padding-left: 33px;" ngbTooltip="Recuerde ingresar su nombre de usuario de telegram" formControlName="telegram">
+                                                style="padding-left: 33px;"
+                                                ngbTooltip="Recuerde ingresar su nombre de usuario de telegram"
+                                                formControlName="telegram">
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-icon form-group">
                                             <i class="fab fa-facebook-f"> </i>
-                                            <input class="form-control" placeholder="https://www.facebook.com/nombre_usuario" type="url"
-                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="facebook">
+                                            <input class="form-control"
+                                                placeholder="https://www.facebook.com/nombre_usuario" type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent"
+                                                formControlName="facebook">
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-icon form-group">
                                             <i class="fab fa-instagram"> </i>
-                                            <input class="form-control" placeholder="https://www.instagram.com/nombre_usuario" type="url"
-                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="instagram">
+                                            <input class="form-control"
+                                                placeholder="https://www.instagram.com/nombre_usuario" type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent"
+                                                formControlName="instagram">
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-icon form-group">
                                             <i class="fab fa-youtube"> </i>
-                                            <input class="form-control" placeholder="https://www.youtube.com/channel/código" type="url"
-                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="youtube">
+                                            <input class="form-control"
+                                                placeholder="https://www.youtube.com/channel/código" type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent"
+                                                formControlName="youtube">
                                         </div>
                                     </div>
                                     <div class=" col-md-12 md-1">
                                         <div class="input-icon form-group">
                                             <i class="fab fa-tiktok"></i>
-                                            <input class="form-control" placeholder="https://www.tiktok.com/nombre_usuario" type="url"
-                                                style="padding-left: 33px;" [ngbTooltip]="tipContent" formControlName="tiktok">
+                                            <input class="form-control"
+                                                placeholder="https://www.tiktok.com/nombre_usuario" type="url"
+                                                style="padding-left: 33px;" [ngbTooltip]="tipContent"
+                                                formControlName="tiktok">
                                         </div>
                                     </div>
                                 </div>
@@ -125,8 +151,8 @@
                             <br>
                             <hr>
                             <br>
-              </form>
-              <form [formGroup]="lection">
+                        </form>
+                        <form [formGroup]="lection">
                             <div class="text-center">
                                 <h5>Clase del entrenador</h5>
                             </div>
@@ -155,16 +181,20 @@
                                     <br>
                                 </div>
                                 <div class="col-12 col-md-3">
+                                    <h5 class="text-center">IMAGEN DE LA CLASE <strong>(dimensiones recomendadas 900px x 900px)</strong></h5>
                                     <div class="container-image">
-                                        <img src="../../../../assets/img/angular2-logo-red.png" class="mx-auto d-block"
+                                        <img src="../../../../assets/img/image-class.jpg" class="mx-auto d-block"
                                             *ngIf="!image; else noImage">
                                         <ng-template #noImage>
-                                            <img [src]="image" alt="">
+                                            <img [src]="image" class="mx-auto d-block">
                                         </ng-template>
                                         <div class="overlay" (click)="showImage()">
-                                            <div class="text text-light">
-                                                <i class="tim-icons icon-upload"> </i>
-                                                Agregar imagen de la clase
+                                            <div class="text-icon text-light">
+                                                <span>
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    CLASE <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                                                </span>
+                                                <p>¡ haga click aqui !</p>
                                             </div>
                                         </div>
                                     </div>
@@ -185,23 +215,23 @@
                                         class="text-danger"> *El mensaje es <strong>requerido</strong><br></small>
                                 </div>
                             </div>
-              </form>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="button-container pull-right">
+                            <button type="submit" class="btn btn-info" [disabled]="trainer.invalid || lection.invalid">
+                                Guardar
+                            </button>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="card-footer">
-              <div class="button-container pull-right">
-                <button
-                  type="submit"
-                  class="btn btn-info"
-                  [disabled]="trainer.invalid || lection.invalid"
-                >
-                  Guardar
-                </button>
-              </div>
-            </div>
-          </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>
-<ng-template #tipContent>Recuerde que debe tener un <b>formato de url.</b> Para que funcione correctamente copie su url</ng-template>
-<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(24,31,46)" text="Creando entrenador ..."></ngx-ui-loader>
+<ng-template #tipContent>Recuerde que debe tener un <b>formato de url.</b> Para que funcione correctamente copie su url
+</ng-template>
+<ngx-ui-loader fgsColor='gray' fgsType='double-bounce' overlayColor="rgba(24,31,46)" text="Creando entrenador ...">
+</ngx-ui-loader>

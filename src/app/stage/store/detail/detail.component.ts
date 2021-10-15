@@ -111,11 +111,14 @@ export class DetailComponent implements OnInit {
 
 
   addToCart(item: any) {
-    if (this.userData) {
-      this.cartService.addToCart(item);
-    } else {
+    this.userService.me().subscribe(user => {
+      if (user) {
+        this.cartService.addToCart(item);
+      }
+    }, error => {
       this.showRegister();
-    }
+    });
+
   }
 
   showRegister() {

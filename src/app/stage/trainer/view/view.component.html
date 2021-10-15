@@ -24,6 +24,9 @@
               <button *ngIf="socialMedia.facebook" placement="top" ngbTooltip="Facebook" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.facebook)">
                 <i class="fab fa-facebook-f"> </i>
               </button>
+              <button *ngIf="socialMedia.email" placement="top" ngbTooltip="Correo" class="btn btn-icon btn-simple bt-lg" (click)="openContactForm(socialMedia.email)">
+                <i class="tim-icons icon-email-85"></i>
+              </button>
               <button *ngIf="socialMedia.twitter" placement="top" ngbTooltip="Twitter" class="btn btn-icon btn-simple bt-lg" (click)="socialUrl(socialMedia.twitter)">
                 <i class="fab fa-twitter"> </i>
               </button>
@@ -69,7 +72,7 @@
     <div class="row">
       <div class="col-md-6 mx-auto text-center">
         <button type="button" class="btn btn-success" [hidden]="validateAdmin" (click)="registerClass()">
-          inscribiste a la clase
+          Inscribete a la clase
         </button>
       </div>
     </div>
@@ -82,8 +85,8 @@
       <div class="card text-center">
         <div class="card-body">
           <img [src]="randomService" class="card-img" alt="moreServicesImg">
-          <a href="#" class="btn btn-success d-block">Pruebalo ahora</a>   
-        </div>        
+          <a href="#" class="btn btn-success d-block">Pruebalo ahora</a>
+        </div>
         </div>
     </div>
   </div>

@@ -64,6 +64,7 @@
   display: flex;
   bottom: -50px;
   align-items: center;
+  z-index: 10;
 }
 .containerImg .logo > img {
   width: 100px;
