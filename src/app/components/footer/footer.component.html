@@ -8,7 +8,7 @@
           <img *ngIf="user.icon" [src]="this.user.icon" class="mx-auto img-rounded d-block mt-2" alt="">
         </div>
         <div class="col-md-9 col-12 mt-3">
-          <p *ngIf="socialMedia.gmail" class="h4 text-left p-1"><i class="pull-left far fa-envelope fa-2x pr-2"></i> <b class="actionB" (click)="contactForm()">{{  socialMedia.gmail}}</b></p>
+          <p *ngIf="socialMedia.email" class="h4 text-left p-1"><i class="pull-left far fa-envelope fa-2x pr-2"></i> <b class="actionB" (click)="contactForm()">{{  socialMedia.email}}</b></p>
           <p *ngIf="user.address" class="h4 text-left p-1"><i class="pull-left fas fa-map-marker-alt fa-2x pr-2"></i> <b>{{  user.address}}</b></p>
           <p *ngIf="numberPhone" class="h4 text-left p-1"><i class="pull-left fab fa-whatsapp fa-2x pr-2"> </i> <b class="actionB" (click)="openSocialMedia(socialMedia.whatsapp)" > + {{   numberPhone[3]}}</b></p>
         </div>
