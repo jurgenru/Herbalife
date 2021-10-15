@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   closeResult: string;
   image: any;
+  icon: any;
 
   constructor(
     location: Location,
@@ -240,10 +241,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   me() {
     this.userService.me().subscribe((data: any) => {
       this.managerService.getByUserId(data.id).subscribe((man: any) => {
+        console.log(man);
         this.getNotifications(data.id);
         this.lengthNotification(data.id);
         man.forEach(element => {
           this.image = element.image;
+          this.icon = element.icon;
         });
       });
     });
