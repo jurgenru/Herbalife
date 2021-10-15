@@ -1,0 +1,50 @@
+<form [formGroup]="formData">
+    <div class="form-group">
+      <div class="modal-content">
+        <div class="row">
+          <div class="col-10">
+            <div class="modal-header">
+              <h3>{{ title }}</h3>
+            </div>
+          </div>
+          <div class="col text-center">
+            <br />
+            <i
+              class="fas fa-times-circle fa-lg"
+              (click)="close()"
+              ngbTooltip="cerrar"
+            ></i>
+          </div>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <label> Correo </label>
+                    <input class=" form-control"
+                        placeholder="correo@correo.com" formControlName="email"
+                        type="email" required>
+                    <label> Asunto </label>
+                    <input class=" form-control"
+                        placeholder="Coloca el asunto de tu mensaje" formControlName="issue"
+                        type="text" required>
+                    <label>Mensaje </label>
+                    <textarea class="form-control rounded pl-2 pr-2"
+                        placeholder="Coloca tu mensaje" rows="6"
+                        formControlName="message" value="" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="send()"
+            class="btn btn-primary"
+            [disabled]="formData.invalid"
+          >
+            Enviar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  

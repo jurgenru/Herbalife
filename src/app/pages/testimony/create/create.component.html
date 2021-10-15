@@ -14,24 +14,31 @@
           <form [formGroup]="statement" (ngSubmit)="post()">
             <div class="form-group">
               <div class="row">
-                <div class="col-md-6 text-left">
+                <div class="col-md-4">
                   <div class="col-md-12">
-                    <h1 class="display-4">Testimonio</h1>
-                    <div class="container-image text-center">
-                      <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                    <h5 class="text-center">IMAGEN <strong>(dimensiones recomendadas 900px x
+                        900px)</strong>
+                    </h5>
+                    <div class="container-image">
+                      <img src="../../../../assets/img/img_3115.jpg" alt="Avatar" class="mx-auto d-block"
                         *ngIf="!imageContent; else noImage" />
                       <ng-template #noImage>
-                        <img [src]="imageContent" alt="" />
+                        <img [src]="imageContent" class="mx-auto d-block" />
                       </ng-template>
-                      <div class="overlay">
-                        <p class="text text-light" (click)="imageCropper()">cargar imagen</p>
+                      <div class="overlay" (click)="imageCropper()">
+                        <div class="text text-light">
+                          <span>
+                            <i class="tim-icons icon-upload"> </i>
+                            IMAGEN <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                          </span>
+                          <p>¡ haga click aqui !</p>
+                        </div>
                       </div>
                     </div>
-                    <p class="text-center">Imagen para el testimonio</p>
                   </div>
                 </div>
                 <br>
-                <div class="col-md-6">
+                <div class="col-md-8">
                   <div class="col-md-12">
                     <div class="form-group">
                       <label> Nombre </label>

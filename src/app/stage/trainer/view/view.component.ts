@@ -9,7 +9,7 @@ import { TrainerService } from 'src/app/services/trainer.service';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/services/service.service';
-
+import { ContactFormComponent } from 'src/app/components/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-trainer-view',
@@ -129,6 +129,18 @@ export class ViewComponent implements OnInit {
 
   socialUrl(data){
     return window.open(data, "_blank");
+  }
+
+  openContactForm(email){
+    this.simpleModalService.addModal(
+      ContactFormComponent,
+      {
+        title: "Enviar Correo Electrónico",
+        toEmail: email,
+        name: this.trainer.names,
+      },
+      { closeOnClickOutside: true }
+    );
   }
 
   postNotification(userId, content, description, reason) {

@@ -4,12 +4,6 @@
             <div class="card card-login register">
                 <div class="card-header">
                     <h1 class="text-center">Registrarse</h1>
-                    <p>o registrate con : </p>
-                    <div>
-                        <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="signInWithGoogle()"><i
-                                class="tim-icons icon-email-85"></i> Registrarse con google</button>
-                        <button class="btn btn-info btn-simple btn-sm btn-block" (click)="signInWithFB()"><i class="fab fa-facebook"></i> Registrarse con facebook</button>
-                    </div>
                 </div>
                 <hr color="purple" />
                 <form [formGroup]="user" (ngSubmit)="register()">
@@ -58,10 +52,17 @@
                                 <strong>requerido</strong>
                             </small>
                         </div>
-                    </div>
-                    <div class="card-footer">
                         <button type="submit" class="btn btn-info btn-block mb-3"
-                            [disabled]="!user.valid">Registrarse</button>
+                        [disabled]="!user.valid">Registrarse</button>
+                    </div>
+                </form>
+                    <div class="card-footer">
+                        <p>o registrate con : </p>
+                        <div>
+                            <button class="btn btn-danger btn-simple btn-sm btn-block" (click)="signInWithGoogle()"><i
+                                    class="tim-icons icon-email-85"></i> Registrarse con google</button>
+                            <button class="btn btn-info btn-simple btn-sm btn-block" (click)="signInWithFB()"><i class="fab fa-facebook"></i> Registrarse con facebook</button>
+                        </div>
                         <div class=" pull-left">
                             <h6><a class="link footer-link" routerLink="/login">Iniciar Sesion</a></h6>
                         </div>
@@ -69,7 +70,6 @@
                             <h6><a class=" link footer-link" routerLink="/">Volver</a></h6>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>

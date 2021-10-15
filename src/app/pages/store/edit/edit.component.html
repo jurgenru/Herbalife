@@ -24,51 +24,62 @@
                                     [value]="storeData.description"></textarea>
                             </div>
                             <div class="col-12 col-md-3 ">
-                                <h5 class="text-center md-0">Icono</h5>
+                                <h5 class="text-center">ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong></h5>
                                 <div class="container-image">
                                     <div [ngSwitch]="updateIcon">
                                         <div *ngSwitchCase="0">
-                                          <img [src]="storeData.icon" class="img-thumbnail mx-auto d-block">
+                                          <img [src]="storeData.icon" class=" mx-auto d-block icon-load">
                                         </div>
                                         <div *ngSwitchCase="1">
-                                          <img [src]="icon" class="img-thumbnail mx-auto d-block">
+                                          <img [src]="icon" class="mx-auto d-block">
                                         </div>
                                         <div *ngSwitchCase="2">
-                                          <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
+                                          <img src="/../../../../assets/img/anime3.png" alt="" class="mx-auto d-block">
                                         </div>
                                       </div>
                                     <div class="overlay" (click)="showIcon()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Editar icono
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <h5 class="text-center md-0">Portada</h5>
-                                <div class="container-image">
-                                    <div [ngSwitch]="updateImage">
-                                        <div *ngSwitchCase="0">
-                                          <img [src]="storeData.image" class="img-thumbnail mx-auto d-block">
-                                        </div>
-                                        <div *ngSwitchCase="1">
-                                          <img [src]="image" class="img-thumbnail mx-auto d-block">
-                                        </div>
-                                        <div *ngSwitchCase="2">
-                                          <img src="/../../../../assets/img/anime3.png" alt="" class="img-thumbnail mx-auto d-block">
-                                        </div>
-                                      </div>
-                                    <div class="overlay" (click)="showImage()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Cambiar imagen o link
+                                        <div class="text-icon text-light">
+                                            <span>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong>  
+                                            </span>
+                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        <br>
+                        <div class="row justify-content-center">
+                            <div class="col-none col-md-2"></div>
+                            <div class="col-12 col-md-8">
+                                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                    px")</strong></h5>
+                                <div class="container-image">
+                                    <div [ngSwitch]="updateImage">
+                                        <div *ngSwitchCase="0">
+                                          <img [src]="storeData.image" class="rounded mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="1">
+                                          <img [src]="image" class="rounded mx-auto d-block">
+                                        </div>
+                                        <div *ngSwitchCase="2">
+                                          <img src="/../../../../assets/img/anime3.png" alt="" class="rounded mx-auto d-block">
+                                        </div>
+                                      </div>
+                                    <div class="overlay" (click)="showImage()">
+                                        <div class="text text-light">
+                                            <div>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                                                    px")</strong>
+                                            </div>
+                                            <p>¡ haga click aqui !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-none col-md-2"></div>
+                        </div>
                         <div class=" button-container pull-right">
                             <button type="submit" class="btn btn-warning">
                                 Editar
@@ -90,21 +101,26 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-3">
+                                <h5 class="text-center">IMAGEN DEL PRODUCTO <strong>(dimensiones recomendadas "900 x 900
+                                    px")</strong></h5>
                                 <div class="container-image">
                                     <img [src]="product.image" alt="ProductImage" class="mx-auto d-block"
                                         *ngIf="!productImage[i]; else noProductImage">
                                     <ng-template #noProductImage>
-                                        <img [src]="productImage[i]" alt="">
+                                        <img [src]="productImage[i]" class="mx-auto d-block">
                                     </ng-template>
                                     <div class="overlay" (click)="showProduct(i)">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Cambiar imagen del producto
+                                        <div class="text-icon text-light">
+                                            <span>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                PRODUCTO <strong>(dimensiones recomendadas "900 x 900 px")</strong>  
+                                            </span>
+                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-9">
                                 <label> Nombre del producto </label>
                                 <input class=" form-control" 
                                 [(ngModel)]="productName[i] = product.name"

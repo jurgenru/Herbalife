@@ -63,6 +63,7 @@
                       <button
                         *ngIf="socialMedia.facebook"
                         class="btn btn-icon btn-round btn-default"
+                        placement="top" ngbTooltip="Facebook"
                         (click)="openSocialMedia(socialMedia.facebook)"
                       >
                         <i class="fab fa-facebook-f"> </i>
@@ -70,18 +71,22 @@
                       <button
                         *ngIf="socialMedia.twitter"
                         class="btn btn-icon btn-round btn-info"
+                        placement="top" ngbTooltip="Twitter"
                         (click)="openSocialMedia(socialMedia.twitter)"
                       >
                         <i class="fab fa-twitter"> </i>
                       </button>
                       <button
-                        *ngIf="socialMedia.gmail"
+                        *ngIf="socialMedia.email"
+                        placement="top" ngbTooltip="Correo"
                         class="btn btn-icon btn-round btn-danger"
+                        (click)="openContactForm(socialMedia.email)"
                       >
                         <i class="tim-icons icon-email-85"> </i>
                       </button>
                       <button
                         *ngIf="socialMedia.whatsapp"
+                        placement="top" ngbTooltip="Whatssap"
                         class="btn btn-icon btn-round btn-success"
                         (click)="openSocialMedia(socialMedia.whatsapp)"
                       >
@@ -89,6 +94,7 @@
                       </button>
                       <button
                         *ngIf="socialMedia.telegram"
+                        placement="top" ngbTooltip="Telegram"
                         class="btn btn-icon btn-round btn-info"
                         (click)="openSocialMedia(socialMedia.telegram)"
                       >
@@ -96,6 +102,7 @@
                       </button>
                       <button
                         *ngIf="socialMedia.youtube"
+                        placement="top" ngbTooltip="Youtube"
                         class="btn btn-icon btn-round btn-danger"
                         (click)="openSocialMedia(socialMedia.youtube)"
                       >
@@ -103,6 +110,7 @@
                       </button>
                       <button
                         *ngIf="socialMedia.tiktok"
+                        placement="top" ngbTooltip="Tiktok"
                         class="btn btn-icon btn-round"
                         (click)="openSocialMedia(socialMedia.tiktok)"
                       >
@@ -114,11 +122,10 @@
               </div>
             </div>
             <div class="col-12 col-md-3">
-              <div class="row pull-right mr-2">
-                <a routerLink="/user/edit">
+                 <button routerLink="/user/edit" class="btn btn-warning pull-right btn-sm">
                   <i class="fas fa-pencil-alt"></i> Editar
-                </a>
-              </div>
+                </button>
+              <br>
               <img
                 class="ml-2 mr-2 mr-auto pull-right img-thumbnail"
                 *ngIf="user.image; else noImage"

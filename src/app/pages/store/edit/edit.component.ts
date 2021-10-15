@@ -72,6 +72,7 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe(val => {
       this.storeService.getById(val.id).subscribe((data: any) => {
         this.storeService.getProductsById(val.id).subscribe((prod: any) => {
+          console.log(prod);
           const end = new Date();
           const elapsed = ((end.getSeconds() - start.getSeconds()) * 1000);
 

@@ -19,7 +19,15 @@ export class VirtualCardService {
       return this.http.patch(`${environment.apiUrl}virtual-cards/${id}`, body).pipe();
     }
 
-    getOptionsCardById(id){
-      return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-card`).pipe();
+    getOptionsCardById(id, filter){
+      return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-cards?filter=${filter}`).pipe();
+    }
+
+    delOptionsCardById(id){
+      return this.http.delete(`${environment.apiUrl}/virtual-cards/${id}/options-cards`).pipe();
+    }
+
+    updateOptionsCardById(id, body) {
+      return this.http.patch(`${environment.apiUrl}virtual-cards/${id}/options-cards`, body).pipe();
     }
 }

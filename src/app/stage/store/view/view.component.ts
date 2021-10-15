@@ -71,11 +71,13 @@ export class ViewComponent implements OnInit {
   }
 
   addToCart(item) {
-      if (this.userData) {
+    this.userService.me().subscribe(user => {
+      if(user) {
         this.cartService.addToCart(item);
-      }else{
-        this.showRegister();
       }
+    }, error => {
+      this.showRegister();
+    });
   }
 
   list() {

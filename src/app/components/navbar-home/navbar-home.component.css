@@ -45,3 +45,8 @@
   background-color: #edf1f1;
   cursor: pointer;
 }
+
+.notif {
+  overflow: auto;
+  height: 320px;
+}

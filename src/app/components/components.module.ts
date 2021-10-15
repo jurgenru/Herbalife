@@ -19,6 +19,7 @@ import { MomentModule } from "angular2-moment";
 import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { VirtualCardComponent } from './virtual-card/virtual-card.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { VirtualCardComponent } from './virtual-card/virtual-card.component';
     ShareButtonComponent,
     LoginModalComponent,
     RegisterModalComponent,
-    VirtualCardComponent
+    VirtualCardComponent,
+    ContactFormComponent
   ],
   exports: [
     FooterComponent,
@@ -57,7 +59,8 @@ import { VirtualCardComponent } from './virtual-card/virtual-card.component';
     ShareButtonComponent,
     LoginModalComponent,
     RegisterModalComponent,
-    VirtualCardComponent
+    VirtualCardComponent,
+    ContactFormComponent
   ]
 })
 export class ComponentsModule {}

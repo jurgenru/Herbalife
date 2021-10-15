@@ -32,32 +32,21 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-3">
-                                <h5 class="text-center">Icono</h5>
-                                <div class="container-image text-center">
+                                <h5 class="text-center">ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                                </h5>
+                                <div class="container-image">
                                     <img src="../../../../assets/img/img_3115.jpg" alt="IconStore"
                                         class="mx-auto d-block" *ngIf="!iconImage; else noImageIcon">
                                     <ng-template #noImageIcon>
-                                        <img [src]="iconImage" alt="">
+                                        <img [src]="iconImage" alt="" class="mx-auto d-block">
                                     </ng-template>
                                     <div class="overlay" (click)="showIcon()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar icono(opcional)
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <h5 class="text-center">Portada</h5>
-                                <div class="container-image text-center">
-                                    <img src="../../../../assets/img/img_3115.jpg" alt="PortraitStore"
-                                        class="mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
-                                    <ng-template #noPortraitImage>
-                                        <img [src]="portraitImage" alt="">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showPortrait()">
-                                        <div class="text text-light">
-                                            <i class="tim-icons icon-upload"> </i>
-                                            Agregar imagen o link de video
+                                        <div class="text-icon text-light">
+                                            <span>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                                            </span>
+                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
@@ -65,6 +54,29 @@
                         </div>
                         <br>
                         <br>
+                        <div class="row justify-content-center">
+                            <div class="col-none col-md-2"></div>
+                            <div class="col-12 col-md-8">
+                                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas 1920px x 1080px)</strong></h5>
+                                <div class="container-image text-center">
+                                    <img src="../../../../assets/img/banner.png" alt="PortraitStore"
+                                        class="rounded mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
+                                    <ng-template #noPortraitImage>
+                                        <img [src]="portraitImage" alt="" class="rounded mx-auto d-block">
+                                    </ng-template>
+                                    <div class="overlay" (click)="showPortrait()">
+                                        <div class="text text-light">
+                                            <div>
+                                                <i class="tim-icons icon-upload"> </i>
+                                                POSTER <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                                            </div>
+                                            <p>¡ haga click aqui !</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-none col-md-2"></div>
+                        </div>
                     </form>
                     <br>
                     <hr>
@@ -81,21 +93,26 @@
                                 <br>
                                 <div [formGroupName]="i">
                                     <div class="row pl-1 pl-md-3">
-                                        <p>Producto {{i+1}}</p>
+                                        <h4>Producto {{i+1}}</h4>
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-md-3">
+                                            <h5 class="text-center">IMAGEN DEL PRODUCTO <strong>(dimensiones recomendadas "900 x 900
+                                                px")</strong></h5>
                                             <div class="container-image">
-                                                <img src="../../../../assets/img/emilyz.jpg" alt="ProductImage"
+                                                <img src="../../../../assets/img/imagen.jpg" alt="ProductImage"
                                                     class="mx-auto d-block"
                                                     *ngIf="!productImage[i]; else noProductImage">
                                                 <ng-template #noProductImage>
                                                     <img [src]="productImage[i]" class="mx-auto d-block">
                                                 </ng-template>
                                                 <div class="overlay" (click)="showProduct(i)">
-                                                    <div class="text text-light">
-                                                        <i class="tim-icons icon-upload"> </i>
-                                                        Agregar imagen del producto
+                                                    <div class="text-icon text-light">
+                                                        <span>
+                                                            <i class="tim-icons icon-upload"> </i>
+                                                            PRODUCTO <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                                                        </span>
+                                                        <p>¡ haga click aqui !</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,13 +176,14 @@
                                                 *ngFor="let features of FormInputs.get('additionalFeatures')['controls']; let j=index">
                                                 <label>Caracteristica {{j+1}}</label>
                                                 <input class="form-control" type="text" [formControlName]="j">
-                                                <button (click)="removeFeature(FormInputs.get('additionalFeatures'),j,i)"
+                                                <button
+                                                    (click)="removeFeature(FormInputs.get('additionalFeatures'),j,i)"
                                                     class="btn btn-warning btn-sm btn-fab btn-icon btn-round">
                                                     <i class="tim-icons icon-simple-delete"></i>
                                                 </button>
                                             </div>
                                             <button (click)="addFeature(FormInputs.get('additionalFeatures'),i)"
-                                            [disabled]="btnAddFeature[i]" class="btn-primary btn-round float-right">
+                                                [disabled]="btnAddFeature[i]" class="btn-primary btn-round float-right">
                                                 <i class="tim-icons icon-simple-add"></i> Agregar Caracteristica
                                             </button>
                                         </div>
@@ -181,8 +199,8 @@
                                 </div>
                             </div>
                             <div class=" button-container">
-                                <button (click)="addProductForm()"
-                                    [disabled]="btnAddProduct" class="btn btn-primary btn-fab btn-icon btn-round float-right">
+                                <button (click)="addProductForm()" [disabled]="btnAddProduct"
+                                    class="btn btn-primary btn-fab btn-icon btn-round float-right">
                                     <i class="tim-icons icon-simple-add"></i>
                                 </button>
                             </div>

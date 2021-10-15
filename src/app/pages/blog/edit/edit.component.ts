@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-blog-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
 

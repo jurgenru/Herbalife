@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-blog-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.scss']
+  styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
 
