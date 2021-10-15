@@ -18,4 +18,8 @@ export class VirtualCardService {
     update(id, body) {
       return this.http.patch(`${environment.apiUrl}virtual-cards/${id}`, body).pipe();
     }
+
+    getOptionsCardById(id){
+      return this.http.get(`${environment.apiUrl}virtual-cards/${id}/options-card`).pipe();
+    }
 }

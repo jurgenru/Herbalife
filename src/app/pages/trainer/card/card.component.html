@@ -22,10 +22,10 @@
                       src="../../../../assets/img/anime3.png"
                       alt="Avatar"
                       class="mx-auto d-block"
-                      *ngIf="!userBanner; else noBanner"
+                      *ngIf="!banner; else noBanner"
                     />
                     <ng-template #noBanner>
-                      <img [src]="userBanner" alt="" class="mx-auto d-block" />
+                      <img [src]="banner" alt="" class="mx-auto d-block" />
                     </ng-template>
                     <div class="overlay" (click)="showBanner()">
                       <p class="text text-light">Sube tu banner</p>
@@ -39,10 +39,10 @@
                       src="../../../../assets/img/anime3.png"
                       alt="Avatar"
                       class="mx-auto d-block"
-                      *ngIf="!userImage; else noImage"
+                      *ngIf="!profileImage; else noImage"
                     />
                     <ng-template #noImage>
-                      <img [src]="userImage" alt="" />
+                      <img [src]="profileImage" alt="" />
                     </ng-template>
                     <div class="overlay" (click)="showImage()">
                       <p class="text text-light">Sube tu foto</p>

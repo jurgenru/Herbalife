@@ -92,8 +92,8 @@ export class UserService {
       return this.http.get(`${environment.apiUrl}users/${id}/body-compositions`).pipe(); 
     }
 
-    getVirtualCardById(id){
-      return this.http.get(`${environment.apiUrl}users/${id}/virtual-cards`).pipe(); 
+    getVirtualCardById(id, filter){
+      return this.http.get(`${environment.apiUrl}users/${id}/virtual-cards?filter=${filter}`).pipe(); 
     }
 
 }

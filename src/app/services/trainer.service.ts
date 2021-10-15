@@ -32,7 +32,19 @@ export class TrainerService {
     return this.http.get(`${environment.apiUrl}trainers/${id}/lection`).pipe();
   }
 
-  getVirtualCardById(id){
-    return this.http.get(`${environment.apiUrl}trainers/${id}/virtual-cards`).pipe(); 
+  getVirtualCardById(id, filter){
+    return this.http.get(`${environment.apiUrl}trainers/${id}/virtual-cards?filter=${filter}`).pipe(); 
+  }
+
+  postVirtualCardById(id, body){
+    return this.http.post(`${environment.apiUrl}trainers/${id}/virtual-cards`, body).pipe(); 
+  }
+  
+  deleteVirtualCardById(id){
+    return this.http.delete(`${environment.apiUrl}trainers/${id}/virtual-cards`).pipe(); 
+  }
+
+  editVirtualCardById(id, body){
+    return this.http.patch(`${environment.apiUrl}trainers/${id}/virtual-cards`, body).pipe(); 
   }
 }

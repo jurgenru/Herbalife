@@ -65,7 +65,7 @@ export class EditComponent implements OnInit {
   getServices() {
     this.userService.me().subscribe((user: any) => {
       const filter = `{"fields": {"id": true, "title": true}}`;
-      this.userService.getServicesById(user.id, filter).subscribe(ser => {
+      this.userService.getServicesById(user.id, filter).subscribe((ser:any) => {
         this.services = ser;
       });
     });

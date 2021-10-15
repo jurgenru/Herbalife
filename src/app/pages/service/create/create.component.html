@@ -18,7 +18,7 @@
                 <form [formGroup]="modeForm">
                   <label for="modes">Modo</label>
                   <select class="form-control text-center" id="mode" formControlName="mode">
-                    <option *ngFor="let c of modes" >{{ c }}</option>
+                    <option *ngFor="let c of modes">{{ c }}</option>
                   </select>
                 </form>
               </div>
@@ -26,32 +26,41 @@
             <br />
             <div class="row">
               <div class="col-12 col-md-3">
-                <h4 class="text-center">Icono</h4>
+                <h5 class="text-center">ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                </h5>
                 <div class="container-image">
-                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
-                    *ngIf="!icon; else noIcon" />
+                  <img src="../../../../assets/img/img_3115.jpg" class="mx-auto d-block" *ngIf="!icon; else noIcon" />
                   <ng-template #noIcon>
                     <img [src]="icon" alt="" class="mx-auto d-block" />
                   </ng-template>
-                  <div class="overlay">
-                    <p class="text text-light" (click)="showIcon()">
-                      cargar el icono
-                    </p>
+                  <div class="overlay" (click)="showIcon()">
+                    <div class="text-icon text-light">
+                      <span>
+                        <i class="tim-icons icon-upload"> </i>
+                        ICONO <strong>(dimensiones recomendadas 500px x 500px)</strong>
+                      </span>
+                      <p>¡ haga click aqui !</p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="col-12 col-md-9">
-                <h4 class="text-center">Banner</h4>
+                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas "1920 x 1080
+                    px")</strong></h5>
                 <div class="container-image">
-                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                  <img src="../../../../assets/img/imagen.jpg" alt="Avatar" class="mx-auto d-block"
                     *ngIf="!banner; else noBanner" />
                   <ng-template #noBanner>
                     <img [src]="banner" alt="" class="mx-auto d-block" />
                   </ng-template>
-                  <div class="overlay">
-                    <p class="text text-light" (click)="showBanner()">
-                      cargar banner
-                    </p>
+                  <div class="overlay" (click)="showBanner()">
+                    <div class="text text-light">
+                      <div>
+                        <i class="tim-icons icon-upload"> </i>
+                        POSTER <strong>(dimensiones recomendadas 1920px x 1080px)</strong>
+                      </div>
+                      <p>¡ haga click aqui !</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,17 +70,22 @@
             <br />
             <div class="row">
               <div class="col-12 col-md-3">
-                <h4 class="text-center">Imagen</h4>
+                <h5 class="text-center">IMAGEN DEL SERVICO <strong>(dimensiones recomendadas "900 x 900
+                    px")</strong></h5>
                 <div class="container-image">
-                  <img src="../../../../assets/img/anime3.png" alt="Avatar" class="mx-auto d-block"
+                  <img src="../../../../assets/img/image-service.jpg" alt="Avatar" class="mx-auto d-block"
                     *ngIf="!image; else noImage" />
                   <ng-template #noImage>
                     <img [src]="image" alt="" />
                   </ng-template>
-                  <div class="overlay">
-                    <p class="text text-light" (click)="showImage()">
-                      cargar imagen
-                    </p>
+                  <div class="overlay" (click)="showImage()">
+                    <div class="text-icon text-light">
+                      <span>
+                        <i class="tim-icons icon-upload"> </i>
+                        SERVICIO <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                      </span>
+                      <p>¡ haga click aqui !</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -114,36 +128,36 @@
             <div class="text-center">
               <p><b>Escoja el tipo de servicio</b></p>
               <br />
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="normal" (click)="uncheck()" id="normal"
-                          checked />
-                        Normal
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-check form-check-inline" *ngIf="!statusTest">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="test" (click)="uncheck2()" id="test" />
-                        Encuesta de emprendedores
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-4" >
-                    <div class="form-check form-check-inline" *ngIf="!statusAuto">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="auto" (click)="uncheck3()" id="auto" />
-                        Autoevaluacion
-                        <span class="form-check-sign"></span>
-                      </label>
-                    </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="normal" (click)="uncheck()" id="normal"
+                        checked />
+                      Normal
+                      <span class="form-check-sign"></span>
+                    </label>
                   </div>
                 </div>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline" *ngIf="!statusTest">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="test" (click)="uncheck2()" id="test" />
+                      Encuesta de emprendedores
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-check form-check-inline" *ngIf="!statusAuto">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="auto" (click)="uncheck3()" id="auto" />
+                      Autoevaluacion
+                      <span class="form-check-sign"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
             <br />
             <div class="row text-left">

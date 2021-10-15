@@ -1,1 +1,15 @@
-<app-virtual-card-component [type]="data.cardType" [data]="data"></app-virtual-card-component>
+<div class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-5">
+                <app-virtual-card-component [type]="data.cardType" [data]="data" [options]="options"></app-virtual-card-component>
+            </div>
+        </div>
+    </div>
+</div>
+        <ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(24,31,46)"
+  text="Cargando..."
+></ngx-ui-loader>

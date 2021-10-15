@@ -69,6 +69,9 @@ export class EditComponent implements OnInit {
       this.image = data;
       this.updateImage = 1;
       this.manager.image = this.image;
+      if(data == null){
+        this.updateImage = 0;
+      }
     });
   }
 
@@ -77,6 +80,9 @@ export class EditComponent implements OnInit {
       this.icon = data;
       this.updateIcon = 1;
       this.manager.icon = this.icon;
+      if(data == null){
+        this.updateIcon = 0;
+      }
     });
   }
 
