@@ -12,6 +12,7 @@ import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 export interface AlertModel {
   title: string;
   toEmail: any;
+  name: string;
 }
 @Component({
   selector: "app-contact-form",
@@ -25,6 +26,7 @@ export class ContactFormComponent
   typeForm: FormGroup;
   title: string;
   toEmail: any;
+  name: string;
   formData: any = {};
   constructor(
     private formBuilder: FormBuilder,
@@ -40,6 +42,7 @@ export class ContactFormComponent
 
   createForm(){
     this.formData = this.formBuilder.group({
+      name: [''],
       toEmail: [''],
       email: ['', Validators.required],
       issue: ['', Validators.required],
@@ -49,6 +52,7 @@ export class ContactFormComponent
 
   send(){
     this.formData.get('toEmail').setValue(this.toEmail);
+    this.formData.get('name').setValue(this.name);
     console.log('contact', this.formData.value);
     emailjs.send('service_0pkzh6h', 'template_gbpktuf', this.formData.value, 'user_MfFadQtzejSZwASPeldba')
     .then((result: EmailJSResponseStatus) => {
