@@ -24,7 +24,7 @@ export class ViewComponent implements OnInit {
       this.storeService.getProductsById(val.id).subscribe((prod:any) => {
         this.products = prod;
         this.products.forEach(element => {
-          element.additionalFeatures = Array<any>(element.additionalFeatures)
+          element.additionalFeatures = [element.additionalFeatures];
         });
       });
     });
