@@ -50,7 +50,7 @@ export class CreateComponent implements OnInit {
       instagram: [''],
       youtube: [''],
       tiktok: [''],
-      gmail: ['']
+      email: ['']
     }),
   })
 

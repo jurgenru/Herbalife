@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { SimpleModalService } from "ngx-simple-modal";
 import { ManagerService } from 'src/app/services/manager.service';
 import { UserService } from 'src/app/services/user.service';
+import { ContactFormComponent } from 'src/app/components/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-user-view',
@@ -14,7 +16,8 @@ export class ViewComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private managerService: ManagerService
+    private managerService: ManagerService,
+    private SimpleModalService: SimpleModalService,
   ) { }
 
   ngOnInit() {
@@ -34,5 +37,17 @@ export class ViewComponent implements OnInit {
 
   openSocialMedia(navUrl){
     window.open(navUrl, "_blank");
+  }
+
+  openContactForm(email){
+    this.SimpleModalService.addModal(
+      ContactFormComponent,
+      {
+        title: "Enviar Correo Electrónico",
+        toEmail: email,
+        name: this.user.names+ ' '+this.user.lastName,
+      },
+      { closeOnClickOutside: true }
+    );
   }
 }

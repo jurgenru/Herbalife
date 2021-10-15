@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from "@angular/router";
+import { SimpleModalService } from "ngx-simple-modal";
+import { ContactFormComponent } from 'src/app/components/contact-form/contact-form.component';
 
 @Component({
   selector: 'app-virtual-card-component',
@@ -11,7 +13,10 @@ export class VirtualCardComponent implements OnInit {
   @Input() data: any = {};
   @Input() options: any = {};
 
-  constructor( private router: Router ) { }
+  constructor( 
+    private router: Router,
+    private simpleModalService: SimpleModalService,
+     ) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +24,19 @@ export class VirtualCardComponent implements OnInit {
   socialUrl(data){
     return window.open(data, "_blank");
   }
+
+  openContactForm(email){
+    this.simpleModalService.addModal(
+      ContactFormComponent,
+      {
+        title: "Enviar Correo Electrónico",
+        toEmail: email,
+        name: this.data.names,
+      },
+      { closeOnClickOutside: true }
+    );
+  }
+
   optionOpen(option){
     switch (option.type){
       case 'store':

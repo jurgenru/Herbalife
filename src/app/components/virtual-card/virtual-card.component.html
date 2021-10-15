@@ -28,6 +28,14 @@
                   <i class="fab fa-facebook-f"> </i>
                 </button>
                 <button
+                  *ngIf="data.socialMedia.email"
+                  placement="top" ngbTooltip="Correo"
+                  class="btn btn-icon btn-round btn-simple bt-lg"
+                  (click)="openContactForm(data.socialMedia.email)"
+                  >
+                  <i class="tim-icons icon-email-85"> </i>
+                </button>
+                <button
                   ngbTooltip="Twitter"
                   (click)="socialUrl(data.socialMedia.twitter)"
                   *ngIf="data.socialMedia.twitter"
@@ -122,6 +130,14 @@
               >
                 <i class="fab fa-facebook-f"> </i>
               </button>
+              <button
+                  *ngIf="data.socialMedia.email"
+                  ngbTooltip="Correo"
+                  class="btn btn-icon btn-round bt-lg btns"
+                  (click)="openContactForm(data.socialMedia.email)"
+                  >
+                  <i class="tim-icons icon-email-85"> </i>
+                </button>
               <button
                 ngbTooltip="Twitter"
                 class="btn btn-icon btn-round bt-lg btns"
