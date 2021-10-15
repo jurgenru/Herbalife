@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { join } from 'path';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class ViewComponent implements OnInit {
   store: any = {};
   products: any;
   features: any;
+  feat=[];
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
@@ -24,7 +26,8 @@ export class ViewComponent implements OnInit {
       this.storeService.getProductsById(val.id).subscribe((prod:any) => {
         this.products = prod;
         this.products.forEach(element => {
-          element.additionalFeatures = [element.additionalFeatures];
+          element.additionalFeatures = JSON.parse(element.additionalFeatures)
+          this.feat = element.additionalFeatures
         });
       });
     });
