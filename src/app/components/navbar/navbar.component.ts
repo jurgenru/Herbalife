@@ -241,7 +241,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   me() {
     this.userService.me().subscribe((data: any) => {
       this.managerService.getByUserId(data.id).subscribe((man: any) => {
-        console.log(man);
         this.getNotifications(data.id);
         this.lengthNotification(data.id);
         man.forEach(element => {
