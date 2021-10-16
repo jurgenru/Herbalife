@@ -43,7 +43,7 @@ import { InscriptionLection } from "./services/inscription-lection";
 import { VirtualCardComponent } from "./virtual-card/virtual-card.component";
 import { OptionsCardService } from "./services/options-card.service";
 import { ComplaintService } from "./services/complaint.service";
-
+import { AgmCoreModule } from '@agm/core';
 
 moment.locale('es');
 
@@ -63,6 +63,9 @@ moment.locale('es');
     NgxPaginationModule,
     SocialLoginModule,
     NgxQRCodeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA-pQvJ1fD_ohk_PxaUMLjqVDhsMDsA3as'
+    }),
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, UserLayoutComponent, LoginComponent, RegisterComponent,VirtualCardComponent],

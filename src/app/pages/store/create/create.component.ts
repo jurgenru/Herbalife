@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SimpleModalService } from 'ngx-simple-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cr
 import { ProductService } from 'src/app/services/product.service';
 import { StoreService } from 'src/app/services/store.service';
 import { UserService } from 'src/app/services/user.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create',
@@ -27,6 +28,10 @@ export class CreateComponent implements OnInit {
   countProduct: number = 0;
   btnAddProduct: any;
   btnAddFeature: any = [];
+  @ViewChild('showButtonBannerImage') showButtonBannerImage: ElementRef;
+  @ViewChild('showButtonBannerVideo') showButtonBannerVideo: ElementRef;
+
+  @ViewChild("showImage") showImage: ElementRef;
   
   constructor(
     private simpleModalService: SimpleModalService,
@@ -37,12 +42,16 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
-  ) { }
+  ) {
+   }
 
   ngOnInit(): void {
     this.createForm();
     this.addProductForm();
+    
+    this.showImage.nativeElement.style.display='none';
   }
+
   createForm() {
     this.store = this.formBuilder.group({
       userId: [''],
@@ -146,6 +155,43 @@ export class CreateComponent implements OnInit {
       });
     });
   }
+
+  transition(option) {
+    switch (option) {
+      case 'image':
+        // console.log('imagen', this.showButtonBanner);
+        this.showButtonBannerImage.nativeElement.style.display='none';
+        this.showButtonBannerVideo.nativeElement.style.display='none';
+        
+        this.showImage.nativeElement.style.display='block';
+        break;
+    
+      default:
+        break;
+    }
+  }
+
+
+  // showBanner() {
+  //       $("#showButtonBanner").fadeOut(1000);
+  //       setTimeout(() => {
+  //         $("#video").fadeIn(1000);
+  //       }, 1500);
+  // }
+
+  // transition(option: any) {
+  //   // $("#test").slideUp(0, this.showBanner(option)).fadeIn(1000);
+  //   switch (option) {
+  //     case 'image':
+  //       $('#image').slideUp(1000);
+  //       break;
+  //      case 'video':
+  //  console.log('option B');
+  //        break;   
+  //     default:
+  //       break;
+  //   } 
+  // }
 
   notification(content, time, type, from, align) {
     this.toastr.error(content, '', {

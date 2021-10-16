@@ -55,27 +55,43 @@
                         <br>
                         <br>
                         <div class="row justify-content-center">
-                            <div class="col-none col-md-2"></div>
-                            <div class="col-12 col-md-8">
-                                <h5 class="text-center">POSTER <strong>(dimensiones recomendadas 1920px x 1080px)</strong></h5>
-                                <div class="container-image text-center">
-                                    <img src="../../../../assets/img/banner.png" alt="PortraitStore"
-                                        class="rounded mx-auto d-block" *ngIf="!portraitImage; else noPortraitImage">
-                                    <ng-template #noPortraitImage>
-                                        <img [src]="portraitImage" alt="" class="rounded mx-auto d-block">
-                                    </ng-template>
-                                    <div class="overlay" (click)="showPortrait()">
-                                        <div class="text text-light">
-                                            <div>
-                                                <i class="tim-icons icon-upload"> </i>
-                                                POSTER <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                            <div class="col-12">
+                                <h4 class="text-center">CARGA UN VIDEO O UNA IMAGEN EN EL POSTER</h4>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-info btn-sm" #showButtonBannerVideo
+                                    (click)="transition('video')">cargar video</button>
+                                <button type="button" class="btn btn-info btn-sm" #showButtonBannerImage
+                                    (click)="transition('image')">cargar imagen</button>
+                            </div>
+                            <div class="row" #showImage>
+                                <div class="col-none col-md-2"></div>
+                                <div class="col-12 col-md-8">
+                                    <h5 class="text-center">POSTER <strong>(dimensiones recomendadas 1920px x
+                                            1080px)</strong></h5>
+                                    <div class="container-image text-center">
+                                        <img src="../../../../assets/img/banner.png" alt="PortraitStore"
+                                            class="rounded mx-auto d-block"
+                                            *ngIf="!portraitImage; else noPortraitImage">
+                                        <ng-template #noPortraitImage>
+                                            <img [src]="portraitImage" alt="" class="rounded mx-auto d-block">
+                                        </ng-template>
+                                        <div class="overlay" (click)="showPortrait()">
+                                            <div class="text text-light">
+                                                <div>
+                                                    <i class="tim-icons icon-upload"> </i>
+                                                    POSTER <strong>(dimensiones recomendadas 1920px x 1080 px)</strong>
+                                                </div>
+                                                <p>¡ haga click aqui !</p>
                                             </div>
-                                            <p>¡ haga click aqui !</p>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-none col-md-2"></div>
                             </div>
-                            <div class="col-none col-md-2"></div>
+                            <div id="video">
+                                <h1>video</h1>
+                            </div>
                         </div>
                     </form>
                     <br>
@@ -97,8 +113,9 @@
                                     </div>
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-md-3">
-                                            <h5 class="text-center">IMAGEN DEL PRODUCTO <strong>(dimensiones recomendadas "900 x 900
-                                                px")</strong></h5>
+                                            <h5 class="text-center">IMAGEN DEL PRODUCTO <strong>(dimensiones
+                                                    recomendadas "900 x 900
+                                                    px")</strong></h5>
                                             <div class="container-image">
                                                 <img src="../../../../assets/img/imagen.jpg" alt="ProductImage"
                                                     class="mx-auto d-block"
@@ -110,7 +127,8 @@
                                                     <div class="text-icon text-light">
                                                         <span>
                                                             <i class="tim-icons icon-upload"> </i>
-                                                            PRODUCTO <strong>(dimensiones recomendadas 900px x 900px)</strong>
+                                                            PRODUCTO <strong>(dimensiones recomendadas 900px x
+                                                                900px)</strong>
                                                         </span>
                                                         <p>¡ haga click aqui !</p>
                                                     </div>

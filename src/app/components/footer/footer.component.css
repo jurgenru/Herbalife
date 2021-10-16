@@ -39,3 +39,7 @@ footer {
 .actionB {
   cursor: pointer !important;
 }
+
+agm-map {
+  height: 300px;
+}
