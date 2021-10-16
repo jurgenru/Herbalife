@@ -15,13 +15,18 @@ export class FooterComponent implements OnInit {
   socialMedia: any;
   numberPhone: any;
 
+  lat = 51.678418;
+  lng = 7.809007;
+  zoom: number = 16;
+
   constructor(
     private SimpleModalService: SimpleModalService,
     private userService: UserService
-    ) {}
+  ) { 
+    // this.get();
+  }
 
   ngOnInit() {
-    this.get();
   }
 
   callSchedule() {
@@ -34,30 +39,31 @@ export class FooterComponent implements OnInit {
     );
   }
 
-  contactForm(){
+  contactForm() {
     this.SimpleModalService.addModal(
       ContactFormComponent,
       {
         title: "Enviar Correo Electrónico",
         toEmail: this.socialMedia.email,
-        name: this.user.names+ ' '+this.user.lastName,
+        name: this.user.names + ' ' + this.user.lastName,
       },
       { closeOnClickOutside: true }
     );
   }
 
-  get(){
-    this.userService.getManagerById(1).subscribe((data:any)=>{
-      [data].map(element => {
-        this.user = element;
-        if(this.user.socialMedia){
-          this.socialMedia = JSON.parse(element.socialMedia);
-        }
-      });
-      this.numberPhone = this.socialMedia.whatsapp.split('/')
-    })
-  }
-  openSocialMedia(navUrl){
+  // get() {
+  //   this.userService.getManagerById("1").subscribe((data: any) => {
+  //     data.forEach(element => {
+  //       if (element.socialMedia) {
+  //         this.socialMedia = JSON.parse(element.socialMedia);
+  //         this.numberPhone = this.socialMedia.whatsapp.split('/')
+  //       }
+          
+  //     });
+  //   });
+  // }
+
+  openSocialMedia(navUrl) {
     window.open(navUrl, "_blank");
   }
 }

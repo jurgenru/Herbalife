@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   closeResult: string;
   image: any;
+  icon: any;
 
   constructor(
     location: Location,
@@ -244,6 +245,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.lengthNotification(data.id);
         man.forEach(element => {
           this.image = element.image;
+          this.icon = element.icon;
         });
       });
     });

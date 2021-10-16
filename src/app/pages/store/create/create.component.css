@@ -56,3 +56,11 @@ textarea{
     transform: translate(-50%, -50%);
     text-align: center;
   }
+
+  #image {
+    display:none;
+  }
+
+  #video {
+    display:none;
+  }

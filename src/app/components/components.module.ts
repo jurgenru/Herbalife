@@ -20,6 +20,7 @@ import { LoginModalComponent } from "./login-modal/login-modal.component";
 import { RegisterModalComponent } from "./register-modal/register-modal.component";
 import { VirtualCardComponent } from './virtual-card/virtual-card.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -32,7 +33,10 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     SimpleModalModule,
     FormsModule,
     MomentModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA-pQvJ1fD_ohk_PxaUMLjqVDhsMDsA3as'
+    }),
   ],
   declarations: [
     FooterComponent,
