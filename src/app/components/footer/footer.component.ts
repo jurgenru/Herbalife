@@ -23,7 +23,7 @@ export class FooterComponent implements OnInit {
     private SimpleModalService: SimpleModalService,
     private userService: UserService
   ) { 
-    this.get();
+    // this.get();
   }
 
   ngOnInit() {
@@ -51,17 +51,18 @@ export class FooterComponent implements OnInit {
     );
   }
 
-  get() {
-    this.userService.getManagerById("1").subscribe((data: any) => {
-      data.forEach(element => {
-        if (element.socialMedia) {
-          this.socialMedia = JSON.parse(element.socialMedia);
-          this.numberPhone = this.socialMedia.whatsapp.split('/')
-        }
+  // get() {
+  //   this.userService.getManagerById("1").subscribe((data: any) => {
+  //     data.forEach(element => {
+  //       if (element.socialMedia) {
+  //         this.socialMedia = JSON.parse(element.socialMedia);
+  //         this.numberPhone = this.socialMedia.whatsapp.split('/')
+  //       }
           
-      });
-    });
-  }
+  //     });
+  //   });
+  // }
+
   openSocialMedia(navUrl) {
     window.open(navUrl, "_blank");
   }
