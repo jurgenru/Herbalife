@@ -55,6 +55,7 @@
                                             <td>Precio</td>
                                             <td>Imagen</td>
                                             <td>Características adicionales</td>
+                                            <td>Especificaciones adicionales</td>
                                             <td>Fecha de creación</td>
                                         </tr>
                                     </thead>
@@ -70,6 +71,13 @@
                                                     {{feature}},
                                                 </span>
                                             </td>
+                                            <td>
+                                                <b>Precio Adicional: </b>
+                                                {{product.additionalPrice}}
+                                                <hr>
+                                                <b>Descripcion Adicional: </b>
+                                                {{product.addtionalDescription}}
+                                              </td>
                                             <td>{{product.created | date: 'yyyy-MM-dd'}}</td>
                                         </tr>
                                     </tbody>
