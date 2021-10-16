@@ -175,7 +175,11 @@
                                             <div
                                                 *ngFor="let features of FormInputs.get('additionalFeatures')['controls']; let j=index">
                                                 <label>Caracteristica {{j+1}}</label>
-                                                <input class="form-control" type="text" [formControlName]="j">
+                                                <br>
+                                                <small class="text-muted"
+                                                  >*Maximo 90 caracteres
+                                                </small>
+                                                <input class="form-control" type="text" maxlength="90" [formControlName]="j">
                                                 <button
                                                     (click)="removeFeature(FormInputs.get('additionalFeatures'),j,i)"
                                                     class="btn btn-warning btn-sm btn-fab btn-icon btn-round">

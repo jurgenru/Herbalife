@@ -41,7 +41,7 @@
                                         <div class="text-icon text-light">
                                             <span>
                                                 <i class="tim-icons icon-upload"> </i>
-                                                ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong>  
+                                                ICONO <strong>(dimensiones recomendadas "500 x 500 px")</strong>
                                             </span>
                                             <p>¡ haga click aqui !</p>
                                         </div>
@@ -113,7 +113,7 @@
                                         <div class="text-icon text-light">
                                             <span>
                                                 <i class="tim-icons icon-upload"> </i>
-                                                PRODUCTO <strong>(dimensiones recomendadas "900 x 900 px")</strong>  
+                                                PRODUCTO <strong>(dimensiones recomendadas "900 x 900 px")</strong>
                                             </span>
                                             <p>¡ haga click aqui !</p>
                                         </div>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <label> Nombre del producto </label>
-                                <input class=" form-control" 
+                                <input class=" form-control"
                                 [(ngModel)]="productName[i] = product.name"
                                 [ngModelOptions]="{standalone: true}"placeholder="Nombre del producto" type="text"
                                     [value]="product.name">
@@ -132,7 +132,7 @@
                                  [value]="product.price">
                                 <label> Cantidad de productos disponible </label>
                                 <input class=" form-control" [(ngModel)]="productAmount[i] = product.amount"
-                                [ngModelOptions]="{standalone: true}"placeholder="Cantidad del producto"type="text" 
+                                [ngModelOptions]="{standalone: true}"placeholder="Cantidad del producto"type="text"
                                 [value]="product.amount">
                                 <label> Descripcion del producto </label>
                                 <textarea class=" form-control" cols="80" rows="4"
@@ -199,7 +199,7 @@
                                             <label> Nombre del producto </label>
                                             <input class=" form-control" [attr.id]="'name' + j"
                                                 placeholder="Nombre del producto" type="text" formControlName="name">
-                                            <div *ngIf="newProduct.controls[j].get('name').invalid && 
+                                            <div *ngIf="newProduct.controls[j].get('name').invalid &&
                                             newProduct.controls[j].get('name').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -208,7 +208,7 @@
                                             <label> Precio del producto </label>
                                             <input class=" form-control" placeholder="Precio del producto" type="text"
                                                 formControlName="price">
-                                            <div *ngIf="newProduct.controls[j].get('price').invalid && 
+                                            <div *ngIf="newProduct.controls[j].get('price').invalid &&
                                             newProduct.controls[j].get('price').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -217,7 +217,7 @@
                                             <label> Cantidad de productos disponible </label>
                                             <input class=" form-control" placeholder="Cantidad de productos disponible"
                                                 type="number" formControlName="amount">
-                                            <div *ngIf="newProduct.controls[j].get('amount').invalid && 
+                                            <div *ngIf="newProduct.controls[j].get('amount').invalid &&
                                             newProduct.controls[j].get('amount').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -227,7 +227,7 @@
                                             <textarea class=" form-control" cols="80"
                                                 placeholder="Coloca la descripcion del producto" rows="4"
                                                 formControlName="description"></textarea>
-                                            <div *ngIf="newProduct.controls[j].get('description').invalid && 
+                                            <div *ngIf="newProduct.controls[j].get('description').invalid &&
                                             newProduct.controls[j].get('description').touched">
                                                 <small class="text-danger"> *Espacio <strong>requerido</strong></small>
                                                 <br>
@@ -253,7 +253,11 @@
                                             <div
                                                 *ngFor="let featuresData of FormInputs.get('additionalFeatures')['controls']; let k=index">
                                                 <label>Caracteristica {{k+1}}</label>
-                                                <input class="form-control" type="text" [formControlName]="k">
+                                                <br>
+                                                <small class="text-muted"
+                                                  >*Maximo 90 caracteres
+                                                </small>
+                                                <input class="form-control" type="text" maxlength="90" [formControlName]="k">
                                                 <button (click)="removeFeature(FormInputs.get('additionalFeatures'),k,j)"
                                                     class="btn btn-warning btn-sm btn-fab btn-icon btn-round">
                                                     <i class="tim-icons icon-simple-delete"></i>
