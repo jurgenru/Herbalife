@@ -34,160 +34,282 @@
                     </p>
                   </div>
                 </div>
-                                <p class="text-center">imagen de perfil</p>
-                            </div>
-                            <div class="col-12 col-md">
-                                <div class="container-image">
-                                    <div [ngSwitch]="updateIcon">
-                                        <div *ngSwitchCase="0">
-                                            <img [src]="userData.icon" class="img-thumbnail mx-auto d-block">
-                                        </div>
-                                        <div *ngSwitchCase="1">
-                                            <img [src]="icon" class="img-thumbnail mx-auto d-block">
-                                        </div>
-                                        <div *ngSwitchCase="2">
-                                            <img src="/../../../../assets/img/anime3.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="overlay">
-                                        <p class="text text-light" (click)="showIcon()">cargar icono</p>
-                                    </div>
-                                </div>
-                                <p class="text-center">imagen de portada</p>
-                            </div>
-                            <div class="col-2"></div>
+                <p class="text-center">imagen de perfil</p>
+              </div>
+              <div class="col-12 col-md">
+                <div class="container-image">
+                  <div [ngSwitch]="updateIcon">
+                    <div *ngSwitchCase="0">
+                      <img
+                        [src]="userData.icon"
+                        class="img-thumbnail mx-auto d-block"
+                      />
+                    </div>
+                    <div *ngSwitchCase="1">
+                      <img [src]="icon" class="img-thumbnail mx-auto d-block" />
+                    </div>
+                    <div *ngSwitchCase="2">
+                      <img src="/../../../../assets/img/anime3.png" alt="" />
+                    </div>
+                  </div>
+                  <div class="overlay">
+                    <p class="text text-light" (click)="showIcon()">
+                      cargar icono
+                    </p>
+                  </div>
+                </div>
+                <p class="text-center">imagen de portada</p>
+              </div>
+              <div class="col-2"></div>
             </div>
             <div class="row">
-                            <div class="col-md-6">
-                                <div class="col-md-12 md-1">
-                                    <div class="form-group">
-                                        <label>Nombres</label>
-                                        <input class="form-control" placeholder="Nombres" type="text"
-                                            [(ngModel)]="manager.names" [ngModelOptions]="{standalone: true}"
-                                            [value]="userData.names" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label>Apellidos</label>
-                                        <input class="form-control" placeholder="Apellidos" type="text"
-                                            [(ngModel)]="manager.lastName" [ngModelOptions]="{standalone: true}"
-                                            [value]="userData.lastName" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label> Identificador (ID herbalife) </label>
-                                        <input class="form-control" placeholder="ID herbalife" type="text"
-                                            [(ngModel)]="manager.idHerbalife" [ngModelOptions]="{standalone: true}"
-                                            [value]="userData.idHerbalife" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class=" form-group">
-                                        <label>Nivel de Herbalife </label>
-                                        <input class="form-control" placeholder="Nivel de Herbalife" type="text"
-                                            [(ngModel)]="manager.levelHerbalife" [ngModelOptions]="{standalone: true}"
-                                            [value]="userData.levelHerbalife" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-4">
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="tim-icons icon-email-85">
-                                        </i>
-                                        <input class="form-control" placeholder="Correo Electrónico" type="url"
-                                            style="padding-left: 33px;" [(ngModel)]="socialMedia.email" [ngModelOptions]="{standalone: true}" [value]="socialMedia.email" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-whatsapp">
-                                        </i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://wa.me/tu_numero" type="url"
-                                            style="padding-left: 33px;" [(ngModel)]="socialMedia.whatsapp" [ngModelOptions]="{standalone: true}" [value]="socialMedia.whatsapp" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-telegram-plane"> </i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://t.me/nombre_usuario" type="url"
-                                            style="padding-left: 33px;" [value]="socialMedia.telegram" [(ngModel)]="socialMedia.telegram" [ngModelOptions]="{standalone: true}" />
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-facebook-f"> </i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://www.facebook.com/..." type="url"
-                                            style="padding-left: 33px;" [value]="socialMedia.facebook" [(ngModel)]="socialMedia.facebook" [ngModelOptions]="{standalone: true}"/>
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-instagram"> </i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://www.instagram.com/..." type="url"
-                                            style="padding-left: 33px;" [value]="socialMedia.instagram" [(ngModel)]="socialMedia.instagram" [ngModelOptions]="{standalone: true}"/>
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-youtube"> </i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://www.youtube.com/..." type="url"
-                                            style="padding-left: 33px;" [value]="socialMedia.youtube" [(ngModel)]="socialMedia.youtube" [ngModelOptions]="{standalone: true}"/>
-                                    </div>
-                                </div>
-                                <div class=" col-md-12 md-1">
-                                    <div class="input-social form-group">
-                                        <i class="fab fa-tiktok"></i>
-                                        <input class="form-control" [ngbTooltip]="tipContent" placeholder="https://www.tiktok.com/..." type="url"
-                                            style="padding-left: 33px;" [value]="socialMedia.tiktok" [(ngModel)]="socialMedia.tiktok" [ngModelOptions]="{standalone: true}"/>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="col-md-6">
+                <div class="col-md-12 md-1">
+                  <div class="form-group">
+                    <label>Nombres</label>
+                    <input
+                      class="form-control"
+                      placeholder="Nombres"
+                      type="text"
+                      [(ngModel)]="manager.names"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="userData.names"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="form-group">
+                    <label>Apellidos</label>
+                    <input
+                      class="form-control"
+                      placeholder="Apellidos"
+                      type="text"
+                      [(ngModel)]="manager.lastName"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="userData.lastName"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="form-group">
+                    <label> Identificador (ID herbalife) </label>
+                    <input
+                      class="form-control"
+                      placeholder="ID herbalife"
+                      type="text"
+                      [(ngModel)]="manager.idHerbalife"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="userData.idHerbalife"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="form-group">
+                    <label>Nivel de Herbalife </label>
+                    <input
+                      class="form-control"
+                      placeholder="Nivel de Herbalife"
+                      type="text"
+                      [(ngModel)]="manager.levelHerbalife"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="userData.levelHerbalife"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mt-4">
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="tim-icons icon-email-85"> </i>
+                    <input
+                      class="form-control"
+                      placeholder="Correo Electrónico"
+                      type="url"
+                      style="padding-left: 33px"
+                      [(ngModel)]="socialMedia.email"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="socialMedia.email"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-whatsapp"> </i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://wa.me/tu_numero"
+                      type="url"
+                      style="padding-left: 33px"
+                      [(ngModel)]="socialMedia.whatsapp"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="socialMedia.whatsapp"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-telegram-plane"> </i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://t.me/nombre_usuario"
+                      type="url"
+                      style="padding-left: 33px"
+                      [value]="socialMedia.telegram"
+                      [(ngModel)]="socialMedia.telegram"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-facebook-f"> </i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://www.facebook.com/..."
+                      type="url"
+                      style="padding-left: 33px"
+                      [value]="socialMedia.facebook"
+                      [(ngModel)]="socialMedia.facebook"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-instagram"> </i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://www.instagram.com/..."
+                      type="url"
+                      style="padding-left: 33px"
+                      [value]="socialMedia.instagram"
+                      [(ngModel)]="socialMedia.instagram"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-youtube"> </i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://www.youtube.com/..."
+                      type="url"
+                      style="padding-left: 33px"
+                      [value]="socialMedia.youtube"
+                      [(ngModel)]="socialMedia.youtube"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12 md-1">
+                  <div class="input-social form-group">
+                    <i class="fab fa-tiktok"></i>
+                    <input
+                      class="form-control"
+                      [ngbTooltip]="tipContent"
+                      placeholder="https://www.tiktok.com/..."
+                      type="url"
+                      style="padding-left: 33px"
+                      [value]="socialMedia.tiktok"
+                      [(ngModel)]="socialMedia.tiktok"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="row">
-                            <div class="col-md-12">
-                                <div class=" col-md-12">
-                                    <div class=" form-group">
-                                        <label> Dirección *Calle, Nombre y Número de edificio, Número
-                                            de puerta, Zona
-                                        </label>
-                                        <input class="form-control" placeholder="Dirección" type="text"
-                                            [(ngModel)]="manager.address" [ngModelOptions]="{standalone: true}"
-                                            [value]="userData.address" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6 md-1">
-                                            <div class="form-group">
-                                                <label> Pais </label>
-                                                <input class="form-control" placeholder="País" type="text"
-                                                    [(ngModel)]="manager.country" [ngModelOptions]="{standalone: true}"
-                                                    [value]="userData.country" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 md-1">
-                                            <div class="form-group">
-                                                <label>Ciudad </label>
-                                                <input class="form-control" placeholder="Ciudad" type="text"
-                                                    [(ngModel)]="manager.city" [ngModelOptions]="{standalone: true}"
-                                                    [value]="userData.city" />
-                                            </div>
-                                        </div>
-                                        <div class=" col-md-6 md-1">
-                                            <div class=" form-group">
-                                                <label> Código Postal </label>
-                                                <input class="form-control" placeholder="ZIP Code" type="text"
-                                                    [(ngModel)]="manager.postalCode"
-                                                    [ngModelOptions]="{standalone: true}"
-                                                    [value]="userData.postalCode" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>
+                      Dirección *Calle, Nombre y Número de edificio, Número de
+                      puerta, Zona
+                    </label>
+                    <input
+                      class="form-control"
+                      placeholder="Dirección"
+                      type="text"
+                      [(ngModel)]="manager.address"
+                      [ngModelOptions]="{ standalone: true }"
+                      [value]="userData.address"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6 md-1">
+                      <div class="form-group">
+                        <label> Pais </label>
+                        <input
+                          class="form-control"
+                          placeholder="País"
+                          type="text"
+                          [(ngModel)]="manager.country"
+                          [ngModelOptions]="{ standalone: true }"
+                          [value]="userData.country"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 md-1">
+                      <div class="form-group">
+                        <label>Ciudad </label>
+                        <input
+                          class="form-control"
+                          placeholder="Ciudad"
+                          type="text"
+                          [(ngModel)]="manager.city"
+                          [ngModelOptions]="{ standalone: true }"
+                          [value]="userData.city"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 md-1">
+                      <div class="form-group">
+                        <label> Código Postal </label>
+                        <input
+                          class="form-control"
+                          placeholder="ZIP Code"
+                          type="text"
+                          [(ngModel)]="manager.postalCode"
+                          [ngModelOptions]="{ standalone: true }"
+                          [value]="userData.postalCode"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+              <p class="text-left">Edita tu direccion de entregas</p>
+              <agm-map
+                [latitude]="lat"
+                [longitude]="lng"
+                [zoom]="zoom"
+                [disableDefaultUI]="false"
+                [zoomControl]="false"
+                (mapClick)="mapClicked($event)"
+              >
+                <agm-marker
+                  [latitude]="lat"
+                  [longitude]="lng"
+                  [markerDraggable]="true"
+                  (dragEnd)="markerDragEnd($event)"
+                ></agm-marker>
+              </agm-map>
+              <p>latitud: {{lat}}, longitud{{lng}}</p>
+              <a class="btn btn-sm" (click)="getCurrentPosition()"
+                ><b style="color: white">Mi Ubicacion Actual</b></a
+              >
             </div>
           </div>
           <div class="card-footer">
@@ -202,5 +324,13 @@
     </div>
   </div>
 </div>
-<ng-template #tipContent>Recuerde que debe tener un <b>formato de url</b> para que funcione correctamente</ng-template>
-<ngx-ui-loader fgsColor='gray' fgsType='three-strings' overlayColor="rgba(24,31,46)" [text]="content"></ngx-ui-loader>
+<ng-template #tipContent
+  >Recuerde que debe tener un <b>formato de url</b> para que funcione
+  correctamente</ng-template
+>
+<ngx-ui-loader
+  fgsColor="gray"
+  fgsType="three-strings"
+  overlayColor="rgba(24,31,46)"
+  [text]="content"
+></ngx-ui-loader>

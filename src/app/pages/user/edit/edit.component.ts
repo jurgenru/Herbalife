@@ -6,6 +6,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ImageCropperComponent } from 'src/app/components/image-cropper/image-cropper.component';
 import { ManagerService } from 'src/app/services/manager.service';
 import { UserService } from 'src/app/services/user.service';
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,6 +23,9 @@ export class EditComponent implements OnInit {
   manager: any = {};
   updateImage: number = 2;
   updateIcon: number = 2;
+  lat:number;
+  lng:number;
+  zoom: number = 8;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -32,6 +36,8 @@ export class EditComponent implements OnInit {
     private router: Router,
   ) {
     this.me();
+    this.lat = -16.489689;
+    this.lng = -68.119293;
   }
 
   ngOnInit() { }
@@ -120,4 +126,42 @@ export class EditComponent implements OnInit {
     });
   }
 
+  markerDragEnd($event: MouseEvent) {
+    console.log('dragEnd', $event);
+    this.lat = $event.coords.lat;
+    this.lng = $event.coords.lng;
+    console.log('lat: ', this.lat);
+    console.log('lng: ', this.lng);
+  }
+
+  mapClicked($event: MouseEvent) {
+    if(this.markers.length < 1){
+      this.markers.push({
+        lat: $event.coords.lat,
+        lng: $event.coords.lng,
+        draggable: true
+      });
+    } else {
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> No se puede añadir mas de un marcador', '5000', 'danger', 'top', 'center');
+    }
+  }
+
+  markers: marker[] = []
+
+  getCurrentPosition(){
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      this.zoom = 17;
+      console.log(this.lat);
+      console.log(this.lng);
+    })
+  }
+}
+
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
 }

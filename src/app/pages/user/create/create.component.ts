@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-user-create',
@@ -17,6 +18,9 @@ export class CreateComponent implements OnInit {
 
   imageProfile: any;
   icon: any;
+  lat: number;
+  lng: number;
+  zoom: number = 8;
 
   constructor(
     private SimpleModalService: SimpleModalService,
@@ -26,8 +30,10 @@ export class CreateComponent implements OnInit {
     private spinner: NgxUiLoaderService,
     private toastr: ToastrService,
     private router: Router,
-  ) { 
+  ) {
     this.me();
+    this.lat = -16.489689;
+    this.lng = -68.119293;
   }
 
   ngOnInit(
@@ -43,6 +49,7 @@ export class CreateComponent implements OnInit {
     levelHerbalife: [''],
     city: [''],
     postalCode: [''],
+    coordinates: [''],
     socialMedia: this.fb.group({
       whatsapp: [''],
       telegram: [''],
@@ -73,7 +80,7 @@ export class CreateComponent implements OnInit {
   post() {
     this.user.value.socialMedia.whatsapp = 'https://wa.me/' + this.user.value.socialMedia.whatsapp;
     this.user.value.socialMedia.telegram = 'https://t.me/' + this.user.value.socialMedia.telegram;
-    this.user
+    this.user.value.coordinates = JSON.stringify([this.lat, this.lng]);
     this.user.value.socialMedia = JSON.stringify(this.user.value.socialMedia);
     const start = new Date();
     this.spinner.start();
@@ -130,4 +137,42 @@ export class CreateComponent implements OnInit {
     });
   }
 
+  markerDragEnd($event: MouseEvent) {
+    console.log('dragEnd', $event);
+    this.lat = $event.coords.lat;
+    this.lng = $event.coords.lng;
+    console.log('lat: ', this.lat);
+    console.log('lng: ', this.lng);
+  }
+
+  mapClicked($event: MouseEvent) {
+    if(this.markers.length < 1){
+      this.markers.push({
+        lat: $event.coords.lat,
+        lng: $event.coords.lng,
+        draggable: true
+      });
+    } else {
+      this.notification('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> No se puede añadir mas de un marcador', '5000', 'danger', 'top', 'center');
+    }
+  }
+
+  markers: marker[] = []
+
+  getCurrentPosition(){
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+      this.zoom = 17;
+      console.log(this.lat);
+      console.log(this.lng);
+    })
+  }
+}
+
+interface marker {
+  lat: number;
+  lng: number;
+  label?: string;
+  draggable: boolean;
 }

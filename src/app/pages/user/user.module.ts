@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ComponentsModule } from 'src/app/components/components.module';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [...routedComponents],
@@ -19,7 +20,10 @@ import { ComponentsModule } from 'src/app/components/components.module';
     ImageCropperModule,
     SimpleModalModule,
     NgxUiLoaderModule,
-    ComponentsModule
+    ComponentsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA-pQvJ1fD_ohk_PxaUMLjqVDhsMDsA3as'
+    }),
   ],
   exports: [
     ...routedComponents
