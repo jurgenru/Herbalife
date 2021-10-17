@@ -97,6 +97,7 @@ export class EditComponent implements OnInit {
     const start = new Date();
     this.spinner.start();
     this.manager.socialMedia = JSON.stringify(this.socialMedia);
+    this.manager.value.coordinates = JSON.stringify([this.lat, this.lng]);
     this.userService.me().subscribe((user: any) => {
       this.managerService.edit(user.id, this.manager).subscribe(man => {
         const end = new Date();
